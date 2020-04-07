@@ -1,10 +1,36 @@
+/*
+TODO:
+
+CHROME:
+- Get rid of border between tabs and url area (same colour as toolbar but screws up perfect vertical centering for URL bar)
+- Make vertical tab AND toolbar seperators less tall (still centered)
+- Change purples on click
+- Check background colour for hover back button
+- Make search suggestion dropdown width of URL bar only (like Chrome)
+
+CONTENT:
+- In URL search sug dropdown, make suggestion hover "search with Google" prompts grey not bright green, or remove if possible without side effects
+
+THEME:
+- Sidebar color tweaks including hover (clicked folder) background color and text as well as overall background (match darker tab area color)
+- Slightly darker bottom line
+- Bookmarks search bar background dark
+- Experiment with search bar click border color
+
+*/
+
+
 /* Makes URL bar highlight color purple to match border when selected */
 ::-moz-selection {
-  background-color: rgba(117, 24, 204, 0.85) !important;
+  background-color: rgba(112, 25, 194, 0.8) !important;
 }
 
 @namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
 
+/* New variables */
+:root {
+  --urlbar-newheight: 28px;
+}
 
 /* Removing circle around back button */
 
@@ -41,19 +67,18 @@
 
 /* Editing URL bar */
 
+#urlbar, #searchbar {
+  border: none !important;
+}
+
 /* Smooth fade in of purple border when selected */
 #searchbar:focus-within, #urlbar:not(.megabar)[focused="true"] {
-  box-shadow: 0 0 1px 1px rgba(120, 33, 200, 0.25) !important;
-  border: 1px solid rgba(106, 16, 189, 0.9) !important;
-  transition: 0.2s !important;
-}
-#searchbar:focus-within, #urlbar:not(.megabar) {
-  transition: 0.2s !important;
+  box-shadow: 0 0 0 1px rgba(113, 24, 196, 0.6), 0 0 1px 2px rgba(108, 24, 187, 0.25), 0 0 1px 2px rgba(121, 24, 212, 0.2) !important;
 }
 
 /* Making URL bar have rounded ends like Chrome, then accomodating for curve by adding some padding */
 #urlbar:not(.megabar), #urlbar.megabar > #urlbar-background, #searchbar {
-  border-radius: 100px !important;
+  border-radius: 1000px !important;
   padding: 0 8px !important;
 }
 
@@ -82,6 +107,8 @@
 /* Adding slight margin to either side of URL bar */
 #urlbar-container, #search-container {
   margin-inline: 8px !important;
+  margin-top: 2px !important;
+  margin-bottom: 2px !important;
 }
 
 
@@ -90,12 +117,14 @@
 /* URL Bar */
 #urlbar, #searchbar {
   font-size: 1.3em !important;
+  height: var(--urlbar-newheight) !important;
+  min-height: var(--urlbar-newheight) !important;
+  max-height: var(--urlbar-newheight) !important;
 }
 
 /* Tab Headings */
 tab .tab-content .tab-label-container .tab-text {
   font-size: 1.1em !important;
-  color: rgba(255,255,255, 0.6) !important; /* Temporary until I fix theme */
 }
 
 /* Making tabs slightly larger in height */
@@ -103,6 +132,7 @@ tab.tabbrowser-tab {
   height: 35px !important;
 }
 
-tab .tab-content .tab-label-container .tab-text[selected="true"] {
-  color: rgba(255,255,255, 0.85) !important; /* Temporary until I fix theme */
+/* Disable new tab "loading burst" effect */
+.tabbrowser-tab .tab-loading-burst {
+  display: none !important;
 }

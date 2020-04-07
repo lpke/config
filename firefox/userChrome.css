@@ -78,14 +78,31 @@
   padding-inline-end: 6px !important;
 }
 
-/*
-#identity-box[pageproxystate="valid"].notSecureText, #identity-box[pageproxystate="valid"].verifiedIdentity, #identity-box[pageproxystate="valid"].chromeUI, #identity-box[pageproxystate="valid"].extensionPage {
-  padding-inline-end: 4px !important;
+
+/* Adding slight margin to either side of URL bar */
+#urlbar-container, #search-container {
+  margin-inline: 8px !important;
 }
 
-#identity-box[pageproxystate="valid"].notSecureText, #identity-box[pageproxystate="valid"].verifiedIdentity, #identity-box[pageproxystate="valid"].chromeUI, #identity-box[pageproxystate="valid"].extensionPage, #urlbar-label-box {
-  margin-inline-end: 4px !important;
-  border-inline-end: none !important;
-  margin-right: 4px !important;
+
+/* Font size adjustments */
+
+/* URL Bar */
+#urlbar, #searchbar {
+  font-size: 1.3em !important;
 }
-*/
+
+/* Tab Headings */
+tab .tab-content .tab-label-container .tab-text {
+  font-size: 1.1em !important;
+  color: rgba(255,255,255, 0.6) !important; /* Temporary until I fix theme */
+}
+
+/* Making tabs slightly larger in height */
+tab.tabbrowser-tab {
+  height: 35px !important;
+}
+
+tab .tab-content .tab-label-container .tab-text[selected="true"] {
+  color: rgba(255,255,255, 0.85) !important; /* Temporary until I fix theme */
+}

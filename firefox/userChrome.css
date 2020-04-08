@@ -3,20 +3,17 @@ TODO:
 
 CHROME:
 - Make vertical tab AND toolbar seperators less tall (still centered)
-- Make search suggestion dropdown width of URL bar only (like Chrome)
+- Make tab hover more transparent
 
 CONTENT:
-- In URL search sug dropdown, make suggestion hover "search with Google" prompts grey not bright green, or remove if possible without side effects
 - MAKE INSPECTOR FONT FIRA CODE
 - INCREASE INSPECTOR FONT SIZE
 
 THEME:
 - Sidebar color tweaks including hover (clicked folder) background color and text as well as overall background (match darker tab area color)
 - Bookmarks search bar background dark
-- Experiment with search bar click border color
 
 */
-
 
 /* Makes URL bar highlight color purple to match border when selected */
 ::-moz-selection {
@@ -25,10 +22,21 @@ THEME:
 
 @namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
 
-/* New variables */
+/* - - - - - - - - - - - - - - - - -
+CUSTOM VARIABLES
+  OS Differences:
+    Mac: 28px, 1.3em, 1.1em
+    Linux: 28px, ?em, ?em
+    Windows: 28px, ?em, ?em
+*/
 :root {
   --urlbar-newheight: 28px;
+  --urlbar-fontsize: 1.3em;
+  --tab-newfontsize: 1.1em;
+  --urlbar-dropdown-extrabuffer: 4px;
+  --urlbar-dropdown-roundedbottom: 7px;
 }
+/* - - - - - - - - - - - - - - - - - */
 
 /* Removing circle around back button */
 
@@ -122,7 +130,7 @@ THEME:
 
 /* URL Bar */
 #urlbar, #searchbar {
-  font-size: 1.3em !important;
+  font-size: var(--urlbar-fontsize) !important;
   height: var(--urlbar-newheight) !important;
   min-height: var(--urlbar-newheight) !important;
   max-height: var(--urlbar-newheight) !important;
@@ -130,7 +138,7 @@ THEME:
 
 /* Tab Headings */
 tab .tab-content .tab-label-container .tab-text {
-  font-size: 1.1em !important;
+  font-size: var(--tab-newfontsize) !important;
 }
 
 /* Making tabs slightly larger in height */
@@ -142,3 +150,51 @@ tab.tabbrowser-tab {
 .tabbrowser-tab .tab-loading-burst {
   display: none !important;
 }
+
+/* Max 8 search suggestions */
+#urlbarView-row-8, #urlbarView-row-9 {
+  display: none !important;
+}
+
+/* Making dropdown same width as URL bar only */
+#urlbar .urlbarView {
+  margin-left: calc(var(--item-padding-start) - 12px - var(--urlbar-dropdown-extrabuffer)) !important;
+  margin-right: calc(var(--item-padding-end) - var(--urlbar-dropdown-extrabuffer)) !important;
+}
+.urlbarView:not(.megabar) .urlbarView-row {
+  padding-inline-start: 0 !important;
+  padding-inline-end: 0 !important;
+}
+#urlbar .urlbarView #urlbar-results .urlbarView-row .urlbarView-type-icon {
+  display: none !important;
+}
+.urlbarView:not(.megabar) .urlbarView-type-icon, .urlbarView-favicon {
+  padding-inline: 6px !important;
+  margin-left: calc(var(--urlbar-dropdown-extrabuffer) - 1px) !important;
+}
+.urlbarView:not(.megabar) {
+  border-block: none !important;
+  border-radius: 0 0 var(--urlbar-dropdown-roundedbottom) var(--urlbar-dropdown-roundedbottom) !important;
+}
+
+/* Increasing spacing between dropdown items */
+.urlbarView:not(.megabar) .urlbarView-row:not([type="tip"]), .urlbarView.megabar .urlbarView-row-inner {
+  padding-block: 8px !important
+}
+
+/* Removing bright green "Search with Google" hover text for dropdown items
+   (Does not remove for selected items or items that aren't search-related) */
+#urlbar .urlbarView #urlbar-results .urlbarView-row:not([aria-selected="true"]) .urlbarView-action,
+#urlbar .urlbarView #urlbar-results .urlbarView-row:not([aria-selected="true"]):not([has-url="true"]) .urlbarView-title-separator {
+  display: none !important;
+}
+
+
+
+/* Tips and Tricks for styling Firefox
+
+- Apply this to #urlbar element to inspect dropdown as though it were active:
+  focused="true" open="true"
+- Firefox uses a lot of the "padding-inline" property to space it's elements - this can be used seperately or in addition to normal element padding
+
+*/

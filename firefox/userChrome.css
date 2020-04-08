@@ -1,42 +1,9 @@
-/*
-TODO:
-
-CHROME:
-- Make vertical tab AND toolbar seperators less tall (still centered)
-- Make tab hover more transparent
-
-CONTENT:
-- MAKE INSPECTOR FONT FIRA CODE
-- INCREASE INSPECTOR FONT SIZE
-
-THEME:
-- Sidebar color tweaks including hover (clicked folder) background color and text as well as overall background (match darker tab area color)
-- Bookmarks search bar background dark
-
-*/
-
-/* Makes URL bar highlight color purple to match border when selected */
+/* Makes URL bar highlight color purple to match border when selected
 ::-moz-selection {
   background-color: rgba(114, 25, 187, 0.8) !important;
-}
+}*/
 
 @namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
-
-/* - - - - - - - - - - - - - - - - -
-CUSTOM VARIABLES
-  OS Differences:
-    Mac: 28px, 1.3em, 1.1em
-    Linux: 28px, ?em, ?em
-    Windows: 28px, ?em, ?em
-*/
-:root {
-  --urlbar-newheight: 28px;
-  --urlbar-fontsize: 1.3em;
-  --tab-newfontsize: 1.1em;
-  --urlbar-dropdown-extrabuffer: 4px;
-  --urlbar-dropdown-roundedbottom: 7px;
-}
-/* - - - - - - - - - - - - - - - - - */
 
 /* Removing circle around back button */
 
@@ -47,7 +14,85 @@ CUSTOM VARIABLES
   border: none !important; box-shadow: none !important;
 }
 
-/* Making back button identical size and hover styling to forward button */
+/* redraw buttons to a simple style */
+#back-button {
+  list-style-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyVpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTQ4IDc5LjE2NDAzNiwgMjAxOS8wOC8xMy0wMTowNjo1NyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MDJFQ0UyN0E3MDhEMTFFQUJENUVGNzQ3NERDNkY5Q0UiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MDJFQ0UyNzk3MDhEMTFFQUJENUVGNzQ3NERDNkY5Q0UiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIDIxLjAgKE1hY2ludG9zaCkiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpFODFGNUQwMzZGRkQxMUVBQUE0MkRBQjE5RDg5NTc2NiIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpFODFGNUQwNDZGRkQxMUVBQUE0MkRBQjE5RDg5NTc2NiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PpoRczkAAAB0SURBVHjaYvz//z8DJYCJgUJArAGBQPwQiM0xZEBeIIADgfg5ECcCMTO6PCHN/kD8CohTcKnBp9kTiN8AcTY+S3BJuAHxWyAuIuRFbIImQPwFiMuJCB/Ko5EmXqBKIFIlGqmSkJANeQjE5uhyjAOeGwECDADN7vWheJDOOgAAAABJRU5ErkJggg==') !important;
+  padding: 0 2px !important;
+  margin-left: 3px !important;
+}
+#forward-button {
+  list-style-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyVpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTQ4IDc5LjE2NDAzNiwgMjAxOS8wOC8xMy0wMTowNjo1NyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIDIxLjAgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MDJFQ0UyN0Q3MDhEMTFFQUJENUVGNzQ3NERDNkY5Q0UiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MDJFQ0UyN0U3MDhEMTFFQUJENUVGNzQ3NERDNkY5Q0UiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDowMkVDRTI3QjcwOEQxMUVBQkQ1RUY3NDc0REM2RjlDRSIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDowMkVDRTI3QzcwOEQxMUVBQkQ1RUY3NDc0REM2RjlDRSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PjeoFFYAAABzSURBVHjaYvz//z8DJYCJgUKAzQBzIH4IxIFEmQDyAhpmBuJEIH4OxIFY5FEwPskUIH4FxP7kGgDC2UD8Bog9yTUAhIuA+C0Qu5FrAAiXA/EXIDZBl6M4GmnuBYoCkexopDghmQPxQ2I0gzDjgOdGgAADAO0C9aEskABzAAAAAElFTkSuQmCC') !important;
+}
+
+/* Do not show tracking protection icon (shield icon on left) */
+#tracking-protection-icon-container {
+  display: none !important;
+}
+
+/* Adding slight margin to either side of URL bar */
+#urlbar-container, #search-container {
+  margin-inline: 8px !important;
+}
+
+/* Making tabs slightly larger in height */
+tab.tabbrowser-tab {
+  height: 35px !important;
+}
+
+/* Disable new tab "loading burst" effect */
+.tabbrowser-tab .tab-loading-burst {
+  display: none !important;
+}
+
+
+/* ----- URL BAR TWEAKS ----- */
+/* Variables */
+#urlbar {
+  --custom-animation-time: 200ms;
+}
+/* Replace new tab 'page loaded by' message with plain search icon and fix spacing */
+#identity-box #identity-icon-labels {
+  display: none !important;
+}
+#identity-box.extensionPage[pageproxystate="valid"] {
+  margin-inline-end: 0 !important;
+  border-inline-end: none !important;
+}
+#identity-box.extensionPage[pageproxystate="valid"] #identity-icon {
+  list-style-image: url(chrome://browser/skin/search-glass.svg) !important;
+  fill-opacity: 0.4 !important;
+}
+/* Make action buttons invisible except on hover */
+#urlbar #page-action-buttons {
+  visibility: hidden !important;
+  transition: var(--custom-animation-time);
+}
+#urlbar[pageproxystate="valid"]:hover #page-action-buttons {
+  visibility: visible !important;
+  transition: var(--custom-animation-time);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* ----- DEPRECATED / LEGACY CODE ----- */
+
+/* Smooth fade in of purple border when selected *
+#searchbar:focus-within, #urlbar:not(.megabar)[focused="true"] {
+  box-shadow: 0 0 0 1px rgba(var(--urlbar-newfocus), 1), 0 0 1px 2px rgba(var(--urlbar-newfocus), 0.4), 0 0 1px 2px rgba(var(--urlbar-newfocus), 0.2) !important;
+  --urlbar-newfocus: 114, 25, 187;
+}*/
+
+
+/* Making back button identical size and hover styling to forward button *
 :root:not([uidensity="compact"]) #back-button > .toolbarbutton-icon {
   width: 28px !important;
   height: 28px !important;
@@ -64,99 +109,10 @@ CUSTOM VARIABLES
 }
 :root:not([uidensity="compact"]) #back-button:not([disabled]):hover:active > .toolbarbutton-icon {
   background-color: var(--toolbarbutton-active-background) !important;
-}
-
- 
-/* redraw buttons to a simple style */
-#back-button {
-  list-style-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyVpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTQ4IDc5LjE2NDAzNiwgMjAxOS8wOC8xMy0wMTowNjo1NyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MDJFQ0UyN0E3MDhEMTFFQUJENUVGNzQ3NERDNkY5Q0UiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MDJFQ0UyNzk3MDhEMTFFQUJENUVGNzQ3NERDNkY5Q0UiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIDIxLjAgKE1hY2ludG9zaCkiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpFODFGNUQwMzZGRkQxMUVBQUE0MkRBQjE5RDg5NTc2NiIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpFODFGNUQwNDZGRkQxMUVBQUE0MkRBQjE5RDg5NTc2NiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PpoRczkAAAB0SURBVHjaYvz//z8DJYCJgUJArAGBQPwQiM0xZEBeIIADgfg5ECcCMTO6PCHN/kD8CohTcKnBp9kTiN8AcTY+S3BJuAHxWyAuIuRFbIImQPwFiMuJCB/Ko5EmXqBKIFIlGqmSkJANeQjE5uhyjAOeGwECDADN7vWheJDOOgAAAABJRU5ErkJggg==') !important;
-  padding: 0 2px !important;
-  margin-left: 3px !important;
-}
-#forward-button {
-  list-style-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyVpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTQ4IDc5LjE2NDAzNiwgMjAxOS8wOC8xMy0wMTowNjo1NyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIDIxLjAgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MDJFQ0UyN0Q3MDhEMTFFQUJENUVGNzQ3NERDNkY5Q0UiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MDJFQ0UyN0U3MDhEMTFFQUJENUVGNzQ3NERDNkY5Q0UiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDowMkVDRTI3QjcwOEQxMUVBQkQ1RUY3NDc0REM2RjlDRSIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDowMkVDRTI3QzcwOEQxMUVBQkQ1RUY3NDc0REM2RjlDRSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PjeoFFYAAABzSURBVHjaYvz//z8DJYCJgUKAzQBzIH4IxIFEmQDyAhpmBuJEIH4OxIFY5FEwPskUIH4FxP7kGgDC2UD8Bog9yTUAhIuA+C0Qu5FrAAiXA/EXIDZBl6M4GmnuBYoCkexopDghmQPxQ2I0gzDjgOdGgAADAO0C9aEskABzAAAAAElFTkSuQmCC') !important;
-}
+}*/
 
 
-/* Editing URL bar */
-
-#urlbar, #searchbar {
-  border: none !important;
-}
-
-/* Smooth fade in of purple border when selected */
-#searchbar:focus-within, #urlbar:not(.megabar)[focused="true"] {
-  box-shadow: 0 0 0 1px rgba(var(--urlbar-newfocus), 1), 0 0 1px 2px rgba(var(--urlbar-newfocus), 0.4), 0 0 1px 2px rgba(var(--urlbar-newfocus), 0.2) !important;
-  --urlbar-newfocus: 114, 25, 187;
-}
-
-/* Making URL bar have rounded ends like Chrome, then accomodating for curve by adding some padding */
-#urlbar:not(.megabar), #urlbar.megabar > #urlbar-background, #searchbar {
-  border-radius: 1000px !important;
-  padding: 0 8px !important;
-}
-
-/* Do not show tracking protection icon (shield icon on left) */
-#tracking-protection-icon-container {
-  display: none !important;
-}
-
-/* Global extra margin between URL and icons on the left (looks more like Chrome) */
-#identity-box {
-  margin-right: 5px !important;
-}
-
-
-/* Removing new tab page extension warning in URL bar (Google Earth View) */
-
-#identity-box #identity-icon-labels {
-  display: none !important;
-}
-
-#identity-box[pageproxystate="valid"].notSecureText, #identity-box[pageproxystate="valid"].verifiedIdentity, #identity-box[pageproxystate="valid"].chromeUI, #identity-box[pageproxystate="valid"].extensionPage {
-  padding-inline-end: 6px !important;
-}
-
-
-/* Adding slight margin to either side of URL bar */
-#urlbar-container, #search-container {
-  margin-inline: 8px !important;
-  margin-top: 2px !important;
-  margin-bottom: 2px !important;
-}
-
-
-/* Font size adjustments */
-
-/* URL Bar */
-#urlbar, #searchbar {
-  font-size: var(--urlbar-fontsize) !important;
-  height: var(--urlbar-newheight) !important;
-  min-height: var(--urlbar-newheight) !important;
-  max-height: var(--urlbar-newheight) !important;
-}
-
-/* Tab Headings */
-tab .tab-content .tab-label-container .tab-text {
-  font-size: var(--tab-newfontsize) !important;
-}
-
-/* Making tabs slightly larger in height */
-tab.tabbrowser-tab {
-  height: 35px !important;
-}
-
-/* Disable new tab "loading burst" effect */
-.tabbrowser-tab .tab-loading-burst {
-  display: none !important;
-}
-
-/* Max 8 search suggestions */
-#urlbarView-row-8, #urlbarView-row-9 {
-  display: none !important;
-}
-
-/* Making dropdown same width as URL bar only */
+/* Making dropdown same width as URL bar only
 #urlbar .urlbarView {
   margin-left: calc(var(--item-padding-start) - 12px - var(--urlbar-dropdown-extrabuffer)) !important;
   margin-right: calc(var(--item-padding-end) - var(--urlbar-dropdown-extrabuffer)) !important;
@@ -177,24 +133,16 @@ tab.tabbrowser-tab {
   border-radius: 0 0 var(--urlbar-dropdown-roundedbottom) var(--urlbar-dropdown-roundedbottom) !important;
 }
 
-/* Increasing spacing between dropdown items */
+Increasing spacing between dropdown items
 .urlbarView:not(.megabar) .urlbarView-row:not([type="tip"]), .urlbarView.megabar .urlbarView-row-inner {
   padding-block: 8px !important
 }
+*/
+
 
 /* Removing bright green "Search with Google" hover text for dropdown items
-   (Does not remove for selected items or items that aren't search-related) */
+   (Does not remove for selected items or items that aren't search-related) *
 #urlbar .urlbarView #urlbar-results .urlbarView-row:not([aria-selected="true"]) .urlbarView-action,
 #urlbar .urlbarView #urlbar-results .urlbarView-row:not([aria-selected="true"]):not([has-url="true"]) .urlbarView-title-separator {
   display: none !important;
-}
-
-
-
-/* Tips and Tricks for styling Firefox
-
-- Apply this to #urlbar element to inspect dropdown as though it were active:
-  focused="true" open="true"
-- Firefox uses a lot of the "padding-inline" property to space it's elements - this can be used seperately or in addition to normal element padding
-
-*/
+}*/

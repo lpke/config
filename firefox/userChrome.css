@@ -65,7 +65,7 @@ tab.tabbrowser-tab {
 /* Make action buttons invisible except on hover */
 #urlbar #page-action-buttons {
   opacity: 0 !important;
-  transition: var(--custom-animation-time);
+  transition: var(--custom-animation-timings);
 }
 #urlbar[pageproxystate="valid"]:hover #page-action-buttons {
   opacity: 1 !important;

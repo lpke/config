@@ -48,7 +48,7 @@ tab.tabbrowser-tab {
 /* ----- URL BAR TWEAKS ----- */
 /* Variables */
 #urlbar {
-  --custom-animation-time: 200ms;
+  --custom-animation-timings: 150ms 50ms;
 }
 /* Replace new tab 'page loaded by' message with plain search icon and fix spacing */
 #identity-box #identity-icon-labels {
@@ -64,16 +64,13 @@ tab.tabbrowser-tab {
 }
 /* Make action buttons invisible except on hover */
 #urlbar #page-action-buttons {
-  visibility: hidden !important;
+  opacity: 0 !important;
   transition: var(--custom-animation-time);
 }
 #urlbar[pageproxystate="valid"]:hover #page-action-buttons {
-  visibility: visible !important;
-  transition: var(--custom-animation-time);
+  opacity: 1 !important;
+  transition: var(--custom-animation-timings);
 }
-
-
-
 
 
 

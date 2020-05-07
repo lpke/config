@@ -1,28 +1,4 @@
-/* Makes URL bar highlight color purple to match border when selected
-::-moz-selection {
-  background-color: rgba(114, 25, 187, 0.8) !important;
-}*/
-
 @namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
-
-/* Removing circle around back button */
-
-/* Remove back button circle */
-#back-button:not(:hover),
-#back-button:not(:hover) > .toolbarbutton-icon {
-  background: transparent !important;
-  border: none !important; box-shadow: none !important;
-}
-
-/* redraw buttons to a simple style */
-#back-button {
-  list-style-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyVpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTQ4IDc5LjE2NDAzNiwgMjAxOS8wOC8xMy0wMTowNjo1NyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MDJFQ0UyN0E3MDhEMTFFQUJENUVGNzQ3NERDNkY5Q0UiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MDJFQ0UyNzk3MDhEMTFFQUJENUVGNzQ3NERDNkY5Q0UiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIDIxLjAgKE1hY2ludG9zaCkiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpFODFGNUQwMzZGRkQxMUVBQUE0MkRBQjE5RDg5NTc2NiIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpFODFGNUQwNDZGRkQxMUVBQUE0MkRBQjE5RDg5NTc2NiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PpoRczkAAAB0SURBVHjaYvz//z8DJYCJgUJArAGBQPwQiM0xZEBeIIADgfg5ECcCMTO6PCHN/kD8CohTcKnBp9kTiN8AcTY+S3BJuAHxWyAuIuRFbIImQPwFiMuJCB/Ko5EmXqBKIFIlGqmSkJANeQjE5uhyjAOeGwECDADN7vWheJDOOgAAAABJRU5ErkJggg==') !important;
-  padding: 0 2px !important;
-  margin-left: 3px !important;
-}
-#forward-button {
-  list-style-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyVpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTQ4IDc5LjE2NDAzNiwgMjAxOS8wOC8xMy0wMTowNjo1NyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIDIxLjAgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MDJFQ0UyN0Q3MDhEMTFFQUJENUVGNzQ3NERDNkY5Q0UiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MDJFQ0UyN0U3MDhEMTFFQUJENUVGNzQ3NERDNkY5Q0UiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDowMkVDRTI3QjcwOEQxMUVBQkQ1RUY3NDc0REM2RjlDRSIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDowMkVDRTI3QzcwOEQxMUVBQkQ1RUY3NDc0REM2RjlDRSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PjeoFFYAAABzSURBVHjaYvz//z8DJYCJgUKAzQBzIH4IxIFEmQDyAhpmBuJEIH4OxIFY5FEwPskUIH4FxP7kGgDC2UD8Bog9yTUAhIuA+C0Qu5FrAAiXA/EXIDZBl6M4GmnuBYoCkexopDghmQPxQ2I0gzDjgOdGgAADAO0C9aEskABzAAAAAElFTkSuQmCC') !important;
-}
 
 /* Do not show tracking protection icon (shield icon on left) */
 #tracking-protection-icon-container {
@@ -72,74 +48,47 @@ tab.tabbrowser-tab {
   transition: var(--custom-animation-timings);
 }
 
+/* Post FF75 style tweaks */
 
-
-
-
-
-
-
-
-/* ----- DEPRECATED / LEGACY CODE ----- */
-
-/* Smooth fade in of purple border when selected *
-#searchbar:focus-within, #urlbar:not(.megabar)[focused="true"] {
-  box-shadow: 0 0 0 1px rgba(var(--urlbar-newfocus), 1), 0 0 1px 2px rgba(var(--urlbar-newfocus), 0.4), 0 0 1px 2px rgba(var(--urlbar-newfocus), 0.2) !important;
-  --urlbar-newfocus: 114, 25, 187;
-}*/
-
-
-/* Making back button identical size and hover styling to forward button *
-:root:not([uidensity="compact"]) #back-button > .toolbarbutton-icon {
-  width: 28px !important;
-  height: 28px !important;
-  padding: 6px !important;
-  border-radius: 4px !important;
+toolbar#nav-bar {
+  max-height: 38px !important;
 }
-#back-button:hover,
-#back-button:hover > .toolbarbutton-icon {
+
+/* Making back button normal, no circle */
+#back-button:hover {
+  --backbutton-hover-background: var(--toolbarbutton-hover-background) !important;
+}
+.toolbarbutton-icon[label="Back"] {
+  padding: var(--toolbarbutton-inner-padding) !important;
+  width: calc(2 * var(--toolbarbutton-inner-padding) + 16px) !important;
+  height: calc(2 * var(--toolbarbutton-inner-padding) + 16px) !important;
   border: none !important;
-  border-radius: 4px !important;
+  border-radius: var(--toolbarbutton-border-radius) !important;
+  background-color: unset !important;
 }
-:root:not([uidensity="compact"]) #back-button:not([disabled]):not([open]):hover > .toolbarbutton-icon {
-  background-color: var(--toolbarbutton-hover-background) !important;
-}
-:root:not([uidensity="compact"]) #back-button:not([disabled]):hover:active > .toolbarbutton-icon {
-  background-color: var(--toolbarbutton-active-background) !important;
-}*/
 
+#urlbar-container {
+  --urlbar-container-height: 36px !important;
+}
 
-/* Making dropdown same width as URL bar only
-#urlbar .urlbarView {
-  margin-left: calc(var(--item-padding-start) - 12px - var(--urlbar-dropdown-extrabuffer)) !important;
-  margin-right: calc(var(--item-padding-end) - var(--urlbar-dropdown-extrabuffer)) !important;
+#urlbar {
+  --urlbar-height: 30px !important;
+  --urlbar-toolbar-height: 36px !important;
 }
-.urlbarView:not(.megabar) .urlbarView-row {
-  padding-inline-start: 0 !important;
-  padding-inline-end: 0 !important;
+
+/* Making toolbar buttons match height of urlbar, then adding extra padding to make the icons look the same size */
+toolbarbutton:not([class*="panel-no-padding"]) .toolbarbutton-1 > .toolbarbutton-icon, toolbarbutton:not([class*="panel-no-padding"]).chromeclass-toolbar-additional stack.toolbarbutton-badge-stack {
+  width: calc(2 * var(--toolbarbutton-inner-padding) + 18px) !important;
+  height: calc(2 * var(--toolbarbutton-inner-padding) + 18px) !important;
+  padding: calc(var(--toolbarbutton-inner-padding) + 1px) var(--toolbarbutton-inner-padding) !important;
 }
-#urlbar .urlbarView #urlbar-results .urlbarView-row .urlbarView-type-icon {
+
+/* Fixing non-centered extension icons in newly sized parent containers */
+toolbarbutton.chromeclass-toolbar-additional stack.toolbarbutton-badge-stack image.toolbarbutton-icon {
+  margin-left: 1px !important;
+}
+
+/* Removing 'customise' button in overflow menu */
+#overflowMenu-customize-button {
   display: none !important;
 }
-.urlbarView:not(.megabar) .urlbarView-type-icon, .urlbarView-favicon {
-  padding-inline: 6px !important;
-  margin-left: calc(var(--urlbar-dropdown-extrabuffer) - 1px) !important;
-}
-.urlbarView:not(.megabar) {
-  border-block: none !important;
-  border-radius: 0 0 var(--urlbar-dropdown-roundedbottom) var(--urlbar-dropdown-roundedbottom) !important;
-}
-
-Increasing spacing between dropdown items
-.urlbarView:not(.megabar) .urlbarView-row:not([type="tip"]), .urlbarView.megabar .urlbarView-row-inner {
-  padding-block: 8px !important
-}
-*/
-
-
-/* Removing bright green "Search with Google" hover text for dropdown items
-   (Does not remove for selected items or items that aren't search-related) *
-#urlbar .urlbarView #urlbar-results .urlbarView-row:not([aria-selected="true"]) .urlbarView-action,
-#urlbar .urlbarView #urlbar-results .urlbarView-row:not([aria-selected="true"]):not([has-url="true"]) .urlbarView-title-separator {
-  display: none !important;
-}*/

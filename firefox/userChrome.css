@@ -77,7 +77,7 @@ toolbar#nav-bar {
 }
 
 /* Making toolbar buttons match height of urlbar, then adding extra padding to make the icons look the same size */
-toolbarbutton:not([class*="panel-no-padding"]) .toolbarbutton-1 > .toolbarbutton-icon, toolbarbutton:not([class*="panel-no-padding"]).chromeclass-toolbar-additional stack.toolbarbutton-badge-stack {
+toolbarbutton:not([class*="panel-no-padding"]).toolbarbutton-1 > .toolbarbutton-icon, toolbarbutton.chromeclass-toolbar-additional stack.toolbarbutton-badge-stack {
   width: calc(2 * var(--toolbarbutton-inner-padding) + 18px) !important;
   height: calc(2 * var(--toolbarbutton-inner-padding) + 18px) !important;
   padding: calc(var(--toolbarbutton-inner-padding) + 1px) var(--toolbarbutton-inner-padding) !important;
@@ -92,3 +92,17 @@ toolbarbutton.chromeclass-toolbar-additional stack.toolbarbutton-badge-stack ima
 #overflowMenu-customize-button {
   display: none !important;
 }
+
+/*  Not in use but works:
+    Creates a line between first extension item in overflow dropdown and "built-in" icons.
+    Requires at least two extension icons after each other, below default ones.
+
+panel#widget-overflow #widget-overflow-fixed-list > toolbarbutton[class*="webextension"] {
+  border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+panel#widget-overflow #widget-overflow-fixed-list > toolbarbutton[class*="webextension"] ~ toolbarbutton[class*="webextension"] {
+  border: none !important;
+  height: unset !important;
+}
+*/

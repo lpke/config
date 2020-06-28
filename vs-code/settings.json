@@ -1,0 +1,629 @@
+{
+  "telemetry.enableCrashReporter": false,
+  "telemetry.enableTelemetry": false,
+  "editor.formatOnPaste": true,
+  "editor.copyWithSyntaxHighlighting": false,
+  "editor.tabSize": 2,
+  "editor.wordWrap": "on",
+  "editor.suggest.showReferences": false,
+  "workbench.tips.enabled": false,
+  "csharp.referencesCodeLens.enabled": false,
+  "editor.lightbulb.enabled": false,
+  "editor.acceptSuggestionOnCommitCharacter": false,
+  "editor.selectionHighlight": false,
+  "editor.roundedSelection": false,
+  "editor.occurrencesHighlight": false,
+  "workbench.startupEditor": "newUntitledFile",
+  "sync.autoDownload": true,
+  "sync.autoUpload": true,
+  "files.autoSaveDelay": 1100,
+  "sync.gist": "934bb776e4b628cff2f99ce8ba9352b9",
+  "code-runner.enableAppInsights": false,
+  "window.zoomLevel": 0,
+  "editor.accessibilitySupport": "off",
+  "editor.codeLens": false,
+  "workbench.colorCustomizations": {
+    "[DuoTone Dark Sky]": {
+      "statusBar.background": "#2D2D2D",
+      "statusBar.noFolderBackground": "#2D2D2D",
+      "statusBar.debuggingBackground": "#4b3d92",
+      "editorIndentGuide.activeBackground": "#3a3a3a",
+      "editorIndentGuide.background": "#2e2e2e",
+      "editorLineNumber.foreground": "#4d4a5f",
+      "editor.lineHighlightBackground": "#332e3d73",
+      "scrollbarSlider.background": "#ffffff0c",
+      "scrollbarSlider.hoverBackground": "#ffffff13",
+      "scrollbarSlider.activeBackground": "#ffffff18",
+      "editor.foldBackground": "#302b3a80",
+      "activityBarBadge.background": "#544580",
+      "activityBarBadge.foreground": "#e0e0e0"
+    },
+    "[Ariake Dark]": {
+      "editor.background": "#272a36",
+      "statusBar.background": "#1d1f27",
+      "statusBar.noFolderBackground": "#1d1f27",
+      "statusBar.foreground": "#B9BED5",
+      "statusBar.noFolderForeground": "#B9BED5",
+      "editorIndentGuide.activeBackground": "#353a49",
+      "editorIndentGuide.background": "#2b303d",
+      "editorLineNumber.foreground": "#3c4153",
+      "editor.lineHighlightBackground": "#373c502c",
+      "scrollbarSlider.background": "#cecece0c",
+      "scrollbarSlider.hoverBackground": "#ffffff13",
+      "scrollbarSlider.activeBackground": "#ffffff18",
+      "editor.foldBackground": "#2e313d4d",
+      "activityBarBadge.background": "#3f4663",
+      "activityBarBadge.foreground": "#e0e0e0"
+    },
+    "[LaserWave Italic]": {
+      // Default (unthemed) text color
+      "editor.foreground": "#eeeeee",
+
+      // Line number duller
+      "editorLineNumber.foreground": "#494352",
+
+      // Git diff gutter color brightness reduction
+      "editorGutter.modifiedBackground": "#362a47",
+      "editorGutter.addedBackground": "#30343d",
+      "editorGutter.deletedBackground": "#572d2d",
+
+      // Status bar color
+      "statusBar.foreground": "#dddddd",
+      "statusBar.background": "#1f1c22",
+      "statusBar.noFolderBackground": "#1f1c22",
+      "statusBar.debuggingBackground": "#3a1e55",
+
+      // Line indentation guides
+      "editorIndentGuide.activeBackground": "#796b883f",
+      "editorIndentGuide.background": "#74628a17",
+
+      // Active line
+      "editor.lineHighlightBorder": "#2c2436",
+      "editor.lineHighlightBackground": "#292231",
+
+      // Folded line
+      "editor.foldBackground": "#2d2536d5",
+
+      // Selection
+      "editor.selectionBackground": "#40344ede",
+
+      // Search
+      "editor.findRangeHighlightBackground": "#2b2233",
+      "editor.findRangeHighlightBorder": "#40344e",
+      "editor.rangeHighlightBackground": "#40344ede",
+
+      // Editor interface
+      "sideBar.background": "#1f1c22",
+      "sideBar.border": "#1c191f",
+      "activityBar.background": "#1f1b22",
+      "activityBarBadge.background": "#4f3f63",
+      "activityBarBadge.foreground": "#e0e0e0",
+
+      // Scrollbar
+      "scrollbarSlider.background": "#bebebe0c",
+      "scrollbarSlider.hoverBackground": "#ffffff13",
+      "scrollbarSlider.activeBackground": "#ffffff18",
+      "scrollbar.shadow": "#000000a6"
+    },
+  },
+
+  // Tweaking syntax colors of theme
+  "editor.tokenColorCustomizations": {
+    "[Ariake Dark]": {
+      /* == COLOR REFERENCE ==
+        Default Theme Colors:
+          Pink: #DDA2F6
+          Purple: #A571F4
+          MODIFIED Purple: #b27eff
+          Subdued Purple: #7E7EDD
+          MODIFIED Subdued Purple: #8686ec
+          Aqua: #9AEFEA
+          Aqua MODIFIED: #9AEFEA
+          Light Blue: #93DDFB
+          Middle Blue: #85B1E0
+          White: #F5FAFF
+          Grey: #B9BED5
+          Dark Grey: #555C77
+
+        Custom Colors:
+          Subdued Pink: #956fa5
+          Less White: #ecf1f5
+          Bright Purple: #b27eff
+          Clean Purple: #8f8fe0
+          Less Light Blue: #8bc9e2
+          More Middle Blue: #7bbeeb
+      */
+
+      "textMateRules": [
+        // Theme: Pink
+        {
+          "scope": [
+            //""
+          ],
+          "settings": {
+            "foreground": "#DDA2F6"
+          }
+        },
+        // Theme MODIFIED: Purple
+        {
+          "scope": [
+            // default selectors:
+            "support.class"
+          ],
+          "settings": {
+            "foreground": "#b27eff"
+          }
+        },
+        // Theme MODIFIED: Subdued Purple
+        {
+          "scope": [
+            // default selectors:
+            "keyword.control",
+            "storage",
+            "meta.selector",
+            // custom selectors:
+            "keyword.operator.assignment",
+            "keyword.operator.combinator"
+          ],
+          "settings": {
+            "foreground": "#8686ec"
+          }
+        },
+        // Theme MODIFIED: Aqua
+        {
+          "scope": [
+            // default selectors:
+            "string"
+          ],
+          "settings": {
+            "foreground": "#97e5e7"
+          }
+        },
+        // Theme: Light Blue
+        {
+          "scope": [
+            //""
+          ],
+          "settings": {
+            "foreground": "#93DDFB"
+          }
+        },
+        // Theme: Middle Blue
+        {
+          "scope": [
+            "support.type.property-name.json"
+          ],
+          "settings": {
+            "foreground": "#85B1E0"
+          }
+        },
+        // Theme: White
+        {
+          "scope": [
+            //""
+          ],
+          "settings": {
+            "foreground": "#F5FAFF"
+          }
+        },
+        // Theme: Grey
+        {
+          "scope": [
+            "keyword.operator.increment",
+            "keyword.operator.relational"
+          ],
+          "settings": {
+            "foreground": "#B9BED5"
+          }
+        },
+        // Theme: Dark Grey
+        {
+          "scope": [
+            "punctuation.terminator",
+            "meta.brace",
+            "punctuation.definition",
+            "punctuation.separator",
+            "punctuation.section.embedded",
+            "punctuation.support.type.property-name.begin",
+            "punctuation.support.type.property-name.end",
+            "punctuation.accessor",
+            "punctuation.section.property-list.begin",
+            "punctuation.section.property-list.end",
+            "punctuation.section.function"
+          ],
+          "settings": {
+            "foreground": "#5e647e"
+          }
+        },
+
+        // Custom: Less White
+        {
+          "scope": [
+            "meta.property-value.css"
+          ],
+          "settings": {
+            "foreground": "#ecf1f5"
+          }
+        },
+        // Custom: Bright Purple
+        {
+          "scope": [
+            //""
+          ],
+          "settings": {
+            "foreground": "#b27eff"
+          }
+        },
+        // Custom: Clean Purple
+        {
+          "scope": [
+            "support.type.property-name.css",
+            "storage.type.function.arrow"
+          ],
+          "settings": {
+            "foreground": "#9292da"
+          }
+        },
+        // Custom: Less Light Blue
+        {
+          "scope": [
+            "constant.other.color.rgb-value.hex.css"
+          ],
+          "settings": {
+            "foreground": "#8bc9e2"
+          }
+        },
+        // Custom: More Middle Blue
+        {
+          "scope": [
+            "entity.name.tag.css",
+            "variable.language.this"
+          ],
+          "settings": {
+            "foreground": "#81c5f1"
+          }
+        },
+        // Custom: Subdued Pink
+        {
+          "scope": [
+            "keyword.other.unit"
+          ],
+          "settings": {
+            "foreground": "#956fa5"
+          }
+        },
+
+        // Specific: Classes
+        {
+          "scope": [
+            "entity.name.type.class"
+          ],
+          "settings": {
+            "foreground": "#b27eff", // Custom: Bright Purple
+            "fontStyle": "bold"
+          }
+        },
+      ]
+    },
+
+    "[LaserWave Italic]": {
+
+      /* == TODO ==
+        - change color of dot between function/methods/object values to lighter grey
+        - change color of readonly variables (under semantics) and in-built objects (also semantics)
+        - configure main editor components:
+          - line numbers, indentation guide, active line, etc etc
+          - change pink bar at bottom
+          - change icon badge from hot pink to purple
+          - make tabs + editor area same color and the rest a bit darker (like in Ariake Dark theme but with these colors)
+      */
+
+      /* == COLOR REFERENCE ==
+        Default Theme Colors:
+
+          Pink: #EB64B9
+            (functions/methods, attributes, css classes/ids)
+
+          Purple: #B381C5
+            (numbers, storage type keywords)
+
+          Green: #74DFC4
+            (html tags, css tags, operators)
+
+          Blue: #40B4C4
+            (storage/modifier/control keywords, json keys, css prop names, unit types, regex flags)
+
+          Light Blue: #B4DCE7
+            (strings)
+
+          White: #FFFFFF
+            (plain text, html content, parameters, class declarations, variables)
+
+          Grey: #91889B
+            (comments)
+
+          PurpleGrey: #716385
+            (punctuation)
+
+          Yellow: #FFE261
+            (boolean, const variable declarations, console object)
+      */
+
+      "textMateRules": [
+        // Smoke/tinted color for unimportant things and unknown variables
+        {
+          "scope": [
+            "meta.jsx.children",
+            "text.html.derivative",
+            // These will be overridden by semantic highlighting if variable exists:
+            "variable.other.readwrite.js",
+            "variable.other.readwrite.ts"
+          ],
+          "settings": {
+            "foreground": "#cac5d3"
+          }
+        },
+        // Slightly darkening comments
+        {
+          "scope": [
+            "comment",
+            "punctuation.definition.comment"
+          ],
+          "settings": {
+            "foreground": "#827a8b"
+          }
+        },
+        // Coloring classes
+        {
+          "scope": [
+            "entity.name.type.class"
+          ],
+          "settings": {
+            "foreground": "#5fcc98"
+          }
+        },
+        // Making JSX component tags differ from normal tags
+        {
+          "scope": [
+            "support.class.component.js"
+          ],
+          "settings": {
+            "foreground": "#5fcc98",
+            "fontStyle": "bold"
+          }
+        },
+        // Making object literal keys in same blue as json keys
+        // (When in quotes, as non-quoted keys already are)
+        {
+          "scope": [
+            "meta.object-literal.key string.quoted.single.js",
+            "meta.object-literal.key string.quoted.double.js",
+            "meta.object-literal.key string.quoted.single.ts",
+            "meta.object-literal.key string.quoted.double.ts"
+          ],
+          "settings": {
+            "foreground": "#40B4C4"
+          }
+        },
+        // - Making CSS variables white
+        // - Making module namespaces white
+        {
+          "scope": [
+            "variable.css",
+            "variable.argument.css",
+            "support.constant.color.w3c-standard-color-name.css",
+            "constant.other.color.rgb-value.hex.css",
+            "entity.name.type.module"
+          ],
+          "settings": {
+            "foreground": "#ffffff"
+          }
+        },
+        // Making CSS hex and W3C color names change when right
+        {
+          "scope": [
+            "support.constant.color.w3c-standard-color-name.css",
+            "constant.other.color.rgb-value.hex.css"
+          ],
+          "settings": {
+            "foreground": "#B4DCE7"
+          }
+        },
+        // - Making CSS variable brackets dull (like functions)
+        // - Making .md fenced code blocks lang name dull 
+        // - Making accessor punctuation dull
+        {
+          "scope": [
+            "punctuation.section.function.begin.bracket.round.css",
+            "punctuation.section.function.end.bracket.round.css",
+            "fenced_code.block.language.markdown",
+            //"punctuation.accessor"
+          ],
+          "settings": {
+            "foreground": "#716385"
+          }
+        },
+        // Making code/pre parts of .md files a different color
+        {
+          "scope": [
+            "markup.inline.raw.string.markdown"
+          ],
+          "settings": {
+            "foreground": "#B4DCE7"
+          }
+        },
+        // Making boolean values less yellow
+        {
+          "scope": [
+            "constant.language",
+            "constant.language.boolean.true.js",
+            "constant.language.boolean.false.js",
+            "constant.language.boolean.true.ts",
+            "constant.language.boolean.false.ts"
+          ],
+          "settings": {
+            "foreground": "#FFE28A"
+          }
+        },
+        // Making undefined and null values duller
+        {
+          "scope": [
+            "constant.language.undefined.js",
+            "constant.language.undefined.ts",
+            "constant.language.null.js",
+            "constant.language.null.ts"
+          ],
+          "settings": {
+            "foreground": "#ddcc96"
+          }
+        },
+        // Making 'new' keyword italic
+        {
+          "scope": [
+            "keyword.operator.new"
+          ],
+          "settings": {
+            "fontStyle": "italic"
+          }
+        }
+      ]
+    }
+  },
+
+  "editor.semanticTokenColorCustomizations": {
+    "enabled": true,
+
+    "[LaserWave Italic]": {
+      "rules": {
+        "variable.defaultLibrary": "#FFE28A",
+        "class.defaultLibrary": "#FFE28A",
+        "class.declaration": {
+          "fontStyle": "bold"
+        },
+        "variable.declaration.readonly": "#b8eede",
+        "variable": "#ffffff",
+        "parameter": "#ffffff"
+      }
+    }
+  },
+
+  "editor.matchBrackets": false,
+  "css_peek.enable": false,
+  "editor.suggest.maxVisibleSuggestions": 10,
+  // Controls if quick suggestions should show up while typing
+  "editor.quickSuggestions": false,
+  // Controls the delay in ms after which quick suggestions will show up.
+  "editor.quickSuggestionsDelay": 0,
+  "editor.cursorBlinking": "phase",
+  "workbench.enableExperiments": false,
+  "gitlens.codeLens.enabled": false,
+  "gitlens.views.fileHistory.location": "gitlens",
+  "gitlens.views.lineHistory.location": "gitlens",
+  "gitlens.views.compare.location": "gitlens",
+  "gitlens.views.search.location": "gitlens",
+  "gitlens.views.search.files.layout": "tree",
+  "gitlens.currentLine.enabled": false,
+  "gitlens.hovers.currentLine.over": "line",
+  "gitlens.statusBar.reduceFlicker": true,
+  "workbench.activityBar.visible": true,
+  // HTML matching tag highlighter settings
+  "highlight-matching-tag.highlightSelfClosing": true,
+  "highlight-matching-tag.styles": {
+    "opening": {
+      "name": {
+      "underline": "#D4D4D4"
+      }
+    }
+  },
+  // Making Linux VS Code look better
+  "window.titleBarStyle": "custom",
+  // Linter settings
+  // CSS
+  "less.lint.emptyRules": "ignore",
+  "scss.lint.emptyRules": "ignore",
+  "css.lint.emptyRules": "ignore",
+  "emmet.triggerExpansionOnTab": true,
+  // remove underline from links
+  "editor.links": false,
+  "editor.fontLigatures": true,
+  "subtleBrackets.parse": false,
+  "sync.quietSync": true,
+  "editor.parameterHints.enabled": false,
+  "editor.suggestOnTriggerCharacters": false,
+  // Disable menu bar ALT key shortcuts (annoying as hell)
+  "window.customMenuBarAltFocus": false,
+  "window.enableMenuBarMnemonics": false,
+
+  // --- EDITOR SETTINGS ---
+  // Font Family
+    // @sync os=linux
+    "editor.fontFamily": "'JetBrains Mono', 'Fira Code Retina', Monaco, Menlo, 'Courier New', monospace",
+    // @sync os=mac
+    // "editor.fontFamily": "'JetBrains Mono', 'Fira Code', Monaco, Menlo, 'Courier New', monospace",
+    // @sync os=windows
+    // "editor.fontFamily": "'JetBrains Mono', 'Fira Code', Monaco, Menlo, 'Courier New', monospace",
+  // General
+    "editor.smoothScrolling": false,
+  // Font Size
+    // @sync os=mac
+    // "editor.fontSize": 15,
+    // @sync os=linux
+    "editor.fontSize": 16,
+    // @sync os=windows
+    // "editor.fontSize": 16,
+  // Line Height
+    // @sync os=linux
+    "editor.lineHeight": 26,
+    // @sync os=windows
+    // "editor.lineHeight": 25,
+
+  // --- DEBUG CONSOLE SETTINGS ---
+    // Font Family
+      // @sync os=linux
+      "debug.console.fontFamily": "Fira Code Medium",
+      // @sync os=mac
+      // "debug.console.fontFamily": "Fira Code",
+      // @sync os=windows
+      // "debug.console.fontFamily": "Fira Code",
+    // Font Size
+      // @sync os=mac
+      // "debug.console.fontSize": 15,
+      // @sync os=linux
+      "debug.console.fontSize": 15,
+      // @sync os=windows
+      // "debug.console.fontSize": 16,
+    // Line Height
+      // @sync os=mac
+      // "debug.console.lineHeight": 24,
+      // @sync os=linux
+      "debug.console.lineHeight": 24,
+      // @sync os=windows
+      // "debug.console.lineHeight": 24,
+
+  // --- TERMINAL SETTINGS ---
+    // Font Family
+      // @sync os=mac
+      // "terminal.integrated.fontFamily": "Fira Code",
+      // @sync os=linux
+      "terminal.integrated.fontFamily": "Fira Code Medium",
+      // @sync os=windows
+      // "terminal.integrated.fontFamily": "Fira Code",
+    // Font Size
+      // @sync os=mac
+      // "terminal.integrated.fontSize": 15,
+      // @sync os=linux
+      "terminal.integrated.fontSize": 16,
+      // @sync os=windows
+      // "terminal.integrated.fontSize": 16,
+    // Line Height
+      // @sync os=mac
+      // "terminal.integrated.lineHeight": 1.12,
+      // @sync os=linux
+      "terminal.integrated.lineHeight": 1.12,
+      // @sync os=windows
+      // "terminal.integrated.lineHeight": 1.2,
+
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "workbench.colorTheme": "LaserWave Italic",
+    "gitlens.mode.active": "zen",
+}

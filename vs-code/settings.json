@@ -67,11 +67,23 @@
       "editorGutter.addedBackground": "#30343d",
       "editorGutter.deletedBackground": "#572d2d",
 
-      // Status bar color
-      "statusBar.foreground": "#dddddd",
-      "statusBar.background": "#1f1c22",
-      "statusBar.noFolderBackground": "#1f1c22",
-      "statusBar.debuggingBackground": "#3a1e55",
+      // EDITOR INTERFACE
+        // Title bar
+        "titleBar.activeBackground": "#1f1c22",
+        "titleBar.inactiveBackground": "#1f1c22",
+        "titleBar.activeForeground": "#c6c3c9",
+        "titleBar.inactiveForeground": "#a9a6ac",
+        // Side bar
+        "sideBar.background": "#1f1c22",
+        "sideBar.border": "#1f1c22",
+        "activityBar.background": "#1f1b22",
+        "activityBarBadge.background": "#4f3f63",
+        "activityBarBadge.foreground": "#e0e0e0",
+        // Status bar
+        "statusBar.foreground": "#c6c3c9",
+        "statusBar.background": "#1f1c22",
+        "statusBar.noFolderBackground": "#1f1c22",
+        "statusBar.debuggingBackground": "#3a1e55",
 
       // Line indentation guides
       "editorIndentGuide.activeBackground": "#796b883f",
@@ -91,13 +103,6 @@
       "editor.findRangeHighlightBackground": "#2b2233",
       "editor.findRangeHighlightBorder": "#40344e",
       "editor.rangeHighlightBackground": "#40344ede",
-
-      // Editor interface
-      "sideBar.background": "#1f1c22",
-      "sideBar.border": "#1c191f",
-      "activityBar.background": "#1f1b22",
-      "activityBarBadge.background": "#4f3f63",
-      "activityBarBadge.foreground": "#e0e0e0",
 
       // Scrollbar
       "scrollbarSlider.background": "#bebebe0c",

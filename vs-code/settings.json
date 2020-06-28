@@ -68,28 +68,28 @@
       "editorGutter.deletedBackground": "#572d2d",
 
       // EDITOR INTERFACE
-        "editorGroup.border": "#1f1c22",
+        "editorGroup.border": "#1e1924",
         // Title bar
-        "titleBar.activeBackground": "#1f1c22",
-        "titleBar.inactiveBackground": "#1f1c22",
+        "titleBar.activeBackground": "#1e1924",
+        "titleBar.inactiveBackground": "#1e1924",
         "titleBar.activeForeground": "#c6c3c9",
         "titleBar.inactiveForeground": "#a9a6ac",
         // Tabs bar
-        "editorGroupHeader.tabsBackground": "#1f1c22",
-        "editorGroupHeader.noTabsBackground": "#1f1c22",
-        "tab.inactiveBackground": "#1f1c22",
+        "editorGroupHeader.tabsBackground": "#1e1924",
+        "editorGroupHeader.noTabsBackground": "#1e1924",
+        "tab.inactiveBackground": "#1e1924",
         "tab.activeBorder": "#27212E",
-        "tab.border": "#1f1c22",
+        "tab.border": "#1e1924",
         // Side bar
-        "sideBar.background": "#1f1c22",
-        "sideBar.border": "#1f1c22",
-        "activityBar.background": "#1f1b22",
-        "activityBarBadge.background": "#4f3f63",
+        "sideBar.background": "#1e1924",
+        "sideBar.border": "#1e1924",
+        "activityBar.background": "#1e1924",
+        "activityBarBadge.background": "#463763",
         "activityBarBadge.foreground": "#e0e0e0",
         // Status bar
         "statusBar.foreground": "#c6c3c9",
-        "statusBar.background": "#1f1c22",
-        "statusBar.noFolderBackground": "#1f1c22",
+        "statusBar.background": "#1e1924",
+        "statusBar.noFolderBackground": "#1e1924",
         "statusBar.debuggingBackground": "#3a1e55",
 
       // Line indentation guides
@@ -112,7 +112,7 @@
       "editor.rangeHighlightBackground": "#40344ede",
 
       // Scrollbar
-      "scrollbarSlider.background": "#bebebe0c",
+      "scrollbarSlider.background": "#b3b3b30c",
       "scrollbarSlider.hoverBackground": "#ffffff13",
       "scrollbarSlider.activeBackground": "#ffffff18",
       "scrollbar.shadow": "#000000a6"

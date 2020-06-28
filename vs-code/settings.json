@@ -68,11 +68,18 @@
       "editorGutter.deletedBackground": "#572d2d",
 
       // EDITOR INTERFACE
+        "editorGroup.border": "#1f1c22",
         // Title bar
         "titleBar.activeBackground": "#1f1c22",
         "titleBar.inactiveBackground": "#1f1c22",
         "titleBar.activeForeground": "#c6c3c9",
         "titleBar.inactiveForeground": "#a9a6ac",
+        // Tabs bar
+        "editorGroupHeader.tabsBackground": "#1f1c22",
+        "editorGroupHeader.noTabsBackground": "#1f1c22",
+        "tab.inactiveBackground": "#1f1c22",
+        "tab.activeBorder": "#27212E",
+        "tab.border": "#1f1c22",
         // Side bar
         "sideBar.background": "#1f1c22",
         "sideBar.border": "#1f1c22",

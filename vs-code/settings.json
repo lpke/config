@@ -84,13 +84,24 @@
         "sideBar.background": "#1e1924",
         "sideBar.border": "#1e1924",
         "activityBar.background": "#1e1924",
-        "activityBarBadge.background": "#463763",
+        "activityBarBadge.background": "#50345c",
         "activityBarBadge.foreground": "#e0e0e0",
         // Status bar
         "statusBar.foreground": "#c6c3c9",
         "statusBar.background": "#1e1924",
         "statusBar.noFolderBackground": "#1e1924",
         "statusBar.debuggingBackground": "#3a1e55",
+
+      // Widget
+      "editorWidget.background": "#221c29",
+      "editorSuggestWidget.foreground": "#eeeeee",
+      "editorSuggestWidget.highlightForeground": "#B381C5",
+      "editorSuggestWidget.selectedBackground": "#47414b3b",
+      "editorSuggestWidget.background": "#221c29",
+      "editorSuggestWidget.border": "#716385",
+
+      // Minimap
+      "minimap.selectionHighlight": "#694780bb",
 
       // Line indentation guides
       "editorIndentGuide.activeBackground": "#796b883f",

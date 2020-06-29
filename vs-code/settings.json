@@ -102,6 +102,7 @@
 
       // Minimap
       "minimap.selectionHighlight": "#694780bb",
+      "minimap.findMatchHighlight": "#418ca5",
 
       // Line indentation guides
       "editorIndentGuide.activeBackground": "#796b883f",
@@ -580,69 +581,71 @@
   // --- EDITOR SETTINGS ---
   // Font Family
     // @sync os=linux
-    "editor.fontFamily": "'JetBrains Mono', 'Fira Code Retina', Monaco, Menlo, 'Courier New', monospace",
+    // "editor.fontFamily": "'JetBrains Mono', 'Fira Code Retina', Monaco, Menlo, 'Courier New', monospace",
     // @sync os=mac
-    // "editor.fontFamily": "'JetBrains Mono', 'Fira Code', Monaco, Menlo, 'Courier New', monospace",
+    "editor.fontFamily": "'JetBrains Mono', 'Fira Code', Monaco, Menlo, 'Courier New', monospace",
+    // @sync os=mac
+    "editor.fontWeight": "400",
     // @sync os=windows
     // "editor.fontFamily": "'JetBrains Mono', 'Fira Code', Monaco, Menlo, 'Courier New', monospace",
   // General
     "editor.smoothScrolling": false,
   // Font Size
     // @sync os=mac
-    // "editor.fontSize": 15,
+    "editor.fontSize": 15,
     // @sync os=linux
-    "editor.fontSize": 16,
+    // "editor.fontSize": 16,
     // @sync os=windows
     // "editor.fontSize": 16,
   // Line Height
     // @sync os=linux
-    "editor.lineHeight": 26,
+    // "editor.lineHeight": 26,
     // @sync os=windows
     // "editor.lineHeight": 25,
 
   // --- DEBUG CONSOLE SETTINGS ---
     // Font Family
       // @sync os=linux
-      "debug.console.fontFamily": "Fira Code Medium",
+      // "debug.console.fontFamily": "Fira Code Medium",
       // @sync os=mac
-      // "debug.console.fontFamily": "Fira Code",
+      "debug.console.fontFamily": "Fira Code",
       // @sync os=windows
       // "debug.console.fontFamily": "Fira Code",
     // Font Size
       // @sync os=mac
-      // "debug.console.fontSize": 15,
-      // @sync os=linux
       "debug.console.fontSize": 15,
+      // @sync os=linux
+      // "debug.console.fontSize": 15,
       // @sync os=windows
       // "debug.console.fontSize": 16,
     // Line Height
       // @sync os=mac
-      // "debug.console.lineHeight": 24,
-      // @sync os=linux
       "debug.console.lineHeight": 24,
+      // @sync os=linux
+      // "debug.console.lineHeight": 24,
       // @sync os=windows
       // "debug.console.lineHeight": 24,
 
   // --- TERMINAL SETTINGS ---
     // Font Family
       // @sync os=mac
-      // "terminal.integrated.fontFamily": "Fira Code",
+      "terminal.integrated.fontFamily": "Fira Code",
       // @sync os=linux
-      "terminal.integrated.fontFamily": "Fira Code Medium",
+      // "terminal.integrated.fontFamily": "Fira Code Medium",
       // @sync os=windows
       // "terminal.integrated.fontFamily": "Fira Code",
     // Font Size
       // @sync os=mac
-      // "terminal.integrated.fontSize": 15,
+      "terminal.integrated.fontSize": 15,
       // @sync os=linux
-      "terminal.integrated.fontSize": 16,
+      // "terminal.integrated.fontSize": 16,
       // @sync os=windows
       // "terminal.integrated.fontSize": 16,
     // Line Height
       // @sync os=mac
-      // "terminal.integrated.lineHeight": 1.12,
-      // @sync os=linux
       "terminal.integrated.lineHeight": 1.12,
+      // @sync os=linux
+      // "terminal.integrated.lineHeight": 1.12,
       // @sync os=windows
       // "terminal.integrated.lineHeight": 1.2,
 

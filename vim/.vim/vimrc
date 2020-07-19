@@ -4,3 +4,9 @@ vnoremap K :m '<-2<CR>gv=gv
 
 " Insert a single character with space in normal mode
 :nnoremap <Space> i_<Esc>r
+
+" Start and end of line mapped to reg brackets
+:nnoremap ( 0
+:nnoremap ) $
+
+set viminfo+=n~/.vim/viminfo

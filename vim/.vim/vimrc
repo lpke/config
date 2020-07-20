@@ -1,6 +1,10 @@
+" == Visual mode bindings ==
+
 " Move visual block
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
+
+" == Normal mode bindings ==
 
 " Insert a single character with space in normal mode
 :nnoremap <Space> i_<Esc>r
@@ -9,4 +13,19 @@ vnoremap K :m '<-2<CR>gv=gv
 :nnoremap ( 0
 :nnoremap ) $
 
+" == Vim settings == 
 set viminfo+=n~/.vim/viminfo
+filetype plugin indent on
+syntax on
+
+" Tab settings
+set tabstop=2       " The width of a TAB is set to 2.
+                    " Still it is a \t. It is just that
+                    " Vim will interpret it to be having
+                    " a width of 2.
+
+set shiftwidth=2    " Indents will have a width of 2
+
+set softtabstop=2   " Sets the number of columns for a TAB
+
+set expandtab       " Expand TABs to spaces

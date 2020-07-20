@@ -33,6 +33,7 @@ vnoremap ) $
 " == Vim settings == 
 set viminfo+=n~/.vim/viminfo
 syntax on
+set autoindent
 filetype plugin indent on
 
 " Line numbers

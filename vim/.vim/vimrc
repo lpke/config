@@ -22,6 +22,14 @@ vnoremap ) $
 :nnoremap ( 0
 :nnoremap ) $
 
+" Rebind " to ' for easy register access
+:nnoremap ' "
+:nnoremap " '
+
+" Rebind ; to : for easy register access
+:nnoremap ; :
+:nnoremap : ;
+
 " == Vim settings == 
 set viminfo+=n~/.vim/viminfo
 syntax on

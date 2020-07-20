@@ -4,6 +4,10 @@
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 
+" Start and end of line mapped to reg brackets
+vnoremap ( 0
+vnoremap ) $
+
 " == Normal mode bindings ==
 
 " Insert a single character with space in normal mode

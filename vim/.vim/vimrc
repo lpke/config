@@ -1,3 +1,8 @@
+" == General bindings  ==
+
+" A way to add new lines without exiting normal mode
+map <Enter> o<ESC>
+
 " == Visual mode bindings ==
 
 " Move visual block
@@ -19,8 +24,18 @@ vnoremap ) $
 
 " == Vim settings == 
 set viminfo+=n~/.vim/viminfo
-filetype plugin indent on
 syntax on
+filetype plugin indent on
+
+" Line numbers
+set relativenumber
+set numberwidth=4
+set ruler
+highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
+set cursorline
+highlight CursorLine cterm=NONE ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE
+set cursorline
+highlight CursorLineNr cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=#f7f7f7
 
 " Tab settings
 set tabstop=2       " The width of a TAB is set to 2.
@@ -32,4 +47,4 @@ set shiftwidth=2    " Indents will have a width of 2
 
 set softtabstop=2   " Sets the number of columns for a TAB
 
-set expandtab       " Expand TABs to spaces
+set expandtab       " Expand TABs to space

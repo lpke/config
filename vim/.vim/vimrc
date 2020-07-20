@@ -1,12 +1,12 @@
 " Move visual block
-vmap J :m '>+1<CR>gv=gv
-vmap K :m '<-2<CR>gv=gv
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
 
 " Insert a single character with space in normal mode
-:nmap <Space> i_<Esc>r
+:nnoremap <Space> i_<Esc>r
 
 " Start and end of line mapped to reg brackets
-:nmap ( 0
-:nmap ) $
+:nnoremap ( 0
+:nnoremap ) $
 
 set viminfo+=n~/.vim/viminfo

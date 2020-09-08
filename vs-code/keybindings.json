@@ -54,5 +54,12 @@
     "key": "cmd+up",
     "command": "workbench.action.previousSideBarView",
     "when": "sideBarVisible"
+  },
+  {
+    "key": "ctrl+cmd+l",
+    "command": "workbench.action.moveEditorToNextGroup"
+  },
+  { "key": "ctrl+cmd+h",
+    "command": "workbench.action.moveEditorToPreviousGroup"
   }
 ]

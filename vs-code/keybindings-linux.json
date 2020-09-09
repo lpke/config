@@ -64,15 +64,7 @@
     "command": "workbench.action.focusRightGroup"
   },
   {
-    "key": "cmd+l",
-    "command": "workbench.action.focusRightGroup"
-  },
-  {
     "key": "ctrl+h",
-    "command": "workbench.action.focusLeftGroup"
-  },
-  {
-    "key": "cmd+h",
     "command": "workbench.action.focusLeftGroup"
   },
   {
@@ -88,7 +80,7 @@
     "command": "workbench.output.action.clearOutput"
   },
   {
-    "key": "shift+cmd+g",
+    "key": "shift+ctrl+g",
     "command": "git.sync"
   },
   {
@@ -102,11 +94,11 @@
     "when": "sideBarVisible"
   },
   {
-    "key": "ctrl+cmd+l",
+    "key": "ctrl+meta+l",
     "command": "workbench.action.moveEditorToNextGroup"
   },
   {
-    "key": "ctrl+cmd+h",
+    "key": "ctrl+meta+h",
     "command": "workbench.action.moveEditorToPreviousGroup"
   },
   {

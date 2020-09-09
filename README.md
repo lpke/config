@@ -1,6 +1,20 @@
 # Config, Tweaks and QoL hacks
 Sometimes out-of-the-box just doesn't cut it. This is my place to store tweaks in the form of files, notes, code, and anything else I need in case I need to start from scratch again.
 
+## Keyboard Shortcuts
+I prefer mac-like keyboard shortcuts. If on linux, these are the changes I make:
+* alt -> ctrl
+* meta/windows -> alt
+* ctrl -> meta/windows
+
+Note: My VSCode shortcuts for linux ensure that they positions required to complete the commands mirror macOS, except using the above mappings.
+
+For a better experience with Vim:
+* Make CAPS key a second ESC key
+* If an option, shift+caps to actually toggle caps is nice
+
+---
+
 ## Custom Firefox Style Guide
 To add user styles to the Firefox UI, you need two things:
 1. User styles enabled in Firefox's settings

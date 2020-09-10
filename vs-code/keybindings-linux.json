@@ -15,6 +15,16 @@
   { "key": "shift+cmd+l", "command": "-selectAllSearchEditorMatches" },
   { "key": "ctrl+9", "command": "-workbench.action.openEditorAtIndex9" },
   { "key": "cmd+9", "command": "-workbench.action.lastEditorInGroup" },
+  { "key": "ctrl+0", "command": "-workbench.action.lastEditorInGroup" },
+  { "key": "cmd+0", "command": "-workbench.action.focusSideBar" },
+  { "key": "ctrl+`", "command": "-workbench.action.terminal.toggleTerminal" },
+  { "key": "cmd+-", "command": "-workbench.action.zoomOut" },
+  { "key": "cmd+=", "command": "-workbench.action.zoomIn" },
+  { "key": "shift+cmd+u", "command": "-workbench.action.output.toggleOutput" },
+  { "key": "cmd+8", "command": "-workbench.action.focusEighthEditorGroup" },
+  { "key": "cmd+7", "command": "-workbench.action.focusSeventhEditorGroup" },
+  { "key": "shift+cmd+e", "command": "-workbench.view.explorer" },
+  { "key": "ctrl+shift+g", "command": "-workbench.view.scm" },
 
   // misc shortcuts for workflow
   {
@@ -66,6 +76,10 @@
 
   // sidebar navigation
   {
+    "key": "cmd+9",
+    "command": "workbench.action.focusSideBar"
+  },
+  {
     "key": "cmd+down",
     "command": "workbench.action.nextSideBarView",
     "when": "sideBarFocus"
@@ -75,6 +89,14 @@
     "command": "workbench.action.previousSideBarView",
     "when": "sideBarFocus"
   },
+  {
+    "key": "cmd+8",
+    "command": "workbench.view.scm"
+  },
+  {
+    "key": "cmd+7",
+    "command": "workbench.view.explorer"
+  },
 
   // panel (bottom part) navigation
   {
@@ -82,7 +104,7 @@
     "command": "workbench.action.togglePanel"
   },
   {
-    "key": "cmd+9",
+    "key": "cmd+0",
     "command": "workbench.action.focusPanel"
   },
   {
@@ -95,6 +117,15 @@
     "command": "workbench.action.previousPanelView",
     "when": "panelFocus"
   },
+  {
+    "key": "cmd+-",
+    "command": "workbench.action.terminal.toggleTerminal"
+  },
+  {
+    "key": "cmd+=",
+    "command": "workbench.action.output.toggleOutput"
+  },
+
 
   // allowing easier command access for common vim command actions
   // (also helps match my linux keybindings / muscle memory)

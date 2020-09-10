@@ -55,11 +55,32 @@
     "command": "workbench.action.previousSideBarView",
     "when": "sideBarVisible"
   },
+
+  // allowing easier command access for common vim command actions
+  // (also helps match my linux keybindings / muscle memory)
   {
-    "key": "ctrl+cmd+l",
-    "command": "workbench.action.moveEditorToNextGroup"
+    "key": "cmd+e",
+    "command": "extension.vim_ctrl+e",
+    "when": "editorTextFocus && vim.active && vim.mode != 'Insert'"
   },
-  { "key": "ctrl+cmd+h",
-    "command": "workbench.action.moveEditorToPreviousGroup"
+  {
+    "key": "cmd+y",
+    "command": "extension.vim_ctrl+y",
+    "when": "editorTextFocus && vim.active && vim.mode != 'Insert'"
+  },
+  {
+    "key": "cmd+u",
+    "command": "extension.vim_ctrl+u",
+    "when": "editorTextFocus && vim.active && vim.mode != 'Insert'"
+  },
+  {
+    "key": "cmd+d",
+    "command": "extension.vim_ctrl+d",
+    "when": "editorTextFocus && vim.active && vim.mode != 'Insert'"
+  },
+  {
+    "key": "cmd+r",
+    "command": "extension.vim_ctrl+r",
+    "when": "editorTextFocus && vim.active && vim.mode != 'Insert'"
   }
 ]

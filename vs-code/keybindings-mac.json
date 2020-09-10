@@ -1,4 +1,19 @@
 [
+  // removing default keybinds
+  //prettier-ignore
+  { "key": "alt+h", "command": "-gitlens.showQuickFileHistory" },
+  { "key": "shift+alt+h", "command": "-editor.showCallHierarchy" },
+  { "key": "shift+alt+h", "command": "-editor.showIncomingCalls" },
+  { "key": "shift+alt+h", "command": "-editor.showOutgoingCalls" },
+  { "key": "shift+alt+h", "command": "-references-view.showCallHierarchy" },
+  { "key": "shift+alt+h", "command": "-gitlens.showQuickRepoHistory" },
+  { "key": "shift+cmd+h", "command": "-workbench.action.replaceInFiles" },
+  { "key": "shift+cmd+j", "command": "-workbench.action.search.toggleQueryDetails" },
+  { "key": "shift+cmd+k", "command": "-editor.action.deleteLines" },
+  { "key": "shift+cmd+l", "command": "-editor.action.selectHighlights" },
+  { "key": "shift+cmd+l", "command": "-addCursorsAtSearchResults" },
+  { "key": "shift+cmd+l", "command": "-selectAllSearchEditorMatches" },
+
   // misc shortcuts for workflow
   {
     "key": "alt+space",
@@ -17,19 +32,23 @@
   // tab and editor group navigation vim-style
   {
     "key": "cmd+l",
-    "command": "workbench.action.focusRightGroup"
+    "command": "workbench.action.focusRightGroup",
+    "when": "vim.active"
   },
   {
     "key": "cmd+h",
-    "command": "workbench.action.focusLeftGroup"
+    "command": "workbench.action.focusLeftGroup",
+    "when": "vim.active"
   },
   {
-    "key": "alt+l",
-    "command": "workbench.action.nextEditor"
+    "key": "shift+cmd+l",
+    "command": "workbench.action.nextEditor",
+    "when": "editorTextFocus && vim.active"
   },
   {
-    "key": "alt+h",
-    "command": "workbench.action.previousEditor"
+    "key": "shift+cmd+h",
+    "command": "workbench.action.previousEditor",
+    "when": "editorTextFocus && vim.active"
   },
 
   // sidebar navigation
@@ -83,27 +102,5 @@
     "key": "alt+k",
     "command": "selectPrevSuggestion",
     "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
-  },
-  // cursor movement when in text focus boxes
-  {
-    "key": "alt+l",
-    "command": "cursorRight",
-    "when": "textInputFocus"
-  },
-  {
-    "key": "alt+h",
-    "command": "cursorLeft",
-    "when": "textInputFocus"
-  },
-  // unsure but seemed useful for something?
-  {
-    "key": "alt+j",
-    "command": "list.focusDown",
-    "when": "listFocus && !inputFocus"
-  },
-  {
-    "key": "alt+k",
-    "command": "list.focusUp",
-    "when": "listFocus && !inputFocus"
   }
 ]

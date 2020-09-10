@@ -1,112 +1,139 @@
 [
-  // Replacements and removals
+  // removing default keybinds
+  //prettier-ignore
+  { "key": "alt+h", "command": "-gitlens.showQuickFileHistory" },
+  { "key": "shift+alt+h", "command": "-editor.showCallHierarchy" },
+  { "key": "shift+alt+h", "command": "-editor.showIncomingCalls" },
+  { "key": "shift+alt+h", "command": "-editor.showOutgoingCalls" },
+  { "key": "shift+alt+h", "command": "-references-view.showCallHierarchy" },
+  { "key": "shift+alt+h", "command": "-gitlens.showQuickRepoHistory" },
+  { "key": "shift+cmd+h", "command": "-workbench.action.replaceInFiles" },
+  { "key": "shift+cmd+j", "command": "-workbench.action.search.toggleQueryDetails" },
+  { "key": "shift+cmd+k", "command": "-editor.action.deleteLines" },
+  { "key": "shift+cmd+l", "command": "-editor.action.selectHighlights" },
+  { "key": "shift+cmd+l", "command": "-addCursorsAtSearchResults" },
+  { "key": "shift+cmd+l", "command": "-selectAllSearchEditorMatches" },
+  { "key": "ctrl+9", "command": "-workbench.action.openEditorAtIndex9" },
+  { "key": "cmd+9", "command": "-workbench.action.lastEditorInGroup" },
+
+  // misc shortcuts for workflow
   {
-    "key": "ctrl+escape",
-    "command": "workbench.action.terminal.toggleTerminal"
-  },
-  {
-    "key": "ctrl+tab",
-    "command": "-workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup"
-  },
-  // MacOS keyboard text navigation
-  {
-    "key": "ctrl+right",
-    "command": "cursorEnd",
-    "when": "textInputFocus"
-  },
-  {
-    "key": "ctrl+shift+right",
-    "command": "cursorEndSelect",
-    "when": "textInputFocus"
-  },
-  {
-    "key": "ctrl+left",
-    "command": "cursorHome",
-    "when": "textInputFocus"
-  },
-  {
-    "key": "ctrl+shift+left",
-    "command": "cursorHomeSelect",
-    "when": "textInputFocus"
-  },
-  {
-    "key": "alt+right",
-    "command": "cursorWordEndRight",
-    "when": "textInputFocus"
-  },
-  {
-    "key": "alt+shift+right",
-    "command": "cursorWordEndRightSelect",
-    "when": "textInputFocus"
-  },
-  {
-    "key": "alt+left",
-    "command": "cursorWordStartLeft",
-    "when": "textInputFocus"
-  },
-  {
-    "key": "alt+shift+left",
-    "command": "cursorWordStartLeftSelect",
-    "when": "textInputFocus"
-  },
-  {
-    "key": "capslock",
-    "command": "extension.vim_escape",
-    "when": "editorTextFocus && vim.active && !inDebugRepl"
-  },
-  {
-    "key": "ctrl+space",
+    "key": "alt+space",
     "command": "editor.action.triggerSuggest",
     "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly"
-  },
-  {
-    "key": "ctrl+l",
-    "command": "workbench.action.focusRightGroup"
-  },
-  {
-    "key": "ctrl+h",
-    "command": "workbench.action.focusLeftGroup"
-  },
-  {
-    "key": "alt+l",
-    "command": "workbench.action.nextEditor"
-  },
-  {
-    "key": "alt+h",
-    "command": "workbench.action.previousEditor"
   },
   {
     "key": "ctrl+alt+o",
     "command": "workbench.output.action.clearOutput"
   },
   {
-    "key": "shift+ctrl+g",
+    "key": "shift+cmd+g",
     "command": "git.sync"
   },
+
+  // tab and editor group navigation vim-style
+  // navigate editor groups
   {
-    "key": "ctrl+down",
-    "command": "workbench.action.nextSideBarView",
-    "when": "sideBarVisible"
+    "key": "cmd+l",
+    "command": "workbench.action.focusNextGroup",
+    "when": "vim.active"
   },
   {
-    "key": "ctrl+up",
-    "command": "workbench.action.previousSideBarView",
-    "when": "sideBarVisible"
+    "key": "cmd+h",
+    "command": "workbench.action.focusPreviousGroup",
+    "when": "vim.active"
+  },
+  // navigate editor tabs
+  {
+    "key": "shift+cmd+l",
+    "command": "workbench.action.nextEditor",
+    "when": "editorTextFocus && vim.active"
   },
   {
-    "key": "ctrl+meta+l",
+    "key": "shift+cmd+h",
+    "command": "workbench.action.previousEditor",
+    "when": "editorTextFocus && vim.active"
+  },
+  // move editors around
+  {
+    "key": "ctrl+cmd+l",
     "command": "workbench.action.moveEditorToNextGroup"
   },
   {
-    "key": "ctrl+meta+h",
+    "key": "ctrl+cmd+h",
     "command": "workbench.action.moveEditorToPreviousGroup"
   },
+
+  // sidebar navigation
   {
-    "key": "ctrl+b",
-    "command": "-extension.vim_ctrl+b"
+    "key": "cmd+down",
+    "command": "workbench.action.nextSideBarView",
+    "when": "sideBarFocus"
   },
   {
-    "key": "ctrl+f",
-    "command": "-extension.vim_ctrl+f"
+    "key": "cmd+up",
+    "command": "workbench.action.previousSideBarView",
+    "when": "sideBarFocus"
+  },
+
+  // panel (bottom part) navigation
+  {
+    "key": "cmd+j",
+    "command": "workbench.action.togglePanel"
+  },
+  {
+    "key": "cmd+9",
+    "command": "workbench.action.focusPanel"
+  },
+  {
+    "key": "cmd+right",
+    "command": "workbench.action.nextPanelView",
+    "when": "panelFocus"
+  },
+  {
+    "key": "cmd+left",
+    "command": "workbench.action.previousPanelView",
+    "when": "panelFocus"
+  },
+
+  // allowing easier command access for common vim command actions
+  // (also helps match my linux keybindings / muscle memory)
+  {
+    "key": "cmd+e",
+    "command": "extension.vim_ctrl+e",
+    "when": "editorTextFocus && vim.active && vim.mode != 'Insert'"
+  },
+  {
+    "key": "cmd+y",
+    "command": "extension.vim_ctrl+y",
+    "when": "editorTextFocus && vim.active && vim.mode != 'Insert'"
+  },
+  {
+    "key": "cmd+u",
+    "command": "extension.vim_ctrl+u",
+    "when": "editorTextFocus && vim.active && vim.mode != 'Insert'"
+  },
+  {
+    "key": "cmd+d",
+    "command": "extension.vim_ctrl+d",
+    "when": "editorTextFocus && vim.active && vim.mode != 'Insert'"
+  },
+  {
+    "key": "cmd+r",
+    "command": "extension.vim_ctrl+r",
+    "when": "editorTextFocus && vim.active && vim.mode != 'Insert'"
+  },
+
+  // vim-style vertical navigation in suggestion/prompt popups
+  // intellisense suggestions
+  {
+    "key": "alt+j",
+    "command": "selectNextSuggestion",
+    "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
+  },
+  {
+    "key": "alt+k",
+    "command": "selectPrevSuggestion",
+    "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
   }
 ]

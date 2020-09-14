@@ -1,6 +1,8 @@
 [
   // removing default keybinds
   //prettier-ignore
+  { "key": "ctrl+l", "command": "-expandLineSelection" },
+  { "key": "ctrl+h", "command": "-editor.action.startFindReplaceAction" },
   { "key": "alt+h", "command": "-gitlens.showQuickFileHistory" },
   { "key": "shift+alt+h", "command": "-editor.showCallHierarchy" },
   { "key": "shift+alt+h", "command": "-editor.showIncomingCalls" },
@@ -34,11 +36,33 @@
   },
   {
     "key": "ctrl+alt+o",
-    "command": "workbench.output.action.clearOutput"
+    "command": "workbench.output.action.clearOutput",
+    "when": "isMac"
+  },
+  {
+    "key": "meta+alt+o",
+    "command": "workbench.output.action.clearOutput",
+    "when": "isLinux"
   },
   {
     "key": "shift+cmd+g",
-    "command": "git.sync"
+    "command": "git.sync",
+    "when": "isMac"
+  },
+  {
+    "key": "shift+ctrl+g",
+    "command": "git.sync",
+    "when": "isLinux"
+  },
+  {
+    "key": "ctrl+f",
+    "command": "actions.find",
+    "when": "isLinux"
+  },
+  {
+    "key": "ctrl+k ctrl+a",
+    "command": "editor.action.selectAll",
+    "when": "isLinux"
   },
 
   // tab and editor group navigation vim-style
@@ -46,84 +70,168 @@
   {
     "key": "cmd+l",
     "command": "workbench.action.focusNextGroup",
-    "when": "vim.active"
+    "when": "isMac && vim.active"
+  },
+  {
+    "key": "ctrl+l",
+    "command": "workbench.action.focusNextGroup",
+    "when": "isLinux && vim.active"
   },
   {
     "key": "cmd+h",
     "command": "workbench.action.focusPreviousGroup",
-    "when": "vim.active"
+    "when": "isMac && vim.active"
+  },
+  {
+    "key": "ctrl+h",
+    "command": "workbench.action.focusPreviousGroup",
+    "when": "isLinux && vim.active"
   },
   // navigate editor tabs
   {
     "key": "shift+cmd+l",
     "command": "workbench.action.nextEditor",
-    "when": "editorTextFocus && vim.active"
+    "when": "isMac && editorTextFocus && vim.active"
+  },
+  {
+    "key": "shift+ctrl+l",
+    "command": "workbench.action.nextEditor",
+    "when": "isLinux && editorTextFocus && vim.active"
   },
   {
     "key": "shift+cmd+h",
     "command": "workbench.action.previousEditor",
-    "when": "editorTextFocus && vim.active"
+    "when": "isMac && editorTextFocus && vim.active"
+  },
+  {
+    "key": "shift+ctrl+h",
+    "command": "workbench.action.previousEditor",
+    "when": "isLinux && editorTextFocus && vim.active"
   },
   // move editors around
   {
     "key": "ctrl+cmd+l",
-    "command": "workbench.action.moveEditorToNextGroup"
+    "command": "workbench.action.moveEditorToNextGroup",
+    "when": "isMac"
+  },
+  {
+    "key": "meta+ctrl+l",
+    "command": "workbench.action.moveEditorToNextGroup",
+    "when": "isLinux"
   },
   {
     "key": "ctrl+cmd+h",
-    "command": "workbench.action.moveEditorToPreviousGroup"
+    "command": "workbench.action.moveEditorToPreviousGroup",
+    "when": "isMac"
+  },
+  {
+    "key": "meta+ctrl+h",
+    "command": "workbench.action.moveEditorToPreviousGroup",
+    "when": "isLinux"
   },
 
   // sidebar navigation
   {
-    "key": "cmd+9",
-    "command": "workbench.action.focusSideBar"
+    "key": "cmd+b",
+    "command": "workbench.action.toggleSidebarVisibility",
+    "when": "isMac"
   },
   {
-    "key": "cmd+down",
+    "key": "ctrl+b",
+    "command": "workbench.action.toggleSidebarVisibility",
+    "when": "isLinux"
+  },
+  {
+    "key": "cmd+9",
+    "command": "workbench.action.focusSideBar",
+    "when": "isMac"
+  },
+  {
+    "key": "ctrl+9",
+    "command": "workbench.action.focusSideBar",
+    "when": "isLinux"
+  },
+  {
+    "key": "shift+down",
     "command": "workbench.action.nextSideBarView",
     "when": "sideBarFocus"
   },
   {
-    "key": "cmd+up",
+    "key": "shift+up",
     "command": "workbench.action.previousSideBarView",
     "when": "sideBarFocus"
   },
   {
     "key": "cmd+8",
-    "command": "workbench.view.scm"
+    "command": "workbench.view.scm",
+    "when": "isMac"
+  },
+  {
+    "key": "ctrl+8",
+    "command": "workbench.view.scm",
+    "when": "isLinux"
   },
   {
     "key": "cmd+7",
-    "command": "workbench.view.explorer"
+    "command": "workbench.view.explorer",
+    "when": "isMac"
+  },
+  {
+    "key": "ctrl+7",
+    "command": "workbench.view.explorer",
+    "when": "isLinux"
   },
 
   // panel (bottom part) navigation
   {
     "key": "cmd+j",
-    "command": "workbench.action.togglePanel"
+    "command": "workbench.action.togglePanel",
+    "when": "isMac"
+  },
+  {
+    "key": "ctrl+j",
+    "command": "workbench.action.togglePanel",
+    "when": "isLinux"
   },
   {
     "key": "cmd+0",
-    "command": "workbench.action.focusPanel"
+    "command": "workbench.action.focusPanel",
+    "when": "isMac"
   },
   {
-    "key": "cmd+right",
+    "key": "ctrl+0",
+    "command": "workbench.action.focusPanel",
+    "when": "isLinux"
+  },
+  {
+    "key": "shift+right",
     "command": "workbench.action.nextPanelView",
     "when": "panelFocus"
   },
   {
-    "key": "cmd+left",
+    "key": "shift+left",
     "command": "workbench.action.previousPanelView",
     "when": "panelFocus"
   },
   {
     "key": "cmd+-",
-    "command": "workbench.action.terminal.toggleTerminal"
+    "command": "workbench.action.terminal.toggleTerminal",
+    "when": "isMac"
+  },
+  {
+    "key": "ctrl+-",
+    "command": "workbench.action.terminal.toggleTerminal",
+    "when": "isLinux"
   },
   {
     "key": "cmd+=",
-    "command": "workbench.action.output.toggleOutput"
+    "command": "workbench.action.output.toggleOutput",
+    "when": "isMac"
+  },
+  {
+    "key": "ctrl+=",
+    "command": "workbench.action.output.toggleOutput",
+    "when": "isLinux"
   },
 
 
@@ -132,27 +240,27 @@
   {
     "key": "cmd+e",
     "command": "extension.vim_ctrl+e",
-    "when": "editorTextFocus && vim.active && vim.mode != 'Insert'"
+    "when": "isMac && editorTextFocus && vim.active && vim.mode != 'Insert'"
   },
   {
     "key": "cmd+y",
     "command": "extension.vim_ctrl+y",
-    "when": "editorTextFocus && vim.active && vim.mode != 'Insert'"
+    "when": "isMac && editorTextFocus && vim.active && vim.mode != 'Insert'"
   },
   {
     "key": "cmd+u",
     "command": "extension.vim_ctrl+u",
-    "when": "editorTextFocus && vim.active && vim.mode != 'Insert'"
+    "when": "isMac && editorTextFocus && vim.active && vim.mode != 'Insert'"
   },
   {
     "key": "cmd+d",
     "command": "extension.vim_ctrl+d",
-    "when": "editorTextFocus && vim.active && vim.mode != 'Insert'"
+    "when": "isMac && editorTextFocus && vim.active && vim.mode != 'Insert'"
   },
   {
     "key": "cmd+r",
     "command": "extension.vim_ctrl+r",
-    "when": "editorTextFocus && vim.active && vim.mode != 'Insert'"
+    "when": "isMac && editorTextFocus && vim.active && vim.mode != 'Insert'"
   },
 
   // vim-style vertical navigation in suggestion/prompt popups

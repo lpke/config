@@ -13,6 +13,18 @@
   { "key": "shift+cmd+l", "command": "-editor.action.selectHighlights" },
   { "key": "shift+cmd+l", "command": "-addCursorsAtSearchResults" },
   { "key": "shift+cmd+l", "command": "-selectAllSearchEditorMatches" },
+  { "key": "ctrl+9", "command": "-workbench.action.openEditorAtIndex9" },
+  { "key": "cmd+9", "command": "-workbench.action.lastEditorInGroup" },
+  { "key": "ctrl+0", "command": "-workbench.action.lastEditorInGroup" },
+  { "key": "cmd+0", "command": "-workbench.action.focusSideBar" },
+  { "key": "ctrl+`", "command": "-workbench.action.terminal.toggleTerminal" },
+  { "key": "cmd+-", "command": "-workbench.action.zoomOut" },
+  { "key": "cmd+=", "command": "-workbench.action.zoomIn" },
+  { "key": "shift+cmd+u", "command": "-workbench.action.output.toggleOutput" },
+  { "key": "cmd+8", "command": "-workbench.action.focusEighthEditorGroup" },
+  { "key": "cmd+7", "command": "-workbench.action.focusSeventhEditorGroup" },
+  { "key": "shift+cmd+e", "command": "-workbench.view.explorer" },
+  { "key": "ctrl+shift+g", "command": "-workbench.view.scm" },
 
   // misc shortcuts for workflow
   {
@@ -30,16 +42,18 @@
   },
 
   // tab and editor group navigation vim-style
+  // navigate editor groups
   {
     "key": "cmd+l",
-    "command": "workbench.action.focusRightGroup",
+    "command": "workbench.action.focusNextGroup",
     "when": "vim.active"
   },
   {
     "key": "cmd+h",
-    "command": "workbench.action.focusLeftGroup",
+    "command": "workbench.action.focusPreviousGroup",
     "when": "vim.active"
   },
+  // navigate editor tabs
   {
     "key": "shift+cmd+l",
     "command": "workbench.action.nextEditor",
@@ -50,18 +64,68 @@
     "command": "workbench.action.previousEditor",
     "when": "editorTextFocus && vim.active"
   },
+  // move editors around
+  {
+    "key": "ctrl+cmd+l",
+    "command": "workbench.action.moveEditorToNextGroup"
+  },
+  {
+    "key": "ctrl+cmd+h",
+    "command": "workbench.action.moveEditorToPreviousGroup"
+  },
 
   // sidebar navigation
   {
+    "key": "cmd+9",
+    "command": "workbench.action.focusSideBar"
+  },
+  {
     "key": "cmd+down",
     "command": "workbench.action.nextSideBarView",
-    "when": "sideBarVisible"
+    "when": "sideBarFocus"
   },
   {
     "key": "cmd+up",
     "command": "workbench.action.previousSideBarView",
-    "when": "sideBarVisible"
+    "when": "sideBarFocus"
   },
+  {
+    "key": "cmd+8",
+    "command": "workbench.view.scm"
+  },
+  {
+    "key": "cmd+7",
+    "command": "workbench.view.explorer"
+  },
+
+  // panel (bottom part) navigation
+  {
+    "key": "cmd+j",
+    "command": "workbench.action.togglePanel"
+  },
+  {
+    "key": "cmd+0",
+    "command": "workbench.action.focusPanel"
+  },
+  {
+    "key": "cmd+right",
+    "command": "workbench.action.nextPanelView",
+    "when": "panelFocus"
+  },
+  {
+    "key": "cmd+left",
+    "command": "workbench.action.previousPanelView",
+    "when": "panelFocus"
+  },
+  {
+    "key": "cmd+-",
+    "command": "workbench.action.terminal.toggleTerminal"
+  },
+  {
+    "key": "cmd+=",
+    "command": "workbench.action.output.toggleOutput"
+  },
+
 
   // allowing easier command access for common vim command actions
   // (also helps match my linux keybindings / muscle memory)

@@ -181,6 +181,21 @@
     "command": "workbench.view.explorer",
     "when": "isLinux"
   },
+  {
+    "key": "shift+enter",
+    "command": "explorer.newFolder",
+    "when": "sideBarFocus && activeViewlet == 'workbench.view.explorer'"
+  },
+  {
+    "key": "cmd+enter",
+    "command": "explorer.newFile",
+    "when": "isMac && sideBarFocus && activeViewlet == 'workbench.view.explorer'"
+  },
+  {
+    "key": "ctrl+enter",
+    "command": "explorer.newFile",
+    "when": "isLinux && sideBarFocus && activeViewlet == 'workbench.view.explorer'"
+  },
 
   // panel (bottom part) navigation
   {

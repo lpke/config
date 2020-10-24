@@ -1,293 +1,780 @@
-[
-  // removing default keybinds
-  //prettier-ignore
-  { "key": "ctrl+l", "command": "-expandLineSelection" },
-  { "key": "ctrl+h", "command": "-editor.action.startFindReplaceAction" },
-  { "key": "alt+h", "command": "-gitlens.showQuickFileHistory" },
-  { "key": "shift+alt+h", "command": "-editor.showCallHierarchy" },
-  { "key": "shift+alt+h", "command": "-editor.showIncomingCalls" },
-  { "key": "shift+alt+h", "command": "-editor.showOutgoingCalls" },
-  { "key": "shift+alt+h", "command": "-references-view.showCallHierarchy" },
-  { "key": "shift+alt+h", "command": "-gitlens.showQuickRepoHistory" },
-  { "key": "shift+cmd+h", "command": "-workbench.action.replaceInFiles" },
-  { "key": "shift+cmd+j", "command": "-workbench.action.search.toggleQueryDetails" },
-  { "key": "shift+cmd+k", "command": "-editor.action.deleteLines" },
-  { "key": "shift+cmd+l", "command": "-editor.action.selectHighlights" },
-  { "key": "shift+cmd+l", "command": "-addCursorsAtSearchResults" },
-  { "key": "shift+cmd+l", "command": "-selectAllSearchEditorMatches" },
-  { "key": "ctrl+9", "command": "-workbench.action.openEditorAtIndex9" },
-  { "key": "cmd+9", "command": "-workbench.action.lastEditorInGroup" },
-  { "key": "ctrl+0", "command": "-workbench.action.lastEditorInGroup" },
-  { "key": "cmd+0", "command": "-workbench.action.focusSideBar" },
-  { "key": "ctrl+`", "command": "-workbench.action.terminal.toggleTerminal" },
-  { "key": "cmd+-", "command": "-workbench.action.zoomOut" },
-  { "key": "cmd+=", "command": "-workbench.action.zoomIn" },
-  { "key": "shift+cmd+u", "command": "-workbench.action.output.toggleOutput" },
-  { "key": "cmd+8", "command": "-workbench.action.focusEighthEditorGroup" },
-  { "key": "cmd+7", "command": "-workbench.action.focusSeventhEditorGroup" },
-  { "key": "shift+cmd+e", "command": "-workbench.view.explorer" },
-  { "key": "ctrl+shift+g", "command": "-workbench.view.scm" },
+{
+  "telemetry.enableCrashReporter": false,
+  "telemetry.enableTelemetry": false,
+  "editor.formatOnPaste": true,
+  "editor.copyWithSyntaxHighlighting": false,
+  "editor.tabSize": 2,
+  "editor.wordWrap": "on",
+  "editor.suggest.showReferences": false,
+  "workbench.tips.enabled": false,
+  "csharp.referencesCodeLens.enabled": false,
+  "editor.lightbulb.enabled": false,
+  "editor.acceptSuggestionOnCommitCharacter": false,
+  "editor.selectionHighlight": false,
+  "editor.roundedSelection": false,
+  "editor.occurrencesHighlight": false,
+  "workbench.startupEditor": "newUntitledFile",
+  "sync.autoDownload": true,
+  "sync.autoUpload": true,
+  "files.autoSaveDelay": 1100,
+  "sync.gist": "934bb776e4b628cff2f99ce8ba9352b9",
+  "code-runner.enableAppInsights": false,
+  "window.zoomLevel": 0,
+  "editor.accessibilitySupport": "off",
+  "editor.codeLens": false,
+  "editor.tabCompletion": "on",
+  "editor.snippetSuggestions": "top",
+  "emmet.showSuggestionsAsSnippets": true,
+  "editor.lineNumbers": "relative",
 
-  // misc shortcuts for workflow
-  {
-    "key": "alt+space",
-    "command": "editor.action.triggerSuggest",
-    "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly"
-  },
-  {
-    "key": "ctrl+alt+o",
-    "command": "workbench.output.action.clearOutput",
-    "when": "isMac"
-  },
-  {
-    "key": "meta+alt+o",
-    "command": "workbench.output.action.clearOutput",
-    "when": "isLinux"
-  },
-  {
-    "key": "shift+cmd+g",
-    "command": "git.sync",
-    "when": "isMac"
-  },
-  {
-    "key": "shift+ctrl+g",
-    "command": "git.sync",
-    "when": "isLinux"
-  },
-  {
-    "key": "ctrl+f",
-    "command": "actions.find",
-    "when": "isLinux"
-  },
-  {
-    "key": "ctrl+k ctrl+a",
-    "command": "editor.action.selectAll",
-    "when": "isLinux"
-  },
+  // @sync os=linux
+  "keyboard.dispatch": "keyCode",
 
-  // tab and editor group navigation vim-style
-  // navigate editor groups
-  {
-    "key": "cmd+l",
-    "command": "workbench.action.focusNextGroup",
-    "when": "isMac && vim.active"
-  },
-  {
-    "key": "ctrl+l",
-    "command": "workbench.action.focusNextGroup",
-    "when": "isLinux && vim.active"
-  },
-  {
-    "key": "cmd+h",
-    "command": "workbench.action.focusPreviousGroup",
-    "when": "isMac && vim.active"
-  },
-  {
-    "key": "ctrl+h",
-    "command": "workbench.action.focusPreviousGroup",
-    "when": "isLinux && vim.active"
-  },
-  // navigate editor tabs
-  {
-    "key": "shift+cmd+l",
-    "command": "workbench.action.nextEditor",
-    "when": "isMac && editorTextFocus && vim.active"
-  },
-  {
-    "key": "shift+ctrl+l",
-    "command": "workbench.action.nextEditor",
-    "when": "isLinux && editorTextFocus && vim.active"
-  },
-  {
-    "key": "shift+cmd+h",
-    "command": "workbench.action.previousEditor",
-    "when": "isMac && editorTextFocus && vim.active"
-  },
-  {
-    "key": "shift+ctrl+h",
-    "command": "workbench.action.previousEditor",
-    "when": "isLinux && editorTextFocus && vim.active"
-  },
-  // move editors around
-  {
-    "key": "ctrl+cmd+l",
-    "command": "workbench.action.moveEditorToNextGroup",
-    "when": "isMac"
-  },
-  {
-    "key": "meta+ctrl+l",
-    "command": "workbench.action.moveEditorToNextGroup",
-    "when": "isLinux"
-  },
-  {
-    "key": "ctrl+cmd+h",
-    "command": "workbench.action.moveEditorToPreviousGroup",
-    "when": "isMac"
-  },
-  {
-    "key": "meta+ctrl+h",
-    "command": "workbench.action.moveEditorToPreviousGroup",
-    "when": "isLinux"
-  },
+  // Minimap Tweaks
+  "editor.minimap.maxColumn": 95,
+  "editor.minimap.showSlider": "always",
 
-  // sidebar navigation
-  {
-    "key": "cmd+b",
-    "command": "workbench.action.toggleSidebarVisibility",
-    "when": "isMac"
-  },
-  {
-    "key": "ctrl+b",
-    "command": "workbench.action.toggleSidebarVisibility",
-    "when": "isLinux"
-  },
-  {
-    "key": "cmd+9",
-    "command": "workbench.action.focusSideBar",
-    "when": "isMac"
-  },
-  {
-    "key": "ctrl+9",
-    "command": "workbench.action.focusSideBar",
-    "when": "isLinux"
-  },
-  {
-    "key": "shift+down",
-    "command": "workbench.action.nextSideBarView",
-    "when": "sideBarFocus"
-  },
-  {
-    "key": "shift+up",
-    "command": "workbench.action.previousSideBarView",
-    "when": "sideBarFocus"
-  },
-  {
-    "key": "cmd+8",
-    "command": "workbench.view.scm",
-    "when": "isMac"
-  },
-  {
-    "key": "ctrl+8",
-    "command": "workbench.view.scm",
-    "when": "isLinux"
-  },
-  {
-    "key": "cmd+7",
-    "command": "workbench.view.explorer",
-    "when": "isMac"
-  },
-  {
-    "key": "ctrl+7",
-    "command": "workbench.view.explorer",
-    "when": "isLinux"
-  },
-  {
-    "key": "shift+enter",
-    "command": "explorer.newFolder",
-    "when": "sideBarFocus && activeViewlet == 'workbench.view.explorer'"
-  },
-  {
-    "key": "cmd+enter",
-    "command": "explorer.newFile",
-    "when": "isMac && sideBarFocus && activeViewlet == 'workbench.view.explorer'"
-  },
-  {
-    "key": "ctrl+enter",
-    "command": "explorer.newFile",
-    "when": "isLinux && sideBarFocus && activeViewlet == 'workbench.view.explorer'"
+  "workbench.colorCustomizations": {
+
+    "[DuoTone Dark Sky]": {
+      "statusBar.background": "#2D2D2D",
+      "statusBar.noFolderBackground": "#2D2D2D",
+      "statusBar.debuggingBackground": "#4b3d92",
+      "editorIndentGuide.activeBackground": "#3a3a3a",
+      "editorIndentGuide.background": "#2e2e2e",
+      "editorLineNumber.foreground": "#4d4a5f",
+      "editor.lineHighlightBackground": "#332e3d73",
+      "scrollbarSlider.background": "#ffffff0c",
+      "scrollbarSlider.hoverBackground": "#ffffff13",
+      "scrollbarSlider.activeBackground": "#ffffff18",
+      "editor.foldBackground": "#302b3a80",
+      "activityBarBadge.background": "#544580",
+      "activityBarBadge.foreground": "#e0e0e0"
+    },
+
+    "[Ariake Dark]": {
+      "editor.background": "#272a36",
+      "statusBar.background": "#1d1f27",
+      "statusBar.noFolderBackground": "#1d1f27",
+      "statusBar.foreground": "#B9BED5",
+      "statusBar.noFolderForeground": "#B9BED5",
+      "editorIndentGuide.activeBackground": "#353a49",
+      "editorIndentGuide.background": "#2b303d",
+      "editorLineNumber.foreground": "#3c4153",
+      "editor.lineHighlightBackground": "#373c502c",
+      "scrollbarSlider.background": "#cecece0c",
+      "scrollbarSlider.hoverBackground": "#ffffff13",
+      "scrollbarSlider.activeBackground": "#ffffff18",
+      "editor.foldBackground": "#2e313d4d",
+      "activityBarBadge.background": "#3f4663",
+      "activityBarBadge.foreground": "#e0e0e0"
+    },
+
+    "[LaserWave Italic]": {
+      /* TODO:
+        - make highlight color inside sidebar visible
+        - remove pink focus border from sidebar
+        - tweaks to pink selections in general
+        - make UI dropdown backgrounds fit with theme
+      */
+
+      // Default (unthemed) text color
+      "editor.foreground": "#eeeeee",
+
+      // Line number duller
+      "editorLineNumber.foreground": "#494352",
+
+      // EDITOR INTERFACE
+        "editorGroup.border": "#1e1924",
+        // Title bar
+        "titleBar.activeBackground": "#1e1924",
+        "titleBar.inactiveBackground": "#1e1924",
+        "titleBar.activeForeground": "#c6c3c9",
+        "titleBar.inactiveForeground": "#a9a6ac",
+        // Tabs bar
+        "editorGroupHeader.tabsBackground": "#1e1924",
+        "editorGroupHeader.noTabsBackground": "#1e1924",
+        "tab.inactiveBackground": "#1e1924",
+        "tab.activeBorder": "#27212E",
+        "tab.border": "#1e1924",
+        // Breadcrumbs
+        "breadcrumb.foreground": "#88858a",
+        // Side bar
+        "sideBar.background": "#1e1924",
+        "sideBar.border": "#1e1924",
+        "activityBar.background": "#1e1924",
+        "activityBarBadge.background": "#50345c",
+        "activityBarBadge.foreground": "#e0e0e0",
+        // Status bar
+        "statusBar.foreground": "#c6c3c9",
+        "statusBar.background": "#1e1924",
+        "statusBar.noFolderBackground": "#1e1924",
+        "statusBar.debuggingBackground": "#3a1e55",
+      
+      // Git diff colors
+      "editorGutter.addedBackground": "#30343d",
+      "editorGutter.modifiedBackground": "#362a47",
+      "editorGutter.deletedBackground": "#572d2d",
+      "minimapGutter.addedBackground": "#315348",
+      "minimapGutter.modifiedBackground": "#56397e",
+      "minimapGutter.deletedBackground": "#7a3131",
+
+      // Widget
+      "editorWidget.background": "#221c29",
+      "editorSuggestWidget.foreground": "#eeeeee",
+      "editorSuggestWidget.highlightForeground": "#B381C5",
+      "editorSuggestWidget.selectedBackground": "#47414b3b",
+      "editorSuggestWidget.background": "#221c29",
+      "editorSuggestWidget.border": "#716385",
+
+      // Minimap
+      "minimap.selectionHighlight": "#694780bb",
+      "minimap.findMatchHighlight": "#418ca5",
+      "minimap.errorHighlight": "#833535",
+      "minimapSlider.background": "#69616b1a",
+      "minimapSlider.hoverBackground": "#69616b1a",
+      "minimapSlider.activeBackground": "#73548036",
+
+      // Scrollbar
+      "scrollbarSlider.background": "#6c676d1a",
+      "scrollbarSlider.hoverBackground": "#6c656d27",
+      "scrollbarSlider.activeBackground": "#73548036",
+      "scrollbar.shadow": "#000000a6",
+
+      // Line indentation guides
+      "editorIndentGuide.activeBackground": "#796b883f",
+      "editorIndentGuide.background": "#74628a17",
+
+      // Active line
+      "editor.lineHighlightBorder": "#2c2436",
+      "editor.lineHighlightBackground": "#292231",
+
+      // Folded line
+      "editor.foldBackground": "#2d2536d5",
+
+      // Selection
+      "editor.selectionBackground": "#40344ede",
+
+      // Search
+      "editor.findRangeHighlightBackground": "#2b2233",
+      "editor.findRangeHighlightBorder": "#40344e",
+      "editor.rangeHighlightBackground": "#40344ede",
+
+      // Integrated terminal
+      "terminal.background": "#221e27",
+      "terminal.ansiBlack": "#4a4a4a",
+      "terminal.ansiBrightBlack": "#979797",
+      "terminal.ansiRed": "#979797",
+      "terminal.ansiBrightRed": "#cb1b00",
+      "terminal.ansiGreen": "#009a13",
+      "terminal.ansiBrightGreen": "#00b731",
+      "terminal.ansiYellow": "#caa000",
+      "terminal.ansiBrightYellow": "#ffcd28",
+      "terminal.ansiBlue": "#317dcc",
+      "terminal.ansiBrightBlue": "#008de1",
+      "terminal.ansiMagenta": "#b44dfc",
+      "terminal.ansiBrightMagenta": "#c16bb2",
+      "terminal.ansiCyan": "#009fa0",
+      "terminal.ansiBrightCyan": "#2bd4d2",
+      "terminal.ansiWhite": "#e6eeef",
+      "terminal.ansiBrightWhite": "#efefef",
+    },
   },
 
-  // panel (bottom part) navigation
-  {
-    "key": "cmd+j",
-    "command": "workbench.action.togglePanel",
-    "when": "isMac"
-  },
-  {
-    "key": "ctrl+j",
-    "command": "workbench.action.togglePanel",
-    "when": "isLinux"
-  },
-  {
-    "key": "cmd+0",
-    "command": "workbench.action.focusPanel",
-    "when": "isMac"
-  },
-  {
-    "key": "ctrl+0",
-    "command": "workbench.action.focusPanel",
-    "when": "isLinux"
-  },
-  {
-    "key": "shift+right",
-    "command": "workbench.action.nextPanelView",
-    "when": "panelFocus"
-  },
-  {
-    "key": "shift+left",
-    "command": "workbench.action.previousPanelView",
-    "when": "panelFocus"
-  },
-  {
-    "key": "cmd+-",
-    "command": "workbench.action.terminal.toggleTerminal",
-    "when": "isMac"
-  },
-  {
-    "key": "ctrl+-",
-    "command": "workbench.action.terminal.toggleTerminal",
-    "when": "isLinux"
-  },
-  {
-    "key": "cmd+=",
-    "command": "workbench.action.output.toggleOutput",
-    "when": "isMac"
-  },
-  {
-    "key": "ctrl+=",
-    "command": "workbench.action.output.toggleOutput",
-    "when": "isLinux"
+  // Tweaking syntax colors of theme
+  "editor.tokenColorCustomizations": {
+    "[Ariake Dark]": {
+      /* == COLOR REFERENCE ==
+        Default Theme Colors:
+          Pink: #DDA2F6
+          Purple: #A571F4
+          MODIFIED Purple: #b27eff
+          Subdued Purple: #7E7EDD
+          MODIFIED Subdued Purple: #8686ec
+          Aqua: #9AEFEA
+          Aqua MODIFIED: #9AEFEA
+          Light Blue: #93DDFB
+          Middle Blue: #85B1E0
+          White: #F5FAFF
+          Grey: #B9BED5
+          Dark Grey: #555C77
+
+        Custom Colors:
+          Subdued Pink: #956fa5
+          Less White: #ecf1f5
+          Bright Purple: #b27eff
+          Clean Purple: #8f8fe0
+          Less Light Blue: #8bc9e2
+          More Middle Blue: #7bbeeb
+      */
+
+      "textMateRules": [
+        // Theme: Pink
+        {
+          "scope": [
+            //""
+          ],
+          "settings": {
+            "foreground": "#DDA2F6"
+          }
+        },
+        // Theme MODIFIED: Purple
+        {
+          "scope": [
+            // default selectors:
+            "support.class"
+          ],
+          "settings": {
+            "foreground": "#b27eff"
+          }
+        },
+        // Theme MODIFIED: Subdued Purple
+        {
+          "scope": [
+            // default selectors:
+            "keyword.control",
+            "storage",
+            "meta.selector",
+            // custom selectors:
+            "keyword.operator.assignment",
+            "keyword.operator.combinator"
+          ],
+          "settings": {
+            "foreground": "#8686ec"
+          }
+        },
+        // Theme MODIFIED: Aqua
+        {
+          "scope": [
+            // default selectors:
+            "string"
+          ],
+          "settings": {
+            "foreground": "#97e5e7"
+          }
+        },
+        // Theme: Light Blue
+        {
+          "scope": [
+            //""
+          ],
+          "settings": {
+            "foreground": "#93DDFB"
+          }
+        },
+        // Theme: Middle Blue
+        {
+          "scope": [
+            "support.type.property-name.json"
+          ],
+          "settings": {
+            "foreground": "#85B1E0"
+          }
+        },
+        // Theme: White
+        {
+          "scope": [
+            //""
+          ],
+          "settings": {
+            "foreground": "#F5FAFF"
+          }
+        },
+        // Theme: Grey
+        {
+          "scope": [
+            "keyword.operator.increment",
+            "keyword.operator.relational"
+          ],
+          "settings": {
+            "foreground": "#B9BED5"
+          }
+        },
+        // Theme: Dark Grey
+        {
+          "scope": [
+            "punctuation.terminator",
+            "meta.brace",
+            "punctuation.definition",
+            "punctuation.separator",
+            "punctuation.section.embedded",
+            "punctuation.support.type.property-name.begin",
+            "punctuation.support.type.property-name.end",
+            "punctuation.accessor",
+            "punctuation.section.property-list.begin",
+            "punctuation.section.property-list.end",
+            "punctuation.section.function"
+          ],
+          "settings": {
+            "foreground": "#5e647e"
+          }
+        },
+
+        // Custom: Less White
+        {
+          "scope": [
+            "meta.property-value.css"
+          ],
+          "settings": {
+            "foreground": "#ecf1f5"
+          }
+        },
+        // Custom: Bright Purple
+        {
+          "scope": [
+            //""
+          ],
+          "settings": {
+            "foreground": "#b27eff"
+          }
+        },
+        // Custom: Clean Purple
+        {
+          "scope": [
+            "support.type.property-name.css",
+            "storage.type.function.arrow"
+          ],
+          "settings": {
+            "foreground": "#9292da"
+          }
+        },
+        // Custom: Less Light Blue
+        {
+          "scope": [
+            "constant.other.color.rgb-value.hex.css"
+          ],
+          "settings": {
+            "foreground": "#8bc9e2"
+          }
+        },
+        // Custom: More Middle Blue
+        {
+          "scope": [
+            "entity.name.tag.css",
+            "variable.language.this"
+          ],
+          "settings": {
+            "foreground": "#81c5f1"
+          }
+        },
+        // Custom: Subdued Pink
+        {
+          "scope": [
+            "keyword.other.unit"
+          ],
+          "settings": {
+            "foreground": "#956fa5"
+          }
+        },
+
+        // Specific: Classes
+        {
+          "scope": [
+            "entity.name.type.class"
+          ],
+          "settings": {
+            "foreground": "#b27eff", // Custom: Bright Purple
+            "fontStyle": "bold"
+          }
+        },
+      ]
+    },
+
+    "[LaserWave Italic]": {
+
+      /* == TODO ==
+        - change color of readonly variables (under semantics) and in-built objects (also semantics)
+      */
+
+      /* == COLOR REFERENCE ==
+        Default Theme Colors:
+
+          Pink: #EB64B9
+            (functions/methods, attributes, css classes/ids)
+
+          Purple: #B381C5
+            (numbers, storage type keywords)
+
+          Green: #74DFC4
+            (html tags, css tags, operators)
+
+          Blue: #40B4C4
+            (storage/modifier/control keywords, json keys, css prop names, unit types, regex flags)
+
+          Light Blue: #B4DCE7
+            (strings)
+
+          White: #FFFFFF
+            (plain text, html content, parameters, class declarations, variables)
+
+          Grey: #91889B
+            (comments)
+
+          PurpleGrey: #716385
+            (punctuation)
+
+          Yellow: #FFE261
+            (boolean, const variable declarations, console object)
+      */
+
+      "textMateRules": [
+        // Smoke/tinted color for unimportant things and unknown variables
+        {
+          "scope": [
+            "meta.jsx.children",
+            "text.html.derivative",
+            // These will be overridden by semantic highlighting if variable exists:
+            "variable.other.readwrite.js",
+            "variable.other.readwrite.ts"
+          ],
+          "settings": {
+            "foreground": "#cac5d3"
+          }
+        },
+        // Slightly darkening comments
+        {
+          "scope": [
+            "comment",
+            "punctuation.definition.comment"
+          ],
+          "settings": {
+            "foreground": "#827a8b"
+          }
+        },
+        // Coloring classes
+        {
+          "scope": [
+            "entity.name.type.class"
+          ],
+          "settings": {
+            "foreground": "#5fcc98"
+          }
+        },
+        // Making JSX component tags differ from normal tags
+        {
+          "scope": [
+            "support.class.component.js"
+          ],
+          "settings": {
+            "foreground": "#5fcc98",
+            "fontStyle": "bold"
+          }
+        },
+        // Making object literal keys in same blue as json keys
+        // (When in quotes, as non-quoted keys already are)
+        {
+          "scope": [
+            "meta.object-literal.key string.quoted.single.js",
+            "meta.object-literal.key string.quoted.double.js",
+            "meta.object-literal.key string.quoted.single.ts",
+            "meta.object-literal.key string.quoted.double.ts"
+          ],
+          "settings": {
+            "foreground": "#40B4C4"
+          }
+        },
+        // - Making CSS variables white
+        // - Making module namespaces white
+        {
+          "scope": [
+            "variable.css",
+            "variable.argument.css",
+            "support.constant.color.w3c-standard-color-name.css",
+            "constant.other.color.rgb-value.hex.css",
+            "entity.name.type.module"
+          ],
+          "settings": {
+            "foreground": "#ffffff"
+          }
+        },
+        // Making CSS hex and W3C color names change when right
+        {
+          "scope": [
+            "support.constant.color.w3c-standard-color-name.css",
+            "constant.other.color.rgb-value.hex.css"
+          ],
+          "settings": {
+            "foreground": "#B4DCE7"
+          }
+        },
+        // - Making CSS variable brackets dull (like functions)
+        // - Making .md fenced code blocks lang name dull 
+        // - SASS/SCSS dulling general
+        {
+          "scope": [
+            "punctuation.section.function.begin.bracket.round.css",
+            "punctuation.section.function.end.bracket.round.css",
+            "punctuation.section.property-list.begin.bracket.curly.scss",
+            "punctuation.section.property-list.end.bracket.curly.scss",
+            "fenced_code.block.language.markdown",
+            "punctuation.separator.list.comma.scss"
+          ],
+          "settings": {
+            "foreground": "#716385"
+          }
+        },
+        // Making code/pre parts of .md files a different color
+        {
+          "scope": [
+            "markup.inline.raw.string.markdown"
+          ],
+          "settings": {
+            "foreground": "#B4DCE7"
+          }
+        },
+        // Making boolean values less yellow
+        {
+          "scope": [
+            "constant.language",
+            "constant.language.boolean.true.js",
+            "constant.language.boolean.false.js",
+            "constant.language.boolean.true.ts",
+            "constant.language.boolean.false.ts"
+          ],
+          "settings": {
+            "foreground": "#FFE28A"
+          }
+        },
+        // Making undefined and null values duller
+        {
+          "scope": [
+            "constant.language.undefined.js",
+            "constant.language.undefined.ts",
+            "constant.language.null.js",
+            "constant.language.null.ts"
+          ],
+          "settings": {
+            "foreground": "#ddcc96"
+          }
+        },
+        // Making 'new' keyword italic
+        {
+          "scope": [
+            "keyword.operator.new"
+          ],
+          "settings": {
+            "fontStyle": "italic"
+          }
+        }
+      ]
+    }
   },
 
+  "editor.semanticTokenColorCustomizations": {
+    "enabled": true,
 
-  // allowing easier command access for common vim command actions
-  // (also helps match my linux keybindings / muscle memory)
-  {
-    "key": "cmd+e",
-    "command": "extension.vim_ctrl+e",
-    "when": "isMac && editorTextFocus && vim.active && vim.mode != 'Insert'"
-  },
-  {
-    "key": "cmd+y",
-    "command": "extension.vim_ctrl+y",
-    "when": "isMac && editorTextFocus && vim.active && vim.mode != 'Insert'"
-  },
-  {
-    "key": "cmd+u",
-    "command": "extension.vim_ctrl+u",
-    "when": "isMac && editorTextFocus && vim.active && vim.mode != 'Insert'"
-  },
-  {
-    "key": "cmd+d",
-    "command": "extension.vim_ctrl+d",
-    "when": "isMac && editorTextFocus && vim.active && vim.mode != 'Insert'"
-  },
-  {
-    "key": "cmd+r",
-    "command": "extension.vim_ctrl+r",
-    "when": "isMac && editorTextFocus && vim.active && vim.mode != 'Insert'"
+    "[LaserWave Italic]": {
+      "rules": {
+        "variable.defaultLibrary": "#FFE28A",
+        "class.defaultLibrary": "#FFE28A",
+        "class.declaration": {
+          "fontStyle": "bold"
+        },
+        "variable.declaration.readonly": "#ffffff",
+        "variable": "#ffffff",
+        "variable.readonly": "#ffffff",
+        "parameter": "#ffffff"
+      }
+    }
   },
 
-  // vim-style vertical navigation in suggestion/prompt popups
-  // intellisense suggestions
-  {
-    "key": "alt+j",
-    "command": "selectNextSuggestion",
-    "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
+  "editor.matchBrackets": false,
+  "css_peek.enable": false,
+  "editor.suggest.maxVisibleSuggestions": 10,
+  // Controls if quick suggestions should show up while typing
+  "editor.quickSuggestions": false,
+  // Controls the delay in ms after which quick suggestions will show up.
+  "editor.quickSuggestionsDelay": 0,
+  "editor.cursorBlinking": "phase",
+  "workbench.enableExperiments": false,
+  "gitlens.codeLens.enabled": false,
+  "gitlens.views.fileHistory.location": "gitlens",
+  "gitlens.views.lineHistory.location": "gitlens",
+  "gitlens.views.compare.location": "gitlens",
+  "gitlens.views.search.location": "gitlens",
+  "gitlens.views.search.files.layout": "tree",
+  "gitlens.currentLine.enabled": false,
+  "gitlens.hovers.currentLine.over": "line",
+  "gitlens.statusBar.reduceFlicker": true,
+  "workbench.activityBar.visible": true,
+  // HTML matching tag highlighter settings
+  "highlight-matching-tag.highlightSelfClosing": true,
+  "highlight-matching-tag.styles": {
+    "opening": {
+      "name": {
+      "underline": "#D4D4D4"
+      }
+    }
   },
-  {
-    "key": "alt+k",
-    "command": "selectPrevSuggestion",
-    "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
-  }
-]
+  // Making Linux VS Code look better
+  "window.titleBarStyle": "custom",
+  // Linter settings
+  // CSS
+  "less.lint.emptyRules": "ignore",
+  "scss.lint.emptyRules": "ignore",
+  "css.lint.emptyRules": "ignore",
+  "emmet.triggerExpansionOnTab": true,
+  // remove underline from links
+  "editor.links": false,
+  "editor.fontLigatures": true,
+  "subtleBrackets.parse": false,
+  "sync.quietSync": true,
+  "editor.parameterHints.enabled": false,
+  "editor.suggestOnTriggerCharacters": false,
+  // Disable menu bar ALT key shortcuts (annoying as hell)
+  "window.customMenuBarAltFocus": false,
+  "window.enableMenuBarMnemonics": false,
+
+  // --- EDITOR SETTINGS ---
+  // Font Family
+    // @sync os=linux
+    "editor.fontFamily": "'JetBrains Mono', 'Fira Code Retina', Monaco, Menlo, 'Courier New', monospace",
+    // @sync os=mac
+    // "editor.fontFamily": "'JetBrains Mono', 'Fira Code', Monaco, Menlo, 'Courier New', monospace",
+    // @sync os=windows
+    // "editor.fontFamily": "'JetBrains Mono', 'Fira Code', Monaco, Menlo, 'Courier New', monospace",
+  // Font Size
+    // @sync os=mac
+    // "editor.fontSize": 15,
+    // @sync os=linux
+    "editor.fontSize": 16,
+    // @sync os=windows
+    // "editor.fontSize": 16,
+  // Line Height
+    // @sync os=mac
+    // "editor.lineHeight": 24,
+    // @sync os=linux
+    "editor.lineHeight": 26,
+    // @sync os=windows
+    // "editor.lineHeight": 25,
+
+  // --- DEBUG CONSOLE SETTINGS ---
+    // Font Family
+      // @sync os=linux
+      "debug.console.fontFamily": "'JetBrains Mono', 'Fira Code Retina', Monaco, Menlo, 'Courier New', monospace",
+      // @sync os=mac
+      // "debug.console.fontFamily": "'JetBrains Mono', 'Fira Code', Monaco, Menlo, 'Courier New', monospace",
+      // @sync os=windows
+      // "debug.console.fontFamily": "'JetBrains Mono', 'Fira Code', Monaco, Menlo, 'Courier New', monospace",
+    // Font Size
+      // @sync os=mac
+      // "debug.console.fontSize": 15,
+      // @sync os=linux
+      "debug.console.fontSize": 15,
+      // @sync os=windows
+      // "debug.console.fontSize": 16,
+    // Line Height
+      // @sync os=mac
+      // "debug.console.lineHeight": 24,
+      // @sync os=linux
+      "debug.console.lineHeight": 24,
+      // @sync os=windows
+      // "debug.console.lineHeight": 24,
+
+  // --- TERMINAL SETTINGS ---
+    // Font Family
+      // @sync os=mac
+      // "terminal.integrated.fontFamily": "'JetBrains Mono', 'Fira Code', Monaco, Menlo, 'Courier New', monospace",
+      // @sync os=linux
+      "terminal.integrated.fontFamily": "'JetBrains Mono', 'Fira Code Retina', Monaco, Menlo, 'Courier New', monospace",
+      // @sync os=windows
+      // "terminal.integrated.fontFamily": "'JetBrains Mono', 'Fira Code', Monaco, Menlo, 'Courier New', monospace",
+    // Font Size
+      // @sync os=mac
+      // "terminal.integrated.fontSize": 15,
+      // @sync os=linux
+      "terminal.integrated.fontSize": 16,
+      // @sync os=windows
+      // "terminal.integrated.fontSize": 16,
+    // Line Height
+      // @sync os=mac
+      // "terminal.integrated.lineHeight": 1.2,
+      // @sync os=linux
+      "terminal.integrated.lineHeight": 1.15,
+      // @sync os=windows
+      // "terminal.integrated.lineHeight": 1.2,
+
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "editor.acceptSuggestionOnEnter": "smart",
+    "explorer.confirmDragAndDrop": false,
+    "git.confirmSync": false,
+    "bracket-pair-colorizer-2.colors": [
+      "#eed568b3",
+      "#e269b6b3",
+      "#52b0bcb3"
+    ],
+
+    // VIM bindings and settings
+
+    "vim.visualstar": true,
+
+    "vim.normalModeKeyBindingsNonRecursive": [
+      // Jump to matching HTML tag
+      {
+        "before": ["<leader>", "%"],
+        "commands": [
+          {
+            "command": "editor.emmet.action.matchTag"
+          }
+        ]
+      },
+      // Select all text (in vim)
+      {
+        "before": ["<leader>", "a"],
+        "after": ["g", "g", "V", "G"]
+      },
+      
+      {
+        "before": ["g", "r"],
+        "commands": [
+          {
+            "command": "editor.action.refactor"
+          }
+        ]
+      },
+      // Capital Y yanks to end of line, instead of whole line
+      {
+        "before": ["Y"],
+        "after": ["y", "$"]
+      }
+    ],
+
+    "vim.visualModeKeyBindingsNonRecursive": [
+
+      // Repeatable multiline indentation
+      {
+        "before": [
+          ">"
+        ],
+        "commands": [
+          "editor.action.indentLines"
+        ]
+      },
+      {
+        "before": [
+          "<"
+        ],
+        "commands": [
+          "editor.action.outdentLines"
+        ]
+      }
+    ],
+    "[javascriptreact]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[javascript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "workbench.colorTheme": "LaserWave Italic",
+    "[json]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[html]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "python.linting.pylintEnabled": true,
+    "python.linting.enabled": true,
+    "python.pythonPath": "/usr/bin/python3",
+    "markdown-preview-enhanced.scrollSync": true,
+    "markdown-preview-enhanced.previewTheme": "atom-material.css"
+}

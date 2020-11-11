@@ -27,12 +27,23 @@
   { "key": "cmd+7", "command": "-workbench.action.focusSeventhEditorGroup" },
   { "key": "shift+cmd+e", "command": "-workbench.view.explorer" },
   { "key": "ctrl+shift+g", "command": "-workbench.view.scm" },
+  { "key": "ctrl+alt+n", "command": "-code-runner.run" },
 
   // misc shortcuts for workflow
   {
     "key": "alt+space",
     "command": "editor.action.triggerSuggest",
     "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly"
+  },
+  {
+    "key": "ctrl+alt+n",
+    "command": "code-runner.run",
+    "when": "isMac"
+  },
+  {
+    "key": "meta+alt+n",
+    "command": "code-runner.run",
+    "when": "isLinux"
   },
   {
     "key": "ctrl+alt+o",

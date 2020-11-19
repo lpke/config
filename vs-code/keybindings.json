@@ -86,13 +86,25 @@
     "when": "isLinux"
   },
   {
-    "key": "ctrl+f",
-    "command": "actions.find",
+    "key": "ctrl+k ctrl+a",
+    "command": "editor.action.selectAll",
+    "when": "isLinux"
+  },
+
+  // MacOS to Linux experience parity
+  {
+    "key": "ctrl+n",
+    "command": "workbench.action.files.newUntitledFile",
+    "when": "isLinux",
+  },
+  {
+    "key": "ctrl+o",
+    "command": "workbench.action.files.openFile",
     "when": "isLinux"
   },
   {
-    "key": "ctrl+k ctrl+a",
-    "command": "editor.action.selectAll",
+    "key": "ctrl+f",
+    "command": "actions.find",
     "when": "isLinux"
   },
   {

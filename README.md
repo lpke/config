@@ -10,8 +10,9 @@ I prefer mac-like keyboard shortcuts. If on linux, these are the changes I make:
 Note: My VSCode shortcuts for linux ensure that they positions required to complete the commands mirror macOS, except using the above mappings.
 
 For a better experience with Vim:
-* Make CAPS key a second ESC key
+* Make CAPS key an escape key
 * If an option, shift+caps to actually toggle caps is nice
+* If not, then old esc as caps works too
 
 ---
 

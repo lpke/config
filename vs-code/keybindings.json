@@ -95,6 +95,11 @@
     "command": "editor.action.selectAll",
     "when": "isLinux"
   },
+  {
+    "key": "ctrl+w",
+    "command": "workbench.action.closeActiveEditor",
+    "when": "isLinux"
+  },
 
   // tab and editor group navigation vim-style
   // navigate editor groups

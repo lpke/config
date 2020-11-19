@@ -31,6 +31,16 @@
 
   // misc shortcuts for workflow
   {
+    "key": "cmd+shift+k",
+    "command": "workbench.action.focusActiveEditorGroup",
+    "when": "isMac"
+  },
+  {
+    "key": "ctrl+shift+k",
+    "command": "workbench.action.focusActiveEditorGroup",
+    "when": "isLinux"
+  },
+  {
     "key": "alt+space",
     "command": "editor.action.triggerSuggest",
     "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly"
@@ -47,11 +57,21 @@
   },
   {
     "key": "ctrl+alt+o",
-    "command": "workbench.output.action.clearOutput",
+    "command": "multiCommand.clearTerminal",
     "when": "isMac"
   },
   {
     "key": "meta+alt+o",
+    "command": "multiCommand.clearTerminal",
+    "when": "isLinux"
+  },
+  {
+    "key": "ctrl+alt+shift+o",
+    "command": "workbench.output.action.clearOutput",
+    "when": "isMac"
+  },
+  {
+    "key": "meta+alt+shift+o",
     "command": "workbench.output.action.clearOutput",
     "when": "isLinux"
   },
@@ -73,11 +93,6 @@
   {
     "key": "ctrl+k ctrl+a",
     "command": "editor.action.selectAll",
-    "when": "isLinux"
-  },
-  {
-    "key": "ctrl+w",
-    "command": "workbench.action.closeActiveEditor",
     "when": "isLinux"
   },
 
@@ -225,12 +240,12 @@
     "when": "isLinux"
   },
   {
-    "key": "cmd+0",
+    "key": "cmd+shift+j",
     "command": "workbench.action.focusPanel",
     "when": "isMac"
   },
   {
-    "key": "ctrl+0",
+    "key": "ctrl+shift+j",
     "command": "workbench.action.focusPanel",
     "when": "isLinux"
   },

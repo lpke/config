@@ -158,22 +158,22 @@
   },
   // move editors around
   {
-    "key": "ctrl+cmd+l",
+    "key": "ctrl+cmd+shift+alt+l",
     "command": "workbench.action.moveEditorToNextGroup",
     "when": "isMac"
   },
   {
-    "key": "meta+ctrl+l",
+    "key": "ctrl+meta+shift+alt+l",
     "command": "workbench.action.moveEditorToNextGroup",
     "when": "isLinux"
   },
   {
-    "key": "ctrl+cmd+h",
+    "key": "ctrl+cmd+shift+alt+h",
     "command": "workbench.action.moveEditorToPreviousGroup",
     "when": "isMac"
   },
   {
-    "key": "meta+ctrl+h",
+    "key": "ctrl+meta+shift+alt+h",
     "command": "workbench.action.moveEditorToPreviousGroup",
     "when": "isLinux"
   },
@@ -190,12 +190,32 @@
     "when": "isLinux"
   },
   {
-    "key": "cmd+9",
+    "key": "ctrl+cmd+shift+alt+b",
+    "command": "multiCommand.openFocusSidebar",
+    "when": "isMac && editorTextFocus"
+  },
+  {
+    "key": "ctrl+meta+shift+alt+b",
+    "command": "multiCommand.openFocusSidebar",
+    "when": "isLinux && editorTextFocus"
+  },
+  {
+    "key": "ctrl+cmd+shift+alt+b",
+    "command": "workbench.action.toggleSidebarVisibility",
+    "when": "isMac && sideBarFocus"
+  },
+  {
+    "key": "ctrl+meta+shift+alt+b",
+    "command": "workbench.action.toggleSidebarVisibility",
+    "when": "isLinux && sideBarFocus"
+  },
+  {
+    "key": "cmd+shift+9",
     "command": "workbench.action.focusSideBar",
     "when": "isMac"
   },
   {
-    "key": "ctrl+9",
+    "key": "ctrl+shift+9",
     "command": "workbench.action.focusSideBar",
     "when": "isLinux"
   },
@@ -210,22 +230,22 @@
     "when": "sideBarFocus"
   },
   {
-    "key": "cmd+8",
+    "key": "cmd+shift+8",
     "command": "workbench.view.scm",
     "when": "isMac"
   },
   {
-    "key": "ctrl+8",
+    "key": "ctrl+shift+8",
     "command": "workbench.view.scm",
     "when": "isLinux"
   },
   {
-    "key": "cmd+7",
+    "key": "cmd+shift+7",
     "command": "workbench.view.explorer",
     "when": "isMac"
   },
   {
-    "key": "ctrl+7",
+    "key": "ctrl+shift+7",
     "command": "workbench.view.explorer",
     "when": "isLinux"
   },
@@ -277,22 +297,22 @@
     "when": "panelFocus"
   },
   {
-    "key": "cmd+-",
-    "command": "workbench.action.terminal.toggleTerminal",
-    "when": "isMac"
-  },
-  {
-    "key": "ctrl+-",
-    "command": "workbench.action.terminal.toggleTerminal",
-    "when": "isLinux"
-  },
-  {
     "key": "cmd+=",
-    "command": "workbench.action.output.toggleOutput",
+    "command": "workbench.action.terminal.toggleTerminal",
     "when": "isMac"
   },
   {
     "key": "ctrl+=",
+    "command": "workbench.action.terminal.toggleTerminal",
+    "when": "isLinux"
+  },
+  {
+    "key": "cmd+-",
+    "command": "workbench.action.output.toggleOutput",
+    "when": "isMac"
+  },
+  {
+    "key": "ctrl+-",
     "command": "workbench.action.output.toggleOutput",
     "when": "isLinux"
   },

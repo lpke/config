@@ -214,22 +214,22 @@
   {
     "key": "ctrl+cmd+shift+alt+b",
     "command": "multiCommand.openFocusSidebar",
-    "when": "isMac && editorTextFocus"
+    "when": "isMac && !sideBarVisible"
   },
   {
     "key": "ctrl+meta+shift+alt+b",
     "command": "multiCommand.openFocusSidebar",
-    "when": "isLinux && editorTextFocus"
+    "when": "isLinux && !sideBarVisible"
   },
   {
     "key": "ctrl+cmd+shift+alt+b",
     "command": "workbench.action.toggleSidebarVisibility",
-    "when": "isMac && sideBarFocus"
+    "when": "isMac && sideBarVisible"
   },
   {
     "key": "ctrl+meta+shift+alt+b",
     "command": "workbench.action.toggleSidebarVisibility",
-    "when": "isLinux && sideBarFocus"
+    "when": "isLinux && sideBarVisible"
   },
   {
     "key": "cmd+shift+9",

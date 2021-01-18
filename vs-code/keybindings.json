@@ -271,21 +271,57 @@
     "command": "workbench.view.explorer",
     "when": "isLinux"
   },
+  // new file / folder
   {
-    "key": "shift+enter",
-    "command": "explorer.newFolder",
+    "key": ",",
+    "command": "explorer.newFile",
     "when": "sideBarFocus && activeViewlet == 'workbench.view.explorer'"
   },
   {
-    "key": "cmd+enter",
-    "command": "explorer.newFile",
-    "when": "isMac && sideBarFocus && activeViewlet == 'workbench.view.explorer'"
+    "key": "shift+,",
+    "command": "explorer.newFolder",
+    "when": "sideBarFocus && activeViewlet == 'workbench.view.explorer'"
+  },
+  // focus/close sidebar
+  {
+    "key": "cmd+h",
+    "command": "multiCommand.openFocusSidebar",
+    "when": "editorFocus && activeEditorGroupIndex == 1 && !sideBarVisible"
   },
   {
-    "key": "ctrl+enter",
-    "command": "explorer.newFile",
-    "when": "isLinux && sideBarFocus && activeViewlet == 'workbench.view.explorer'"
+    "key": "cmd+h",
+    "command": "workbench.action.focusSideBar",
+    "when": "editorFocus && activeEditorGroupIndex == 1 && sideBarVisible"
   },
+  {
+    "key": "cmd+h",
+    "command": "workbench.action.toggleSidebarVisibility",
+    "when": "sideBarFocus"
+  },
+  {
+    "key": "cmd+left",
+    "command": "multiCommand.openFocusSidebar",
+    "when": "!sideBarVisible"
+  },
+  {
+    "key": "cmd+left",
+    "command": "workbench.action.focusSideBar",
+  },
+  // focus back to editor
+  {
+    "key": "cmd+up",
+    "command": "workbench.action.focusActiveEditorGroup",
+  },
+  {
+    "key": "cmd+right",
+    "command": "workbench.action.focusActiveEditorGroup",
+  },
+  {
+    "key": "cmd+l",
+    "command": "workbench.action.focusActiveEditorGroup",
+    "when": "sideBarFocus"
+  },
+
 
   // panel (bottom part) navigation
   {
@@ -297,6 +333,10 @@
     "key": "ctrl+j",
     "command": "workbench.action.togglePanel",
     "when": "isLinux"
+  },
+  {
+    "key": "cmd+down",
+    "command": "workbench.action.focusPanel",
   },
   {
     "key": "cmd+shift+j",

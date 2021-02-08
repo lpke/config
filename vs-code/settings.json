@@ -41,6 +41,7 @@
   // View
   "editor.lineNumbers": "relative",
   "window.zoomLevel": 0,
+  "workbench.editor.tabSizing": "shrink",
   "workbench.editor.wrapTabs": true,
   "workbench.activityBar.visible": true,
   "editor.links": false,
@@ -953,5 +954,5 @@
   // ==================================
   // first item is deliberately here so others are placed after
 
-  "editor.accessibilitySupport": "off"
+  "editor.accessibilitySupport": "off",
 }

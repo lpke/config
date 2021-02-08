@@ -884,6 +884,26 @@
       "after": ["J"]
     },
 
+    // up and down arrow keys navigate soft-wrapped lines
+    {
+      "before": ["up"],
+      "after": ["g", "k"]
+    },
+    {
+      "before": ["down"],
+      "after": ["g", "j"]
+    },
+
+    // left and right arrow keys do camelcase movement
+    {
+      "before": ["left"],
+      "after": ["<leader>", "b"]
+    },
+    {
+      "before": ["right"],
+      "after": ["<leader>", "w"]
+    },
+
     // Save and quit with cap S and Q like in my vimrc
     {
       "before": ["S"],
@@ -892,8 +912,21 @@
     {
       "before": ["Q"],
       "after": [":", "q", "<cr>"]
-    }
+    },
+     
+    // EASYMOTION TWEAKS
+    // Search n characters
+    {
+      "before": ["g", "/"],
+      "after": ["<leader>", "<leader>", "/"]
+    },
+    // Jump to start of line
+    {
+      "before": ["g", "l"],
+      "after": ["<leader>", "<leader>", "<leader>", "b", "d", "j", "k"]
+    },
   ],
+
 
   // VISUAL MODE
   "vim.visualModeKeyBindingsNonRecursive": [

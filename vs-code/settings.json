@@ -4,16 +4,13 @@
   // ==================================
 
   // Telemetry
-  "telemetry.enableCrashReporter": false,
   "telemetry.enableTelemetry": false,
+  "telemetry.enableCrashReporter": false,
   "workbench.enableExperiments": false,
 
   // Blank / New Editor
   "workbench.startupEditor": "newUntitledFile",
   "workbench.tips.enabled": false,
-
-  // Accessibility
-  "editor.accessibilitySupport": "off",
 
 
   // ==================================
@@ -28,7 +25,7 @@
   "editor.wordWrap": "on",
   "explorer.confirmDragAndDrop": false,
   "git.confirmSync": false,
-  "editor.matchBrackets": "never",
+  "editor.matchBrackets": false,
     // replaced with "subtle match brackets"
   "editor.formatOnPaste": true,
   "editor.copyWithSyntaxHighlighting": false,
@@ -60,20 +57,36 @@
   "editor.minimap.maxColumn": 95,
   "editor.minimap.showSlider": "always",
 
-  // Intellisense / Suggestions
-  "editor.snippetSuggestions": "top",
-  "editor.tabCompletion": "on",
-  "editor.acceptSuggestionOnEnter": "smart",
-  "editor.quickSuggestions": false,
+  // INTELLISENSE & SUGGESTIONS
+  // Toggles
   "editor.codeLens": false,
+  "editor.quickSuggestions": false,
+  "editor.parameterHints.enabled": false,
+  "editor.lightbulb.enabled": false,
+  "csharp.referencesCodeLens.enabled": false,
+  // Settings
+  "editor.tabCompletion": "onlySnippets",
+  "editor.acceptSuggestionOnEnter": "smart",
   "editor.quickSuggestionsDelay": 0,
   "editor.acceptSuggestionOnCommitCharacter": false,
-  "editor.suggest.showReferences": false,
-  "csharp.referencesCodeLens.enabled": false,
-  "editor.lightbulb.enabled": false,
-  "editor.parameterHints.enabled": false,
   "editor.suggestOnTriggerCharacters": false,
+  "editor.suggest.localityBonus": true,
+  // Suggestions
+  "editor.suggest.showReferences": false,
+  "editor.suggest.showSnippets": false,
+  "editor.suggest.showInterfaces": false,
+  "editor.suggest.showModules": false,
+  "editor.suggest.showClasses": false,
 
+  // File Exclusions
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/node_modules": true
+  },
 
   // ==================================
   // == Font Settings
@@ -187,6 +200,7 @@
   // Emmet
   "emmet.showSuggestionsAsSnippets": true,
   "emmet.triggerExpansionOnTab": true,
+
 
   // Highlight Matching Tag
   "highlight-matching-tag.highlightSelfClosing": true,
@@ -846,6 +860,16 @@
       "after": ["v", "b", "c"]
     },
 
+    // Toggle Boolean
+    {
+      "before": ["c", "i", "b"],
+      "commands": [
+        {
+          "command": "extension.toggleBool"
+        }
+      ]
+    },
+
     // shift J and K scroll, and comma now joins lines
     {
       "before": ["J"],
@@ -888,5 +912,8 @@
   // ==================================
   // == Unorganised
   // ==================================
+  // first item is deliberately here so others are placed after
+
+  "editor.accessibilitySupport": "off",
 
 }

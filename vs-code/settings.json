@@ -1,27 +1,267 @@
 {
+  // ==================================
+  // == VSCode General
+  // ==================================
+
+  // Telemetry
   "telemetry.enableCrashReporter": false,
   "telemetry.enableTelemetry": false,
+  "workbench.enableExperiments": false,
+
+  // Blank / New Editor
+  "workbench.startupEditor": "newUntitledFile",
+  "workbench.tips.enabled": false,
+
+  // Accessibility
+  "editor.accessibilitySupport": "off",
+
+
+  // ==================================
+  // == Editor Settings
+  // ==================================
+  
+  // Text
+  "editor.tabSize": 2,
+  "editor.fontLigatures": true,
+
+  // Behaviour
+  "editor.wordWrap": "on",
+  "explorer.confirmDragAndDrop": false,
+  "git.confirmSync": false,
+  "editor.matchBrackets": "never",
+    // replaced with "subtle match brackets"
   "editor.formatOnPaste": true,
   "editor.copyWithSyntaxHighlighting": false,
-  "editor.tabSize": 2,
-  "editor.wordWrap": "on",
+  // @sync os=linux
+  // "keyboard.dispatch": "keyCode",
+    // for linux custom keybindings
+
+  // Selection
+  "editor.roundedSelection": false,
+  "editor.selectionHighlight": false,
+  "editor.occurrencesHighlight": false,
+
+  // View
+  "editor.lineNumbers": "relative",
+  "window.zoomLevel": 0,
+  "workbench.editor.wrapTabs": true,
+  "workbench.activityBar.visible": true,
+  "editor.links": false,
+
+  // Cursor
+  "editor.cursorBlinking": "solid",
+
+  // Menu Bar
+  "window.titleBarStyle": "custom",
+  "window.customMenuBarAltFocus": false,
+  "window.enableMenuBarMnemonics": false,
+
+  // Minimap
+  "editor.minimap.maxColumn": 95,
+  "editor.minimap.showSlider": "always",
+
+  // Intellisense / Suggestions
+  "editor.snippetSuggestions": "top",
+  "editor.tabCompletion": "on",
+  "editor.acceptSuggestionOnEnter": "smart",
+  "editor.quickSuggestions": false,
+  "editor.codeLens": false,
+  "editor.quickSuggestionsDelay": 0,
+  "editor.acceptSuggestionOnCommitCharacter": false,
   "editor.suggest.showReferences": false,
-  "workbench.tips.enabled": false,
   "csharp.referencesCodeLens.enabled": false,
   "editor.lightbulb.enabled": false,
-  "editor.acceptSuggestionOnCommitCharacter": false,
-  "editor.selectionHighlight": false,
-  "editor.roundedSelection": false,
-  "editor.occurrencesHighlight": false,
-  "workbench.startupEditor": "newUntitledFile",
+  "editor.parameterHints.enabled": false,
+  "editor.suggestOnTriggerCharacters": false,
+
+
+  // ==================================
+  // == Font Settings
+  // ==================================
+
+  // EDITOR
+  "editor.inlineHints.fontFamily": "'JetBrains Mono', 'Fira Code', Monaco, Menlo, 'Courier New', monospace",
+  "editor.fontFamily": "'JetBrains Mono', 'Fira Code', Monaco, Menlo, 'Courier New', monospace",
+  // @sync os=mac
+  "editor.fontSize": 15,
+  // @sync os=linux
+  // "editor.fontSize": 16,
+  // @sync os=windows
+  // "editor.fontSize": 16,
+  // @sync os=mac
+  "editor.lineHeight": 24,
+  // @sync os=linux
+  // "editor.lineHeight": 25,
+  // @sync os=windows
+  // "editor.lineHeight": 24,
+
+  // DEBUG CONSOLE
+  "debug.console.fontFamily": "'JetBrains Mono', 'Fira Code', Monaco, Menlo, 'Courier New', monospace",
+  // @sync os=mac
+  "debug.console.fontSize": 15,
+  // @sync os=linux
+  // "debug.console.fontSize": 15,
+  // @sync os=windows
+  // "debug.console.fontSize": 16,
+  // @sync os=mac
+  "debug.console.lineHeight": 24,
+  // @sync os=linux
+  // "debug.console.lineHeight": 24,
+  // @sync os=windows
+  // "debug.console.lineHeight": 24,
+
+  // TERMINAL
+  "terminal.integrated.fontFamily": "'JetBrains Mono', 'Fira Code', Monaco, Menlo, 'Courier New', monospace",
+  // @sync os=mac
+  "terminal.integrated.fontSize": 15,
+  // @sync os=linux
+  // "terminal.integrated.fontSize": 16,
+  // @sync os=windows
+  // "terminal.integrated.fontSize": 16,
+  // @sync os=mac
+  "terminal.integrated.lineHeight": 1.2,
+  // @sync os=linux
+  // "terminal.integrated.lineHeight": 1.15,
+  // @sync os=windows
+  // "terminal.integrated.lineHeight": 1.2,
+
+
+  // ==================================
+  // == Language Settings
+  // ==================================
+
+  // File Associations (VS Code)
+  "files.associations": {
+    "*.tsx": "typescriptreact",
+    "*.jsx": "javascriptreact",
+  },
+
+  // JavaScript
+  "javascript.validate.enable": true,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  // TypeScript
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  // Python
+  "python.pythonPath": "/usr/bin/python3",
+  "python.linting.pylintEnabled": true,
+  "python.linting.enabled": true,
+  "python.showStartPage": false,
+
+  // CSS
+  "less.lint.emptyRules": "ignore",
+  "scss.lint.emptyRules": "ignore",
+  "css.lint.emptyRules": "ignore",
+
+  // JSON
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  // HTML
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+
+  // ==================================
+  // == Extension Settings
+  // ==================================
+
+  // Emmet
+  "emmet.showSuggestionsAsSnippets": true,
+  "emmet.triggerExpansionOnTab": true,
+
+  // Highlight Matching Tag
+  "highlight-matching-tag.highlightSelfClosing": true,
+  "highlight-matching-tag.styles": {
+    "opening": {
+      "name": {
+        "underline": "#D4D4D4"
+      }
+    }
+  },
+
+  // Subtle Match Brackets
+  "subtleBrackets.parse": false,
+
+  // Bracket Pair Colorizer
+  "bracket-pair-colorizer-2.colors": ["#eed568b3", "#e269b6b3", "#52b0bcb3"],
+
+  // Settings Sync (extension)
   "sync.autoDownload": true,
   "sync.autoUpload": true,
-  "files.autoSaveDelay": 1100,
   "sync.gist": "934bb776e4b628cff2f99ce8ba9352b9",
+  "sync.quietSync": true,
+
+  // GitLens
+  "gitlens.codeLens.enabled": false,
+  "gitlens.views.fileHistory.location": "gitlens",
+  "gitlens.views.lineHistory.location": "gitlens",
+  "gitlens.views.compare.location": "gitlens",
+  "gitlens.views.search.location": "gitlens",
+  "gitlens.views.search.files.layout": "tree",
+  "gitlens.currentLine.enabled": false,
+  "gitlens.hovers.enabled": false,
+  "gitlens.hovers.currentLine.over": "annotation",
+  "gitlens.statusBar.reduceFlicker": true,
+
+  // Code Runner
   "code-runner.enableAppInsights": false,
-  "window.zoomLevel": 0,
-  "editor.accessibilitySupport": "off",
-  "editor.codeLens": false,
+  "code-runner.runInTerminal": true,
+  "code-runner.showRunIconInEditorTitleMenu": false,
+  "code-runner.preserveFocus": true,
+  "code-runner.clearPreviousOutput": false,
+
+  // Markdown Preview
+  "markdown-preview-enhanced.scrollSync": true,
+  "markdown-preview-enhanced.previewTheme": "atom-material.css",
+
+  // NPM Intellisense
+  "npm-intellisense.importQuotes": "\"",
+
+  // Multi Command (custom commands)
+  "multiCommand.commands": [
+    {
+      "command": "multiCommand.clearTerminal",
+      "sequence": [
+        "workbench.action.terminal.clear",
+        "workbench.action.focusActiveEditorGroup"
+      ]
+    },
+    {
+      "command": "multiCommand.openFocusSidebar",
+      "sequence": [
+        "workbench.action.toggleSidebarVisibility",
+        "workbench.action.focusSideBar"
+      ]
+    }
+  ],
+
+
+  // ==================================
+  // == Theme / Colour Settings
+  // ==================================
+
+  "workbench.colorTheme": "LaserWave Italic",
+
+  // Workbench Colours
   "workbench.colorCustomizations": {
     "[DuoTone Dark Sky]": {
       "statusBar.background": "#2D2D2D",
@@ -38,6 +278,7 @@
       "activityBarBadge.background": "#544580",
       "activityBarBadge.foreground": "#e0e0e0"
     },
+
     "[Ariake Dark]": {
       "editor.background": "#272a36",
       "statusBar.background": "#1d1f27",
@@ -55,42 +296,55 @@
       "activityBarBadge.background": "#3f4663",
       "activityBarBadge.foreground": "#e0e0e0"
     },
+
     "[LaserWave Italic]": {
+      /* TODO:
+        - make highlight color inside sidebar visible
+        - remove pink focus border from sidebar
+        - tweaks to pink selections in general
+        - make UI dropdown backgrounds fit with theme
+      */
+
       // Default (unthemed) text color
       "editor.foreground": "#eeeeee",
 
       // Line number duller
       "editorLineNumber.foreground": "#494352",
 
-      // Git diff gutter color brightness reduction
-      "editorGutter.modifiedBackground": "#362a47",
-      "editorGutter.addedBackground": "#30343d",
-      "editorGutter.deletedBackground": "#572d2d",
-
       // EDITOR INTERFACE
-        "editorGroup.border": "#1e1924",
-        // Title bar
-        "titleBar.activeBackground": "#1e1924",
-        "titleBar.inactiveBackground": "#1e1924",
-        "titleBar.activeForeground": "#c6c3c9",
-        "titleBar.inactiveForeground": "#a9a6ac",
-        // Tabs bar
-        "editorGroupHeader.tabsBackground": "#1e1924",
-        "editorGroupHeader.noTabsBackground": "#1e1924",
-        "tab.inactiveBackground": "#1e1924",
-        "tab.activeBorder": "#27212E",
-        "tab.border": "#1e1924",
-        // Side bar
-        "sideBar.background": "#1e1924",
-        "sideBar.border": "#1e1924",
-        "activityBar.background": "#1e1924",
-        "activityBarBadge.background": "#50345c",
-        "activityBarBadge.foreground": "#e0e0e0",
-        // Status bar
-        "statusBar.foreground": "#c6c3c9",
-        "statusBar.background": "#1e1924",
-        "statusBar.noFolderBackground": "#1e1924",
-        "statusBar.debuggingBackground": "#3a1e55",
+      "editorGroup.border": "#1e1924",
+      // Title bar
+      "titleBar.activeBackground": "#1e1924",
+      "titleBar.inactiveBackground": "#1e1924",
+      "titleBar.activeForeground": "#c6c3c9",
+      "titleBar.inactiveForeground": "#a9a6ac",
+      // Tabs bar
+      "editorGroupHeader.tabsBackground": "#1e1924",
+      "editorGroupHeader.noTabsBackground": "#1e1924",
+      "tab.inactiveBackground": "#1e1924",
+      "tab.activeBorder": "#27212E",
+      "tab.border": "#1e1924",
+      // Breadcrumbs
+      "breadcrumb.foreground": "#88858a",
+      // Side bar
+      "sideBar.background": "#1e1924",
+      "sideBar.border": "#1e1924",
+      "activityBar.background": "#1e1924",
+      "activityBarBadge.background": "#50345c",
+      "activityBarBadge.foreground": "#e0e0e0",
+      // Status bar
+      "statusBar.foreground": "#c6c3c9",
+      "statusBar.background": "#1e1924",
+      "statusBar.noFolderBackground": "#1e1924",
+      "statusBar.debuggingBackground": "#3a1e55",
+
+      // Git diff colors
+      "editorGutter.addedBackground": "#30343d",
+      "editorGutter.modifiedBackground": "#362a47",
+      "editorGutter.deletedBackground": "#572d2d",
+      "minimapGutter.addedBackground": "#315348",
+      "minimapGutter.modifiedBackground": "#56397e",
+      "minimapGutter.deletedBackground": "#7a3131",
 
       // Widget
       "editorWidget.background": "#221c29",
@@ -103,6 +357,16 @@
       // Minimap
       "minimap.selectionHighlight": "#694780bb",
       "minimap.findMatchHighlight": "#418ca5",
+      "minimap.errorHighlight": "#833535",
+      "minimapSlider.background": "#69616b1a",
+      "minimapSlider.hoverBackground": "#69616b1a",
+      "minimapSlider.activeBackground": "#73548036",
+
+      // Scrollbar
+      "scrollbarSlider.background": "#6c676d1a",
+      "scrollbarSlider.hoverBackground": "#6c656d27",
+      "scrollbarSlider.activeBackground": "#73548036",
+      "scrollbar.shadow": "#000000a6",
 
       // Line indentation guides
       "editorIndentGuide.activeBackground": "#796b883f",
@@ -123,15 +387,28 @@
       "editor.findRangeHighlightBorder": "#40344e",
       "editor.rangeHighlightBackground": "#40344ede",
 
-      // Scrollbar
-      "scrollbarSlider.background": "#b3b3b30c",
-      "scrollbarSlider.hoverBackground": "#ffffff13",
-      "scrollbarSlider.activeBackground": "#ffffff18",
-      "scrollbar.shadow": "#000000a6"
-    },
+      // Integrated terminal
+      "terminal.background": "#221e27",
+      "terminal.ansiBlack": "#4a4a4a",
+      "terminal.ansiBrightBlack": "#979797",
+      "terminal.ansiRed": "#979797",
+      "terminal.ansiBrightRed": "#cb1b00",
+      "terminal.ansiGreen": "#009a13",
+      "terminal.ansiBrightGreen": "#00b731",
+      "terminal.ansiYellow": "#caa000",
+      "terminal.ansiBrightYellow": "#ffcd28",
+      "terminal.ansiBlue": "#317dcc",
+      "terminal.ansiBrightBlue": "#008de1",
+      "terminal.ansiMagenta": "#b44dfc",
+      "terminal.ansiBrightMagenta": "#c16bb2",
+      "terminal.ansiCyan": "#009fa0",
+      "terminal.ansiBrightCyan": "#2bd4d2",
+      "terminal.ansiWhite": "#e6eeef",
+      "terminal.ansiBrightWhite": "#efefef"
+    }
   },
 
-  // Tweaking syntax colors of theme
+  // Theme Colours / Syntax Highlighting
   "editor.tokenColorCustomizations": {
     "[Ariake Dark]": {
       /* == COLOR REFERENCE ==
@@ -214,9 +491,7 @@
         },
         // Theme: Middle Blue
         {
-          "scope": [
-            "support.type.property-name.json"
-          ],
+          "scope": ["support.type.property-name.json"],
           "settings": {
             "foreground": "#85B1E0"
           }
@@ -262,9 +537,7 @@
 
         // Custom: Less White
         {
-          "scope": [
-            "meta.property-value.css"
-          ],
+          "scope": ["meta.property-value.css"],
           "settings": {
             "foreground": "#ecf1f5"
           }
@@ -290,28 +563,21 @@
         },
         // Custom: Less Light Blue
         {
-          "scope": [
-            "constant.other.color.rgb-value.hex.css"
-          ],
+          "scope": ["constant.other.color.rgb-value.hex.css"],
           "settings": {
             "foreground": "#8bc9e2"
           }
         },
         // Custom: More Middle Blue
         {
-          "scope": [
-            "entity.name.tag.css",
-            "variable.language.this"
-          ],
+          "scope": ["entity.name.tag.css", "variable.language.this"],
           "settings": {
             "foreground": "#81c5f1"
           }
         },
         // Custom: Subdued Pink
         {
-          "scope": [
-            "keyword.other.unit"
-          ],
+          "scope": ["keyword.other.unit"],
           "settings": {
             "foreground": "#956fa5"
           }
@@ -319,27 +585,18 @@
 
         // Specific: Classes
         {
-          "scope": [
-            "entity.name.type.class"
-          ],
+          "scope": ["entity.name.type.class"],
           "settings": {
             "foreground": "#b27eff", // Custom: Bright Purple
             "fontStyle": "bold"
           }
-        },
+        }
       ]
     },
 
     "[LaserWave Italic]": {
-
       /* == TODO ==
-        - change color of dot between function/methods/object values to lighter grey
         - change color of readonly variables (under semantics) and in-built objects (also semantics)
-        - configure main editor components:
-          - line numbers, indentation guide, active line, etc etc
-          - change pink bar at bottom
-          - change icon badge from hot pink to purple
-          - make tabs + editor area same color and the rest a bit darker (like in Ariake Dark theme but with these colors)
       */
 
       /* == COLOR REFERENCE ==
@@ -389,28 +646,21 @@
         },
         // Slightly darkening comments
         {
-          "scope": [
-            "comment",
-            "punctuation.definition.comment"
-          ],
+          "scope": ["comment", "punctuation.definition.comment"],
           "settings": {
             "foreground": "#827a8b"
           }
         },
         // Coloring classes
         {
-          "scope": [
-            "entity.name.type.class"
-          ],
+          "scope": ["entity.name.type.class",],
           "settings": {
             "foreground": "#5fcc98"
           }
         },
         // Making JSX component tags differ from normal tags
         {
-          "scope": [
-            "support.class.component.js"
-          ],
+          "scope": ["support.class.component"],
           "settings": {
             "foreground": "#5fcc98",
             "fontStyle": "bold"
@@ -420,10 +670,10 @@
         // (When in quotes, as non-quoted keys already are)
         {
           "scope": [
+            "meta.object-literal.key string.quoted.single",
+            "meta.object-literal.key string.quoted.double",
             "meta.object-literal.key string.quoted.single.js",
-            "meta.object-literal.key string.quoted.double.js",
-            "meta.object-literal.key string.quoted.single.ts",
-            "meta.object-literal.key string.quoted.double.ts"
+            "meta.object-literal.key string.quoted.double.js"
           ],
           "settings": {
             "foreground": "#40B4C4"
@@ -454,14 +704,16 @@
           }
         },
         // - Making CSS variable brackets dull (like functions)
-        // - Making .md fenced code blocks lang name dull 
-        // - Making accessor punctuation dull
+        // - Making .md fenced code blocks lang name dull
+        // - SASS/SCSS dulling general
         {
           "scope": [
             "punctuation.section.function.begin.bracket.round.css",
             "punctuation.section.function.end.bracket.round.css",
+            "punctuation.section.property-list.begin.bracket.curly.scss",
+            "punctuation.section.property-list.end.bracket.curly.scss",
             "fenced_code.block.language.markdown",
-            //"punctuation.accessor"
+            "punctuation.separator.list.comma.scss"
           ],
           "settings": {
             "foreground": "#716385"
@@ -469,9 +721,7 @@
         },
         // Making code/pre parts of .md files a different color
         {
-          "scope": [
-            "markup.inline.raw.string.markdown"
-          ],
+          "scope": ["markup.inline.raw.string.markdown"],
           "settings": {
             "foreground": "#B4DCE7"
           }
@@ -493,9 +743,9 @@
         {
           "scope": [
             "constant.language.undefined.js",
-            "constant.language.undefined.ts",
+            "constant.language.undefined",
             "constant.language.null.js",
-            "constant.language.null.ts"
+            "constant.language.null"
           ],
           "settings": {
             "foreground": "#ddcc96"
@@ -503,9 +753,7 @@
         },
         // Making 'new' keyword italic
         {
-          "scope": [
-            "keyword.operator.new"
-          ],
+          "scope": ["keyword.operator.new"],
           "settings": {
             "fontStyle": "italic"
           }
@@ -514,6 +762,7 @@
     }
   },
 
+  // Further Syntax Highlighting
   "editor.semanticTokenColorCustomizations": {
     "enabled": true,
 
@@ -524,132 +773,120 @@
         "class.declaration": {
           "fontStyle": "bold"
         },
-        "variable.declaration.readonly": "#b8eede",
+        "variable.declaration.readonly": "#ffffff",
         "variable": "#ffffff",
+        "variable.readonly": "#ffffff",
         "parameter": "#ffffff"
       }
     }
   },
 
-  "editor.matchBrackets": false,
-  "css_peek.enable": false,
-  "editor.suggest.maxVisibleSuggestions": 10,
-  // Controls if quick suggestions should show up while typing
-  "editor.quickSuggestions": false,
-  // Controls the delay in ms after which quick suggestions will show up.
-  "editor.quickSuggestionsDelay": 0,
-  "editor.cursorBlinking": "phase",
-  "workbench.enableExperiments": false,
-  "gitlens.codeLens.enabled": false,
-  "gitlens.views.fileHistory.location": "gitlens",
-  "gitlens.views.lineHistory.location": "gitlens",
-  "gitlens.views.compare.location": "gitlens",
-  "gitlens.views.search.location": "gitlens",
-  "gitlens.views.search.files.layout": "tree",
-  "gitlens.currentLine.enabled": false,
-  "gitlens.hovers.currentLine.over": "line",
-  "gitlens.statusBar.reduceFlicker": true,
-  "workbench.activityBar.visible": true,
-  // HTML matching tag highlighter settings
-  "highlight-matching-tag.highlightSelfClosing": true,
-  "highlight-matching-tag.styles": {
-    "opening": {
-      "name": {
-      "underline": "#D4D4D4"
-      }
+
+  // ==================================
+  // == VIM Settings / Plugins
+  // ==================================
+
+  // Plugin Toggles
+  "vim.visualstar": true,
+  "vim.camelCaseMotion.enable": true,
+  "vim.easymotion": true,
+
+  // EasyMotion
+  "vim.easymotionMarkerForegroundColorOneChar": "#3de8ff",
+  "vim.easymotionMarkerForegroundColorTwoCharFirst": "#df87ff",
+  "vim.easymotionMarkerForegroundColorTwoCharSecond": "#A96BC0",
+  "vim.easymotionIncSearchForegroundColor": "#46e398",
+
+
+  // ==================================
+  // == VIM Keybindings
+  // ==================================
+
+  // NORMAL MODE
+  "vim.normalModeKeyBindingsNonRecursive": [
+    // Jump to matching HTML tag
+    {
+      "before": ["<leader>", "%"],
+      "commands": [
+        {
+          "command": "editor.emmet.action.matchTag"
+        }
+      ]
+    },
+
+    // Select all text (in vim)
+    {
+      "before": ["<leader>", "a"],
+      "after": ["g", "g", "V", "G"]
+    },
+
+    // Refactor
+    {
+      "before": ["g", "r"],
+      "commands": [
+        {
+          "command": "editor.action.refactor"
+        }
+      ]
+    },
+
+    // Capital Y yanks to end of line, instead of whole line
+    {
+      "before": ["Y"],
+      "after": ["y", "$"]
+    },
+
+    // db and cb deleted/changes backward word including char under cursor
+    {
+      "before": ["d", "b"],
+      "after": ["v", "b", "d"]
+    },
+    {
+      "before": ["c", "b"],
+      "after": ["v", "b", "c"]
+    },
+
+    // shift J and K scroll, and comma now joins lines
+    {
+      "before": ["J"],
+      "after": ["<C-e>"]
+    },
+    {
+      "before": ["K"],
+      "after": ["<C-y>"]
+    },
+    {
+      "before": [","],
+      "after": ["J"]
+    },
+
+    // Save and quit with cap S and Q like in my vimrc
+    {
+      "before": ["S"],
+      "after": [":", "w", "<cr>"]
+    },
+    {
+      "before": ["Q"],
+      "after": [":", "q", "<cr>"]
     }
-  },
-  // Making Linux VS Code look better
-  "window.titleBarStyle": "custom",
-  // Linter settings
-  // CSS
-  "less.lint.emptyRules": "ignore",
-  "scss.lint.emptyRules": "ignore",
-  "css.lint.emptyRules": "ignore",
-  "emmet.triggerExpansionOnTab": true,
-  // remove underline from links
-  "editor.links": false,
-  "editor.fontLigatures": true,
-  "subtleBrackets.parse": false,
-  "sync.quietSync": true,
-  "editor.parameterHints.enabled": false,
-  "editor.suggestOnTriggerCharacters": false,
-  // Disable menu bar ALT key shortcuts (annoying as hell)
-  "window.customMenuBarAltFocus": false,
-  "window.enableMenuBarMnemonics": false,
+  ],
 
-  // --- EDITOR SETTINGS ---
-  // Font Family
-    // @sync os=linux
-    // "editor.fontFamily": "'JetBrains Mono', 'Fira Code Retina', Monaco, Menlo, 'Courier New', monospace",
-    // @sync os=mac
-    "editor.fontFamily": "'JetBrains Mono', 'Fira Code', Monaco, Menlo, 'Courier New', monospace",
-    // @sync os=mac
-    "editor.fontWeight": "400",
-    // @sync os=windows
-    // "editor.fontFamily": "'JetBrains Mono', 'Fira Code', Monaco, Menlo, 'Courier New', monospace",
-  // General
-    "editor.smoothScrolling": false,
-  // Font Size
-    // @sync os=mac
-    "editor.fontSize": 15,
-    // @sync os=linux
-    // "editor.fontSize": 16,
-    // @sync os=windows
-    // "editor.fontSize": 16,
-  // Line Height
-    // @sync os=linux
-    // "editor.lineHeight": 26,
-    // @sync os=windows
-    // "editor.lineHeight": 25,
+  // VISUAL MODE
+  "vim.visualModeKeyBindingsNonRecursive": [
+    // Repeatable multiline indentation
+    {
+      "before": [">"],
+      "commands": ["editor.action.indentLines"]
+    },
+    {
+      "before": ["<"],
+      "commands": ["editor.action.outdentLines"]
+    }
+  ],
 
-  // --- DEBUG CONSOLE SETTINGS ---
-    // Font Family
-      // @sync os=linux
-      // "debug.console.fontFamily": "Fira Code Medium",
-      // @sync os=mac
-      "debug.console.fontFamily": "Fira Code",
-      // @sync os=windows
-      // "debug.console.fontFamily": "Fira Code",
-    // Font Size
-      // @sync os=mac
-      "debug.console.fontSize": 15,
-      // @sync os=linux
-      // "debug.console.fontSize": 15,
-      // @sync os=windows
-      // "debug.console.fontSize": 16,
-    // Line Height
-      // @sync os=mac
-      "debug.console.lineHeight": 24,
-      // @sync os=linux
-      // "debug.console.lineHeight": 24,
-      // @sync os=windows
-      // "debug.console.lineHeight": 24,
 
-  // --- TERMINAL SETTINGS ---
-    // Font Family
-      // @sync os=mac
-      "terminal.integrated.fontFamily": "Fira Code",
-      // @sync os=linux
-      // "terminal.integrated.fontFamily": "Fira Code Medium",
-      // @sync os=windows
-      // "terminal.integrated.fontFamily": "Fira Code",
-    // Font Size
-      // @sync os=mac
-      "terminal.integrated.fontSize": 15,
-      // @sync os=linux
-      // "terminal.integrated.fontSize": 16,
-      // @sync os=windows
-      // "terminal.integrated.fontSize": 16,
-    // Line Height
-      // @sync os=mac
-      "terminal.integrated.lineHeight": 1.12,
-      // @sync os=linux
-      // "terminal.integrated.lineHeight": 1.12,
-      // @sync os=windows
-      // "terminal.integrated.lineHeight": 1.2,
+  // ==================================
+  // == Unorganised
+  // ==================================
 
-    "javascript.updateImportsOnFileMove.enabled": "always",
-    "workbench.colorTheme": "LaserWave Italic",
-    "gitlens.mode.active": "zen",
 }

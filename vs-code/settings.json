@@ -16,7 +16,7 @@
   // ==================================
   // == Editor Settings
   // ==================================
-  
+
   // Text
   "editor.tabSize": 2,
   "editor.fontLigatures": true,
@@ -26,12 +26,12 @@
   "explorer.confirmDragAndDrop": false,
   "git.confirmSync": false,
   "editor.matchBrackets": false,
-    // replaced with "subtle match brackets"
+  // replaced with "subtle match brackets"
   "editor.formatOnPaste": true,
   "editor.copyWithSyntaxHighlighting": false,
   // @sync os=linux
   // "keyboard.dispatch": "keyCode",
-    // for linux custom keybindings
+  // for linux custom keybindings
 
   // Selection
   "editor.roundedSelection": false,
@@ -87,6 +87,7 @@
     "**/.DS_Store": true,
     "**/node_modules": true
   },
+
 
   // ==================================
   // == Font Settings
@@ -146,7 +147,7 @@
   // File Associations (VS Code)
   "files.associations": {
     "*.tsx": "typescriptreact",
-    "*.jsx": "javascriptreact",
+    "*.jsx": "javascriptreact"
   },
 
   // JavaScript
@@ -200,7 +201,6 @@
   // Emmet
   "emmet.showSuggestionsAsSnippets": true,
   "emmet.triggerExpansionOnTab": true,
-
 
   // Highlight Matching Tag
   "highlight-matching-tag.highlightSelfClosing": true,
@@ -645,6 +645,13 @@
       */
 
       "textMateRules": [
+        // Typescript "this" keyword is purple
+        {
+          "scope": ["variable.language.this.tsx"],
+          "settings": {
+            "foreground": "#B381C5"
+          }
+        },
         // Smoke/tinted color for unimportant things and unknown variables
         {
           "scope": [
@@ -667,7 +674,7 @@
         },
         // Coloring classes
         {
-          "scope": ["entity.name.type.class",],
+          "scope": ["entity.name.type.class"],
           "settings": {
             "foreground": "#5fcc98"
           }
@@ -765,9 +772,9 @@
             "foreground": "#ddcc96"
           }
         },
-        // Making 'new' keyword italic
+        // Making 'new' and 'this' keyword italic
         {
-          "scope": ["keyword.operator.new"],
+          "scope": ["keyword.operator.new", "variable.language.this.tsx"],
           "settings": {
             "fontStyle": "italic"
           }
@@ -913,7 +920,7 @@
       "before": ["Q"],
       "after": [":", "q", "<cr>"]
     },
-     
+
     // EASYMOTION TWEAKS
     // Search n characters
     {
@@ -924,9 +931,8 @@
     {
       "before": ["g", "l"],
       "after": ["<leader>", "<leader>", "<leader>", "b", "d", "j", "k"]
-    },
+    }
   ],
-
 
   // VISUAL MODE
   "vim.visualModeKeyBindingsNonRecursive": [
@@ -947,6 +953,5 @@
   // ==================================
   // first item is deliberately here so others are placed after
 
-  "editor.accessibilitySupport": "off",
-
+  "editor.accessibilitySupport": "off"
 }

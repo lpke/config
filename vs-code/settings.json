@@ -12,7 +12,6 @@
   "workbench.startupEditor": "newUntitledFile",
   "workbench.tips.enabled": false,
 
-
   // ==================================
   // == Editor Settings
   // ==================================
@@ -41,8 +40,9 @@
   // View
   "editor.lineNumbers": "relative",
   "window.zoomLevel": 0,
-  "workbench.editor.tabSizing": "shrink",
   "workbench.editor.wrapTabs": true,
+  "workbench.editor.pinnedTabSizing": "compact",
+  "workbench.editor.tabSizing": "shrink",
   "workbench.activityBar.visible": true,
   "editor.links": false,
 
@@ -50,7 +50,12 @@
   "editor.cursorBlinking": "solid",
 
   // Menu Bar
+  // @sync os=mac
   "window.titleBarStyle": "custom",
+  // @sync os=windows
+  // "window.titleBarStyle": "custom",
+  // @sync os=linux
+  // "window.titleBarStyle": "native",
   "window.customMenuBarAltFocus": false,
   "window.enableMenuBarMnemonics": false,
 
@@ -89,18 +94,27 @@
     "**/node_modules": true
   },
 
-
   // ==================================
   // == Font Settings
   // ==================================
 
   // EDITOR
+  // @sync os=linux
+  // "editor.inlineHints.fontFamily": "'JetBrains Mono Medium', 'Fira Code', Monaco, Menlo, 'Courier New', monospace",
+  // @sync os=mac
   "editor.inlineHints.fontFamily": "'JetBrains Mono', 'Fira Code', Monaco, Menlo, 'Courier New', monospace",
+  // @sync os=windows
+  // "editor.inlineHints.fontFamily": "'JetBrains Mono', 'Fira Code', Monaco, Menlo, 'Courier New', monospace",
+  // @sync os=linux
+  // "editor.fontFamily": "'JetBrains Mono Medium', 'Fira Code', Monaco, Menlo, 'Courier New', monospace",
+  // @sync os=mac
   "editor.fontFamily": "'JetBrains Mono', 'Fira Code', Monaco, Menlo, 'Courier New', monospace",
+  // @sync os=windows
+  // "editor.fontFamily": "'JetBrains Mono', 'Fira Code', Monaco, Menlo, 'Courier New', monospace",
   // @sync os=mac
   "editor.fontSize": 15,
   // @sync os=linux
-  // "editor.fontSize": 16,
+  // "editor.fontSize": 15,
   // @sync os=windows
   // "editor.fontSize": 16,
   // @sync os=mac
@@ -111,7 +125,12 @@
   // "editor.lineHeight": 24,
 
   // DEBUG CONSOLE
+  // @sync os=linux
+  // "debug.console.fontFamily": "'JetBrains Mono Medium', 'Fira Code', Monaco, Menlo, 'Courier New', monospace",
+  // @sync os=mac
   "debug.console.fontFamily": "'JetBrains Mono', 'Fira Code', Monaco, Menlo, 'Courier New', monospace",
+  // @sync os=windows
+  // "debug.console.fontFamily": "'JetBrains Mono', 'Fira Code', Monaco, Menlo, 'Courier New', monospace",
   // @sync os=mac
   "debug.console.fontSize": 15,
   // @sync os=linux
@@ -126,7 +145,12 @@
   // "debug.console.lineHeight": 24,
 
   // TERMINAL
+  // @sync os=linux
+  // "terminal.integrated.fontFamily": "'JetBrains Mono Medium', 'Fira Code', Monaco, Menlo, 'Courier New', monospace",
+  // @sync os=mac
   "terminal.integrated.fontFamily": "'JetBrains Mono', 'Fira Code', Monaco, Menlo, 'Courier New', monospace",
+  // @sync os=windows
+  // "terminal.integrated.fontFamily": "'JetBrains Mono', 'Fira Code', Monaco, Menlo, 'Courier New', monospace",
   // @sync os=mac
   "terminal.integrated.fontSize": 15,
   // @sync os=linux
@@ -139,7 +163,6 @@
   // "terminal.integrated.lineHeight": 1.15,
   // @sync os=windows
   // "terminal.integrated.lineHeight": 1.2,
-
 
   // ==================================
   // == Language Settings
@@ -193,7 +216,6 @@
   "[html]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-
 
   // ==================================
   // == Extension Settings
@@ -269,6 +291,50 @@
     }
   ],
 
+  // Todo Tree
+  "todo-tree.tree.showScanModeButton": false,
+  "todo-tree.general.tags": [
+    "TODO",
+    "FIXME",
+    "TEMP",
+  ],
+  "todo-tree.highlights.defaultHighlight": {
+    "icon": "issue-opened",
+    "type": "whole-line",
+    "foreground": "#767080",
+    "background": "#e08da5",
+    "opacity": 10,
+    "iconColour": "#e08da5"
+  },
+  "todo-tree.highlights.customHighlight": {
+    "TODO": {
+      "icon": "dot-fill",
+      "gutterIcon": true,
+      "type": "whole-line",
+      "foreground": "#767080",
+      "background": "#4AB4C4",
+      "opacity": 6,
+      "iconColour": "#4AB4C4",
+    },
+    "FIXME": {
+      "icon": "alert",
+      "gutterIcon": true,
+      "type": "whole-line",
+      "foreground": "#767080",
+      "background": "#e65a6e",
+      "opacity": 10,
+      "iconColour": "#e65a6e",
+    },
+    "TEMP": {
+      "icon": "dot-fill",
+      "gutterIcon": true,
+      "type": "tag-and-comment",
+      "foreground": "#767080",
+      "background": "#FADB82",
+      "opacity": 8,
+      "iconColour": "#FADB82",
+    },
+  },
 
   // ==================================
   // == Theme / Colour Settings
@@ -803,7 +869,6 @@
     }
   },
 
-
   // ==================================
   // == VIM Settings / Plugins
   // ==================================
@@ -818,7 +883,6 @@
   "vim.easymotionMarkerForegroundColorTwoCharFirst": "#df87ff",
   "vim.easymotionMarkerForegroundColorTwoCharSecond": "#A96BC0",
   "vim.easymotionIncSearchForegroundColor": "#46e398",
-
 
   // ==================================
   // == VIM Keybindings
@@ -925,8 +989,13 @@
     // EASYMOTION TWEAKS
     // Search n characters
     {
-      "before": ["g", "/"],
+      "before": ["g", "\\"],
       "after": ["<leader>", "<leader>", "/"]
+    },
+    // Search for a character
+    {
+      "before": ["g", "/"],
+      "after": ["<leader>", "<leader>", "s"]
     },
     // Jump to start of line
     {
@@ -945,9 +1014,17 @@
     {
       "before": ["<"],
       "commands": ["editor.action.outdentLines"]
+    },
+    // left and right arrow keys do camelcase movement
+    {
+      "before": ["left"],
+      "after": ["<leader>", "b"]
+    },
+    {
+      "before": ["right"],
+      "after": ["<leader>", "w"]
     }
   ],
-
 
   // ==================================
   // == Unorganised
@@ -955,4 +1032,5 @@
   // first item is deliberately here so others are placed after
 
   "editor.accessibilitySupport": "off",
+  "window.menuBarVisibility": "toggle",
 }

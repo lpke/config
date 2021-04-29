@@ -45,6 +45,7 @@
   "workbench.editor.tabSizing": "shrink",
   "workbench.activityBar.visible": true,
   "editor.links": false,
+  "explorer.compactFolders": false,
 
   // Cursor
   "editor.cursorBlinking": "solid",
@@ -295,6 +296,7 @@
   "todo-tree.tree.showScanModeButton": false,
   "todo-tree.general.tags": [
     "TODO",
+    "UPDATE",
     "FIXME",
     "TEMP",
   ],
@@ -315,6 +317,15 @@
       "background": "#4AB4C4",
       "opacity": 6,
       "iconColour": "#4AB4C4",
+    },
+    "UPDATE": {
+      "icon": "dot-fill",
+      "gutterIcon": true,
+      "type": "whole-line",
+      "foreground": "#767080",
+      "background": "#E566BA",
+      "opacity": 10,
+      "iconColour": "#E566BA",
     },
     "FIXME": {
       "icon": "alert",

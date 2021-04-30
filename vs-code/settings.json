@@ -1034,6 +1034,11 @@
     {
       "before": ["right"],
       "after": ["<leader>", "w"]
+    },
+    // Pasting in visual mode does not override current register
+    {
+      "before": ["p"],
+      "after": ["p", "g", "v", "y"]
     }
   ],
 

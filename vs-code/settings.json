@@ -438,13 +438,22 @@
       "minimapGutter.modifiedBackground": "#56397e",
       "minimapGutter.deletedBackground": "#7a3131",
 
-      // Widget
-      "editorWidget.background": "#221c29",
-      "editorSuggestWidget.foreground": "#eeeeee",
-      "editorSuggestWidget.highlightForeground": "#B381C5",
-      "editorSuggestWidget.selectedBackground": "#47414b3b",
-      "editorSuggestWidget.background": "#221c29",
+      // WIDGETS
+      // All widgets
+      "editorWidget.background": "#211C29",
+      // Suggestion popup
+      "editorSuggestWidget.background": "#211C29",
       "editorSuggestWidget.border": "#716385",
+      "editorSuggestWidget.selectedBackground": "#58445fd5",
+      "editorSuggestWidget.foreground": "#eeeeee",
+      "editorSuggestWidget.highlightForeground": "#b381c5",
+      // Peek view
+      "peekView.border": "#b381c5",
+      "peekViewEditor.background": "#26212E",
+      "peekViewResult.background": "#211C29",
+      "peekViewTitle.background": "#211C29",
+      "peekViewResult.matchHighlightBackground": "#48afbf67",
+      "peekViewResult.selectionBackground": "#eb64ba56",
 
       // Minimap
       "minimap.selectionHighlight": "#694780bb",
@@ -917,12 +926,12 @@
       "after": ["g", "g", "V", "G"]
     },
 
-    // Refactor
+    // Rename (same as F2)
     {
       "before": ["g", "r"],
       "commands": [
         {
-          "command": "editor.action.refactor"
+          "command": "editor.action.rename"
         }
       ]
     },
@@ -1012,7 +1021,50 @@
     {
       "before": ["g", "l"],
       "after": ["<leader>", "<leader>", "<leader>", "b", "d", "j", "k"]
-    }
+    },
+
+    // PEEK
+    // Disabling "gp" on it's own
+    {
+      "before": ["g", "p"],
+      "after": []
+    },
+    // Peek definition
+    {
+      "before": ["g", "p", "d"],
+      "commands": [
+        {
+          "command": "editor.action.peekDefinition"
+        }
+      ]
+    },
+    // Peek type definition
+    {
+      "before": ["g", "p", "t"],
+      "commands": [
+        {
+          "command": "editor.action.peekTypeDefinition"
+        }
+      ]
+    },
+    // Peek implementations
+    {
+      "before": ["g", "p", "i"],
+      "commands": [
+        {
+          "command": "editor.action.peekImplementation"
+        }
+      ]
+    },
+    // Peek references
+    {
+      "before": ["g", "p", "r"],
+      "commands": [
+        {
+          "command": "editor.action.goToReferences"
+        }
+      ]
+    },
   ],
 
   // VISUAL MODE

@@ -419,5 +419,17 @@
     "key": "alt+k",
     "command": "selectPrevSuggestion",
     "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
-  }
+  },
+
+  // peek widget navigation
+  {
+    "key": "left",
+    "command": "togglePeekWidgetFocus",
+    "when": "!inReferenceSearchEditor && referenceSearchVisible"
+  },
+  {
+    "key": "space",
+    "command": "togglePeekWidgetFocus",
+    "when": "vim.mode != 'Insert' && inReferenceSearchEditor || vim.mode != 'Insert' && referenceSearchVisible"
+  },
 ]

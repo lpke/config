@@ -425,11 +425,31 @@
   {
     "key": "left",
     "command": "togglePeekWidgetFocus",
-    "when": "!inReferenceSearchEditor && referenceSearchVisible"
+    "when": "!inReferenceSearchEditor && referenceSearchVisible && listFocus"
   },
   {
     "key": "space",
     "command": "togglePeekWidgetFocus",
-    "when": "vim.mode != 'Insert' && inReferenceSearchEditor || vim.mode != 'Insert' && referenceSearchVisible"
+    "when": "vim.mode != 'Insert' && referenceSearchVisible && !listFocus"
+  },
+  {
+    "key": "space",
+    "command": "workbench.action.focusActiveEditorGroup",
+    "when": "vim.mode != 'Insert' && inReferenceSearchEditor"
+  },
+  {
+    "key": "cmd+l",
+    "command": "togglePeekWidgetFocus",
+    "when": "inReferenceSearchEditor"
+  },
+  {
+    "key": "cmd+h",
+    "command": "togglePeekWidgetFocus",
+    "when": "!inReferenceSearchEditor && referenceSearchVisible && listFocus"
+  },
+  {
+    "key": "h",
+    "command": "togglePeekWidgetFocus",
+    "when": "!inReferenceSearchEditor && referenceSearchVisible && listFocus"
   },
 ]

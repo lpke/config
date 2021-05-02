@@ -28,6 +28,8 @@
   { "key": "shift+cmd+e", "command": "-workbench.view.explorer" },
   { "key": "ctrl+shift+g", "command": "-workbench.view.scm" },
   { "key": "ctrl+alt+n", "command": "-code-runner.run" },
+  { "key": "alt+cmd+right", "command": "-workbench.action.nextEditor" },
+  { "key": "alt+cmd+left", "command": "-workbench.action.previousEditor" },
 
   // misc shortcuts for workflow
   {
@@ -157,26 +159,26 @@
     "when": "isLinux && editorTextFocus && vim.active"
   },
   // move editors around
+  {
+    "key": "cmd+alt+h",
+    "command": "workbench.action.moveEditorLeftInGroup",
+    "when": "isMac"
+  },
+  {
+    "key": "cmd+alt+l",
+    "command": "workbench.action.moveEditorRightInGroup",
+    "when": "isMac"
+  },
   // moving between groups
   {
-    "key": "ctrl+shift+alt+l",
-    "command": "workbench.action.moveEditorToNextGroup",
-    "when": "isMac"
-  },
-  {
-    "key": "ctrl+shift+alt+l",
-    "command": "workbench.action.moveEditorToNextGroup",
-    "when": "isLinux"
-  },
-  {
-    "key": "ctrl+shift+alt+h",
+    "key": "cmd+alt+left",
     "command": "workbench.action.moveEditorToPreviousGroup",
     "when": "isMac"
   },
   {
-    "key": "ctrl+shift+alt+h",
-    "command": "workbench.action.moveEditorToPreviousGroup",
-    "when": "isLinux"
+    "key": "cmd+alt+right",
+    "command": "workbench.action.moveEditorToNextGroup",
+    "when": "isMac"
   },
   // moving within group
   {

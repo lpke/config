@@ -120,22 +120,12 @@
   {
     "key": "cmd+l",
     "command": "workbench.action.focusNextGroup",
-    "when": "isMac && vim.active"
-  },
-  {
-    "key": "ctrl+l",
-    "command": "workbench.action.focusNextGroup",
-    "when": "isLinux && vim.active"
+    "when": "isMac && editorTextFocus && !listFocus"
   },
   {
     "key": "cmd+h",
     "command": "workbench.action.focusPreviousGroup",
-    "when": "isMac && vim.active"
-  },
-  {
-    "key": "ctrl+h",
-    "command": "workbench.action.focusPreviousGroup",
-    "when": "isLinux && vim.active"
+    "when": "isMac && editorTextFocus && !inReferenceSearchEditor"
   },
   // navigate editor tabs
   {
@@ -288,12 +278,12 @@
   {
     "key": "cmd+h",
     "command": "multiCommand.openFocusSidebar",
-    "when": "editorFocus && activeEditorGroupIndex == 1 && !sideBarVisible"
+    "when": "editorFocus && activeEditorGroupIndex == 1 && !sideBarVisible && !inReferenceSearchEditor"
   },
   {
     "key": "cmd+h",
     "command": "workbench.action.focusSideBar",
-    "when": "editorFocus && activeEditorGroupIndex == 1 && sideBarVisible"
+    "when": "editorFocus && activeEditorGroupIndex == 1 && sideBarVisible && !inReferenceSearchEditor"
   },
   {
     "key": "cmd+h",
@@ -441,6 +431,16 @@
   },
   {
     "key": "cmd+l",
+    "command": "togglePeekWidgetFocus",
+    "when": "inReferenceSearchEditor"
+  },
+  {
+    "key": "cmd+l",
+    "command": "togglePeekWidgetFocus",
+    "when": "!inReferenceSearchEditor && referenceSearchVisible && listFocus"
+  },
+  {
+    "key": "cmd+h",
     "command": "togglePeekWidgetFocus",
     "when": "inReferenceSearchEditor"
   },

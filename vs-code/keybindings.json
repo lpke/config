@@ -430,6 +430,11 @@
     "when": "vim.mode != 'Insert' && inReferenceSearchEditor"
   },
   {
+    "key": "space",
+    "command": "workbench.action.focusActiveEditorGroup",
+    "when": "listFocus && referenceSearchVisible && !editorTextFocus"
+  },
+  {
     "key": "cmd+l",
     "command": "togglePeekWidgetFocus",
     "when": "inReferenceSearchEditor"

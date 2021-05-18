@@ -259,6 +259,46 @@
   "gitlens.hovers.enabled": false,
   "gitlens.hovers.currentLine.over": "annotation",
   "gitlens.statusBar.reduceFlicker": true,
+  "gitlens.menus": {
+    "editor": {
+      "blame": false,
+      "clipboard": true,
+      "compare": true,
+      "history": false,
+      "remote": false
+    },
+    "editorGroup": false,
+    "editorTab": {
+      "clipboard": true,
+      "compare": true,
+      "history": true,
+      "remote": true
+    },
+    "explorer": {
+      "clipboard": true,
+      "compare": true,
+      "history": true,
+      "remote": true
+    },
+    "scm": {
+      "authors": true
+    },
+    "scmGroupInline": {
+      "stash": true
+    },
+    "scmGroup": {
+      "compare": true,
+      "openClose": true,
+      "stash": true
+    },
+    "scmItem": {
+      "clipboard": true,
+      "compare": true,
+      "history": true,
+      "remote": false,
+      "stash": true
+    }
+  },
 
   // Code Runner
   "code-runner.enableAppInsights": false,
@@ -1101,4 +1141,5 @@
 
   "editor.accessibilitySupport": "off",
   "window.menuBarVisibility": "toggle",
+  "workbench.editor.untitled.hint": "hidden",
 }

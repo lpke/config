@@ -60,6 +60,11 @@
   "window.customMenuBarAltFocus": false,
   "window.enableMenuBarMnemonics": false,
 
+  // Breadcrumbs
+  "breadcrumbs.enabled": false,
+  "breadcrumbs.icons": false,
+  "breadcrumbs.symbolPath": "off",
+
   // Minimap
   "editor.minimap.maxColumn": 95,
   "editor.minimap.showSlider": "always",

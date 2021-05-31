@@ -61,7 +61,7 @@
   "window.enableMenuBarMnemonics": false,
 
   // Breadcrumbs
-  "breadcrumbs.enabled": false,
+  "breadcrumbs.enabled": true,
   "breadcrumbs.icons": false,
   "breadcrumbs.symbolPath": "off",
 

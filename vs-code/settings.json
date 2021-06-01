@@ -191,7 +191,7 @@
   },
 
   // TypeScript
-  "typescript.tsserver.experimental.enableProjectDiagnostics": true,
+  "typescript.tsserver.maxTsServerMemory": 8000,
   "typescript.updateImportsOnFileMove.enabled": "always",
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -335,17 +335,60 @@
         "workbench.action.toggleSidebarVisibility",
         "workbench.action.focusSideBar"
       ]
+    },
+    {
+      "command": "multiCommand.cycleProjectChecking",
+      "sequence": [
+        "settings.cycle.projectCheckingStatus",
+        "settings.cycle.projectChecking"
+      ]
+    }
+  ],
+
+  // Settings Cycler (shortcuts to cycle/toggle settings)
+  // use in keybindings.json as command: `settings.cycle.<id>`
+  "settings.cycle": [
+    {
+      "id": "projectChecking",
+      "overrideWorkspaceSettings": true,
+      "values": [
+        { "typescript.tsserver.experimental.enableProjectDiagnostics": false },
+        { "typescript.tsserver.experimental.enableProjectDiagnostics": true }
+      ]
+    },
+    {
+      "id": "projectCheckingStatus",
+      "overrideWorkspaceSettings": true,
+      "values": [
+        {
+          "statusbar_command.commands": [
+            {
+              "text": "$(check)",
+              "tooltip": "TS: Checking only open files",
+              "alignment": "left",
+              "command": "multiCommand.cycleProjectChecking",
+              "priority": 100
+            }
+          ]
+        },
+        {
+          "statusbar_command.commands": [
+            {
+              "text": "$(check-all)",
+              "tooltip": "TS: Checking all files",
+              "alignment": "left",
+              "command": "multiCommand.cycleProjectChecking",
+              "priority": 100
+            }
+          ]
+        }
+      ]
     }
   ],
 
   // Todo Tree
   "todo-tree.tree.showScanModeButton": false,
-  "todo-tree.general.tags": [
-    "TODO",
-    "UPDATE",
-    "FIXME",
-    "TEMP",
-  ],
+  "todo-tree.general.tags": ["TODO", "UPDATE", "FIXME", "TEMP"],
   "todo-tree.highlights.defaultHighlight": {
     "icon": "issue-opened",
     "type": "whole-line",
@@ -362,7 +405,7 @@
       "foreground": "#767080",
       "background": "#4AB4C4",
       "opacity": 6,
-      "iconColour": "#4AB4C4",
+      "iconColour": "#4AB4C4"
     },
     "UPDATE": {
       "icon": "dot-fill",
@@ -371,7 +414,7 @@
       "foreground": "#767080",
       "background": "#E566BA",
       "opacity": 10,
-      "iconColour": "#E566BA",
+      "iconColour": "#E566BA"
     },
     "FIXME": {
       "icon": "alert",
@@ -380,7 +423,7 @@
       "foreground": "#767080",
       "background": "#e65a6e",
       "opacity": 10,
-      "iconColour": "#e65a6e",
+      "iconColour": "#e65a6e"
     },
     "TEMP": {
       "icon": "dot-fill",
@@ -389,8 +432,8 @@
       "foreground": "#767080",
       "background": "#FADB82",
       "opacity": 8,
-      "iconColour": "#FADB82",
-    },
+      "iconColour": "#FADB82"
+    }
   },
 
   // ==================================
@@ -1110,7 +1153,7 @@
           "command": "editor.action.goToReferences"
         }
       ]
-    },
+    }
   ],
 
   // VISUAL MODE
@@ -1148,4 +1191,14 @@
   "editor.accessibilitySupport": "off",
   "window.menuBarVisibility": "toggle",
   "workbench.editor.untitled.hint": "hidden",
+  "typescript.tsserver.experimental.enableProjectDiagnostics": false,
+  "statusbar_command.commands": [
+    {
+      "text": "$(check)",
+      "tooltip": "TS: Checking only open files",
+      "alignment": "left",
+      "command": "multiCommand.cycleProjectChecking",
+      "priority": 100
+    }
+  ]
 }

@@ -31,7 +31,7 @@
   // @sync os=linux
   // "keyboard.dispatch": "keyCode",
   // for linux custom keybindings
-  "editor.insertSpaces": false,
+  "editor.insertSpaces": true,
   "editor.wordSeparators": "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?-",
 
   // Selection

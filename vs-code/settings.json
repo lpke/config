@@ -17,7 +17,7 @@
   // ==================================
 
   // Text
-  "editor.tabSize": 8,
+  "editor.tabSize": 2,
   "editor.fontLigatures": true,
 
   // Behaviour
@@ -40,7 +40,7 @@
   "editor.occurrencesHighlight": false,
 
   // View
-  "editor.lineNumbers": "on",
+  "editor.lineNumbers": "relative",
   "window.zoomLevel": 0,
   "workbench.editor.wrapTabs": true,
   "workbench.editor.pinnedTabSizing": "compact",

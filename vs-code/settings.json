@@ -4,8 +4,7 @@
   // ==================================
 
   // Telemetry
-  "telemetry.enableTelemetry": false,
-  "telemetry.enableCrashReporter": false,
+  "telemetry.telemetryLevel": "off",
   "workbench.enableExperiments": false,
 
   // Blank / New Editor
@@ -24,7 +23,7 @@
   "editor.wordWrap": "on",
   "explorer.confirmDragAndDrop": false,
   "git.confirmSync": false,
-  "editor.matchBrackets": false,
+  "editor.matchBrackets": "never",
   "editor.copyWithSyntaxHighlighting": false,
   // @sync os=linux
   // "keyboard.dispatch": "keyCode",

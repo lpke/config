@@ -25,8 +25,6 @@
   "explorer.confirmDragAndDrop": false,
   "git.confirmSync": false,
   "editor.matchBrackets": false,
-  // replaced with "subtle match brackets"
-  "editor.formatOnPaste": true,
   "editor.copyWithSyntaxHighlighting": false,
   // @sync os=linux
   // "keyboard.dispatch": "keyCode",
@@ -55,9 +53,9 @@
 
   // Menu Bar
   // @sync os=mac
-  "window.titleBarStyle": "custom",
-  // @sync os=windows
   // "window.titleBarStyle": "custom",
+  // @sync os=windows
+  "window.titleBarStyle": "custom",
   // @sync os=linux
   // "window.titleBarStyle": "native",
   "window.customMenuBarAltFocus": false,
@@ -71,6 +69,10 @@
   // Minimap
   "editor.minimap.maxColumn": 95,
   "editor.minimap.showSlider": "always",
+
+  // Integrated Terminal Behaviour
+  "terminal.integrated.localEchoLatencyThreshold": 100,
+  "terminal.integrated.localEchoStyle": "dim",
 
   // INTELLISENSE & SUGGESTIONS
   // Toggles
@@ -111,67 +113,67 @@
   // @sync os=linux
   // "editor.inlineHints.fontFamily": "'JetBrains Mono Medium', 'Fira Code', Monaco, Menlo, 'Courier New', monospace",
   // @sync os=mac
-  "editor.inlineHints.fontFamily": "'JetBrains Mono', 'Fira Code', Monaco, Menlo, 'Courier New', monospace",
-  // @sync os=windows
   // "editor.inlineHints.fontFamily": "'JetBrains Mono', 'Fira Code', Monaco, Menlo, 'Courier New', monospace",
+  // @sync os=windows
+  "editor.inlineHints.fontFamily": "'JetBrains Mono', 'Fira Code', Monaco, Menlo, 'Courier New', monospace",
   // @sync os=linux
   // "editor.fontFamily": "'JetBrains Mono Medium', 'Fira Code', Monaco, Menlo, 'Courier New', monospace",
   // @sync os=mac
-  "editor.fontFamily": "'JetBrains Mono', 'Fira Code', Monaco, Menlo, 'Courier New', monospace",
-  // @sync os=windows
   // "editor.fontFamily": "'JetBrains Mono', 'Fira Code', Monaco, Menlo, 'Courier New', monospace",
+  // @sync os=windows
+  "editor.fontFamily": "'JetBrains Mono', 'Fira Code', Monaco, Menlo, 'Courier New', monospace",
   // @sync os=mac
-  "editor.fontSize": 15,
+  // "editor.fontSize": 15,
   // @sync os=linux
   // "editor.fontSize": 15,
   // @sync os=windows
-  // "editor.fontSize": 16,
+  "editor.fontSize": 16,
   // @sync os=mac
-  "editor.lineHeight": 24,
+  // "editor.lineHeight": 24,
   // @sync os=linux
   // "editor.lineHeight": 25,
   // @sync os=windows
-  // "editor.lineHeight": 24,
+  "editor.lineHeight": 24,
 
   // DEBUG CONSOLE
   // @sync os=linux
   // "debug.console.fontFamily": "'JetBrains Mono Medium', 'Fira Code', Monaco, Menlo, 'Courier New', monospace",
   // @sync os=mac
-  "debug.console.fontFamily": "'JetBrains Mono', 'Fira Code', Monaco, Menlo, 'Courier New', monospace",
-  // @sync os=windows
   // "debug.console.fontFamily": "'JetBrains Mono', 'Fira Code', Monaco, Menlo, 'Courier New', monospace",
+  // @sync os=windows
+  "debug.console.fontFamily": "'JetBrains Mono', 'Fira Code', Monaco, Menlo, 'Courier New', monospace",
   // @sync os=mac
-  "debug.console.fontSize": 15,
+  // "debug.console.fontSize": 15,
   // @sync os=linux
   // "debug.console.fontSize": 15,
   // @sync os=windows
-  // "debug.console.fontSize": 16,
+  "debug.console.fontSize": 16,
   // @sync os=mac
-  "debug.console.lineHeight": 24,
+  // "debug.console.lineHeight": 24,
   // @sync os=linux
   // "debug.console.lineHeight": 24,
   // @sync os=windows
-  // "debug.console.lineHeight": 24,
+  "debug.console.lineHeight": 24,
 
   // TERMINAL
   // @sync os=linux
   // "terminal.integrated.fontFamily": "'JetBrains Mono Medium', 'Fira Code', Monaco, Menlo, 'Courier New', monospace",
   // @sync os=mac
-  "terminal.integrated.fontFamily": "'JetBrains Mono', 'Fira Code', Monaco, Menlo, 'Courier New', monospace",
-  // @sync os=windows
   // "terminal.integrated.fontFamily": "'JetBrains Mono', 'Fira Code', Monaco, Menlo, 'Courier New', monospace",
+  // @sync os=windows
+  "terminal.integrated.fontFamily": "'JetBrains Mono', 'Fira Code', Monaco, Menlo, 'Courier New', monospace",
   // @sync os=mac
-  "terminal.integrated.fontSize": 15,
+  // "terminal.integrated.fontSize": 15,
   // @sync os=linux
   // "terminal.integrated.fontSize": 16,
   // @sync os=windows
-  // "terminal.integrated.fontSize": 16,
+  "terminal.integrated.fontSize": 16,
   // @sync os=mac
-  "terminal.integrated.lineHeight": 1.2,
+  // "terminal.integrated.lineHeight": 1.2,
   // @sync os=linux
   // "terminal.integrated.lineHeight": 1.15,
   // @sync os=windows
-  // "terminal.integrated.lineHeight": 1.2,
+  "terminal.integrated.lineHeight": 1.2,
 
   // ==================================
   // == Language Settings
@@ -219,7 +221,7 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[jsonc]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "vscode.json-language-features"
   },
 
   // HTML
@@ -1204,4 +1206,6 @@
       "priority": 100
     }
   ],
+  "security.workspace.trust.untrustedFiles": "open",
+  "security.workspace.trust.enabled": false,
 }

@@ -2,40 +2,33 @@
   // ==================================
   // == VSCode General
   // ==================================
-
   // Telemetry
   "telemetry.telemetryLevel": "off",
   "workbench.enableExperiments": false,
-
   // Blank / New Editor
   "workbench.startupEditor": "newUntitledFile",
   "workbench.tips.enabled": false,
-
   // ==================================
   // == Editor Settings
   // ==================================
-
   // Text
   "editor.tabSize": 2,
   "editor.fontLigatures": true,
-
   // Behaviour
   "editor.wordWrap": "on",
   "explorer.confirmDragAndDrop": false,
   "git.confirmSync": false,
-  "editor.matchBrackets": "never",
+  "editor.matchBrackets": false,
   "editor.copyWithSyntaxHighlighting": false,
   // @sync os=linux
   // "keyboard.dispatch": "keyCode",
   // for linux custom keybindings
   "editor.insertSpaces": true,
   "editor.wordSeparators": "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?-",
-
   // Selection
   "editor.roundedSelection": false,
   "editor.selectionHighlight": false,
   "editor.occurrencesHighlight": false,
-
   // View
   "editor.lineNumbers": "relative",
   "window.zoomLevel": 0,
@@ -45,11 +38,9 @@
   "workbench.activityBar.visible": true,
   "editor.links": false,
   "explorer.compactFolders": false,
-
   // Cursor
   "editor.cursorStyle": "line",
   "editor.cursorBlinking": "solid",
-
   // Menu Bar
   // @sync os=mac
   // "window.titleBarStyle": "custom",
@@ -59,20 +50,16 @@
   // "window.titleBarStyle": "native",
   "window.customMenuBarAltFocus": false,
   "window.enableMenuBarMnemonics": false,
-
   // Breadcrumbs
   "breadcrumbs.enabled": true,
   "breadcrumbs.icons": false,
   "breadcrumbs.symbolPath": "off",
-
   // Minimap
   "editor.minimap.maxColumn": 95,
   "editor.minimap.showSlider": "always",
-
   // Integrated Terminal Behaviour
   "terminal.integrated.localEchoLatencyThreshold": 100,
   "terminal.integrated.localEchoStyle": "dim",
-
   // INTELLISENSE & SUGGESTIONS
   // Toggles
   "editor.codeLens": false,
@@ -93,7 +80,6 @@
   "editor.suggest.showInterfaces": false,
   "editor.suggest.showModules": false,
   "editor.suggest.showClasses": false,
-
   // File Exclusions
   "files.exclude": {
     "**/.git": true,
@@ -103,11 +89,9 @@
     "**/.DS_Store": true,
     "**/node_modules": true
   },
-
   // ==================================
   // == Font Settings
   // ==================================
-
   // EDITOR
   // @sync os=linux
   // "editor.inlineHints.fontFamily": "'JetBrains Mono Medium', 'Fira Code', Monaco, Menlo, 'Courier New', monospace",
@@ -133,7 +117,6 @@
   // "editor.lineHeight": 25,
   // @sync os=windows
   "editor.lineHeight": 24,
-
   // DEBUG CONSOLE
   // @sync os=linux
   // "debug.console.fontFamily": "'JetBrains Mono Medium', 'Fira Code', Monaco, Menlo, 'Courier New', monospace",
@@ -153,14 +136,13 @@
   // "debug.console.lineHeight": 24,
   // @sync os=windows
   "debug.console.lineHeight": 24,
-
   // TERMINAL
   // @sync os=linux
-  // "terminal.integrated.fontFamily": "'JetBrains Mono Medium', 'Fira Code', Monaco, Menlo, 'Courier New', monospace",
+  // "terminal.integrated.fontFamily": "'JetBrainsMono Nerd Font Mono','JetBrains Mono Medium', 'Fira Code', Monaco, Menlo, 'Courier New', monospace",
   // @sync os=mac
-  // "terminal.integrated.fontFamily": "'JetBrains Mono', 'Fira Code', Monaco, Menlo, 'Courier New', monospace",
+  // "terminal.integrated.fontFamily": "'JetBrainsMono Nerd Font Mono','JetBrains Mono', 'Fira Code', Monaco, Menlo, 'Courier New', monospace",
   // @sync os=windows
-  "terminal.integrated.fontFamily": "'JetBrains Mono', 'Fira Code', Monaco, Menlo, 'Courier New', monospace",
+  "terminal.integrated.fontFamily": "'JetBrainsMono Nerd Font Mono','JetBrains Mono', 'Fira Code', Monaco, Menlo, 'Courier New', monospace",
   // @sync os=mac
   // "terminal.integrated.fontSize": 15,
   // @sync os=linux
@@ -173,17 +155,14 @@
   // "terminal.integrated.lineHeight": 1.15,
   // @sync os=windows
   "terminal.integrated.lineHeight": 1.2,
-
   // ==================================
   // == Language Settings
   // ==================================
-
   // File Associations (VS Code)
   "files.associations": {
     "*.tsx": "typescriptreact",
     "*.jsx": "javascriptreact"
   },
-
   // JavaScript
   "javascript.validate.enable": true,
   "javascript.updateImportsOnFileMove.enabled": "always",
@@ -193,7 +172,6 @@
   "[javascriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-
   // TypeScript
   "typescript.tsserver.maxTsServerMemory": 8000,
   "typescript.updateImportsOnFileMove.enabled": "always",
@@ -203,18 +181,15 @@
   "[typescriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-
   // Python
   "python.pythonPath": "/usr/bin/python3",
   "python.linting.pylintEnabled": true,
   "python.linting.enabled": true,
   "python.showStartPage": false,
-
   // CSS
   "less.lint.emptyRules": "ignore",
   "scss.lint.emptyRules": "ignore",
   "css.lint.emptyRules": "ignore",
-
   // JSON
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -222,20 +197,16 @@
   "[jsonc]": {
     "editor.defaultFormatter": "vscode.json-language-features"
   },
-
   // HTML
   "[html]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-
   // ==================================
   // == Extension Settings
   // ==================================
-
   // Emmet
   "emmet.showSuggestionsAsSnippets": true,
   "emmet.triggerExpansionOnTab": true,
-
   // Highlight Matching Tag
   "highlight-matching-tag.highlightSelfClosing": true,
   "highlight-matching-tag.styles": {
@@ -245,19 +216,19 @@
       }
     }
   },
-
   // Subtle Match Brackets
   "subtleBrackets.parse": false,
-
   // Bracket Pair Colorizer
-  "bracket-pair-colorizer-2.colors": ["#eed568b3", "#e269b6b3", "#52b0bcb3"],
-
+  "bracket-pair-colorizer-2.colors": [
+    "#eed568b3",
+    "#e269b6b3",
+    "#52b0bcb3"
+  ],
   // Settings Sync (extension)
   "sync.autoDownload": true,
   "sync.autoUpload": true,
   "sync.gist": "934bb776e4b628cff2f99ce8ba9352b9",
   "sync.quietSync": true,
-
   // GitLens
   "gitlens.codeLens.enabled": false,
   "gitlens.views.fileHistory.location": "gitlens",
@@ -309,21 +280,17 @@
       "stash": true
     }
   },
-
   // Code Runner
   "code-runner.enableAppInsights": false,
   "code-runner.runInTerminal": true,
   "code-runner.showRunIconInEditorTitleMenu": false,
   "code-runner.preserveFocus": true,
   "code-runner.clearPreviousOutput": false,
-
   // Markdown Preview
   "markdown-preview-enhanced.scrollSync": true,
   "markdown-preview-enhanced.previewTheme": "atom-material.css",
-
   // NPM Intellisense
   "npm-intellisense.importQuotes": "\"",
-
   // Multi Command (custom commands)
   "multiCommand.commands": [
     {
@@ -348,7 +315,6 @@
       ]
     }
   ],
-
   // Settings Cycler (shortcuts to cycle/toggle settings)
   // use in keybindings.json as command: `settings.cycle.<id>`
   "settings.cycle": [
@@ -356,8 +322,12 @@
       "id": "projectChecking",
       "overrideWorkspaceSettings": true,
       "values": [
-        { "typescript.tsserver.experimental.enableProjectDiagnostics": false },
-        { "typescript.tsserver.experimental.enableProjectDiagnostics": true }
+        {
+          "typescript.tsserver.experimental.enableProjectDiagnostics": false
+        },
+        {
+          "typescript.tsserver.experimental.enableProjectDiagnostics": true
+        }
       ]
     },
     {
@@ -389,10 +359,14 @@
       ]
     }
   ],
-
   // Todo Tree
   "todo-tree.tree.showScanModeButton": false,
-  "todo-tree.general.tags": ["TODO", "UPDATE", "FIXME", "TEMP"],
+  "todo-tree.general.tags": [
+    "TODO",
+    "UPDATE",
+    "FIXME",
+    "TEMP"
+  ],
   "todo-tree.highlights.defaultHighlight": {
     "icon": "issue-opened",
     "type": "whole-line",
@@ -439,13 +413,10 @@
       "iconColour": "#FADB82"
     }
   },
-
   // ==================================
   // == Theme / Colour Settings
   // ==================================
-
   "workbench.colorTheme": "LaserWave Italic",
-
   // Workbench Colours
   "workbench.colorCustomizations": {
     "[DuoTone Dark Sky]": {
@@ -463,7 +434,6 @@
       "activityBarBadge.background": "#544580",
       "activityBarBadge.foreground": "#e0e0e0"
     },
-
     "[Ariake Dark]": {
       "editor.background": "#272a36",
       "statusBar.background": "#1d1f27",
@@ -481,7 +451,6 @@
       "activityBarBadge.background": "#3f4663",
       "activityBarBadge.foreground": "#e0e0e0"
     },
-
     "[LaserWave Italic]": {
       /* TODO:
         - make highlight color inside sidebar visible
@@ -489,13 +458,10 @@
         - tweaks to pink selections in general
         - make UI dropdown backgrounds fit with theme
       */
-
       // Default (unthemed) text color
       "editor.foreground": "#eeeeee",
-
       // Line number duller
       "editorLineNumber.foreground": "#494352",
-
       // EDITOR INTERFACE
       "editorGroup.border": "#1e1924",
       // Title bar
@@ -522,7 +488,6 @@
       "statusBar.background": "#1e1924",
       "statusBar.noFolderBackground": "#1e1924",
       "statusBar.debuggingBackground": "#3a1e55",
-
       // Git diff colors
       "editorGutter.addedBackground": "#30343d",
       "editorGutter.modifiedBackground": "#362a47",
@@ -530,7 +495,6 @@
       "minimapGutter.addedBackground": "#315348",
       "minimapGutter.modifiedBackground": "#56397e",
       "minimapGutter.deletedBackground": "#7a3131",
-
       // WIDGETS
       // All widgets
       "editorWidget.background": "#211C29",
@@ -547,7 +511,6 @@
       "peekViewTitle.background": "#211C29",
       "peekViewResult.matchHighlightBackground": "#48afbf67",
       "peekViewResult.selectionBackground": "#eb64ba56",
-
       // Minimap
       "minimap.selectionHighlight": "#694780bb",
       "minimap.findMatchHighlight": "#418ca5",
@@ -555,32 +518,25 @@
       "minimapSlider.background": "#69616b1a",
       "minimapSlider.hoverBackground": "#69616b1a",
       "minimapSlider.activeBackground": "#73548036",
-
       // Scrollbar
       "scrollbarSlider.background": "#6c676d1a",
       "scrollbarSlider.hoverBackground": "#6c656d27",
       "scrollbarSlider.activeBackground": "#73548036",
       "scrollbar.shadow": "#000000a6",
-
       // Line indentation guides
       "editorIndentGuide.activeBackground": "#796b883f",
       "editorIndentGuide.background": "#74628a17",
-
       // Active line
       "editor.lineHighlightBorder": "#2c2436",
       "editor.lineHighlightBackground": "#292231",
-
       // Folded line
       "editor.foldBackground": "#2d2536d5",
-
       // Selection
       "editor.selectionBackground": "#40344ede",
-
       // Search
       "editor.findRangeHighlightBackground": "#2b2233",
       "editor.findRangeHighlightBorder": "#40344e",
       "editor.rangeHighlightBackground": "#40344ede",
-
       // Integrated terminal
       "terminal.background": "#221e27",
       "terminal.ansiBlack": "#4a4a4a",
@@ -601,7 +557,6 @@
       "terminal.ansiBrightWhite": "#efefef"
     }
   },
-
   // Theme Colours / Syntax Highlighting
   "editor.tokenColorCustomizations": {
     "[Ariake Dark]": {
@@ -628,7 +583,6 @@
           Less Light Blue: #8bc9e2
           More Middle Blue: #7bbeeb
       */
-
       "textMateRules": [
         // Theme: Pink
         {
@@ -685,7 +639,9 @@
         },
         // Theme: Middle Blue
         {
-          "scope": ["support.type.property-name.json"],
+          "scope": [
+            "support.type.property-name.json"
+          ],
           "settings": {
             "foreground": "#85B1E0"
           }
@@ -728,10 +684,11 @@
             "foreground": "#5e647e"
           }
         },
-
         // Custom: Less White
         {
-          "scope": ["meta.property-value.css"],
+          "scope": [
+            "meta.property-value.css"
+          ],
           "settings": {
             "foreground": "#ecf1f5"
           }
@@ -757,29 +714,37 @@
         },
         // Custom: Less Light Blue
         {
-          "scope": ["constant.other.color.rgb-value.hex.css"],
+          "scope": [
+            "constant.other.color.rgb-value.hex.css"
+          ],
           "settings": {
             "foreground": "#8bc9e2"
           }
         },
         // Custom: More Middle Blue
         {
-          "scope": ["entity.name.tag.css", "variable.language.this"],
+          "scope": [
+            "entity.name.tag.css",
+            "variable.language.this"
+          ],
           "settings": {
             "foreground": "#81c5f1"
           }
         },
         // Custom: Subdued Pink
         {
-          "scope": ["keyword.other.unit"],
+          "scope": [
+            "keyword.other.unit"
+          ],
           "settings": {
             "foreground": "#956fa5"
           }
         },
-
         // Specific: Classes
         {
-          "scope": ["entity.name.type.class"],
+          "scope": [
+            "entity.name.type.class"
+          ],
           "settings": {
             "foreground": "#b27eff", // Custom: Bright Purple
             "fontStyle": "bold"
@@ -787,12 +752,10 @@
         }
       ]
     },
-
     "[LaserWave Italic]": {
       /* == TODO ==
         - change color of readonly variables (under semantics) and in-built objects (also semantics)
       */
-
       /* == COLOR REFERENCE ==
         Default Theme Colors:
 
@@ -823,11 +786,12 @@
           Yellow: #FFE261
             (boolean, const variable declarations, console object)
       */
-
       "textMateRules": [
         // Typescript "this" keyword is purple
         {
-          "scope": ["variable.language.this.tsx"],
+          "scope": [
+            "variable.language.this.tsx"
+          ],
           "settings": {
             "foreground": "#B381C5"
           }
@@ -847,21 +811,28 @@
         },
         // Slightly darkening comments
         {
-          "scope": ["comment", "punctuation.definition.comment"],
+          "scope": [
+            "comment",
+            "punctuation.definition.comment"
+          ],
           "settings": {
             "foreground": "#827a8b"
           }
         },
         // Coloring classes
         {
-          "scope": ["entity.name.type.class"],
+          "scope": [
+            "entity.name.type.class"
+          ],
           "settings": {
             "foreground": "#5fcc98"
           }
         },
         // Making JSX component tags differ from normal tags
         {
-          "scope": ["support.class.component"],
+          "scope": [
+            "support.class.component"
+          ],
           "settings": {
             "foreground": "#5fcc98",
             "fontStyle": "bold"
@@ -922,7 +893,9 @@
         },
         // Making code/pre parts of .md files a different color
         {
-          "scope": ["markup.inline.raw.string.markdown"],
+          "scope": [
+            "markup.inline.raw.string.markdown"
+          ],
           "settings": {
             "foreground": "#B4DCE7"
           }
@@ -954,7 +927,10 @@
         },
         // Making 'new' and 'this' keyword italic
         {
-          "scope": ["keyword.operator.new", "variable.language.this.tsx"],
+          "scope": [
+            "keyword.operator.new",
+            "variable.language.this.tsx"
+          ],
           "settings": {
             "fontStyle": "italic"
           }
@@ -962,11 +938,9 @@
       ]
     }
   },
-
   // Further Syntax Highlighting
   "editor.semanticTokenColorCustomizations": {
     "enabled": true,
-
     "[LaserWave Italic]": {
       "rules": {
         "variable.defaultLibrary": "#FFE28A",
@@ -981,150 +955,247 @@
       }
     }
   },
-
   // ==================================
   // == VIM Settings / Plugins
   // ==================================
-
   // Plugin Toggles
   "vim.visualstar": true,
   "vim.camelCaseMotion.enable": true,
   "vim.easymotion": true,
-
   // EasyMotion
   "vim.easymotionMarkerForegroundColorOneChar": "#3de8ff",
   "vim.easymotionMarkerForegroundColorTwoCharFirst": "#df87ff",
   "vim.easymotionMarkerForegroundColorTwoCharSecond": "#A96BC0",
   "vim.easymotionIncSearchForegroundColor": "#46e398",
-
   // ==================================
   // == VIM Keybindings
   // ==================================
-
   // NORMAL MODE
   "vim.normalModeKeyBindingsNonRecursive": [
     // Jump to matching HTML tag
     {
-      "before": ["<leader>", "%"],
+      "before": [
+        "<leader>",
+        "%"
+      ],
       "commands": [
         {
           "command": "editor.emmet.action.matchTag"
         }
       ]
     },
-
     // Select all text (in vim)
     {
-      "before": ["<leader>", "a"],
-      "after": ["g", "g", "V", "G"]
+      "before": [
+        "<leader>",
+        "a"
+      ],
+      "after": [
+        "g",
+        "g",
+        "V",
+        "G"
+      ]
     },
-
     // Rename (same as F2)
     {
-      "before": ["g", "r"],
+      "before": [
+        "g",
+        "r"
+      ],
       "commands": [
         {
           "command": "editor.action.rename"
         }
       ]
     },
-
     // Capital Y yanks to end of line, instead of whole line
     {
-      "before": ["Y"],
-      "after": ["y", "$"]
+      "before": [
+        "Y"
+      ],
+      "after": [
+        "y",
+        "$"
+      ]
     },
-
     // db and cb deleted/changes backward word including char under cursor
     {
-      "before": ["d", "b"],
-      "after": ["v", "b", "d"]
+      "before": [
+        "d",
+        "b"
+      ],
+      "after": [
+        "v",
+        "b",
+        "d"
+      ]
     },
     {
-      "before": ["c", "b"],
-      "after": ["v", "b", "c"]
+      "before": [
+        "c",
+        "b"
+      ],
+      "after": [
+        "v",
+        "b",
+        "c"
+      ]
     },
-
     // Toggle Boolean
     {
-      "before": ["c", "i", "b"],
+      "before": [
+        "c",
+        "i",
+        "b"
+      ],
       "commands": [
         {
           "command": "extension.toggleBool"
         }
       ]
     },
-
     // shift J and K scroll, and comma now joins lines
     {
-      "before": ["J"],
-      "after": ["<C-e>"]
+      "before": [
+        "J"
+      ],
+      "after": [
+        "<C-e>"
+      ]
     },
     {
-      "before": ["K"],
-      "after": ["<C-y>"]
+      "before": [
+        "K"
+      ],
+      "after": [
+        "<C-y>"
+      ]
     },
     {
-      "before": [","],
-      "after": ["J"]
+      "before": [
+        ","
+      ],
+      "after": [
+        "J"
+      ]
     },
-
     // up and down arrow keys navigate soft-wrapped lines
     {
-      "before": ["up"],
-      "after": ["g", "k"]
+      "before": [
+        "up"
+      ],
+      "after": [
+        "g",
+        "k"
+      ]
     },
     {
-      "before": ["down"],
-      "after": ["g", "j"]
+      "before": [
+        "down"
+      ],
+      "after": [
+        "g",
+        "j"
+      ]
     },
-
     // left and right arrow keys do camelcase movement
     {
-      "before": ["left"],
-      "after": ["<leader>", "b"]
+      "before": [
+        "left"
+      ],
+      "after": [
+        "<leader>",
+        "b"
+      ]
     },
     {
-      "before": ["right"],
-      "after": ["<leader>", "w"]
+      "before": [
+        "right"
+      ],
+      "after": [
+        "<leader>",
+        "w"
+      ]
     },
-
     // Save and quit with cap S and Q like in my vimrc
     {
-      "before": ["S"],
-      "after": [":", "w", "<cr>"]
+      "before": [
+        "S"
+      ],
+      "after": [
+        ":",
+        "w",
+        "<cr>"
+      ]
     },
     {
-      "before": ["Q"],
-      "after": [":", "q", "<cr>"]
+      "before": [
+        "Q"
+      ],
+      "after": [
+        ":",
+        "q",
+        "<cr>"
+      ]
     },
-
     // EASYMOTION TWEAKS
     // Search n characters
     {
-      "before": ["g", "\\"],
-      "after": ["<leader>", "<leader>", "/"]
+      "before": [
+        "g",
+        "\\"
+      ],
+      "after": [
+        "<leader>",
+        "<leader>",
+        "/"
+      ]
     },
     // Search for a character
     {
-      "before": ["g", "/"],
-      "after": ["<leader>", "<leader>", "s"]
+      "before": [
+        "g",
+        "/"
+      ],
+      "after": [
+        "<leader>",
+        "<leader>",
+        "s"
+      ]
     },
     // Jump to start of line
     {
-      "before": ["g", "l"],
-      "after": ["<leader>", "<leader>", "<leader>", "b", "d", "j", "k"]
+      "before": [
+        "g",
+        "l"
+      ],
+      "after": [
+        "<leader>",
+        "<leader>",
+        "<leader>",
+        "b",
+        "d",
+        "j",
+        "k"
+      ]
     },
-
     // PEEK
     // Disabling "gp" on it's own
     {
-      "before": ["g", "p"],
+      "before": [
+        "g",
+        "p"
+      ],
       "after": []
     },
     // Peek definition
     {
-      "before": ["g", "p", "d"],
+      "before": [
+        "g",
+        "p",
+        "d"
+      ],
       "commands": [
         {
           "command": "editor.action.peekDefinition"
@@ -1133,7 +1204,11 @@
     },
     // Peek type definition
     {
-      "before": ["g", "p", "t"],
+      "before": [
+        "g",
+        "p",
+        "t"
+      ],
       "commands": [
         {
           "command": "editor.action.peekTypeDefinition"
@@ -1142,7 +1217,11 @@
     },
     // Peek implementations
     {
-      "before": ["g", "p", "i"],
+      "before": [
+        "g",
+        "p",
+        "i"
+      ],
       "commands": [
         {
           "command": "editor.action.peekImplementation"
@@ -1151,7 +1230,11 @@
     },
     // Peek references
     {
-      "before": ["g", "p", "r"],
+      "before": [
+        "g",
+        "p",
+        "r"
+      ],
       "commands": [
         {
           "command": "editor.action.goToReferences"
@@ -1159,39 +1242,61 @@
       ]
     }
   ],
-
   // VISUAL MODE
   "vim.visualModeKeyBindingsNonRecursive": [
     // Repeatable multiline indentation
     {
-      "before": [">"],
-      "commands": ["editor.action.indentLines"]
+      "before": [
+        ">"
+      ],
+      "commands": [
+        "editor.action.indentLines"
+      ]
     },
     {
-      "before": ["<"],
-      "commands": ["editor.action.outdentLines"]
+      "before": [
+        "<"
+      ],
+      "commands": [
+        "editor.action.outdentLines"
+      ]
     },
     // left and right arrow keys do camelcase movement
     {
-      "before": ["left"],
-      "after": ["<leader>", "b"]
+      "before": [
+        "left"
+      ],
+      "after": [
+        "<leader>",
+        "b"
+      ]
     },
     {
-      "before": ["right"],
-      "after": ["<leader>", "w"]
+      "before": [
+        "right"
+      ],
+      "after": [
+        "<leader>",
+        "w"
+      ]
     },
     // Pasting in visual mode does not override current register
     {
-      "before": ["p"],
-      "after": ["p", "g", "v", "y"]
+      "before": [
+        "p"
+      ],
+      "after": [
+        "p",
+        "g",
+        "v",
+        "y"
+      ]
     }
   ],
-
   // ==================================
   // == Unorganised
   // ==================================
   // first item is deliberately here so others are placed after
-
   "editor.accessibilitySupport": "off",
   "window.menuBarVisibility": "toggle",
   "workbench.editor.untitled.hint": "hidden",

@@ -60,6 +60,9 @@
   // Integrated Terminal Behaviour
   "terminal.integrated.localEchoLatencyThreshold": 100,
   "terminal.integrated.localEchoStyle": "dim",
+  "terminal.integrated.drawBoldTextInBrightColors": true,
+  "terminal.integrated.fontWeightBold": "normal",
+  "terminal.integrated.gpuAcceleration": "on",
   // INTELLISENSE & SUGGESTIONS
   // Toggles
   "editor.codeLens": false,
@@ -538,23 +541,24 @@
       "editor.findRangeHighlightBorder": "#40344e",
       "editor.rangeHighlightBackground": "#40344ede",
       // Integrated terminal
-      "terminal.background": "#221e27",
-      "terminal.ansiBlack": "#4a4a4a",
-      "terminal.ansiBrightBlack": "#979797",
-      "terminal.ansiRed": "#979797",
-      "terminal.ansiBrightRed": "#cb1b00",
-      "terminal.ansiGreen": "#009a13",
-      "terminal.ansiBrightGreen": "#00b731",
-      "terminal.ansiYellow": "#caa000",
-      "terminal.ansiBrightYellow": "#ffcd28",
-      "terminal.ansiBlue": "#317dcc",
-      "terminal.ansiBrightBlue": "#008de1",
-      "terminal.ansiMagenta": "#b44dfc",
-      "terminal.ansiBrightMagenta": "#c16bb2",
-      "terminal.ansiCyan": "#009fa0",
-      "terminal.ansiBrightCyan": "#2bd4d2",
-      "terminal.ansiWhite": "#e6eeef",
-      "terminal.ansiBrightWhite": "#efefef"
+      "terminal.background": "#27212E",
+      "terminal.foreground":"#F8F8F2",
+      "terminal.ansiBlack": "#21222C",
+      "terminal.ansiBrightBlack": "#6272A4",
+      "terminal.ansiRed": "#FF5555",
+      "terminal.ansiBrightRed": "#FF6E6E",
+      "terminal.ansiGreen": "#50FA7B",
+      "terminal.ansiBrightGreen": "#69FF94",
+      "terminal.ansiYellow": "#F1FA8C",
+      "terminal.ansiBrightYellow": "#FFFFA5",
+      "terminal.ansiBlue": "#BD93F9",
+      "terminal.ansiBrightBlue": "#D6ACFF",
+      "terminal.ansiMagenta": "#FF79C6",
+      "terminal.ansiBrightMagenta": "#FF92DF",
+      "terminal.ansiCyan": "#8BE9FD",
+      "terminal.ansiBrightCyan": "#A4FFFF",
+      "terminal.ansiWhite": "#F8F8F2",
+      "terminal.ansiBrightWhite": "#FFFFFF"
     }
   },
   // Theme Colours / Syntax Highlighting

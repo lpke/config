@@ -42,6 +42,8 @@
   "editor.cursorStyle": "line",
   "editor.cursorBlinking": "solid",
   // Menu Bar
+  // @sync os=windows
+  "window.menuBarVisibility": "toggle",
   // @sync os=mac
   // "window.titleBarStyle": "custom",
   // @sync os=windows
@@ -164,7 +166,9 @@
   // File Associations (VS Code)
   "files.associations": {
     "*.tsx": "typescriptreact",
-    "*.jsx": "javascriptreact"
+    "*.jsx": "javascriptreact",
+    "*.ahk": "ahk2",
+    ".env": "env"
   },
   // JavaScript
   "javascript.validate.enable": true,
@@ -204,6 +208,11 @@
   "[html]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  // AutoHotkey2
+  "[ahk2]": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+  },
   // ==================================
   // == Extension Settings
   // ==================================
@@ -219,14 +228,9 @@
       }
     }
   },
-  // Subtle Match Brackets
+  // Subtle Match Brackets / Colorization
   "subtleBrackets.parse": false,
-  // Bracket Pair Colorizer
-  "bracket-pair-colorizer-2.colors": [
-    "#eed568b3",
-    "#e269b6b3",
-    "#52b0bcb3"
-  ],
+  "editor.bracketPairColorization.enabled": true,
   // Settings Sync (extension)
   "sync.autoDownload": true,
   "sync.autoUpload": true,
@@ -461,6 +465,20 @@
         - tweaks to pink selections in general
         - make UI dropdown backgrounds fit with theme
       */
+      // Bracket pair colorizer
+      "editorBracketHighlight.foreground1": "#eed568b3",
+      "editorBracketHighlight.foreground2": "#e269b6b3",
+      "editorBracketHighlight.foreground3": "#52b0bcb3",
+      // "editorBracketHighlight.foreground4": "#74D198b3",
+      // "editorBracketHighlight.foreground5": "#9866C0b3",
+      // "editorBracketHighlight.foreground6": "#CAC3C9b3",
+      //"editorBracketHighlight.foreground1": "#5caeef", // default
+      //"editorBracketHighlight.foreground2": "#dfb976", // default
+      //"editorBracketHighlight.foreground3": "#c172d9", // default
+      //"editorBracketHighlight.foreground4": "#4fb1bc", // default
+      //"editorBracketHighlight.foreground5": "#97c26c", // default
+      //"editorBracketHighlight.foreground6": "#abb2c0", // default
+      //"editorBracketHighlight.unexpectedBracket.foreground": "#db6165",
       // Default (unthemed) text color
       "editor.foreground": "#eeeeee",
       // Line number duller
@@ -542,7 +560,7 @@
       "editor.rangeHighlightBackground": "#40344ede",
       // Integrated terminal
       "terminal.background": "#27212E",
-      "terminal.foreground":"#F8F8F2",
+      "terminal.foreground": "#F8F8F2",
       "terminal.ansiBlack": "#21222C",
       "terminal.ansiBrightBlack": "#6272A4",
       "terminal.ansiRed": "#FF5555",
@@ -1244,6 +1262,18 @@
           "command": "editor.action.goToReferences"
         }
       ]
+    },
+    // TRIGGER SUGGESTIONS
+    {
+      "before": [
+        "g",
+        "s"
+      ],
+      "commands": [
+        {
+          "command": "editor.action.triggerSuggest"
+        }
+      ]
     }
   ],
   // VISUAL MODE
@@ -1302,7 +1332,6 @@
   // ==================================
   // first item is deliberately here so others are placed after
   "editor.accessibilitySupport": "off",
-  "window.menuBarVisibility": "toggle",
   "workbench.editor.untitled.hint": "hidden",
   "typescript.tsserver.experimental.enableProjectDiagnostics": false,
   "statusbar_command.commands": [
@@ -1316,4 +1345,5 @@
   ],
   "security.workspace.trust.untrustedFiles": "open",
   "security.workspace.trust.enabled": false,
+  "prettier.singleQuote": true,
 }

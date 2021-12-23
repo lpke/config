@@ -13,6 +13,7 @@
   // ==================================
   // Text
   "editor.tabSize": 2,
+  "editor.detectIndentation": 2,
   "editor.fontLigatures": true,
   // Behaviour
   "editor.wordWrap": "on",
@@ -206,7 +207,7 @@
   },
   // HTML
   "[html]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "vscode.html-language-features"
   },
   // AutoHotkey2
   "[ahk2]": {

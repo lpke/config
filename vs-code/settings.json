@@ -13,7 +13,6 @@
   // ==================================
   // Text
   "editor.tabSize": 2,
-  "editor.detectIndentation": 2,
   "editor.fontLigatures": true,
   // Behaviour
   "editor.wordWrap": "on",
@@ -32,7 +31,6 @@
   "editor.occurrencesHighlight": false,
   // View
   "editor.lineNumbers": "relative",
-  "window.zoomLevel": 0,
   "workbench.editor.wrapTabs": true,
   "workbench.editor.pinnedTabSizing": "compact",
   "workbench.editor.tabSizing": "shrink",
@@ -69,7 +67,11 @@
   // INTELLISENSE & SUGGESTIONS
   // Toggles
   "editor.codeLens": false,
-  "editor.quickSuggestions": false,
+  "editor.quickSuggestions": {
+    "comments": "off",
+    "strings": "off",
+    "other": "off"
+  },
   "editor.parameterHints.enabled": false,
   "editor.lightbulb.enabled": false,
   "csharp.referencesCodeLens.enabled": false,
@@ -207,7 +209,7 @@
   },
   // HTML
   "[html]": {
-    "editor.defaultFormatter": "vscode.html-language-features"
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   // AutoHotkey2
   "[ahk2]": {
@@ -231,7 +233,6 @@
   },
   // Subtle Match Brackets / Colorization
   "subtleBrackets.parse": false,
-  "editor.bracketPairColorization.enabled": true,
   // Settings Sync (extension)
   "sync.autoDownload": true,
   "sync.autoUpload": true,
@@ -239,11 +240,6 @@
   "sync.quietSync": true,
   // GitLens
   "gitlens.codeLens.enabled": false,
-  "gitlens.views.fileHistory.location": "gitlens",
-  "gitlens.views.lineHistory.location": "gitlens",
-  "gitlens.views.compare.location": "gitlens",
-  "gitlens.views.search.location": "gitlens",
-  "gitlens.views.search.files.layout": "tree",
   "gitlens.currentLine.enabled": false,
   "gitlens.hovers.enabled": false,
   "gitlens.hovers.currentLine.over": "annotation",
@@ -288,6 +284,13 @@
       "stash": true
     }
   },
+  "gitlens.views.branches.files.layout": "list",
+  "gitlens.views.branches.branches.layout": "list",
+  "gitlens.views.branches.showBranchComparison": false,
+  "gitlens.views.showRelativeDateMarkers": false,
+  "gitlens.views.searchAndCompare.files.layout": "list",
+  "gitlens.views.commits.showBranchComparison": false,
+  "gitlens.views.commits.files.layout": "list",
   // Code Runner
   "code-runner.enableAppInsights": false,
   "code-runner.runInTerminal": true,
@@ -421,6 +424,20 @@
       "iconColour": "#FADB82"
     }
   },
+  // statusbar-commands
+  "statusbar_command.commands": [
+    {
+      "text": "$(check)",
+      "tooltip": "TS: Checking only open files",
+      "alignment": "left",
+      "command": "multiCommand.cycleProjectChecking",
+      "priority": 100
+    }
+  ],
+  // ESLint
+  "eslint.packageManager": "yarn",
+  "eslint.runtime": "node",
+  "eslint.options": {},
   // ==================================
   // == Theme / Colour Settings
   // ==================================
@@ -1335,16 +1352,9 @@
   "editor.accessibilitySupport": "off",
   "workbench.editor.untitled.hint": "hidden",
   "typescript.tsserver.experimental.enableProjectDiagnostics": false,
-  "statusbar_command.commands": [
-    {
-      "text": "$(check)",
-      "tooltip": "TS: Checking only open files",
-      "alignment": "left",
-      "command": "multiCommand.cycleProjectChecking",
-      "priority": 100
-    }
-  ],
   "security.workspace.trust.untrustedFiles": "open",
   "security.workspace.trust.enabled": false,
   "prettier.singleQuote": true,
+  "bracket-pair-colorizer-2.depreciation-notice": false,
+  "AutoHotkey2.ActionWhenV1IsDetected": "SwitchToV1",
 }

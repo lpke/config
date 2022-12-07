@@ -18,7 +18,7 @@
   "editor.wordWrap": "on",
   "explorer.confirmDragAndDrop": false,
   "git.confirmSync": false,
-  "editor.matchBrackets": false,
+  "editor.matchBrackets": "never",
   "editor.copyWithSyntaxHighlighting": false,
   // @sync os=linux
   // "keyboard.dispatch": "keyCode",
@@ -222,6 +222,9 @@
   // Emmet
   "emmet.showSuggestionsAsSnippets": true,
   "emmet.triggerExpansionOnTab": true,
+  "emmet.includeLanguages": {
+    "postcss": "css"
+  },
   // Highlight Matching Tag
   "highlight-matching-tag.highlightSelfClosing": true,
   "highlight-matching-tag.styles": {
@@ -1354,7 +1357,6 @@
   "typescript.tsserver.experimental.enableProjectDiagnostics": false,
   "security.workspace.trust.untrustedFiles": "open",
   "security.workspace.trust.enabled": false,
-  "prettier.singleQuote": true,
   "bracket-pair-colorizer-2.depreciation-notice": false,
   "AutoHotkey2.ActionWhenV1IsDetected": "SwitchToV1",
 }

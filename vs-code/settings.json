@@ -20,11 +20,14 @@
   "git.confirmSync": false,
   "editor.matchBrackets": "never",
   "editor.copyWithSyntaxHighlighting": false,
-  // @sync os=linux
-  // "keyboard.dispatch": "keyCode",
-  // for linux custom keybindings
   "editor.insertSpaces": true,
   "editor.wordSeparators": "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?-",
+  // Hints and extra UI
+  "editor.parameterHints.enabled": false,
+  "editor.lightbulb.enabled": false,
+  // CodeLens (first option will override all others)
+  "editor.codeLens": false,
+  "csharp.referencesCodeLens.enabled": false,
   // Selection
   "editor.roundedSelection": false,
   "editor.selectionHighlight": false,
@@ -40,15 +43,7 @@
   // Cursor
   "editor.cursorStyle": "line",
   "editor.cursorBlinking": "solid",
-  // Menu Bar
-  // @sync os=windows
-  "window.menuBarVisibility": "toggle",
-  // @sync os=mac
-  // "window.titleBarStyle": "custom",
-  // @sync os=windows
   "window.titleBarStyle": "custom",
-  // @sync os=linux
-  // "window.titleBarStyle": "native",
   "window.customMenuBarAltFocus": false,
   "window.enableMenuBarMnemonics": false,
   // Breadcrumbs
@@ -64,17 +59,12 @@
   "terminal.integrated.drawBoldTextInBrightColors": true,
   "terminal.integrated.fontWeightBold": "normal",
   "terminal.integrated.gpuAcceleration": "on",
-  // INTELLISENSE & SUGGESTIONS
-  // Toggles
-  "editor.codeLens": false,
+  "powershell.showIntegratedConsoleOnStartup": true,
   "editor.quickSuggestions": {
     "comments": "off",
     "strings": "off",
     "other": "off"
   },
-  "editor.parameterHints.enabled": false,
-  "editor.lightbulb.enabled": false,
-  "csharp.referencesCodeLens.enabled": false,
   // Settings
   "editor.tabCompletion": "onlySnippets",
   "editor.acceptSuggestionOnEnter": "smart",
@@ -101,67 +91,17 @@
   // == Font Settings
   // ==================================
   // EDITOR
-  // @sync os=linux
-  // "editor.inlineHints.fontFamily": "'JetBrains Mono Medium', 'Fira Code', Monaco, Menlo, 'Courier New', monospace",
-  // @sync os=mac
-  // "editor.inlineHints.fontFamily": "'JetBrains Mono', 'Fira Code', Monaco, Menlo, 'Courier New', monospace",
-  // @sync os=windows
   "editor.inlineHints.fontFamily": "'JetBrains Mono', 'Fira Code', Monaco, Menlo, 'Courier New', monospace",
-  // @sync os=linux
-  // "editor.fontFamily": "'JetBrains Mono Medium', 'Fira Code', Monaco, Menlo, 'Courier New', monospace",
-  // @sync os=mac
-  // "editor.fontFamily": "'JetBrains Mono', 'Fira Code', Monaco, Menlo, 'Courier New', monospace",
-  // @sync os=windows
   "editor.fontFamily": "'JetBrains Mono', 'Fira Code', Monaco, Menlo, 'Courier New', monospace",
-  // @sync os=mac
-  // "editor.fontSize": 15,
-  // @sync os=linux
-  // "editor.fontSize": 15,
-  // @sync os=windows
   "editor.fontSize": 16,
-  // @sync os=mac
-  // "editor.lineHeight": 24,
-  // @sync os=linux
-  // "editor.lineHeight": 25,
-  // @sync os=windows
   "editor.lineHeight": 24,
   // DEBUG CONSOLE
-  // @sync os=linux
-  // "debug.console.fontFamily": "'JetBrains Mono Medium', 'Fira Code', Monaco, Menlo, 'Courier New', monospace",
-  // @sync os=mac
-  // "debug.console.fontFamily": "'JetBrains Mono', 'Fira Code', Monaco, Menlo, 'Courier New', monospace",
-  // @sync os=windows
   "debug.console.fontFamily": "'JetBrains Mono', 'Fira Code', Monaco, Menlo, 'Courier New', monospace",
-  // @sync os=mac
-  // "debug.console.fontSize": 15,
-  // @sync os=linux
-  // "debug.console.fontSize": 15,
-  // @sync os=windows
   "debug.console.fontSize": 16,
-  // @sync os=mac
-  // "debug.console.lineHeight": 24,
-  // @sync os=linux
-  // "debug.console.lineHeight": 24,
-  // @sync os=windows
   "debug.console.lineHeight": 24,
   // TERMINAL
-  // @sync os=linux
-  // "terminal.integrated.fontFamily": "'JetBrainsMono Nerd Font Mono','JetBrains Mono Medium', 'Fira Code', Monaco, Menlo, 'Courier New', monospace",
-  // @sync os=mac
-  // "terminal.integrated.fontFamily": "'JetBrainsMono Nerd Font Mono','JetBrains Mono', 'Fira Code', Monaco, Menlo, 'Courier New', monospace",
-  // @sync os=windows
   "terminal.integrated.fontFamily": "'JetBrainsMono Nerd Font Mono','JetBrains Mono', 'Fira Code', Monaco, Menlo, 'Courier New', monospace",
-  // @sync os=mac
-  // "terminal.integrated.fontSize": 15,
-  // @sync os=linux
-  // "terminal.integrated.fontSize": 16,
-  // @sync os=windows
   "terminal.integrated.fontSize": 16,
-  // @sync os=mac
-  // "terminal.integrated.lineHeight": 1.2,
-  // @sync os=linux
-  // "terminal.integrated.lineHeight": 1.15,
-  // @sync os=windows
   "terminal.integrated.lineHeight": 1.2,
   // ==================================
   // == Language Settings
@@ -223,10 +163,10 @@
   "emmet.showSuggestionsAsSnippets": true,
   "emmet.triggerExpansionOnTab": true,
   "emmet.includeLanguages": {
-    "postcss": "css"
-  },
+    "postcss": "css",
+  }, // for custom snippets
   // Highlight Matching Tag
-  "highlight-matching-tag.highlightSelfClosing": true,
+  "highlight-matching-tag.highlightSelfClosing": false,
   "highlight-matching-tag.styles": {
     "opening": {
       "name": {
@@ -236,11 +176,11 @@
   },
   // Subtle Match Brackets / Colorization
   "subtleBrackets.parse": false,
-  // Settings Sync (extension)
-  "sync.autoDownload": true,
-  "sync.autoUpload": true,
-  "sync.gist": "934bb776e4b628cff2f99ce8ba9352b9",
-  "sync.quietSync": true,
+  "subtleBrackets.style": {
+    "borderWidth": "1px",
+    "borderStyle": "none none solid none",
+    "borderColor": "#D4D4D4",
+  },
   // GitLens
   "gitlens.codeLens.enabled": false,
   "gitlens.currentLine.enabled": false,
@@ -1098,7 +1038,7 @@
         }
       ]
     },
-    // shift J and K scroll, and comma now joins lines
+    // shift J and K to scroll
     {
       "before": [
         "J"
@@ -1115,6 +1055,76 @@
         "<C-y>"
       ]
     },
+    // tweaking z commands
+    {
+      "before": [
+        "z",
+        "T"
+      ],
+      "after": [
+        "z",
+        "t"
+      ]
+    },
+    {
+      "before": [
+        "z",
+        "B"
+      ],
+      "after": [
+        "z",
+        "b"
+      ]
+    },
+    {
+      "before": [
+        "z",
+        "t"
+      ],
+      "after": [
+        "z",
+        "t",
+        "1",
+        "0",
+        "<C-y>"
+      ]
+    },
+    {
+      "before": [
+        "z",
+        "b"
+      ],
+      "after": [
+        "z",
+        "b",
+        "1",
+        "0",
+        "<C-e>"
+      ]
+    },
+    {
+      "before": [
+        "z",
+        "u"
+      ],
+      "after": [
+        "1",
+        "0",
+        "<C-y>"
+      ]
+    },
+    {
+      "before": [
+        "z",
+        "d"
+      ],
+      "after": [
+        "1",
+        "0",
+        "<C-e>"
+      ]
+    },
+    // comma joins lines
     {
       "before": [
         ","
@@ -1295,6 +1305,29 @@
           "command": "editor.action.triggerSuggest"
         }
       ]
+    },
+    // insert new lines whilst remaining in normal mode
+    {
+      "before": [
+        "g",
+        "o"
+      ],
+      "after": [
+        "o",
+        "<esc>",
+        "<esc>"
+      ]
+    },
+    {
+      "before": [
+        "g",
+        "O"
+      ],
+      "after": [
+        "O",
+        "<esc>",
+        "<esc>"
+      ]
     }
   ],
   // VISUAL MODE
@@ -1358,5 +1391,16 @@
   "security.workspace.trust.untrustedFiles": "open",
   "security.workspace.trust.enabled": false,
   "bracket-pair-colorizer-2.depreciation-notice": false,
-  "AutoHotkey2.ActionWhenV1IsDetected": "SwitchToV1",
+  "editor.inlineSuggest.enabled": true,
+  "github.copilot.enable": {
+    "*": true,
+    "plaintext": true,
+    "markdown": false,
+    "scminput": false,
+    "yaml": false
+  },
+  "diffEditor.ignoreTrimWhitespace": false,
+  "tailwindCSS.emmetCompletions": true,
+  "window.menuBarVisibility": "compact",
+  "github.copilot.advanced": {},
 }

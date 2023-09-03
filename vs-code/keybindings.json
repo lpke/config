@@ -30,27 +30,48 @@
   { "key": "ctrl+alt+n", "command": "-code-runner.run" },
   { "key": "ctrl+t", "command": "-workbench.action.showAllSymbols" },
   { "key": "ctrl+t", "command": "-extension.vim_ctrl+t" },
+  { "key": "space", "command": "-filesExplorer.openFilePreserveFocus"},
+  { "key": "ctrl+space", "command": "-editor.action.triggerSuggest" },
+  { "key": "ctrl+shift+down", "command": "-workbench.action.terminal.selectToNextCommand" },
+  { "key": "ctrl+shift+down", "command": "-cursorDownSelect" },
 
-  // misc shortcuts for workflow
-  {
-    "key": "cmd+shift+k",
-    "command": "workbench.action.focusActiveEditorGroup",
-    "when": "isMac"
-  },
-  {
-    "key": "ctrl+shift+k",
-    "command": "workbench.action.focusActiveEditorGroup",
-    "when": "isLinux || isWindows"
-  },
-  {
-    "key": "ctrl+shift+right",
-    "command": "workbench.action.focusActiveEditorGroup",
-    "when": "isLinux || isWindows"
-  },
+  // move focus between main IDE areas
+  // to/from any context - cmd/ctrl+shift+arrows
   {
     "key": "ctrl+shift+up",
     "command": "workbench.action.focusActiveEditorGroup",
-    "when": "isLinux || isWindows"
+    "when": "isWindows || isLinux"
+  },
+  {
+    "key": "ctrl+shift+down",
+    "command": "workbench.action.focusPanel",
+    "when": "isWindows || isLinux"
+  },
+  {
+    "key": "ctrl+shift+left",
+    "command": "workbench.action.focusAuxiliaryBar",
+    "when": "isWindows || isLinux"
+  },
+  {
+    "key": "ctrl+shift+right",
+    "command": "runCommands",
+    "args": {
+      "commands": [
+        "workbench.action.toggleSidebarVisibility",
+        "workbench.action.focusSideBar"
+      ]
+    },
+    "when": "(isWindows || isLinux) && !sideBarVisible"
+  },
+  {
+    "key": "ctrl+shift+right",
+    "command": "workbench.action.focusSideBar",
+    "when": "(isWindows || isLinux) && sideBarVisible"
+  },
+  {
+    "key": "cmd+shift+up",
+    "command": "workbench.action.focusActiveEditorGroup",
+    "when": "isMac"
   },
   {
     "key": "cmd+shift+down",
@@ -58,50 +79,337 @@
     "when": "isMac"
   },
   {
-    "key": "ctrl+shift+down",
-    "command": "workbench.action.focusPanel",
-    "when": "isLinux || isWindows"
+    "key": "cmd+shift+left",
+    "command": "workbench.action.focusAuxiliaryBar",
+    "when": "isMac"
   },
   {
-    "key": "alt+space",
-    "command": "editor.action.triggerSuggest",
-    "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly"
+    "key": "cmd+shift+right",
+    "command": "runCommands",
+    "args": {
+      "commands": [
+        "workbench.action.toggleSidebarVisibility",
+        "workbench.action.focusSideBar"
+      ]
+    },
+    "when": "isMac && !sideBarVisible"
   },
+  {
+    "key": "cmd+shift+right",
+    "command": "workbench.action.focusSideBar",
+    "when": "isMac && sideBarVisible"
+  },
+
+  // context-dependent, locational main movement - ctrl/cmd+arrows
+  // from editor
+  {
+    "key": "ctrl+right",
+    "command": "runCommands",
+    "args": {
+      "commands": [
+        "workbench.action.toggleSidebarVisibility",
+        "workbench.action.focusSideBar"
+      ]
+    },
+    "when": "(isWindows || isLinux) && editorFocus && !sideBarVisible"
+  },
+  {
+    "key": "ctrl+right",
+    "command": "workbench.action.focusSideBar",
+    "when": "(isWindows || isLinux) && editorFocus && sideBarVisible"
+  },
+  {
+    "key": "ctrl+left",
+    "command": "workbench.action.focusAuxiliaryBar",
+    "when": "(isWindows || isLinux) && editorFocus"
+  },
+  {
+    "key": "ctrl+down",
+    "command": "workbench.action.focusPanel",
+    "when": "(isWindows || isLinux) && editorFocus"
+  },
+  {
+    "key": "cmd+right",
+    "command": "runCommands",
+    "args": {
+      "commands": [
+        "workbench.action.toggleSidebarVisibility",
+        "workbench.action.focusSideBar"
+      ]
+    },
+    "when": "isMac && editorFocus && !sideBarVisible"
+  },
+  {
+    "key": "cmd+right",
+    "command": "workbench.action.focusSideBar",
+    "when": "isMac && editorFocus && sideBarVisible"
+  },
+  {
+    "key": "cmd+left",
+    "command": "workbench.action.focusAuxiliaryBar",
+    "when": "isMac && editorFocus"
+  },
+  {
+    "key": "cmd+down",
+    "command": "workbench.action.focusPanel",
+    "when": "isMac && editorFocus"
+  },
+  // to editor
+  {
+    "key": "ctrl+up",
+    "command": "workbench.action.focusActiveEditorGroup",
+    "when": "(isWindows || isLinux) && panelFocus"
+  },
+  {
+    "key": "ctrl+left",
+    "command": "workbench.action.focusActiveEditorGroup",
+    "when": "(isWindows || isLinux) && sideBarFocus"
+  },
+  {
+    "key": "ctrl+right",
+    "command": "workbench.action.focusActiveEditorGroup",
+    "when": "(isWindows || isLinux) && auxiliaryBarFocus"
+  },
+  {
+    "key": "cmd+up",
+    "command": "workbench.action.focusActiveEditorGroup",
+    "when": "isMac && panelFocus"
+  },
+  {
+    "key": "cmd+left",
+    "command": "workbench.action.focusActiveEditorGroup",
+    "when": "isMac && sideBarFocus"
+  },
+  {
+    "key": "cmd+right",
+    "command": "workbench.action.focusActiveEditorGroup",
+    "when": "isMac && auxiliaryBarFocus"
+  },
+
+
+  // close main IDE areas is focus command repeated
+  {
+    "key": "ctrl+shift+down",
+    "command": "workbench.action.closePanel",
+    "when": "(isWindows || isLinux) && panelFocus"
+  },
+  {
+    "key": "ctrl+shift+left",
+    "command": "workbench.action.closeAuxiliaryBar",
+    "when": "(isWindows || isLinux) && auxiliaryBarFocus"
+  },
+  {
+    "key": "ctrl+shift+right",
+    "command": "workbench.action.closeSidebar",
+    "when": "(isWindows || isLinux) && sideBarFocus"
+  },
+  {
+    "key": "cmd+shift+down",
+    "command": "workbench.action.closePanel",
+    "when": "isMac && panelFocus"
+  },
+  {
+    "key": "cmd+shift+left",
+    "command": "workbench.action.closeAuxiliaryBar",
+    "when": "isMac && auxiliaryBarFocus"
+  },
+  {
+    "key": "cmd+shift+right",
+    "command": "workbench.action.closeSidebar",
+    "when": "isMac && sideBarFocus"
+  },
+  {
+    "key": "ctrl+down",
+    "command": "workbench.action.closePanel",
+    "when": "(isWindows || isLinux) && panelFocus"
+  },
+  {
+    "key": "ctrl+left",
+    "command": "workbench.action.closeAuxiliaryBar",
+    "when": "(isWindows || isLinux) && auxiliaryBarFocus"
+  },
+  {
+    "key": "ctrl+right",
+    "command": "workbench.action.closeSidebar",
+    "when": "(isWindows || isLinux) && sideBarFocus"
+  },
+  {
+    "key": "cmd+down",
+    "command": "workbench.action.closePanel",
+    "when": "isMac && panelFocus"
+  },
+  {
+    "key": "cmd+left",
+    "command": "workbench.action.closeAuxiliaryBar",
+    "when": "isMac && auxiliaryBarFocus"
+  },
+  {
+    "key": "cmd+right",
+    "command": "workbench.action.closeSidebar",
+    "when": "isMac && sideBarFocus"
+  },
+
+  // move focus within main IDE areas
+  // cmd/ctrl+arrows (up/down or left/right)
+  // primary sidebar
+  {
+    "key": "ctrl+down",
+    "command": "workbench.action.nextSideBarView",
+    "when": "(isWindows || isLinux) && sideBarFocus"
+  },
+  {
+    "key": "ctrl+up",
+    "command": "workbench.action.previousSideBarView",
+    "when": "(isWindows || isLinux) && sideBarFocus"
+  },
+  {
+    "key": "cmd+down",
+    "command": "workbench.action.nextSideBarView",
+    "when": "isMac && sideBarFocus"
+  },
+  {
+    "key": "cmd+up",
+    "command": "workbench.action.previousSideBarView",
+    "when": "isMac && sideBarFocus"
+  },
+  // bottom panel
+  {
+    "key": "ctrl+right",
+    "command": "workbench.action.nextPanelView",
+    "when": "(isWindows || isLinux) && panelFocus"
+  },
+  {
+    "key": "ctrl+left",
+    "command": "workbench.action.previousPanelView",
+    "when": "(isWindows || isLinux) && panelFocus"
+  },
+  {
+    "key": "cmd+right",
+    "command": "workbench.action.nextPanelView",
+    "when": "isMac && panelFocus"
+  },
+  {
+    "key": "cmd+left",
+    "command": "workbench.action.previousPanelView",
+    "when": "isMac && panelFocus"
+  },
+
+  // bottom panel-related contextual overrides
+  {
+    "key": "cmd+up",
+    "command": "workbench.action.focusActiveEditorGroup",
+    "when": "isMac && panelFocus"
+  },
+  {
+    "key": "ctrl+shift+j",
+    "command": "workbench.action.focusPanel",
+    "when": "(isWindows || isLinux) && panelVisible"
+  },
+  {
+    "key": "ctrl+shift+k",
+    "command": "workbench.action.focusActiveEditorGroup",
+    "when": "(isWindows || isLinux) && panelFocus"
+  },
+  {
+    "key": "cmd+shift+j",
+    "command": "workbench.action.focusPanel",
+    "when": "isMac && panelVisible"
+  },
+  {
+    "key": "cmd+shift+k",
+    "command": "workbench.action.focusActiveEditorGroup",
+    "when": "isMac && panelFocus"
+  },
+
+
+  // suggestions
+  // regular
   {
     "key": "ctrl+t",
     "command": "editor.action.triggerSuggest",
-    "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly"
+    "when": "(isWindows || isLinux) && editorHasCompletionItemProvider && textInputFocus && !editorReadonly"
+  },
+  {
+    "key": "cmd+t",
+    "command": "editor.action.triggerSuggest",
+    "when": "isMac && editorHasCompletionItemProvider && textInputFocus && !editorReadonly"
+  },
+  // github copilot
+  {
+    "key": "ctrl+space",
+    "command": "editor.action.inlineSuggest.trigger",
+    "when": "(isWindows || isLinux) && editorTextFocus"
+  },
+  {
+    "key": "alt+l",
+    "command": "editor.action.inlineSuggest.showNext",
+    "when": "(isWindows || isLinux) && editorTextFocus"
+  },
+  {
+    "key": "alt+h",
+    "command": "editor.action.inlineSuggest.showPrevious",
+    "when": "(isWindows || isLinux) && editorTextFocus"
+  },
+
+  // terminal/code runner
+  {
+    "key": "meta+shift+n",
+    "command": "code-runner.run",
+    "when": "isWindows || isLinux"
   },
   {
     "key": "ctrl+alt+n",
     "command": "code-runner.run",
     "when": "isMac"
   },
+  // clear output only when visible
   {
-    "key": "meta+shift+n",
-    "command": "code-runner.run",
-    "when": "isLinux || isWindows"
+    "key": "meta+shift+o",
+    "command": "runCommands",
+    "args": {
+      "commands": [
+        "workbench.output.action.clearOutput",
+        "workbench.action.focusActiveEditorGroup"
+      ]
+    },
+    "when": "(isWindows || isLinux) && view.workbench.panel.output.visible"
   },
   {
     "key": "ctrl+alt+o",
-    "command": "multiCommand.clearTerminal",
-    "when": "isMac"
+    "command": "runCommands",
+    "args": {
+      "commands": [
+        "workbench.output.action.clearOutput",
+        "workbench.action.focusActiveEditorGroup"
+      ]
+    },
+    "when": "isMac && view.workbench.panel.output.visible"
   },
+  // clear terminal only when visible
   {
     "key": "meta+shift+o",
-    "command": "multiCommand.clearTerminal",
-    "when": "isLinux || isWindows"
+    "command": "runCommands",
+    "args": {
+      "commands": [
+        "workbench.action.terminal.clear",
+        "workbench.action.focusActiveEditorGroup"
+      ]
+    },
+    "when": "(isWindows || isLinux) && view.terminal.visible"
   },
   {
-    "key": "ctrl+alt+shift+o",
-    "command": "workbench.output.action.clearOutput",
-    "when": "isMac"
+    "key": "ctrl+alt+o",
+    "command": "runCommands",
+    "args": {
+      "commands": [
+        "workbench.action.terminal.clear",
+        "workbench.action.focusActiveEditorGroup"
+      ]
+    },
+    "when": "isMac && view.terminal.visible"
   },
-  {
-    "key": "meta+alt+shift+o",
-    "command": "workbench.output.action.clearOutput",
-    "when": "isLinux || isWindows"
-  },
+
+  // git
   {
     "key": "shift+cmd+g",
     "command": "git.sync",
@@ -110,34 +418,34 @@
   {
     "key": "shift+ctrl+g",
     "command": "git.sync",
-    "when": "isLinux || isWindows"
-  },
-  {
-    "key": "ctrl+k ctrl+a",
-    "command": "editor.action.selectAll",
-    "when": "isLinux || isWindows"
+    "when": "isWindows || isLinux"
   },
 
   // MacOS to Linux experience parity
   {
+    "key": "ctrl+k ctrl+a",
+    "command": "editor.action.selectAll",
+    "when": "isWindows || isLinux"
+  },
+  {
     "key": "ctrl+n",
     "command": "workbench.action.files.newUntitledFile",
-    "when": "isLinux || isWindows",
+    "when": "isWindows || isLinux",
   },
   {
     "key": "ctrl+o",
     "command": "workbench.action.files.openFile",
-    "when": "isLinux || isWindows"
+    "when": "isWindows || isLinux"
   },
   {
     "key": "ctrl+f",
     "command": "actions.find",
-    "when": "isLinux || isWindows"
+    "when": "isWindows || isLinux"
   },
   {
     "key": "ctrl+w",
     "command": "workbench.action.closeActiveEditor",
-    "when": "isLinux || isWindows"
+    "when": "isWindows || isLinux"
   },
 
   // tab and editor group navigation vim-style
@@ -145,44 +453,46 @@
   {
     "key": "cmd+l",
     "command": "workbench.action.focusNextGroup",
-    "when": "isMac && vim.active"
+    "when": "isMac && vim.active && !sideBarFocus"
   },
   {
     "key": "ctrl+l",
     "command": "workbench.action.focusNextGroup",
-    "when": "isLinux || isWindows && vim.active"
+    "when": "(isWindows || isLinux) && vim.active && !sideBarFocus"
   },
   {
     "key": "cmd+h",
     "command": "workbench.action.focusPreviousGroup",
-    "when": "isMac && vim.active"
+    "when": "isMac && activeEditorGroupIndex != 1"
   },
   {
     "key": "ctrl+h",
     "command": "workbench.action.focusPreviousGroup",
-    "when": "isLinux || isWindows && vim.active"
+    "when": "(isWindows || isLinux) && activeEditorGroupIndex != 1"
   },
+
   // navigate editor tabs
   {
-    "key": "shift+cmd+l",
+    "key": "ctrl+shift+l",
     "command": "workbench.action.nextEditor",
-    "when": "isMac && editorTextFocus && vim.active"
+    "when": "(isWindows || isLinux) && editorTextFocus && !panelFocus && !sideBarFocus"
   },
   {
-    "key": "shift+ctrl+l",
+    "key": "ctrl+shift+h",
+    "command": "workbench.action.previousEditor",
+    "when": "(isWindows || isLinux) && editorTextFocus && !panelFocus && !sideBarFocus"
+  },
+  {
+    "key": "cmd+shift+l",
     "command": "workbench.action.nextEditor",
-    "when": "isLinux || isWindows && editorTextFocus && vim.active"
+    "when": "isMac && editorTextFocus && !panelFocus && !sideBarFocus"
   },
   {
-    "key": "shift+cmd+h",
+    "key": "cmd+shift+h",
     "command": "workbench.action.previousEditor",
-    "when": "isMac && editorTextFocus && vim.active"
+    "when": "isMac && editorTextFocus && !panelFocu && !sideBarFocuss"
   },
-  {
-    "key": "shift+ctrl+h",
-    "command": "workbench.action.previousEditor",
-    "when": "isLinux || isWindows && editorTextFocus && vim.active"
-  },
+
   // move editors around
   // moving between groups
   {
@@ -229,34 +539,24 @@
 
   // sidebar navigation
   {
+    "key": "ctrl+b",
+    "command": "workbench.action.toggleSidebarVisibility",
+    "when": "isWindows || isLinux"
+  },
+  {
     "key": "cmd+b",
     "command": "workbench.action.toggleSidebarVisibility",
     "when": "isMac"
   },
   {
-    "key": "ctrl+b",
-    "command": "workbench.action.toggleSidebarVisibility",
-    "when": "isLinux || isWindows"
+    "key": "ctrl+shift+b",
+    "command": "workbench.action.toggleAuxiliaryBar",
+    "when": "isWindows || isLinux"
   },
   {
-    "key": "ctrl+cmd+shift+alt+b",
-    "command": "multiCommand.openFocusSidebar",
-    "when": "isMac && editorTextFocus"
-  },
-  {
-    "key": "ctrl+meta+shift+alt+b",
-    "command": "multiCommand.openFocusSidebar",
-    "when": "isLinux && editorTextFocus"
-  },
-  {
-    "key": "ctrl+cmd+shift+alt+b",
-    "command": "workbench.action.toggleSidebarVisibility",
-    "when": "isMac && sideBarFocus"
-  },
-  {
-    "key": "ctrl+meta+shift+alt+b",
-    "command": "workbench.action.toggleSidebarVisibility",
-    "when": "isLinux && sideBarFocus"
+    "key": "cmd+shift+b",
+    "command": "workbench.action.toggleAuxiliaryBar",
+    "when": "isMac"
   },
   {
     "key": "cmd+shift+9",
@@ -274,39 +574,82 @@
     "when": "sideBarFocus"
   },
   {
-    "key": "cmd+shift+8",
-    "command": "workbench.view.scm",
-    "when": "isMac"
+    "key": "ctrl+shift+f",
+    "command": "runCommands",
+    "args": {
+      "commands": [
+        "workbench.action.focusActiveEditorGroup",
+        "workbench.action.closeAuxiliaryBar"
+      ]
+    },
+    "when": "(sideBarFocus || auxiliaryBarFocus) && (activeAuxiliary == 'workbench.view.search' || activeViewlet == 'workbench.view.search') && inputFocus"
   },
   {
-    "key": "ctrl+shift+8",
-    "command": "workbench.view.scm",
-    "when": "isLinux"
+    "key": "escape",
+    "command": "runCommands",
+    "args": {
+      "commands": [
+        "workbench.action.focusActiveEditorGroup",
+        "workbench.action.closeAuxiliaryBar"
+      ]
+    },
+    "when": "(sideBarFocus || auxiliaryBarFocus) && (activeAuxiliary == 'workbench.view.search' || activeViewlet == 'workbench.view.search') && inputFocus"
   },
+
+  // file/folder explorer
+  // create
   {
-    "key": "cmd+shift+7",
-    "command": "workbench.view.explorer",
-    "when": "isMac"
-  },
-  {
-    "key": "ctrl+shift+7",
-    "command": "workbench.view.explorer",
-    "when": "isLinux"
-  },
-  {
-    "key": "shift+enter",
+    "key": "shift+,",
     "command": "explorer.newFolder",
-    "when": "sideBarFocus && activeViewlet == 'workbench.view.explorer'"
+    "when": "sideBarFocus && explorerViewletFocus && !inputFocus"
   },
+  {
+    "key": ", ,",
+    "command": "explorer.newFile",
+    "when": "sideBarFocus && explorerViewletFocus && !inputFocus",
+  },
+  // delete
+  {
+    "key": "d shift+d",
+    "command": "deleteFile",
+    "when": "sideBarFocus && explorerViewletFocus && !inputFocus"
+  },
+  // rename
   {
     "key": "cmd+enter",
-    "command": "explorer.newFile",
-    "when": "isMac && sideBarFocus && activeViewlet == 'workbench.view.explorer'"
+    "command": "renameFile",
+    "when": "isMac && sideBarFocus && explorerViewletFocus"
   },
   {
     "key": "ctrl+enter",
-    "command": "explorer.newFile",
-    "when": "isLinux && sideBarFocus && activeViewlet == 'workbench.view.explorer'"
+    "command": "renameFile",
+    "when": "(isWindows || isLinux) && sideBarFocus && explorerViewletFocus"
+  },
+  {
+    "key": "g r",
+    "command": "renameFile",
+    "when": "sideBarFocus && explorerViewletFocus && !inputFocus"
+  },
+  // cut, copy, paste
+  {
+    "key": "d d",
+    "command": "filesExplorer.cut",
+    "when": "sideBarFocus && explorerViewletFocus && !inputFocus"
+  },
+  {
+    "key": "y y",
+    "command": "filesExplorer.copy",
+    "when": "sideBarFocus && explorerViewletFocus && !inputFocus"
+  },
+  {
+    "key": "p p",
+    "command": "filesExplorer.paste",
+    "when": "sideBarFocus && explorerViewletFocus && !inputFocus"
+  },
+  {
+    "key": "o",
+    "command": "filesExplorer.openFilePreserveFocus",
+    "when": "sideBarFocus && explorerViewletFocus && !inputFocus"
   },
 
   // panel (bottom part) navigation
@@ -318,7 +661,7 @@
   {
     "key": "ctrl+j",
     "command": "workbench.action.togglePanel",
-    "when": "isLinux || isWindows"
+    "when": "isWindows || isLinux"
   },
   {
     "key": "shift+right",
@@ -338,7 +681,7 @@
   {
     "key": "ctrl+=",
     "command": "workbench.action.terminal.toggleTerminal",
-    "when": "isLinux || isWindows"
+    "when": "isWindows || isLinux"
   },
   {
     "key": "cmd+-",
@@ -348,7 +691,7 @@
   {
     "key": "ctrl+-",
     "command": "workbench.action.output.toggleOutput",
-    "when": "isLinux || isWindows"
+    "when": "isWindows || isLinux"
   },
 
 
@@ -380,19 +723,6 @@
     "when": "isMac && editorTextFocus && vim.active && vim.mode != 'Insert'"
   },
 
-  // vim-style vertical navigation in suggestion/prompt popups
-  // intellisense suggestions
-  {
-    "key": "alt+j",
-    "command": "selectNextSuggestion",
-    "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
-  },
-  {
-    "key": "alt+k",
-    "command": "selectPrevSuggestion",
-    "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
-  },
-
   // move lines up/down with shift+up/down
   {
     "key": "shift+up",
@@ -409,7 +739,7 @@
   {
     "key": "ctrl+t",
     "command": "workbench.action.terminal.new",
-    "when": "isWindows && terminalFocus"
+    "when": "(isWindows || isLinux) && terminalFocus"
   },
   {
     "key": "alt+t",
@@ -419,21 +749,16 @@
   {
     "key": "ctrl+w",
     "command": "workbench.action.terminal.kill",
-    "when": "isWindows && terminalFocus"
+    "when": "(isWindows || isLinux) && terminalFocus"
   },
   {
     "key": "ctrl+shift+h",
     "command": "workbench.action.terminal.focusPrevious",
-    "when": "isWindows && terminalFocus"
+    "when": "(isWindows || isLinux) && terminalFocus"
   },
   {
     "key": "ctrl+shift+l",
     "command": "workbench.action.terminal.focusNext",
-    "when": "isWindows && terminalFocus"
-  },
-  {
-    "key": "ctrl+shift+j",
-    "command": "workbench.action.terminal.focus",
-    "when": "isWindows && terminalIsOpen"
+    "when": "(isWindows || isLinux) && terminalFocus"
   }
 ]

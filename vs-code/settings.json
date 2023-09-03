@@ -14,17 +14,33 @@
   // Text
   "editor.tabSize": 2,
   "editor.fontLigatures": true,
+  // Explorer
+  "explorer.confirmDragAndDrop": false,
+  "explorer.confirmDelete": false,
+  "workbench.editor.closeOnFileDelete": true,
   // Behaviour
   "editor.wordWrap": "on",
-  "explorer.confirmDragAndDrop": false,
   "git.confirmSync": false,
-  "editor.matchBrackets": "never",
+  "editor.matchBrackets": false,
   "editor.copyWithSyntaxHighlighting": false,
   "editor.insertSpaces": true,
   "editor.wordSeparators": "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?-",
   // Hints and extra UI
   "editor.parameterHints.enabled": false,
   "editor.lightbulb.enabled": false,
+  // Suggestions
+  "editor.inlineSuggest.enabled": false,
+  "editor.suggest.showReferences": false,
+  "editor.suggest.showSnippets": false,
+  "editor.suggest.showInterfaces": false,
+  "editor.suggest.showModules": false,
+  "editor.suggest.showClasses": false,
+  // GitHub Copilot
+  "github.copilot.editor.enableAutoCompletions": false,
+  "github.copilot.enable": {
+    "*": true,
+  },
+  "github.copilot.advanced": {},
   // CodeLens (first option will override all others)
   "editor.codeLens": false,
   "csharp.referencesCodeLens.enabled": false,
@@ -37,34 +53,41 @@
   "workbench.editor.wrapTabs": true,
   "workbench.editor.pinnedTabSizing": "compact",
   "workbench.editor.tabSizing": "shrink",
-  "workbench.activityBar.visible": true,
   "editor.links": false,
   "explorer.compactFolders": false,
   // Cursor
   "editor.cursorStyle": "line",
   "editor.cursorBlinking": "solid",
+  // Title Bar
+  "window.title": "${dirty}${activeEditorShort}${separator}${rootName}${separator}${profileName}",
   "window.titleBarStyle": "custom",
   "window.customMenuBarAltFocus": false,
   "window.enableMenuBarMnemonics": false,
-  // Breadcrumbs
-  "breadcrumbs.enabled": true,
-  "breadcrumbs.icons": false,
-  "breadcrumbs.symbolPath": "off",
   // Minimap
   "editor.minimap.maxColumn": 95,
   "editor.minimap.showSlider": "always",
+  // Breadcrumbs
+  "breadcrumbs.enabled": true,
+  "breadcrumbs.filePath": "on",
+  "breadcrumbs.symbolPath": "last",
+  "breadcrumbs.icons": false,
   // Integrated Terminal Behaviour
   "terminal.integrated.localEchoLatencyThreshold": 100,
   "terminal.integrated.localEchoStyle": "dim",
   "terminal.integrated.drawBoldTextInBrightColors": true,
   "terminal.integrated.fontWeightBold": "normal",
   "terminal.integrated.gpuAcceleration": "on",
-  "powershell.showIntegratedConsoleOnStartup": true,
+  "powershell.integratedConsole.showOnStartup": false,
   "editor.quickSuggestions": {
     "comments": "off",
     "strings": "off",
     "other": "off"
   },
+  "terminal.integrated.commandsToSkipShell": [
+    "workbench.action.closePanel",
+    "workbench.action.focusAuxiliaryBar",
+    "workbench.action.focusSideBar",
+  ],
   // Settings
   "editor.tabCompletion": "onlySnippets",
   "editor.acceptSuggestionOnEnter": "smart",
@@ -72,12 +95,6 @@
   "editor.acceptSuggestionOnCommitCharacter": false,
   "editor.suggestOnTriggerCharacters": false,
   "editor.suggest.localityBonus": true,
-  // Suggestions
-  "editor.suggest.showReferences": false,
-  "editor.suggest.showSnippets": false,
-  "editor.suggest.showInterfaces": false,
-  "editor.suggest.showModules": false,
-  "editor.suggest.showClasses": false,
   // File Exclusions
   "files.exclude": {
     "**/.git": true,
@@ -133,8 +150,6 @@
   },
   // Python
   "python.pythonPath": "/usr/bin/python3",
-  "python.linting.pylintEnabled": true,
-  "python.linting.enabled": true,
   "python.showStartPage": false,
   // CSS
   "less.lint.emptyRules": "ignore",
@@ -236,10 +251,10 @@
   "gitlens.views.commits.files.layout": "list",
   // Code Runner
   "code-runner.enableAppInsights": false,
-  "code-runner.runInTerminal": true,
-  "code-runner.showRunIconInEditorTitleMenu": false,
   "code-runner.preserveFocus": true,
-  "code-runner.clearPreviousOutput": false,
+  "code-runner.clearPreviousOutput": true,
+  "code-runner.temporaryFileName": "_TEMP",
+  "code-runner.showRunIconInEditorTitleMenu": false,
   // Markdown Preview
   "markdown-preview-enhanced.scrollSync": true,
   "markdown-preview-enhanced.previewTheme": "atom-material.css",
@@ -370,15 +385,14 @@
   // statusbar-commands
   "statusbar_command.commands": [
     {
-      "text": "$(check)",
-      "tooltip": "TS: Checking only open files",
+      "text": "$(check-all)",
+      "tooltip": "TS: Checking all files",
       "alignment": "left",
       "command": "multiCommand.cycleProjectChecking",
       "priority": 100
     }
   ],
   // ESLint
-  "eslint.packageManager": "yarn",
   "eslint.runtime": "node",
   "eslint.options": {},
   // ==================================
@@ -391,8 +405,8 @@
       "statusBar.background": "#2D2D2D",
       "statusBar.noFolderBackground": "#2D2D2D",
       "statusBar.debuggingBackground": "#4b3d92",
-      "editorIndentGuide.activeBackground": "#3a3a3a",
-      "editorIndentGuide.background": "#2e2e2e",
+      "editorIndentGuide.activeBackground1": "#3a3a3a",
+      "editorIndentGuide.background1": "#2e2e2e",
       "editorLineNumber.foreground": "#4d4a5f",
       "editor.lineHighlightBackground": "#332e3d73",
       "scrollbarSlider.background": "#ffffff0c",
@@ -408,8 +422,8 @@
       "statusBar.noFolderBackground": "#1d1f27",
       "statusBar.foreground": "#B9BED5",
       "statusBar.noFolderForeground": "#B9BED5",
-      "editorIndentGuide.activeBackground": "#353a49",
-      "editorIndentGuide.background": "#2b303d",
+      "editorIndentGuide.activeBackground1": "#353a49",
+      "editorIndentGuide.background1": "#2b303d",
       "editorLineNumber.foreground": "#3c4153",
       "editor.lineHighlightBackground": "#373c502c",
       "scrollbarSlider.background": "#cecece0c",
@@ -442,6 +456,10 @@
       //"editorBracketHighlight.unexpectedBracket.foreground": "#db6165",
       // Default (unthemed) text color
       "editor.foreground": "#eeeeee",
+      // Selection background (outside editor)
+      "selection.background": "#278d91d0",
+      // Remove all focus borders
+      "focusBorder": "#00000000",
       // Line number duller
       "editorLineNumber.foreground": "#494352",
       // EDITOR INTERFACE
@@ -449,8 +467,8 @@
       // Title bar
       "titleBar.activeBackground": "#1e1924",
       "titleBar.inactiveBackground": "#1e1924",
-      "titleBar.activeForeground": "#c6c3c9",
-      "titleBar.inactiveForeground": "#a9a6ac",
+      "titleBar.activeForeground": "#6a6275",
+      "titleBar.inactiveForeground": "#494352",
       // Tabs bar
       "editorGroupHeader.tabsBackground": "#1e1924",
       "editorGroupHeader.noTabsBackground": "#1e1924",
@@ -458,7 +476,8 @@
       "tab.activeBorder": "#27212E",
       "tab.border": "#1e1924",
       // Breadcrumbs
-      "breadcrumb.foreground": "#88858a",
+      "breadcrumb.foreground": "#6f6977",
+      "breadcrumb.focusForeground": "#6f6977",
       // Side bar
       "sideBar.background": "#1e1924",
       "sideBar.border": "#1e1924",
@@ -497,17 +516,17 @@
       "minimap.selectionHighlight": "#694780bb",
       "minimap.findMatchHighlight": "#418ca5",
       "minimap.errorHighlight": "#833535",
-      "minimapSlider.background": "#69616b1a",
-      "minimapSlider.hoverBackground": "#69616b1a",
-      "minimapSlider.activeBackground": "#73548036",
+      "minimapSlider.background": "#725c812a",
+      "minimapSlider.hoverBackground": "#725c8131",
+      "minimapSlider.activeBackground": "#725c8141",
       // Scrollbar
-      "scrollbarSlider.background": "#6c676d1a",
-      "scrollbarSlider.hoverBackground": "#6c656d27",
-      "scrollbarSlider.activeBackground": "#73548036",
+      "scrollbarSlider.background": "#725c812a",
+      "scrollbarSlider.hoverBackground": "#725c8131",
+      "scrollbarSlider.activeBackground": "#725c8141",
       "scrollbar.shadow": "#000000a6",
       // Line indentation guides
-      "editorIndentGuide.activeBackground": "#796b883f",
-      "editorIndentGuide.background": "#74628a17",
+      "editorIndentGuide.activeBackground1": "#796b883f",
+      "editorIndentGuide.background1": "#74628a17",
       // Active line
       "editor.lineHighlightBorder": "#2c2436",
       "editor.lineHighlightBackground": "#292231",
@@ -944,8 +963,10 @@
   // Plugin Toggles
   "vim.visualstar": true,
   "vim.camelCaseMotion.enable": true,
+  "vim.highlightedyank.enable": false,
+  "vim.highlightedyank.color": "rgba(250, 240, 170, 0.1)",
+  "vim.highlightedyank.duration": 300,
   "vim.easymotion": true,
-  // EasyMotion
   "vim.easymotionMarkerForegroundColorOneChar": "#3de8ff",
   "vim.easymotionMarkerForegroundColorTwoCharFirst": "#df87ff",
   "vim.easymotionMarkerForegroundColorTwoCharSecond": "#A96BC0",
@@ -1124,10 +1145,11 @@
         "<C-e>"
       ]
     },
-    // comma joins lines
+    // join lines
     {
       "before": [
-        ","
+        "g",
+        "J"
       ],
       "after": [
         "J"
@@ -1169,27 +1191,6 @@
       "after": [
         "<leader>",
         "w"
-      ]
-    },
-    // Save and quit with cap S and Q like in my vimrc
-    {
-      "before": [
-        "S"
-      ],
-      "after": [
-        ":",
-        "w",
-        "<cr>"
-      ]
-    },
-    {
-      "before": [
-        "Q"
-      ],
-      "after": [
-        ":",
-        "q",
-        "<cr>"
       ]
     },
     // EASYMOTION TWEAKS
@@ -1387,20 +1388,12 @@
   // first item is deliberately here so others are placed after
   "editor.accessibilitySupport": "off",
   "workbench.editor.untitled.hint": "hidden",
-  "typescript.tsserver.experimental.enableProjectDiagnostics": false,
+  "typescript.tsserver.experimental.enableProjectDiagnostics": true,
   "security.workspace.trust.untrustedFiles": "open",
   "security.workspace.trust.enabled": false,
   "bracket-pair-colorizer-2.depreciation-notice": false,
-  "editor.inlineSuggest.enabled": true,
-  "github.copilot.enable": {
-    "*": true,
-    "plaintext": true,
-    "markdown": false,
-    "scminput": false,
-    "yaml": false
-  },
   "diffEditor.ignoreTrimWhitespace": false,
   "tailwindCSS.emmetCompletions": true,
   "window.menuBarVisibility": "compact",
-  "github.copilot.advanced": {},
+  "workbench.sideBar.location": "right",
 }

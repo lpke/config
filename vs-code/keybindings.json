@@ -111,22 +111,22 @@
         "workbench.action.focusSideBar"
       ]
     },
-    "when": "(isWindows || isLinux) && (vim.mode == 'Normal') && editorFocus &&  && !sideBarVisible"
+    "when": "(isWindows || isLinux) && (vim.mode == 'Normal') && editorTextFocus && !sideBarVisible"
   },
   {
     "key": "ctrl+right",
     "command": "workbench.action.focusSideBar",
-    "when": "(isWindows || isLinux) && (vim.mode == 'Normal') && editorFocus && sideBarVisible"
+    "when": "(isWindows || isLinux) && (vim.mode == 'Normal') && editorTextFocus && sideBarVisible"
   },
   {
     "key": "ctrl+left",
     "command": "workbench.action.focusAuxiliaryBar",
-    "when": "(isWindows || isLinux) && editorFocus"
+    "when": "(isWindows || isLinux) && editorTextFocus"
   },
   {
     "key": "ctrl+down",
     "command": "workbench.action.focusPanel",
-    "when": "(isWindows || isLinux) && editorFocus"
+    "when": "(isWindows || isLinux) && editorTextFocus"
   },
   {
     "key": "cmd+right",
@@ -137,22 +137,22 @@
         "workbench.action.focusSideBar"
       ]
     },
-    "when": "isMac && editorFocus && !sideBarVisible"
+    "when": "isMac && editorTextFocus && !sideBarVisible"
   },
   {
     "key": "cmd+right",
     "command": "workbench.action.focusSideBar",
-    "when": "isMac && editorFocus && sideBarVisible"
+    "when": "isMac && editorTextFocus && sideBarVisible"
   },
   {
     "key": "cmd+left",
     "command": "workbench.action.focusAuxiliaryBar",
-    "when": "isMac && editorFocus"
+    "when": "isMac && editorTextFocus"
   },
   {
     "key": "cmd+down",
     "command": "workbench.action.focusPanel",
-    "when": "isMac && editorFocus"
+    "when": "isMac && editorTextFocus"
   },
   // to editor
   {
@@ -163,47 +163,56 @@
   {
     "key": "ctrl+left",
     "command": "workbench.action.focusActiveEditorGroup",
-    "when": "(isWindows || isLinux) && sideBarFocus"
+    "when": "(isWindows || isLinux) && sideBarFocus && !inputFocus"
   },
   {
     "key": "ctrl+right",
     "command": "workbench.action.focusActiveEditorGroup",
-    "when": "(isWindows || isLinux) && auxiliaryBarFocus"
+    "when": "(isWindows || isLinux) && auxiliaryBarFocus && !inputFocus && !searchInputBoxFocus"
   },
   {
     "key": "cmd+up",
     "command": "workbench.action.focusActiveEditorGroup",
-    "when": "isMac && panelFocus"
+    "when": "isMac && panelFocus && !inputFocus"
   },
   {
     "key": "cmd+left",
     "command": "workbench.action.focusActiveEditorGroup",
-    "when": "isMac && sideBarFocus"
+    "when": "isMac && sideBarFocus && !inputFocus"
   },
   {
     "key": "cmd+right",
     "command": "workbench.action.focusActiveEditorGroup",
-    "when": "isMac && auxiliaryBarFocus"
+    "when": "isMac && auxiliaryBarFocus && !inputFocus"
   },
 
   // restore insert mode ctrl+right/left for word jumping
   {
     "key": "ctrl+right",
     "command": "cursorWordStartRight",
-    "when": "(isWindows || isLinux) && (vim.mode == 'Insert') && editorFocus"
+    "when": "(isWindows || isLinux) && (vim.mode == 'Insert') && editorTextFocus"
   },
   {
     "key": "ctrl+left",
     "command": "cursorWordEndLeft",
-    "when": "(isWindows || isLinux) && (vim.mode == 'Insert') && editorFocus"
+    "when": "(isWindows || isLinux) && (vim.mode == 'Insert') && editorTextFocus"
   },
-
+  {
+    "key": "ctrl+shift+right",
+    "command": "cursorWordStartRightSelect",
+    "when": "(isWindows || isLinux) && (vim.mode == 'Insert') && editorTextFocus"
+  },
+  {
+    "key": "ctrl+shift+left",
+    "command": "cursorWordEndLeftSelect",
+    "when": "(isWindows || isLinux) && (vim.mode == 'Insert') && editorTextFocus"
+  },
 
   // close main IDE areas is focus command repeated
   {
     "key": "ctrl+shift+down",
     "command": "workbench.action.closePanel",
-    "when": "(isWindows || isLinux) && panelFocus"
+    "when": "(isWindows || isLinux) && panelFocus && !inputFocus"
   },
   {
     "key": "ctrl+shift+left",
@@ -213,12 +222,12 @@
   {
     "key": "ctrl+shift+right",
     "command": "workbench.action.closeSidebar",
-    "when": "(isWindows || isLinux) && sideBarFocus"
+    "when": "(isWindows || isLinux) && sideBarFocus && !inputFocus"
   },
   {
     "key": "cmd+shift+down",
     "command": "workbench.action.closePanel",
-    "when": "isMac && panelFocus"
+    "when": "isMac && panelFocus && !inputFocus"
   },
   {
     "key": "cmd+shift+left",
@@ -228,37 +237,37 @@
   {
     "key": "cmd+shift+right",
     "command": "workbench.action.closeSidebar",
-    "when": "isMac && sideBarFocus"
+    "when": "isMac && sideBarFocus && !inputFocus"
   },
   {
     "key": "ctrl+down",
     "command": "workbench.action.closePanel",
-    "when": "(isWindows || isLinux) && panelFocus"
+    "when": "(isWindows || isLinux) && panelFocus && !inputFocus"
   },
   {
     "key": "ctrl+left",
     "command": "workbench.action.closeAuxiliaryBar",
-    "when": "(isWindows || isLinux) && auxiliaryBarFocus"
+    "when": "(isWindows || isLinux) && auxiliaryBarFocus && !inputFocus"
   },
   {
     "key": "ctrl+right",
     "command": "workbench.action.closeSidebar",
-    "when": "(isWindows || isLinux) && sideBarFocus"
+    "when": "(isWindows || isLinux) && sideBarFocus && !inputFocus"
   },
   {
     "key": "cmd+down",
     "command": "workbench.action.closePanel",
-    "when": "isMac && panelFocus"
+    "when": "isMac && panelFocus && !inputFocus"
   },
   {
     "key": "cmd+left",
     "command": "workbench.action.closeAuxiliaryBar",
-    "when": "isMac && auxiliaryBarFocus"
+    "when": "isMac && auxiliaryBarFocus && !inputFocus"
   },
   {
     "key": "cmd+right",
     "command": "workbench.action.closeSidebar",
-    "when": "isMac && sideBarFocus"
+    "when": "isMac && sideBarFocus && !inputFocus"
   },
 
   // move focus within main IDE areas

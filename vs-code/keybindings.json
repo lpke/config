@@ -111,12 +111,12 @@
         "workbench.action.focusSideBar"
       ]
     },
-    "when": "(isWindows || isLinux) && editorFocus && !sideBarVisible"
+    "when": "(isWindows || isLinux) && (vim.mode == 'Normal') && editorFocus &&  && !sideBarVisible"
   },
   {
     "key": "ctrl+right",
     "command": "workbench.action.focusSideBar",
-    "when": "(isWindows || isLinux) && editorFocus && sideBarVisible"
+    "when": "(isWindows || isLinux) && (vim.mode == 'Normal') && editorFocus && sideBarVisible"
   },
   {
     "key": "ctrl+left",
@@ -184,6 +184,18 @@
     "key": "cmd+right",
     "command": "workbench.action.focusActiveEditorGroup",
     "when": "isMac && auxiliaryBarFocus"
+  },
+
+  // restore insert mode ctrl+right/left for word jumping
+  {
+    "key": "ctrl+right",
+    "command": "cursorWordStartRight",
+    "when": "(isWindows || isLinux) && (vim.mode == 'Insert') && editorFocus"
+  },
+  {
+    "key": "ctrl+left",
+    "command": "cursorWordEndLeft",
+    "when": "(isWindows || isLinux) && (vim.mode == 'Insert') && editorFocus"
   },
 
 

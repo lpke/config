@@ -34,6 +34,7 @@
   { "key": "ctrl+space", "command": "-editor.action.triggerSuggest" },
   { "key": "ctrl+shift+down", "command": "-workbench.action.terminal.selectToNextCommand" },
   { "key": "ctrl+shift+down", "command": "-cursorDownSelect" },
+  { "key": "ctrl+shift+space", "command": "-editor.action.triggerParameterHints" },
 
   // move focus between main IDE areas
   // to/from any context - cmd/ctrl+shift+arrows
@@ -362,6 +363,11 @@
     "when": "(isWindows || isLinux) && editorTextFocus"
   },
   {
+    "key": "ctrl+alt+space",
+    "command": "settings.cycle.copilotAutoSuggestions",
+    "when": "(isWindows || isLinux) && editorTextFocus"
+  },
+  {
     "key": "alt+l",
     "command": "editor.action.inlineSuggest.showNext",
     "when": "(isWindows || isLinux) && editorTextFocus"
@@ -603,7 +609,17 @@
         "workbench.action.closeAuxiliaryBar"
       ]
     },
-    "when": "(sideBarFocus || auxiliaryBarFocus) && (activeAuxiliary == 'workbench.view.search' || activeViewlet == 'workbench.view.search') && inputFocus"
+    "when": "(isWindows || isLinux) && (sideBarFocus || auxiliaryBarFocus) && (activeAuxiliary == 'workbench.view.search' || activeViewlet == 'workbench.view.search') && inputFocus"
+  },
+  {
+    "key": "ctrl+shift+g",
+    "command": "workbench.view.scm",
+    "when": "isWindows || isLinux"
+  },
+  {
+    "key": "cmd+shift+g",
+    "command": "workbench.view.scm",
+    "when": "isMac"
   },
   {
     "key": "escape",
@@ -647,7 +663,7 @@
     "when": "(isWindows || isLinux) && sideBarFocus && explorerViewletFocus"
   },
   {
-    "key": "g r",
+    "key": "c w",
     "command": "renameFile",
     "when": "sideBarFocus && explorerViewletFocus && !inputFocus"
   },

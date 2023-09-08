@@ -11,8 +11,10 @@
   // ==================================
   // == Editor Settings
   // ==================================
-  // Text
+  // Text formatting
   "editor.tabSize": 2,
+  "editor.indentSize": "tabSize",
+  "files.trimFinalNewlines": false,
   "editor.fontLigatures": true,
   // Explorer
   "explorer.confirmDragAndDrop": false,
@@ -21,7 +23,7 @@
   // Behaviour
   "editor.wordWrap": "on",
   "git.confirmSync": false,
-  "editor.matchBrackets": false,
+  "editor.matchBrackets": "never",
   "editor.copyWithSyntaxHighlighting": false,
   "editor.insertSpaces": true,
   "editor.wordSeparators": "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?-",
@@ -133,6 +135,9 @@
   // JavaScript
   "javascript.validate.enable": true,
   "javascript.updateImportsOnFileMove.enabled": "always",
+  "javascript.format.semicolons": "insert",
+  "javascript.preferences.quoteStyle": "single",
+  "javascript.preferences.renameMatchingJsxTags": true,
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
@@ -140,8 +145,12 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   // TypeScript
+  "typescript.validate.enable": true,
   "typescript.tsserver.maxTsServerMemory": 8000,
   "typescript.updateImportsOnFileMove.enabled": "always",
+  "typescript.format.semicolons": "insert",
+  "typescript.preferences.quoteStyle": "single",
+  "typescript.preferences.renameMatchingJsxTags": true,
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
@@ -155,12 +164,24 @@
   "less.lint.emptyRules": "ignore",
   "scss.lint.emptyRules": "ignore",
   "css.lint.emptyRules": "ignore",
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[scss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[postcss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[less]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
   // JSON
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[jsonc]": {
-    "editor.defaultFormatter": "vscode.json-language-features"
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   // HTML
   "[html]": {
@@ -171,9 +192,42 @@
     "editor.insertSpaces": true,
     "editor.tabSize": 2,
   },
+  // Markdown
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  // Graphql
+  "[graphql]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  // Vue
+  "[vue]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
   // ==================================
   // == Extension Settings
   // ==================================
+  // Prettier (follows airbnb js styleguide)
+  // comment format: // [default value], [.editorconfig setting]
+  "prettier.printWidth": 80, // 80, max_line_length
+  "prettier.tabWidth": 2, // 2, indent_size | tab_width
+  "prettier.useTabs": false, // false, indent_style
+  "prettier.semi": true, // true
+  "prettier.singleQuote": true, // false
+  "prettier.quoteProps": "as-needed", // 'as-needed'
+  "prettier.jsxSingleQuote": false, // false
+  "prettier.trailingComma": "all", // 'all'
+  "prettier.bracketSpacing": true, // true
+  "prettier.bracketSameLine": false, // false
+  "prettier.arrowParens": "always", // 'always'
+  "prettier.requirePragma": false, // false
+  "prettier.insertPragma": false, // false
+  "prettier.proseWrap": "preserve", // 'preserve'
+  "prettier.htmlWhitespaceSensitivity": "css", // 'css'
+  "prettier.vueIndentScriptAndStyle": false, // false
+  "prettier.endOfLine": "lf", // 'lf', end_of_line
+  "prettier.embeddedLanguageFormatting": "auto", // 'auto'
+  "prettier.singleAttributePerLine": false, // false
   // Emmet
   "emmet.showSuggestionsAsSnippets": true,
   "emmet.triggerExpansionOnTab": true,
@@ -288,6 +342,20 @@
   // use in keybindings.json as command: `settings.cycle.<id>`
   "settings.cycle": [
     {
+      "id": "copilotAutoSuggestions",
+      "overrideWorkspaceSettings": true,
+      "values": [
+        {
+          "github.copilot.editor.enableAutoCompletions": false,
+          "editor.inlineSuggest.enabled": false,
+        },
+        {
+          "github.copilot.editor.enableAutoCompletions": true,
+          "editor.inlineSuggest.enabled": true,
+        }
+      ]
+    },
+    {
       "id": "projectChecking",
       "overrideWorkspaceSettings": true,
       "values": [
@@ -385,8 +453,8 @@
   // statusbar-commands
   "statusbar_command.commands": [
     {
-      "text": "$(check-all)",
-      "tooltip": "TS: Checking all files",
+      "text": "$(check)",
+      "tooltip": "TS: Checking only open files",
       "alignment": "left",
       "command": "multiCommand.cycleProjectChecking",
       "priority": 100
@@ -1329,10 +1397,64 @@
         "<esc>",
         "<esc>"
       ]
+    },
+    // replace command
+    {
+      "before": [
+        "S"
+      ],
+      "after": [
+        ":",
+        "s",
+        "/"
+      ]
     }
   ],
   // VISUAL MODE
   "vim.visualModeKeyBindingsNonRecursive": [
+    // replace commands
+    {
+      "before": [
+        "S",
+        "S"
+      ],
+      "after": [
+        ":",
+        "s",
+        "/"
+      ]
+    },
+    {
+      "before": [
+        "S",
+        "V"
+      ],
+      "after": [
+        ":",
+        "s",
+        "/",
+        "\\",
+        "%",
+        "V",
+      ]
+    },
+    // shift J and K to scroll
+    {
+      "before": [
+        "J"
+      ],
+      "after": [
+        "<C-e>"
+      ]
+    },
+    {
+      "before": [
+        "K"
+      ],
+      "after": [
+        "<C-y>"
+      ]
+    },
     // Repeatable multiline indentation
     {
       "before": [
@@ -1388,7 +1510,7 @@
   // first item is deliberately here so others are placed after
   "editor.accessibilitySupport": "off",
   "workbench.editor.untitled.hint": "hidden",
-  "typescript.tsserver.experimental.enableProjectDiagnostics": true,
+  "typescript.tsserver.experimental.enableProjectDiagnostics": false,
   "security.workspace.trust.untrustedFiles": "open",
   "security.workspace.trust.enabled": false,
   "bracket-pair-colorizer-2.depreciation-notice": false,

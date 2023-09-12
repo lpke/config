@@ -19,6 +19,7 @@
   // Explorer
   "explorer.confirmDragAndDrop": false,
   "explorer.confirmDelete": false,
+  "explorer.compactFolders": false,
   "workbench.editor.closeOnFileDelete": true,
   // Behaviour
   "editor.wordWrap": "on",
@@ -41,6 +42,9 @@
   "github.copilot.editor.enableAutoCompletions": false,
   "github.copilot.enable": {
     "*": true,
+    "plaintext": true,
+    "markdown": false,
+    "scminput": false
   },
   "github.copilot.advanced": {},
   // CodeLens (first option will override all others)
@@ -56,7 +60,6 @@
   "workbench.editor.pinnedTabSizing": "compact",
   "workbench.editor.tabSizing": "shrink",
   "editor.links": false,
-  "explorer.compactFolders": false,
   // Cursor
   "editor.cursorStyle": "line",
   "editor.cursorBlinking": "solid",
@@ -88,7 +91,7 @@
   "terminal.integrated.commandsToSkipShell": [
     "workbench.action.closePanel",
     "workbench.action.focusAuxiliaryBar",
-    "workbench.action.focusSideBar",
+    "workbench.action.focusSideBar"
   ],
   // Settings
   "editor.tabCompletion": "onlySnippets",
@@ -164,6 +167,9 @@
   "less.lint.emptyRules": "ignore",
   "scss.lint.emptyRules": "ignore",
   "css.lint.emptyRules": "ignore",
+  "[tailwindcss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
   "[css]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
@@ -190,7 +196,7 @@
   // AutoHotkey2
   "[ahk2]": {
     "editor.insertSpaces": true,
-    "editor.tabSize": 2,
+    "editor.tabSize": 2
   },
   // Markdown
   "[markdown]": {
@@ -232,7 +238,7 @@
   "emmet.showSuggestionsAsSnippets": true,
   "emmet.triggerExpansionOnTab": true,
   "emmet.includeLanguages": {
-    "postcss": "css",
+    "postcss": "css"
   }, // for custom snippets
   // Highlight Matching Tag
   "highlight-matching-tag.highlightSelfClosing": false,
@@ -248,7 +254,7 @@
   "subtleBrackets.style": {
     "borderWidth": "1px",
     "borderStyle": "none none solid none",
-    "borderColor": "#D4D4D4",
+    "borderColor": "#D4D4D4"
   },
   // GitLens
   "gitlens.codeLens.enabled": false,
@@ -347,11 +353,11 @@
       "values": [
         {
           "github.copilot.editor.enableAutoCompletions": false,
-          "editor.inlineSuggest.enabled": false,
+          "editor.inlineSuggest.enabled": false
         },
         {
           "github.copilot.editor.enableAutoCompletions": true,
-          "editor.inlineSuggest.enabled": true,
+          "editor.inlineSuggest.enabled": true
         }
       ]
     },
@@ -398,12 +404,7 @@
   ],
   // Todo Tree
   "todo-tree.tree.showScanModeButton": false,
-  "todo-tree.general.tags": [
-    "TODO",
-    "UPDATE",
-    "FIXME",
-    "TEMP"
-  ],
+  "todo-tree.general.tags": ["TODO", "UPDATE", "FIXME", "TEMP"],
   "todo-tree.highlights.defaultHighlight": {
     "icon": "issue-opened",
     "type": "whole-line",
@@ -463,6 +464,7 @@
   // ESLint
   "eslint.runtime": "node",
   "eslint.options": {},
+  "eslint.lintTask.enable": true,
   // ==================================
   // == Theme / Colour Settings
   // ==================================
@@ -709,9 +711,7 @@
         },
         // Theme: Middle Blue
         {
-          "scope": [
-            "support.type.property-name.json"
-          ],
+          "scope": ["support.type.property-name.json"],
           "settings": {
             "foreground": "#85B1E0"
           }
@@ -756,9 +756,7 @@
         },
         // Custom: Less White
         {
-          "scope": [
-            "meta.property-value.css"
-          ],
+          "scope": ["meta.property-value.css"],
           "settings": {
             "foreground": "#ecf1f5"
           }
@@ -784,37 +782,28 @@
         },
         // Custom: Less Light Blue
         {
-          "scope": [
-            "constant.other.color.rgb-value.hex.css"
-          ],
+          "scope": ["constant.other.color.rgb-value.hex.css"],
           "settings": {
             "foreground": "#8bc9e2"
           }
         },
         // Custom: More Middle Blue
         {
-          "scope": [
-            "entity.name.tag.css",
-            "variable.language.this"
-          ],
+          "scope": ["entity.name.tag.css", "variable.language.this"],
           "settings": {
             "foreground": "#81c5f1"
           }
         },
         // Custom: Subdued Pink
         {
-          "scope": [
-            "keyword.other.unit"
-          ],
+          "scope": ["keyword.other.unit"],
           "settings": {
             "foreground": "#956fa5"
           }
         },
         // Specific: Classes
         {
-          "scope": [
-            "entity.name.type.class"
-          ],
+          "scope": ["entity.name.type.class"],
           "settings": {
             "foreground": "#b27eff", // Custom: Bright Purple
             "fontStyle": "bold"
@@ -859,9 +848,7 @@
       "textMateRules": [
         // Typescript "this" keyword is purple
         {
-          "scope": [
-            "variable.language.this.tsx"
-          ],
+          "scope": ["variable.language.this.tsx"],
           "settings": {
             "foreground": "#B381C5"
           }
@@ -881,28 +868,21 @@
         },
         // Slightly darkening comments
         {
-          "scope": [
-            "comment",
-            "punctuation.definition.comment"
-          ],
+          "scope": ["comment", "punctuation.definition.comment"],
           "settings": {
             "foreground": "#827a8b"
           }
         },
         // Coloring classes
         {
-          "scope": [
-            "entity.name.type.class"
-          ],
+          "scope": ["entity.name.type.class"],
           "settings": {
             "foreground": "#5fcc98"
           }
         },
         // Making JSX component tags differ from normal tags
         {
-          "scope": [
-            "support.class.component"
-          ],
+          "scope": ["support.class.component"],
           "settings": {
             "foreground": "#5fcc98",
             "fontStyle": "bold"
@@ -963,9 +943,7 @@
         },
         // Making code/pre parts of .md files a different color
         {
-          "scope": [
-            "markup.inline.raw.string.markdown"
-          ],
+          "scope": ["markup.inline.raw.string.markdown"],
           "settings": {
             "foreground": "#B4DCE7"
           }
@@ -997,10 +975,7 @@
         },
         // Making 'new' and 'this' keyword italic
         {
-          "scope": [
-            "keyword.operator.new",
-            "variable.language.this.tsx"
-          ],
+          "scope": ["keyword.operator.new", "variable.language.this.tsx"],
           "settings": {
             "fontStyle": "italic"
           }
@@ -1044,12 +1019,18 @@
   // ==================================
   // NORMAL MODE
   "vim.normalModeKeyBindingsNonRecursive": [
+    // format code
+    {
+      "before": ["=", "="],
+      "commands": [
+        {
+          "command": "editor.action.formatDocument"
+        }
+      ]
+    },
     // Jump to matching HTML tag
     {
-      "before": [
-        "<leader>",
-        "%"
-      ],
+      "before": ["<leader>", "%"],
       "commands": [
         {
           "command": "editor.emmet.action.matchTag"
@@ -1058,23 +1039,12 @@
     },
     // Select all text (in vim)
     {
-      "before": [
-        "<leader>",
-        "a"
-      ],
-      "after": [
-        "g",
-        "g",
-        "V",
-        "G"
-      ]
+      "before": ["<leader>", "a"],
+      "after": ["g", "g", "V", "G"]
     },
     // Rename (same as F2)
     {
-      "before": [
-        "g",
-        "r"
-      ],
+      "before": ["g", "r"],
       "commands": [
         {
           "command": "editor.action.rename"
@@ -1083,44 +1053,21 @@
     },
     // Capital Y yanks to end of line, instead of whole line
     {
-      "before": [
-        "Y"
-      ],
-      "after": [
-        "y",
-        "$"
-      ]
+      "before": ["Y"],
+      "after": ["y", "$"]
     },
     // db and cb deleted/changes backward word including char under cursor
     {
-      "before": [
-        "d",
-        "b"
-      ],
-      "after": [
-        "v",
-        "b",
-        "d"
-      ]
+      "before": ["d", "b"],
+      "after": ["v", "b", "d"]
     },
     {
-      "before": [
-        "c",
-        "b"
-      ],
-      "after": [
-        "v",
-        "b",
-        "c"
-      ]
+      "before": ["c", "b"],
+      "after": ["v", "b", "c"]
     },
     // Toggle Boolean
     {
-      "before": [
-        "c",
-        "i",
-        "b"
-      ],
+      "before": ["c", "i", "b"],
       "commands": [
         {
           "command": "extension.toggleBool"
@@ -1129,195 +1076,86 @@
     },
     // shift J and K to scroll
     {
-      "before": [
-        "J"
-      ],
-      "after": [
-        "<C-e>"
-      ]
+      "before": ["J"],
+      "after": ["<C-e>"]
     },
     {
-      "before": [
-        "K"
-      ],
-      "after": [
-        "<C-y>"
-      ]
+      "before": ["K"],
+      "after": ["<C-y>"]
     },
     // tweaking z commands
     {
-      "before": [
-        "z",
-        "T"
-      ],
-      "after": [
-        "z",
-        "t"
-      ]
+      "before": ["z", "T"],
+      "after": ["z", "t"]
     },
     {
-      "before": [
-        "z",
-        "B"
-      ],
-      "after": [
-        "z",
-        "b"
-      ]
+      "before": ["z", "B"],
+      "after": ["z", "b"]
     },
     {
-      "before": [
-        "z",
-        "t"
-      ],
-      "after": [
-        "z",
-        "t",
-        "1",
-        "0",
-        "<C-y>"
-      ]
+      "before": ["z", "t"],
+      "after": ["z", "t", "1", "0", "<C-y>"]
     },
     {
-      "before": [
-        "z",
-        "b"
-      ],
-      "after": [
-        "z",
-        "b",
-        "1",
-        "0",
-        "<C-e>"
-      ]
+      "before": ["z", "b"],
+      "after": ["z", "b", "1", "0", "<C-e>"]
     },
     {
-      "before": [
-        "z",
-        "u"
-      ],
-      "after": [
-        "1",
-        "0",
-        "<C-y>"
-      ]
+      "before": ["z", "u"],
+      "after": ["1", "0", "<C-y>"]
     },
     {
-      "before": [
-        "z",
-        "d"
-      ],
-      "after": [
-        "1",
-        "0",
-        "<C-e>"
-      ]
+      "before": ["z", "d"],
+      "after": ["1", "0", "<C-e>"]
     },
     // join lines
     {
-      "before": [
-        "g",
-        "J"
-      ],
-      "after": [
-        "J"
-      ]
+      "before": ["g", "J"],
+      "after": ["J"]
     },
     // up and down arrow keys navigate soft-wrapped lines
     {
-      "before": [
-        "up"
-      ],
-      "after": [
-        "g",
-        "k"
-      ]
+      "before": ["up"],
+      "after": ["g", "k"]
     },
     {
-      "before": [
-        "down"
-      ],
-      "after": [
-        "g",
-        "j"
-      ]
+      "before": ["down"],
+      "after": ["g", "j"]
     },
     // left and right arrow keys do camelcase movement
     {
-      "before": [
-        "left"
-      ],
-      "after": [
-        "<leader>",
-        "b"
-      ]
+      "before": ["left"],
+      "after": ["<leader>", "b"]
     },
     {
-      "before": [
-        "right"
-      ],
-      "after": [
-        "<leader>",
-        "w"
-      ]
+      "before": ["right"],
+      "after": ["<leader>", "w"]
     },
     // EASYMOTION TWEAKS
     // Search n characters
     {
-      "before": [
-        "g",
-        "\\"
-      ],
-      "after": [
-        "<leader>",
-        "<leader>",
-        "/"
-      ]
+      "before": ["g", "\\"],
+      "after": ["<leader>", "<leader>", "/"]
     },
     // Search for a character
     {
-      "before": [
-        "g",
-        "/"
-      ],
-      "after": [
-        "<leader>",
-        "<leader>",
-        "s"
-      ]
+      "before": ["g", "/"],
+      "after": ["<leader>", "<leader>", "s"]
     },
     // Jump to start of line
     {
-      "before": [
-        "g",
-        "l"
-      ],
-      "after": [
-        "<leader>",
-        "<leader>",
-        "<leader>",
-        "b",
-        "d",
-        "j",
-        "k"
-      ]
+      "before": ["g", "l"],
+      "after": ["<leader>", "<leader>", "<leader>", "b", "d", "j", "k"]
     },
     // PEEK
     // Disabling "gp" on it's own
     {
-      "before": [
-        "g",
-        "p"
-      ],
+      "before": ["g", "p"],
       "after": []
     },
     // Peek definition
     {
-      "before": [
-        "g",
-        "p",
-        "d"
-      ],
+      "before": ["g", "p", "d"],
       "commands": [
         {
           "command": "editor.action.peekDefinition"
@@ -1326,11 +1164,7 @@
     },
     // Peek type definition
     {
-      "before": [
-        "g",
-        "p",
-        "t"
-      ],
+      "before": ["g", "p", "t"],
       "commands": [
         {
           "command": "editor.action.peekTypeDefinition"
@@ -1339,11 +1173,7 @@
     },
     // Peek implementations
     {
-      "before": [
-        "g",
-        "p",
-        "i"
-      ],
+      "before": ["g", "p", "i"],
       "commands": [
         {
           "command": "editor.action.peekImplementation"
@@ -1352,11 +1182,7 @@
     },
     // Peek references
     {
-      "before": [
-        "g",
-        "p",
-        "r"
-      ],
+      "before": ["g", "p", "r"],
       "commands": [
         {
           "command": "editor.action.goToReferences"
@@ -1365,10 +1191,7 @@
     },
     // TRIGGER SUGGESTIONS
     {
-      "before": [
-        "g",
-        "s"
-      ],
+      "before": ["g", "s"],
       "commands": [
         {
           "command": "editor.action.triggerSuggest"
@@ -1377,131 +1200,70 @@
     },
     // insert new lines whilst remaining in normal mode
     {
-      "before": [
-        "g",
-        "o"
-      ],
-      "after": [
-        "o",
-        "<esc>",
-        "<esc>"
-      ]
+      "before": ["g", "o"],
+      "after": ["o", "<esc>", "<esc>"]
     },
     {
-      "before": [
-        "g",
-        "O"
-      ],
-      "after": [
-        "O",
-        "<esc>",
-        "<esc>"
-      ]
+      "before": ["g", "O"],
+      "after": ["O", "<esc>", "<esc>"]
     },
     // replace command
     {
-      "before": [
-        "S"
-      ],
-      "after": [
-        ":",
-        "s",
-        "/"
-      ]
+      "before": ["S"],
+      "after": [":", "s", "/"]
     }
   ],
   // VISUAL MODE
   "vim.visualModeKeyBindingsNonRecursive": [
-    // replace commands
+    // format code
     {
-      "before": [
-        "S",
-        "S"
-      ],
-      "after": [
-        ":",
-        "s",
-        "/"
+      "before": ["="],
+      "commands": [
+        {
+          "command": "editor.action.formatDocument"
+        }
       ]
     },
+    // replace commands
     {
-      "before": [
-        "S",
-        "V"
-      ],
-      "after": [
-        ":",
-        "s",
-        "/",
-        "\\",
-        "%",
-        "V",
-      ]
+      "before": ["S", "S"],
+      "after": [":", "s", "/"]
+    },
+    {
+      "before": ["S", "V"],
+      "after": [":", "s", "/", "\\", "%", "V"]
     },
     // shift J and K to scroll
     {
-      "before": [
-        "J"
-      ],
-      "after": [
-        "<C-e>"
-      ]
+      "before": ["J"],
+      "after": ["<C-e>"]
     },
     {
-      "before": [
-        "K"
-      ],
-      "after": [
-        "<C-y>"
-      ]
+      "before": ["K"],
+      "after": ["<C-y>"]
     },
     // Repeatable multiline indentation
     {
-      "before": [
-        ">"
-      ],
-      "commands": [
-        "editor.action.indentLines"
-      ]
+      "before": [">"],
+      "commands": ["editor.action.indentLines"]
     },
     {
-      "before": [
-        "<"
-      ],
-      "commands": [
-        "editor.action.outdentLines"
-      ]
+      "before": ["<"],
+      "commands": ["editor.action.outdentLines"]
     },
     // left and right arrow keys do camelcase movement
     {
-      "before": [
-        "left"
-      ],
-      "after": [
-        "<leader>",
-        "b"
-      ]
+      "before": ["left"],
+      "after": ["<leader>", "b"]
     },
     {
-      "before": [
-        "right"
-      ],
-      "after": [
-        "<leader>",
-        "w"
-      ]
+      "before": ["right"],
+      "after": ["<leader>", "w"]
     },
     // Pasting in visual mode does not override current register
     {
-      "before": [
-        "p"
-      ],
-      "after": [
-        "p",
-        "g",
-        "v",
-        "y"
-      ]
+      "before": ["p"],
+      "after": ["p", "g", "v", "y"]
     }
   ],
   // ==================================
@@ -1513,9 +1275,9 @@
   "typescript.tsserver.experimental.enableProjectDiagnostics": false,
   "security.workspace.trust.untrustedFiles": "open",
   "security.workspace.trust.enabled": false,
-  "bracket-pair-colorizer-2.depreciation-notice": false,
   "diffEditor.ignoreTrimWhitespace": false,
   "tailwindCSS.emmetCompletions": true,
   "window.menuBarVisibility": "compact",
   "workbench.sideBar.location": "right",
+  "editor.stickyScroll.enabled": true
 }

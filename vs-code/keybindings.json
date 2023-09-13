@@ -10,7 +10,10 @@
   { "key": "shift+alt+h", "command": "-references-view.showCallHierarchy" },
   { "key": "shift+alt+h", "command": "-gitlens.showQuickRepoHistory" },
   { "key": "shift+cmd+h", "command": "-workbench.action.replaceInFiles" },
-  { "key": "shift+cmd+j", "command": "-workbench.action.search.toggleQueryDetails" },
+  {
+    "key": "shift+cmd+j",
+    "command": "-workbench.action.search.toggleQueryDetails"
+  },
   { "key": "shift+cmd+k", "command": "-editor.action.deleteLines" },
   { "key": "shift+cmd+l", "command": "-editor.action.selectHighlights" },
   { "key": "shift+cmd+l", "command": "-addCursorsAtSearchResults" },
@@ -30,11 +33,18 @@
   { "key": "ctrl+alt+n", "command": "-code-runner.run" },
   { "key": "ctrl+t", "command": "-workbench.action.showAllSymbols" },
   { "key": "ctrl+t", "command": "-extension.vim_ctrl+t" },
-  { "key": "space", "command": "-filesExplorer.openFilePreserveFocus"},
+  { "key": "space", "command": "-filesExplorer.openFilePreserveFocus" },
   { "key": "ctrl+space", "command": "-editor.action.triggerSuggest" },
-  { "key": "ctrl+shift+down", "command": "-workbench.action.terminal.selectToNextCommand" },
+  {
+    "key": "ctrl+shift+down",
+    "command": "-workbench.action.terminal.selectToNextCommand"
+  },
   { "key": "ctrl+shift+down", "command": "-cursorDownSelect" },
-  { "key": "ctrl+shift+space", "command": "-editor.action.triggerParameterHints" },
+  {
+    "key": "ctrl+shift+space",
+    "command": "-editor.action.triggerParameterHints"
+  },
+  { "key": "ctrl+,", "command": "-workbench.action.openSettings" },
 
   // move focus between main IDE areas
   // to/from any context - cmd/ctrl+shift+arrows
@@ -343,8 +353,7 @@
     "when": "isMac && panelFocus"
   },
 
-
-  // suggestions
+  // SUGGESTIONS
   // regular
   {
     "key": "ctrl+t",
@@ -377,7 +386,6 @@
     "command": "editor.action.inlineSuggest.showPrevious",
     "when": "(isWindows || isLinux) && editorTextFocus"
   },
-
   // terminal/code runner
   {
     "key": "meta+shift+n",
@@ -389,6 +397,7 @@
     "command": "code-runner.run",
     "when": "isMac"
   },
+
   // clear output only when visible
   {
     "key": "meta+shift+o",
@@ -457,7 +466,7 @@
   {
     "key": "ctrl+n",
     "command": "workbench.action.files.newUntitledFile",
-    "when": "isWindows || isLinux",
+    "when": "isWindows || isLinux"
   },
   {
     "key": "ctrl+o",
@@ -643,7 +652,7 @@
   {
     "key": ", ,",
     "command": "explorer.newFile",
-    "when": "sideBarFocus && explorerViewletFocus && !inputFocus",
+    "when": "sideBarFocus && explorerViewletFocus && !inputFocus"
   },
   // delete
   {
@@ -731,7 +740,6 @@
     "when": "isWindows || isLinux"
   },
 
-
   // allowing easier command access for common vim command actions
   // (also helps match my linux keybindings / muscle memory)
   {
@@ -781,7 +789,7 @@
   {
     "key": "alt+t",
     "command": "workbench.action.terminal.sendSequence",
-    "args": {"text": "cd '${workspaceFolder}' && clear\u000D"}
+    "args": { "text": "cd '${workspaceFolder}' && clear\u000D" }
   },
   {
     "key": "ctrl+w",
@@ -797,5 +805,15 @@
     "key": "ctrl+shift+l",
     "command": "workbench.action.terminal.focusNext",
     "when": "(isWindows || isLinux) && terminalFocus"
+  },
+
+  // VIM keybinds (only workarounds not possible in settings.json)
+  {
+    "key": "ctrl+,",
+    "command": "vim.remap",
+    "when": "editorTextFocus && vim.active && vim.mode == 'Normal' && !inDebugRepl",
+    "args": {
+      "after": ["g", "J"]
+    }
   }
 ]

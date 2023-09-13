@@ -38,6 +38,14 @@
   "editor.suggest.showInterfaces": false,
   "editor.suggest.showModules": false,
   "editor.suggest.showClasses": false,
+  // Tab completion
+  "editor.tabCompletion": "onlySnippets",
+  "editor.snippetSuggestions": "top",
+  "editor.acceptSuggestionOnEnter": "smart",
+  "editor.quickSuggestionsDelay": 0,
+  "editor.acceptSuggestionOnCommitCharacter": false,
+  "editor.suggestOnTriggerCharacters": false,
+  "editor.suggest.localityBonus": true,
   // GitHub Copilot
   "github.copilot.editor.enableAutoCompletions": false,
   "github.copilot.enable": {
@@ -68,6 +76,7 @@
   "window.titleBarStyle": "custom",
   "window.customMenuBarAltFocus": false,
   "window.enableMenuBarMnemonics": false,
+  "window.commandCenter": false,
   // Minimap
   "editor.minimap.maxColumn": 95,
   "editor.minimap.showSlider": "always",
@@ -93,13 +102,6 @@
     "workbench.action.focusAuxiliaryBar",
     "workbench.action.focusSideBar"
   ],
-  // Settings
-  "editor.tabCompletion": "onlySnippets",
-  "editor.acceptSuggestionOnEnter": "smart",
-  "editor.quickSuggestionsDelay": 0,
-  "editor.acceptSuggestionOnCommitCharacter": false,
-  "editor.suggestOnTriggerCharacters": false,
-  "editor.suggest.localityBonus": true,
   // File Exclusions
   "files.exclude": {
     "**/.git": true,
@@ -236,7 +238,8 @@
   "prettier.singleAttributePerLine": false, // false
   // Emmet
   "emmet.showSuggestionsAsSnippets": true,
-  "emmet.triggerExpansionOnTab": true,
+  "emmet.triggerExpansionOnTab": false,
+  "tailwindCSS.emmetCompletions": true,
   "emmet.includeLanguages": {
     "postcss": "css"
   }, // for custom snippets
@@ -1017,8 +1020,31 @@
   // ==================================
   // == VIM Keybindings
   // ==================================
+  // INSERT MODE
+  "vim.insertModeKeyBindingsNonRecursive": [
+    // emmet expansion (part 1)
+    {
+      "before": ["<C-g>"],
+      "after": [],
+      "commands": [
+        {
+          "command": "editor.emmet.action.expandAbbreviation",
+          "args": []
+        },
+        {
+          "command": "extension.vim_escape",
+          "args": []
+        }
+      ]
+    }
+  ],
   // NORMAL MODE
   "vim.normalModeKeyBindingsNonRecursive": [
+    // emmet expansion (part 2)
+    {
+      "before": ["<C-g>"],
+      "after": ["f", "/", "h", "i"]
+    },
     // format code
     {
       "before": ["=", "="],
@@ -1094,11 +1120,11 @@
     },
     {
       "before": ["z", "t"],
-      "after": ["z", "t", "1", "0", "<C-y>"]
+      "after": ["z", "t", "5", "<C-y>"]
     },
     {
       "before": ["z", "b"],
-      "after": ["z", "b", "1", "0", "<C-e>"]
+      "after": ["z", "b", "5", "<C-e>"]
     },
     {
       "before": ["z", "u"],
@@ -1108,7 +1134,7 @@
       "before": ["z", "d"],
       "after": ["1", "0", "<C-e>"]
     },
-    // join lines
+    // join lines (used for ctrl+, in settings.json)
     {
       "before": ["g", "J"],
       "after": ["J"]
@@ -1215,15 +1241,6 @@
   ],
   // VISUAL MODE
   "vim.visualModeKeyBindingsNonRecursive": [
-    // format code
-    {
-      "before": ["="],
-      "commands": [
-        {
-          "command": "editor.action.formatDocument"
-        }
-      ]
-    },
     // replace commands
     {
       "before": ["S", "S"],
@@ -1276,7 +1293,6 @@
   "security.workspace.trust.untrustedFiles": "open",
   "security.workspace.trust.enabled": false,
   "diffEditor.ignoreTrimWhitespace": false,
-  "tailwindCSS.emmetCompletions": true,
   "window.menuBarVisibility": "compact",
   "workbench.sideBar.location": "right",
   "editor.stickyScroll.enabled": true

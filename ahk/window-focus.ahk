@@ -1,35 +1,41 @@
 #Requires AutoHotkey v2.0
 
-; ==== DEVELOPMENT SHORTCUTS ====
-; # win, + shift, ^ ctrl, ! alt
-; Reload this script
-#+r:: {
-  Reload
-}
-; Get active window position data
-#+t:: {
-  aID := WinGetID("A")
-  WinGetFullPos(&aXL, &aXR, &aYT, &aYB, &aW, &aH, aID)
-  discounted := WinIsDiscounted(aID, &visible, &desktop, &taskbar)
+calc_padding := 20 ; minimum direction/alignment overlap for target windows
 
-  MsgBox(
-    "XL:  " aXL "`n"
-    "XR:  " aXR "`n"
-    "YT:  " aYT "`n"
-    "YB:  " aYB "`n"
-    "W:  "  aW  "`n"
-    "H:  "  aH  "`n"
-    "`n"
-    "ID:  " aID "`n"
-    "`n"
-    "Visible:  " visible "`n"
-    "Desktop:  " desktop "`n"
-    "Taskbar:  " taskbar "`n"
-    "`n"
-    "Discounted:  " discounted
-  )
-}
-; ==== /DEVELOPMENT SHORTCUTS ====
+#h::FocusWin("left")
+#l::FocusWin("right")
+#k::FocusWin("up")
+#j::FocusWin("down")
+
+; ==== DEVELOPMENT SHORTCUTS ====
+; Reload this script
+; #+r:: {
+;   Reload
+; }
+; Get active window position data
+; #+t:: {
+;   aID := WinGetID("A")
+;   WinGetFullPos(&aXL, &aXR, &aYT, &aYB, &aW, &aH, aID)
+;   discounted := WinIsDiscounted(aID, &visible, &desktop, &taskbar, &startmenu)
+
+;   MsgBox(
+;     "XL:  " aXL "`n"
+;     "XR:  " aXR "`n"
+;     "YT:  " aYT "`n"
+;     "YB:  " aYB "`n"
+;     "W:  "  aW  "`n"
+;     "H:  "  aH  "`n"
+;     "`n"
+;     "ID:  " aID "`n"
+;     "`n"
+;     "Visible:  " visible "`n"
+;     "Desktop:  " desktop "`n"
+;     "Taskbar:  " taskbar "`n"
+;     "Startmenu:  " startmenu "`n"
+;     "`n"
+;     "Discounted:  " discounted
+;   )
+; }
 
 WinGetFullPos(&xl, &xr, &yt, &yb, &w, &h, id) {
   WinGetPos(&xl, &yt, &w, &h, id)
@@ -46,7 +52,7 @@ OverlapAxis(axis, padding, aXL, aXR, aYT, aYB, tXL, tXR, tYT, tYB) {
   return false
 }
 
-WinIsDiscounted(id, &visible, &desktop, &taskbar) {
+WinIsDiscounted(id, &visible, &desktop, &taskbar, &startmenu) {
   wclass := WinGetClass(id)
   wstyle := WinGetStyle("ahk_id" id)
   WS_VISIBLE := 0x10000000
@@ -54,43 +60,59 @@ WinIsDiscounted(id, &visible, &desktop, &taskbar) {
   visible := (wstyle & WS_VISIBLE) ? true : false
   desktop := (wclass = "Progman" || wclass = "WorkerW")
   taskbar := (wclass = "Shell_TrayWnd" || wclass = "Shell_SecondaryTrayWnd")
+  startmenu := (wclass = "DV2ControlHost" || wclass = "Windows.UI.Core.CoreWindow")
 
-  return !visible || desktop || taskbar
+  return !visible || desktop || taskbar || startmenu
 }
 
-; Constants
-min_past := 20 ; min distance target window must be past active window to be considered
-
-; focus left
-#h:: {
-  ; get id of active window
-  aID := WinGetID("A")
+FocusWin(direction) {
+  aID := WinGetID("A") ; get ID of active window
+  WinGetFullPos(&aXL, &aXR, &aYT, &aYB, &aW, &aH, aID) ; get pos/size of active window
   
-  ; get position and size of active window
-  WinGetFullPos(&aXL, &aXR, &aYT, &aYB, &aW, &aH, aID)
-  
-  ; get all window IDs (returns array of id strings)
-  ids_arr := WinGetList()
+  ids_arr := WinGetList() ; get all window IDs (returns array of id strings)
 
+  ; values to update during the loop
   closest_id := ""
   closest_distance := 999999999
 
   ; loop through all windows
+  ; validity checks are made early as possible for performance
   for (tID in ids_arr) {
-    ; get position and size of target window
-    WinGetFullPos(&tXL, &tXR, &tYT, &tYB, &tW, &tH, tID)
-
-    ; get whether there is Y axis overlap between window positions
-    overlap := OverlapAxis("Y", min_past, aXL, aXR, aYT, aYB, tXL, tXR, tYT, tYB)
-
-    ; check whether window is a discounted type
-    discounted := WinIsDiscounted(tID, &visible, &desktop, &taskbar)
-
-    ; skip if: is active window, is discounted type, no Y axis overlap, not far enough past edge
-    if ((tID == aID) || (discounted) || (!overlap) || (aXL - tXL < min_past))
+    is_active_win := tID == aID
+    if (is_active_win)
+      continue
+    is_discounted_win := WinIsDiscounted(tID, &visible, &desktop, &taskbar, &startmenu)
+    if (is_discounted_win)
       continue
 
-    distance := aXL - tXR
+    WinGetFullPos(&tXL, &tXR, &tYT, &tYB, &tW, &tH, tID) ; get pos/size of target window
+
+    switch direction
+    {
+      case "left": is_direction := aXL - tXL >= calc_padding
+      case "right": is_direction := tXR - aXR >= calc_padding
+      case "up": is_direction := aYT - tYT >= calc_padding
+      case "down": is_direction := tYB - aYB >= calc_padding
+    }
+    if (!is_direction)
+      continue
+    switch direction
+    {
+      case "left": is_aligned := OverlapAxis("Y", calc_padding, aXL, aXR, aYT, aYB, tXL, tXR, tYT, tYB)
+      case "right": is_aligned := OverlapAxis("Y", calc_padding, aXL, aXR, aYT, aYB, tXL, tXR, tYT, tYB)
+      case "up": is_aligned := OverlapAxis("X", calc_padding, aXL, aXR, aYT, aYB, tXL, tXR, tYT, tYB)
+      case "down": is_aligned := OverlapAxis("X", calc_padding, aXL, aXR, aYT, aYB, tXL, tXR, tYT, tYB)
+    }
+    if (!is_aligned)
+      continue
+
+    switch direction
+    {
+      case "left": distance := aXL - tXR
+      case "right": distance := tXL - aXR
+      case "up": distance := aYT - tYB
+      case "down": distance := tYT - aYB
+    }
 
     ; update closest values if window is closer and to the left
     if (distance < closest_distance) {
@@ -103,20 +125,5 @@ min_past := 20 ; min distance target window must be past active window to be con
   if (closest_id)
     WinActivate("ahk_id" closest_id)
 
-  return
-}
-
-; focus down
-#j:: {
-  return
-}
-
-; focus up
-#k:: {
-  return
-}
-
-; focus right
-#l:: {
   return
 }

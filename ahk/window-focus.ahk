@@ -6,6 +6,8 @@ calc_padding := 20 ; minimum direction/alignment overlap for target windows
 #l::FocusWin("right")
 #k::FocusWin("up")
 #j::FocusWin("down")
+#,::FocusWin("closest")
+#o::Send("!{Tab}")
 
 ; ==== DEVELOPMENT SHORTCUTS ====
 ; Reload this script
@@ -15,6 +17,8 @@ calc_padding := 20 ; minimum direction/alignment overlap for target windows
 ; Get active window position data
 ; #+t:: {
 ;   aID := WinGetID("A")
+;   wclass := WinGetClass(aID)
+;   wtitle := WinGetTitle(aID)
 ;   WinGetFullPos(&aXL, &aXR, &aYT, &aYB, &aW, &aH, aID)
 ;   discounted := WinIsDiscounted(aID, &visible, &desktop, &taskbar, &startmenu)
 
@@ -27,6 +31,8 @@ calc_padding := 20 ; minimum direction/alignment overlap for target windows
 ;     "H:  "  aH  "`n"
 ;     "`n"
 ;     "ID:  " aID "`n"
+;     "class:  " wclass "`n"
+;     "title:  " wtitle "`n"
 ;     "`n"
 ;     "Visible:  " visible "`n"
 ;     "Desktop:  " desktop "`n"
@@ -87,31 +93,47 @@ FocusWin(direction) {
 
     WinGetFullPos(&tXL, &tXR, &tYT, &tYB, &tW, &tH, tID) ; get pos/size of target window
 
-    switch direction
-    {
-      case "left": is_direction := aXL - tXL >= calc_padding
-      case "right": is_direction := tXR - aXR >= calc_padding
-      case "up": is_direction := aYT - tYT >= calc_padding
-      case "down": is_direction := tYB - aYB >= calc_padding
-    }
-    if (!is_direction)
-      continue
-    switch direction
-    {
-      case "left": is_aligned := OverlapAxis("Y", calc_padding, aXL, aXR, aYT, aYB, tXL, tXR, tYT, tYB)
-      case "right": is_aligned := OverlapAxis("Y", calc_padding, aXL, aXR, aYT, aYB, tXL, tXR, tYT, tYB)
-      case "up": is_aligned := OverlapAxis("X", calc_padding, aXL, aXR, aYT, aYB, tXL, tXR, tYT, tYB)
-      case "down": is_aligned := OverlapAxis("X", calc_padding, aXL, aXR, aYT, aYB, tXL, tXR, tYT, tYB)
-    }
-    if (!is_aligned)
-      continue
+    if (direction = "closest") {
+      ; calculating active and target window center coordinates
+      aXC := aXL + (aW / 2)
+      aYC := aYT + (aH / 2)
+      tXC := tXL + (tW / 2)
+      tYC := tYT + (tH / 2)
 
-    switch direction
-    {
-      case "left": distance := aXL - tXR
-      case "right": distance := tXL - aXR
-      case "up": distance := aYT - tYB
-      case "down": distance := tYT - aYB
+      ; calculating X and Y distance between windows
+      dX := Abs(aXC - tXC)
+      dY := Abs(aYC - tYC)
+
+      ; calculating straigh-line distance using Pythagoras
+      distance := Sqrt((dX)**2 + (dY)**2)
+    }
+    else {
+      switch direction
+      {
+        case "left": is_direction := aXL - tXL >= calc_padding
+        case "right": is_direction := tXR - aXR >= calc_padding
+        case "up": is_direction := aYT - tYT >= calc_padding
+        case "down": is_direction := tYB - aYB >= calc_padding
+      }
+      if (!is_direction)
+        continue
+      switch direction
+      {
+        case "left": is_aligned := OverlapAxis("Y", calc_padding, aXL, aXR, aYT, aYB, tXL, tXR, tYT, tYB)
+        case "right": is_aligned := OverlapAxis("Y", calc_padding, aXL, aXR, aYT, aYB, tXL, tXR, tYT, tYB)
+        case "up": is_aligned := OverlapAxis("X", calc_padding, aXL, aXR, aYT, aYB, tXL, tXR, tYT, tYB)
+        case "down": is_aligned := OverlapAxis("X", calc_padding, aXL, aXR, aYT, aYB, tXL, tXR, tYT, tYB)
+      }
+      if (!is_aligned)
+        continue
+
+      switch direction
+      {
+        case "left": distance := aXL - tXR
+        case "right": distance := tXL - aXR
+        case "up": distance := aYT - tYB
+        case "down": distance := tYT - aYB
+      }
     }
 
     ; update closest values if window is closer and to the left

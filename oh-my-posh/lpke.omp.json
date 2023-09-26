@@ -194,7 +194,7 @@
     "foreground_templates": [
       "{{ if gt .Code 0 }}p:prompt-arrow-error{{ end }}"
     ],
-    "template": "\u276f "
+    "template": "{{if .WSL}}\n{{end}}\u276f "
   },
   "osc99": true
 }

@@ -28,7 +28,7 @@ font:
 
   normal:
     family: JetBrainsMono Nerd Font Mono
-    style: Regular
+    style: Medium
 
   bold:
     family: JetBrainsMono Nerd Font Mono
@@ -36,7 +36,7 @@ font:
 
   italic:
     family: JetBrainsMono Nerd Font Mono
-    style: Italic
+    style: Medium Italic
 
   bold_italic:
     family: JetBrainsMono Nerd Font Mono
@@ -44,17 +44,17 @@ font:
 
 colors:
   primary:
-    foreground: '#E0DEF4'
+    foreground: '#e0deec'
     background: '#191724'
     # dim_foreground: '#828482'
     # bright_foreground: '#eaeaea'
 
   # cursor:
-  #   text: '#E0DEF4'
+  #   text: '#e0deec'
   #   cursor: '#555169'
 
   selection:
-    text: '#E0DEF4' # same as foreground
+    text: '#e0deec' # same as foreground
     background: '#403d52' # same as in nvim
 
   # footer_bar:
@@ -69,7 +69,7 @@ colors:
     blue: '#9CCFD8'
     magenta: '#C4A7E7'
     cyan: '#EBBCBA'
-    white: '#E0DEF4'
+    white: '#e0deec'
 
   bright:
     black: '#6E6A86'
@@ -79,4 +79,4 @@ colors:
     blue: '#9CCFD8'
     magenta: '#C4A7E7'
     cyan: '#EBBCBA'
-    white: '#E0DEF4'
+    white: '#e0deec'

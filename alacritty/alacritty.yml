@@ -1,9 +1,15 @@
+# WINDOWS:
+# Include a file in the default config location and include:
+#
+# import:
+#   - ~/.config/alacritty/alacritty.yml
+
 shell:
   program: C:\Windows\system32\wsl.exe -d Ubuntu
 
 window:
   decorations: none
-  opacity: 0.93
+  opacity: 0.95
 
   padding:
     x: 5
@@ -35,3 +41,42 @@ font:
   bold_italic:
     family: JetBrainsMono Nerd Font Mono
     style: Bold Italic
+
+colors:
+  primary:
+    foreground: '#E0DEF4'
+    background: '#191724'
+    # dim_foreground: '#828482'
+    # bright_foreground: '#eaeaea'
+
+  # cursor:
+  #   text: '#E0DEF4'
+  #   cursor: '#555169'
+
+  selection:
+    text: '#E0DEF4' # same as foreground
+    background: '#403d52' # same as in nvim
+
+  # footer_bar:
+  #   background: '#c5c8c6'
+  #   foreground: '#1d1f21'
+
+  normal:
+    black: '#26233A'
+    red: '#F2566F'
+    green: '#31748F'
+    yellow: '#F6C177'
+    blue: '#9CCFD8'
+    magenta: '#C4A7E7'
+    cyan: '#EBBCBA'
+    white: '#E0DEF4'
+
+  bright:
+    black: '#6E6A86'
+    red: '#F2566F'
+    green: '#2F998A'
+    yellow: '#F6C177'
+    blue: '#9CCFD8'
+    magenta: '#C4A7E7'
+    cyan: '#EBBCBA'
+    white: '#E0DEF4'

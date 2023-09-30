@@ -1,4 +1,4 @@
-# Very messy config repository
+# A very messy config repository
 
 Where I've been crudely backing up some important config files.
 

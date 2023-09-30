@@ -1,7 +1,3 @@
---------------------------
--- KEYMAPS
---------------------------
-
 -- remap leader to space
 vim.g.mapleader = " "
 

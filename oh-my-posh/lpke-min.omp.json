@@ -54,31 +54,32 @@
         {
           "type": "path",
           "foreground": "p:path",
-          "properties": {
-            "style": "agnoster_short"
-          },
           "style": "plain",
+          "properties": {
+            "style": "agnoster_short",
+            "max_depth": 2
+          },
           "template": "{{ .Path }} "
         },
         {
           "type": "git",
           "foreground": "p:git",
+          "style": "plain",
           "properties": {
             "branch_icon": "",
             "fetch_upstream_icon": false
           },
-          "style": "plain",
-          "template": "{{ .UpstreamIcon }}{{ .HEAD }} "
+          "template": "{{ .HEAD }} "
         },
         {
           "type": "executiontime",
-          "style": "plain",
           "foreground": "p:time",
-          "template": "{{ .FormattedMs }} ",
+          "style": "plain",
           "properties": {
             "style": "round",
             "threshold": 3000
-          }
+          },
+          "template": "{{ .FormattedMs }} "
         },
         {
           "type": "status",
@@ -86,10 +87,10 @@
           "foreground_templates": [
             "{{ if gt .Code 0 }}p:prompt-error{{ end }}"
           ],
+          "style": "plain",
           "properties": {
             "always_enabled": true
           },
-          "style": "plain",
           "template": "\u276f "
         }
       ]

@@ -1,0 +1,96 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "version": 2,
+  "palettes": {
+    "template": "{{ if eq .Shell \"zsh\" }}zsh{{ else if eq .Shell \"cmd\" }}cmd{{ else }}psh{{ end }}",
+    "list": {
+      "psh": {
+        "root": "yellow",
+        "session": "cyan",
+        "path": "green",
+        "git": "blue",
+        "prompt": "yellow",
+        "prompt-error": "red"
+      },
+      "cmd": {
+        "root": "yellow",
+        "session": "cyan",
+        "path": "green",
+        "git": "blue",
+        "prompt": "yellow",
+        "prompt-error": "red"
+      },
+      "zsh": {
+        "root": "yellow",
+        "session": "cyan",
+        "path": "green",
+        "git": "blue",
+        "time": "magenta",
+        "prompt": "yellow",
+        "prompt-error": "red"
+      }
+    }
+  },
+  "blocks": [
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "newline": true,
+      "segments": [
+        {
+          "type": "root",
+          "foreground": "p:root",
+          "style": "plain",
+          "template": "# "
+        },
+        {
+          "type": "session",
+          "foreground": "p:session",
+          "style": "plain",
+          "template": "{{ if .SSHSession }}{{ .UserName }}@{{ .HostName }} {{ end }}"
+        },
+        {
+          "type": "path",
+          "foreground": "p:path",
+          "properties": {
+            "style": "agnoster_short"
+          },
+          "style": "plain",
+          "template": "{{ .Path }} "
+        },
+        {
+          "type": "git",
+          "foreground": "p:git",
+          "properties": {
+            "branch_icon": "",
+            "fetch_upstream_icon": false
+          },
+          "style": "plain",
+          "template": "{{ .UpstreamIcon }}{{ .HEAD }} "
+        },
+        {
+          "type": "executiontime",
+          "style": "plain",
+          "foreground": "p:time",
+          "template": "{{ .FormattedMs }} ",
+          "properties": {
+            "style": "round",
+            "threshold": 3000
+          }
+        },
+        {
+          "type": "status",
+          "foreground": "p:prompt",
+          "foreground_templates": [
+            "{{ if gt .Code 0 }}p:prompt-error{{ end }}"
+          ],
+          "properties": {
+            "always_enabled": true
+          },
+          "style": "plain",
+          "template": "\u276f "
+        }
+      ]
+    }
+  ]
+}

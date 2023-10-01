@@ -8,8 +8,10 @@ shell:
   program: C:\Windows\system32\wsl.exe -d Ubuntu
 
 window:
+  title: alacritty
+  dynamic_title: false
   decorations: none
-  opacity: 0.98
+  opacity: 0.99
 
   padding:
     x: 5
@@ -21,28 +23,30 @@ font:
   # extra space around each char
   offset:
     x: 0
-    y: 5
+    y: 3
 
   # locatins of chars witin their cells
   glyph_offset:
     x: 0
-    y: 3
+    y: 2
 
   normal:
-    family: MonoLisa
-    style: Medium
+    family: MonoLisa Lpke
+    style: Regular
 
   bold:
-    family: MonoLisa
+    family: MonoLisa Lpke
     style: Bold
 
   italic:
-    family: MonoLisa
+    family: MonoLisa Lpke
     style: Medium Italic
 
-  bold_italic:
-    family: MonoLisa
-    style: Bold Italic
+  # On my system, explicitly setting this doesn't work,
+  # but the font is inferred correctly if omitted
+  # bold_italic:
+  #   family: MonoLisa Lpke
+  #   style: Bold Italic
 
 colors:
   primary:

@@ -20,7 +20,7 @@ local options = {
   numberwidth = 4, -- the width of the number column, setting it to 4 keeps it from pushing the editor over as numbers get larger
   --cindent = true, -- for C files, which I do not write right now.
   --signcolumn = 'yes', -- show signs in signcolumn
-  wrap = true, -- line wrap
+  wrap = false, -- line wrap
   breakindent = true, -- wrapped text is indented to that line's indent level
   --laststatus = 3, -- global statusline, thanks Neovim team :-)
   tabstop = 2, -- maximum width of an actual tab character
@@ -37,6 +37,8 @@ local options = {
   scrolloff = 8, -- minumum number of lines to keep above/below cursor
   sidescrolloff = 8, -- minumum number of char columns to keep left/right of cursor
   --equalalways = false, -- all windows are made the same size after opening or closing
+  ignorecase = true, -- ignore case of letters when searching (see also \c)
+  smartcase = true, -- dont ignore case if search contains capitals (see also \C)
 }
 
 -- convert above table into: vim.opt.<option> = <value>

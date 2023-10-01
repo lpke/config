@@ -9,6 +9,7 @@
         "session": "cyan",
         "path": "green",
         "git": "blue",
+        "time": "magenta",
         "prompt": "yellow",
         "prompt-error": "red"
       },
@@ -17,6 +18,7 @@
         "session": "cyan",
         "path": "green",
         "git": "blue",
+        "time": "magenta",
         "prompt": "yellow",
         "prompt-error": "red"
       },

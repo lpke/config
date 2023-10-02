@@ -1,25 +1,16 @@
 local helpers = require('helpers')
+local keymap_set = helpers.keymap_set
+-- SETTER SYNTAX: {'<modes><N=noremap,!=silent>', <from>, <to>, {opts}}
 
 -- remap leader to space
 vim.g.mapleader = ' '
 
---------------------------
--- KEYMAPS
--- 'modes/extras', <from>, <to>, {opts}
--- extras: N=noremap, !=silent
---------------------------
 local keymaps = {
   -- window (pane) navigation
   {'n', '<C-h>', '<C-w>h'},
   {'n', '<C-j>', '<C-w>j'},
   {'n', '<C-k>', '<C-w>k'},
   {'n', '<C-l>', '<C-w>l'},
-
-  -- open netrw
-  {'n', '<leader>pv', vim.cmd.Ex},
-
-  -- package manager
-  {'n', '<leader>L', '<cmd>Lazy<cr>'},
 
   -- tab navigation
   -- TODO
@@ -28,20 +19,15 @@ local keymaps = {
   {'n', '<A-ScrollWheelDown>', '6zl'},
   {'n', '<A-ScrollWheelUp>', '6zh'},
 
-  -- toggle line wrap
-  {'nN!', '<C-w>w', ':set wrap!<CR>'},
+  {'n', '<leader>pv', vim.cmd.Ex}, -- open netrw
+  {'n', '<leader>L', '<cmd>Lazy<cr>'}, -- package manager
+  {'nN!', '<C-w>w', ':set wrap!<CR>'}, -- toggle line wrap
 }
-helpers.set_keymaps(keymaps)
+helpers.keymap_set_multi(keymaps)
 
--- fix windows line endings when pasting from global registers
+-- convert windows line endings to unix when pasting from global registers
 if helpers.is_wsl then
-  function fix_line_endings(register)
-    local content = vim.fn.getreg(register)
-    local fixed_content = vim.fn.substitute(content, '\r\n', '\n', 'g')
-    vim.fn.setreg(register, fixed_content)
-    vim.cmd('normal! "' .. register .. 'p')
-  end
-  vim.keymap.set('n', '"*p', ':lua fix_line_endings("*")<CR>', { noremap = true, silent = true })
-  vim.keymap.set('n', '"+p', ':lua fix_line_endings("+")<CR>', { noremap = true, silent = true })
+  keymap_set({'nN!', '"*p', function() helpers.paste_unix('*') end})
+  keymap_set({'nN!', '"+p', function() helpers.paste_unix('+') end})
 end
 

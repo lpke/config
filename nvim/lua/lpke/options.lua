@@ -1,7 +1,7 @@
 local helpers = require('helpers')
 
 --------------------------
--- OOTB Vim Options
+-- VIM OPTIONS
 --------------------------
 
 local options = {

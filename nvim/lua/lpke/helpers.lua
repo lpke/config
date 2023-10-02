@@ -7,29 +7,45 @@ local function set_options(options)
   end
 end
 
--- convert my shorthand keymaps table into vim.keymap.set(...)
-local function set_keymaps(keymaps)
-  for _i, map in ipairs(keymaps) do
-    local mode, lhs, rhs, opts = unpack(map)
-    opts = opts or {}
-    local modes = {}
+-- parses a table containing custom keymap args and sets the keymap
+local function keymap_set(keymap)
+  local mode, from, to, opts = unpack(keymap)
+  opts = opts or {}
+  local modes = {}
 
-    for char in mode:gmatch('.') do
-      if char == 'N' then
-        opts.noremap = true
-      elseif char == '!' then
-        opts.silent = true
-      else
-        table.insert(modes, char)
-      end
+  for char in mode:gmatch('.') do
+    if char == 'N' then
+      opts.noremap = true
+    elseif char == '!' then
+      opts.silent = true
+    else
+      table.insert(modes, char)
     end
-
-    vim.keymap.set(modes, lhs, rhs, opts)
   end
+
+  vim.keymap.set(modes, from, to, opts)
+end
+
+-- same as above but accepts multiple keymap tables in a table
+local function keymap_set_multi(keymaps)
+  for _i, keymap in ipairs(keymaps) do
+    keymap_set(keymap)
+  end
+end
+
+-- pastes from register with unix line endings
+local function paste_unix(register)
+  local content = vim.fn.getreg(register)
+  local fixed_content = vim.fn.substitute(content, '\r\n', '\n', 'g')
+  vim.fn.setreg(register, fixed_content)
+  vim.cmd('normal! "' .. register .. 'p')
 end
 
 return {
   is_wsl = is_wsl,
   set_options = set_options,
-  set_keymaps = set_keymaps,
+  keymap_set = keymap_set,
+  keymap_set_multi = keymap_set_multi,
+  paste_unix = paste_unix,
 }
+

@@ -1,4 +1,4 @@
-local is_wsl = vim.fn.exists('$WSL_DISTRO_NAME')
+local helpers = require('helpers')
 
 --------------------------
 -- OOTB Vim Options
@@ -44,11 +44,7 @@ local options = {
   ignorecase = true, -- ignore case of letters when searching (see also \c)
   smartcase = true, -- dont ignore case if search contains capitals (see also \C)
 }
-
--- convert above table into: vim.opt.<option> = <value>
-for k, v in pairs(options) do
-  vim.opt[k] = v
-end
+helpers.set_options(options)
 
 
 --------------------------
@@ -64,7 +60,7 @@ vim.cmd('autocmd FileType * set formatoptions-=ro')
 --------------------------
 
 -- wsl clipboard support
-if is_wsl then
+if helpers.is_wsl then
   vim.g.clipboard = {
     name = 'WslClipboard',
     copy = {

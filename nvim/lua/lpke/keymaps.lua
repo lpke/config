@@ -1,32 +1,40 @@
-local is_wsl = vim.fn.exists('$WSL_DISTRO_NAME')
+local helpers = require('helpers')
 
 -- remap leader to space
 vim.g.mapleader = ' '
 
--- open netrw
-vim.keymap.set('n', '<leader>pv', vim.cmd.Ex)
+--------------------------
+-- KEYMAPS
+-- 'modes/extras', <from>, <to>, {opts}
+-- extras: N=noremap, !=silent
+--------------------------
+local keymaps = {
+  -- window (pane) navigation
+  {'n', '<C-h>', '<C-w>h'},
+  {'n', '<C-j>', '<C-w>j'},
+  {'n', '<C-k>', '<C-w>k'},
+  {'n', '<C-l>', '<C-w>l'},
 
--- package manager
-vim.keymap.set('n', '<leader>L', '<cmd>Lazy<cr>')
+  -- open netrw
+  {'n', '<leader>pv', vim.cmd.Ex},
 
--- window (pane) navigation
-vim.keymap.set('n', '<C-h>', '<C-w>h')
-vim.keymap.set('n', '<C-j>', '<C-w>j')
-vim.keymap.set('n', '<C-k>', '<C-w>k')
-vim.keymap.set('n', '<C-l>', '<C-w>l')
+  -- package manager
+  {'n', '<leader>L', '<cmd>Lazy<cr>'},
 
--- TODO tab navigation
+  -- tab navigation
+  -- TODO
 
+  -- horizontal mouse scrolling
+  {'n', '<A-ScrollWheelDown>', '6zl'},
+  {'n', '<A-ScrollWheelUp>', '6zh'},
 
--- horizontal mouse scrolling
-vim.keymap.set('n', '<A-ScrollWheelDown>', '6zl')
-vim.keymap.set('n', '<A-ScrollWheelUp>', '6zh')
-
--- toggle line wrap
-vim.keymap.set('n', '<C-w>w', ':set wrap!<CR>', { noremap = true, silent = true })
+  -- toggle line wrap
+  {'nN!', '<C-w>w', ':set wrap!<CR>'},
+}
+helpers.set_keymaps(keymaps)
 
 -- fix windows line endings when pasting from global registers
-if is_wsl then
+if helpers.is_wsl then
   function fix_line_endings(register)
     local content = vim.fn.getreg(register)
     local fixed_content = vim.fn.substitute(content, '\r\n', '\n', 'g')

@@ -1,50 +1,103 @@
-" == General bindings  ==
+" Setting the autoload directory - default vim folder for everything
+set runtimepath+=~/.config/vim,~/.config/vim/after
+set viminfo+=n~/.config/vim/viminfo
+set packpath+=~/.config/vim
 
-" A way to add new lines without exiting normal mode
-map <Enter> o<ESC>
+" Package management (built in)
+packadd! dracula
 
-" == Visual mode bindings ==
+"dracula
+let g:dracula_italic = 0
+
+" vim-javascript
+let g:javascript_plugin_jsdoc = 1
+let g:javascript_plugin_ngdoc = 1
+let g:javascript_plugin_flow = 1
+
+" vim-json
+"g:vim_json_syntax_conceal = 0  "disable json quotes concealing
+
+" WSL global yank (copy) support
+let s:clip = '/mnt/c/Windows/System32/clip.exe'
+if executable(s:clip)
+  augroup WSLYank
+    autocmd!
+    autocmd TextYankPost * if v:event.operator ==# 'y' | call system(s:clip, @0) | endif
+  augroup END
+endif
+
+" Enabling 24-bit color
+if (empty($TMUX))
+  if (has("nvim"))
+    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+  endif
+  if (has("termguicolors"))
+    set termguicolors
+  endif
+elseif (exists($TMUX))
+  " Set Vim-specific sequences for RGB colors
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
+endif
+
+" Color management
+syntax enable
+set t_ut=     "fix background highlighting issue in kitty
+colorscheme dracula
+
+hi Normal         guibg=#20222b
+                  "default: #282A36
+hi LineNr         guifg=#464757
+hi CursorLine     guibg=#282a36 cterm=NONE gui=NONE
+hi CursorLineNr   guifg=#dcdde6 cterm=NONE gui=NONE
+" Note: cterm=NONE and gui=NONE ensures no underline
+
+"hi Cursor         guifg=#F8F8F8           guibg=#A7A7A7
+"hi CursorIM       guifg=#F8F8F8           guibg=#002947"#5F5A60
+
+" Allow backspacing
+set backspace=2
+
+" Allow wrapped-line navigation as normal
+" works by checking whether a number modifier is used before key press
+" (so that it doesn't break relative line number jumps etc)
+nnoremap <expr> j (v:count ? 'j' : 'gj')
+nnoremap <expr> k (v:count ? 'k' : 'gk')
+
+" Capital Y yanks to end of line, instead of whole line
+nnoremap Y y$
+
+" db and cb deleted/changes backward word including char under cursor
+nnoremap db dvb
+nnoremap cb cvb
+
+" shift J and K scroll, and comma now joins lines
+nnoremap J <C-e>
+nnoremap K <C-y>
+nnoremap , :join<cr>
+
+" Saving and Quitting
+nnoremap S :w<cr>
+nnoremap Q :q<cr>
 
 " Move visual block
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 
-" Start and end of line mapped to reg brackets
-vnoremap ( 0
-vnoremap ) $
-
-" == Normal mode bindings ==
-
-" Insert a single character with space in normal mode
-:nnoremap <Space> i_<Esc>r
-
-" Start and end of line mapped to reg brackets
-:nnoremap ( 0
-:nnoremap ) $
-
-" Rebind " to ' for easy register access
-:nnoremap ' "
-:nnoremap " '
-
-" Rebind ; to : for easy register access
-:nnoremap ; :
-:nnoremap : ;
-
 " == Vim settings == 
-set viminfo+=n~/.vim/viminfo
-syntax on
+set shortmess=I " Disable vim intro message
 set autoindent
+set breakindent " wrapped lines retain their indentation
 filetype plugin indent on
+set pastetoggle=<F3>
 
 " Line numbers
-set relativenumber
-set numberwidth=4
+set number relativenumber
+set numberwidth=3
 set ruler
-highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
-set cursorline
-highlight CursorLine cterm=NONE ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE
-set cursorline
-highlight CursorLineNr cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=#f7f7f7
+set showcmd
+autocmd InsertEnter,InsertLeave * set cul!
 
 " Tab settings
 set tabstop=2       " The width of a TAB is set to 2.
@@ -57,3 +110,64 @@ set shiftwidth=2    " Indents will have a width of 2
 set softtabstop=2   " Sets the number of columns for a TAB
 
 set expandtab       " Expand TABs to space
+
+
+" QOL Settings
+
+" Highlight search results and backspace to unhighlight
+set hlsearch        
+nnoremap <BS> :noh<CR><BS>
+
+" Dynamic Cursor
+let &t_SI = "\<Esc>[6 q"
+let &t_SR = "\<Esc>[4 q"
+let &t_EI = "\<Esc>[2 q"
+
+" Enable mouse mode
+set mouse=a
+
+" Remove escape and other delays
+set ttimeout
+set ttimeoutlen=1
+set listchars=tab:>-,trail:~,extends:>,precedes:<,space:.
+set ttyfast
+
+" Removing some defaults
+set shortmess+=F    "remove default file name when first opening
+set noshowmode      "disable mode indicator in command line (under status line)
+
+" Status line coloring
+hi SLineDefault   guibg=#323442  guifg=#f7f7f7
+hi SLineNormal    guibg=#9980D3  guifg=Black
+hi SLineInsert    guibg=#64E46E  guifg=Black
+hi SLineRplace    guibg=#e47e7e  guifg=Black
+hi SLineVisual    guibg=#8DE5F9  guifg=Black
+hi SLineModFlag   guibg=#323442  guifg=#FDB666
+hi SLinePaste     guibg=#F97AC7  guifg=Black
+hi SLineSpell     guibg=#DEE17D  guifg=Black
+
+" Vanilla Status Line
+set laststatus =2         "enable statusline
+set statusline =
+
+set statusline +=%#SLineDefault#            "colour
+set statusline +=\ %n\                      "buffer number
+set statusline +=%{&readonly?'\ ':''}      "readonly symbol (lock)
+set statusline +=%#SLineNormal#%{(mode()=='n')?(&readonly?'\ ':'').'\ NORMAL\ ':''}
+set statusline +=%#SLineInsert#%{(mode()=='i')?(&readonly?'\ ':'').'\ INSERT\ ':''}
+set statusline +=%#SLineRplace#%{(mode()=='R')?(&readonly?'\ ':'').'\ RPLACE\ ':''}
+set statusline +=%#SLineVisual#%{(mode()=='v')?(&readonly?'\ ':'').'\ VISUAL\ ':''}
+set statusline +=%#SLineVisual#%{(mode()=='V')?(&readonly?'\ ':'').'\ V-LINE\ ':''}
+set statusline +=%#SLineDefault#            "colour
+set statusline +=\ %f\                      "file name
+set statusline +=%#SLineModFlag#            "colour
+set statusline +=%M                         "modified [+] flag
+set statusline +=%=                         "right align
+set statusline +=%#SLineDefault#            "colour
+set statusline +=\ %Y\                      "file type
+set statusline +=%#SLineDefault#            "colour
+set statusline +=\ %3l:%-2c\                "line + column
+set statusline +=%#SLineDefault#            "colour
+set statusline +=\ %3p%%\                   "percentage
+set statusline +=%#SLinePaste#%{&paste?'\ PASTE\ ':''} "pastemode toggled on
+set statusline +=%#SLineSpell#%{&spell?'\ SPELL\ ':''} "spellcheck toggled on

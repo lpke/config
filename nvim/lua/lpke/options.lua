@@ -1,5 +1,9 @@
 local is_wsl = vim.fn.exists('$WSL_DISTRO_NAME')
 
+--------------------------
+-- OOTB Vim Options
+--------------------------
+
 local options = {
   --backup = false, -- no backups
   --swapfile = false, -- don't create a swapfile
@@ -29,9 +33,9 @@ local options = {
   expandtab = true, -- always expand tab to spaces
   smarttab = true, -- tab inserts whitespace only to the next predefined tab stop
   shiftround = true, -- when indenting, stop at next shiftwidth (don't end up in between stops)
-  --guicursor = "n-v-c-i:block", -- i'll block you
-  --guifont = "Iosevka Nerd Font Medium:h14", -- the font the bible is written in.
-  --shellxquote = "", -- i can use this to do cool things
+  --guicursor = 'n-v-c-i:block', -- i'll block you
+  --guifont = 'Iosevka Nerd Font Medium:h14', -- the font the bible is written in.
+  --shellxquote = '', -- i can use this to do cool things
   autoindent = true, -- this should absolutely always be on
   smartindent = true, -- so should this.
   scrolloff = 8, -- minumum number of lines to keep above/below cursor
@@ -45,6 +49,19 @@ local options = {
 for k, v in pairs(options) do
   vim.opt[k] = v
 end
+
+
+--------------------------
+-- AUTOCOMMANDS
+--------------------------
+
+-- disable next line auto-comment
+vim.cmd('autocmd FileType * set formatoptions-=ro')
+
+
+--------------------------
+-- GLOBAL VARIABLES
+--------------------------
 
 -- wsl clipboard support
 if is_wsl then
@@ -62,9 +79,6 @@ if is_wsl then
   }
 end
 
--- disable next line auto-comment
-vim.cmd([[autocmd FileType * set formatoptions-=ro]])
-
--- netrw settings
+-- netrw
 vim.g.netrw_banner = 0
 

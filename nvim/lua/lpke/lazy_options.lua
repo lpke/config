@@ -1,6 +1,39 @@
 local lazy_options = {
   ui = {
-    border = "single"
+    icons = {
+      cmd = '⌘ ',
+      config = '☼',
+      event = '▣',
+      ft = '◆ ',
+      init = '☇ ',
+      import = '↘',
+      keys = '₸ ',
+      lazy = 'ℓ  ',
+      loaded = '●',
+      not_loaded = '○',
+      plugin = '⏻',
+      runtime = '◌',
+      source = '☑',
+      start = '▶',
+      task = '✔ ',
+      list = {
+        '●',
+        '-',
+        '↳',
+        '-',
+        '↳',
+        '-',
+        '↳',
+        '-',
+        '↳',
+        '-',
+        '↳',
+        '-',
+        '↳',
+        '-',
+        '↳',
+      }
+    }
   }
 }
 

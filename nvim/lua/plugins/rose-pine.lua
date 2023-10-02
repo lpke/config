@@ -8,6 +8,6 @@ return {
   lazy = false,
   priority = 1000,
   config = function()
-    vim.cmd([[colorscheme rose-pine]]) -- TODO do this prime's way with ColorMyPencils
+    vim.cmd('colorscheme rose-pine') -- TODO do this prime's way with ColorMyPencils
   end,
 }

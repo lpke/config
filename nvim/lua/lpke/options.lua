@@ -1,4 +1,4 @@
-local helpers = require('helpers')
+local helpers = require('lpke.helpers')
 
 --------------------------
 -- VIM OPTIONS
@@ -38,8 +38,8 @@ local options = {
   --shellxquote = '', -- i can use this to do cool things
   autoindent = true, -- this should absolutely always be on
   smartindent = true, -- so should this.
-  scrolloff = 8, -- minumum number of lines to keep above/below cursor
-  sidescrolloff = 8, -- minumum number of char columns to keep left/right of cursor
+  scrolloff = 6, -- minumum number of lines to keep above/below cursor
+  sidescrolloff = 6, -- minumum number of char columns to keep left/right of cursor
   --equalalways = false, -- all windows are made the same size after opening or closing
   ignorecase = true, -- ignore case of letters when searching (see also \c)
   smartcase = true, -- dont ignore case if search contains capitals (see also \C)

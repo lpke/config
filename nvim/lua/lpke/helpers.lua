@@ -16,6 +16,8 @@ local function keymap_set(keymap)
   for char in mode:gmatch('.') do
     if char == 'N' then
       opts.noremap = true
+    elseif char == 'E' then
+      opts.expr = true
     elseif char == '!' then
       opts.silent = true
     else

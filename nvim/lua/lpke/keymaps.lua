@@ -28,6 +28,10 @@ local keymaps = {
   {'n', '<C-d>', '<C-d>zz'},
   {'n', '<C-u>', '<C-u>zz'},
 
+  -- center cursor when searching
+  {'n', 'n', 'nzzzv'},
+  {'n', 'N', 'Nzzzv'},
+
   -- horizontal mouse scrolling
   {'n', '<A-ScrollWheelDown>', '6zl'},
   {'n', '<A-ScrollWheelUp>', '6zh'},
@@ -44,6 +48,22 @@ local keymaps = {
   {'v', 'p', 'P'}, 
   {'v', 'P', 'p'},
 
+  -- repeatable multiline indentation
+  {'v', '<', '<gv'},
+  {'v', '>', '>gv'},
+
+  -- include char under cursor when deleting/changing backwards
+  {'n', 'db', 'vbd'},
+  {'n', 'cb', 'vbc'},
+  {'n', 'd^', 'v^d'},
+  {'n', 'c^', 'v^c'},
+  
+  -- replace all occurences of word under cursor
+  {'n', '<leader>s', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]]},
+
+  {'nv', '<leader>d', '"_d'}, -- <leader>d for delete without copy
+  {'nv', '<leader>y', '"*y'}, -- <leader>y for global yank
+  {'n', 'Y', 'y$'}, -- capital Y yanks to end of line instead of whole line
   {'n', 'J', 'mzJ`z'}, -- dont move cursor when joining lines
   {'n', '<leader>pv', vim.cmd.Ex}, -- open netrw
   {'n', '<leader>L', '<cmd>Lazy<cr>'}, -- package manager

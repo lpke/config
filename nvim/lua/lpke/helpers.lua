@@ -1,5 +1,12 @@
 local is_wsl = vim.fn.exists('$WSL_DISTRO_NAME')
 
+local function combineTables(defaultTable, newTable)
+  for k, v in pairs(newTable) do
+    defaultTable[k] = v
+  end
+  return defaultTable
+end
+
 -- convert my options table into vim.opt.<key> = <value>
 local function set_options(options)
   for k, v in pairs(options) do
@@ -10,12 +17,12 @@ end
 -- parses a table containing custom keymap args and sets the keymap
 local function keymap_set(keymap)
   local mode, from, to, opts = unpack(keymap)
-  opts = opts or {}
+  opts = combineTables({ noremap = true }, opts or {})
   local modes = {}
 
   for char in mode:gmatch('.') do
-    if char == 'N' then
-      opts.noremap = true
+    if char == 'R' then
+      opts.noremap = false
     elseif char == 'E' then
       opts.expr = true
     elseif char == '!' then

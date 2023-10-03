@@ -57,7 +57,7 @@ local keymaps = {
   {'n', 'cb', 'vbc'},
   {'n', 'd^', 'v^d'},
   {'n', 'c^', 'v^c'},
-  
+
   -- replace all occurences of word under cursor
   {'n', '<leader>s', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]]},
 

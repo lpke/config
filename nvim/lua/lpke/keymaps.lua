@@ -8,13 +8,12 @@ vim.g.mapleader = ' '
 
 local keymaps = {
   -- window (pane) navigation
-  {'n', '<C-h>', '<C-w>h'},
-  {'n', '<C-j>', '<C-w>j'},
-  {'n', '<C-k>', '<C-w>k'},
-  {'n', '<C-l>', '<C-w>l'},
+  {'nv', '<C-h>', '<C-w>h'},
+  {'nv', '<C-j>', '<C-w>j'},
+  {'nv', '<C-k>', '<C-w>k'},
+  {'nv', '<C-l>', '<C-w>l'},
 
   -- tab navigation
-  -- TODO
 
   -- arrow-key scrolling
   {'nv', '<Down>', '4<C-e>'},
@@ -61,6 +60,8 @@ local keymaps = {
   -- replace all occurences of word under cursor
   {'n', '<leader>s', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]]},
 
+  {'nv', 'gg', 'gg0'}, -- gg goes to very start
+  {'nv', 'G', 'G$'}, -- G goes to very end
   {'nv', '<leader>d', '"_d'}, -- <leader>d for delete without copy
   {'nv', '<leader>y', '"*y'}, -- <leader>y for global yank
   {'n', 'Y', 'y$'}, -- capital Y yanks to end of line instead of whole line

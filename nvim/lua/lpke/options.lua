@@ -18,11 +18,9 @@ local options = {
   termguicolors = true, -- enables 24-bit color in tui
   splitbelow = true, -- open new horizontal splits below current buffer
   splitright = true, -- open new vertical splits to the right of current buffer
-  --timeoutlen = 1000, -- length of timeout for commands like 'jk' for exit
   number = true, -- set line numbers, this setting shows the line number you're currently on
   relativenumber = true, -- make the line numbers relative to active line
   numberwidth = 4, -- the width of the number column, setting it to 4 keeps it from pushing the editor over as numbers get larger
-  --cindent = true, -- for C files, which I do not write right now.
   --signcolumn = 'yes', -- show signs in signcolumn
   wrap = false, -- line wrap
   breakindent = true, -- wrapped text is indented to that line's indent level
@@ -34,7 +32,6 @@ local options = {
   smarttab = true, -- tab inserts whitespace only to the next predefined tab stop
   shiftround = true, -- when indenting, stop at next shiftwidth (don't end up in between stops)
   guicursor = 'n-v-c-sm-o:block,i-ci-ve:ver25,r-cr:hor20', -- cursor style for different modes
-  --guifont = 'Iosevka Nerd Font Medium:h14', -- the font the bible is written in.
   --shellxquote = '', -- i can use this to do cool things
   autoindent = true, -- this should absolutely always be on
   smartindent = true, -- so should this.
@@ -43,6 +40,7 @@ local options = {
   --equalalways = false, -- all windows are made the same size after opening or closing
   ignorecase = true, -- ignore case of letters when searching (see also \c)
   smartcase = true, -- dont ignore case if search contains capitals (see also \C)
+  --shada = --TODO
 }
 helpers.set_options(options)
 

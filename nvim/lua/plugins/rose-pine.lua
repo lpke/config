@@ -1,13 +1,12 @@
---------------------------
--- ROSE-PINE (theme)
---------------------------
+local function config()
+  -- TODO do this prime's way with ColorMyPencils
+  vim.cmd('colorscheme rose-pine')
+end
 
 return {
   'rose-pine/neovim',
   name = 'rose-pine',
   lazy = false,
   priority = 1000,
-  config = function()
-    vim.cmd('colorscheme rose-pine') -- TODO do this prime's way with ColorMyPencils
-  end,
+  config = config
 }

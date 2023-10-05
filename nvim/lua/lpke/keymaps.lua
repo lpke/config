@@ -12,6 +12,10 @@ local keymaps = {
   {'nv', '<C-j>', '<C-w>j'},
   {'nv', '<C-k>', '<C-w>k'},
   {'nv', '<C-l>', '<C-w>l'},
+  {'i', '<C-h>', '<Esc><C-w>h'},
+  {'i', '<C-j>', '<Esc><C-w>j'},
+  {'i', '<C-k>', '<Esc><C-w>k'},
+  {'i', '<C-l>', '<Esc><C-w>l'},
 
   -- tab navigation
 

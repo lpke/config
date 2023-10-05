@@ -1,12 +1,10 @@
---------------------------
--- COMMENT
---------------------------
+local opts = {
+  -- config options
+}
 
 return {
   'numToStr/Comment.nvim',
-  opts = {
-    -- config goes here
-  },
+  opts = opts,
   lazy = false,
 }
 

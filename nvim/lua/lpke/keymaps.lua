@@ -87,8 +87,8 @@ helpers.keymap_set_multi(keymaps)
 
 -- convert windows line endings to unix when pasting from global registers
 if helpers.is_wsl then
-  keymap_set({'n!', '"*p', function() helpers.paste_unix('*') end})
-  keymap_set({'n!', '"+p', function() helpers.paste_unix('+') end})
+  keymap_set({'nv!', '"*p', function() helpers.paste_unix('*') end})
+  keymap_set({'nv!', '"+p', function() helpers.paste_unix('+') end})
 end
 
 -- disabling shortcuts of :read to prevent accidental activation when typing :reg

@@ -1,4 +1,8 @@
-local helpers = require('lpke.helpers')
+local keymaps = {
+  {'nC', '<BS>/', 'Telescope find_files'},
+  {'nC', '<BS>s', 'Telescope live_grep'},
+  {'nC', '<BS>f', 'Telescope git_files'},
+}
 
 local opts = {
   -- config options
@@ -6,6 +10,7 @@ local opts = {
 
 local function config()
   require('telescope').setup(opts)
+  require('lpke.helpers').keymap_set_multi(keymaps)
 end
 
 return {

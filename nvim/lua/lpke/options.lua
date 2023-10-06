@@ -1,6 +1,15 @@
 local helpers = require('lpke.helpers')
 
 --------------------------
+-- CUSTOM OPTIONS
+--------------------------
+
+local custom_options = {
+  whitespace_hl = 'NvimInternalError', -- the `:highlight` style to use when toggling whitespace chars
+}
+
+
+--------------------------
 -- VIM OPTIONS
 --------------------------
 
@@ -41,17 +50,10 @@ local options = {
   ignorecase = true, -- ignore case of letters when searching (see also \c)
   smartcase = true, -- dont ignore case if search contains capitals (see also \C)
   shada = "!,'500,<500,s100,h", -- things to save to "shared data" file
-  shortmess = "filnxtToOFI", -- default up until 'I' (disabling welcome message)
+  shortmess = 'filnxtToOFI', -- default up until 'I' (disabling welcome message)
+  listchars = [[tab:» ,trail:·,nbsp:·]],
 }
 helpers.set_options(options)
-
-
---------------------------
--- AUTOCOMMANDS
---------------------------
-
--- disable next line auto-comment
-vim.cmd('autocmd FileType * set formatoptions-=ro')
 
 
 --------------------------
@@ -77,3 +79,13 @@ end
 -- netrw
 vim.g.netrw_banner = 0
 
+
+--------------------------
+-- AUTOCOMMANDS
+--------------------------
+
+-- disable next line auto-comment
+vim.cmd('autocmd FileType * set formatoptions-=ro')
+
+
+return custom_options

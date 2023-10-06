@@ -1,12 +1,29 @@
 local helpers = require('lpke.helpers')
+local custom_options = require('lpke.options')
 local keymap_set = helpers.keymap_set
--- SETTER SYNTAX: {'<modes><R=recursive,E=expr,!=silent>', <from>, <to>, {opts}}
+-- SYNTAX: {'<modes><R=rec,E=expr,C=:,!=sil>', <lhs>, <rhs>, {opts}}
+-- TIP: to show how vim sees a key: `:<ctrl+k>` then type a key
 
--- remap leader to space
+-- use space as leader and <BS> as a secondary 'leader'
 keymap_set({'n', ' ', ''})
+keymap_set({'n', '<BS>', ''})
 vim.g.mapleader = ' '
 
 local keymaps = {
+  {'n', '<BS><BS>', vim.cmd.Ex}, -- open netrw
+  {'nviC', '<C-s>', 'w'}, -- save file
+  {'nC!', '<A-w>', 'set wrap!'}, -- toggle line wrap
+  {'n!', '<A-c>', function() helpers.toggle_whitespace_hl(custom_options.whitespace_hl) end}, -- toggle show whitespace
+  {'nC', '<BS>L', 'Lazy'}, -- package manager
+
+  {'nv', '<leader>y', '"*y'}, -- global yank
+  {'nv', '<leader>d', '"_d'}, -- delete without copy
+  {'nv', 'gg', 'gg0'}, -- gg goes to very start
+  {'nv', 'G', 'G$'}, -- G goes to very end
+  {'n', 'Y', 'y$'}, -- capital Y yanks to end of line instead of whole line
+  {'n', 'J', 'mzJ`z'}, -- dont move cursor when joining lines
+  {'n', 'Q', ''}, -- remove Q keybind (re-run last macro) - use `@@` instead
+
   -- window (pane) navigation
   {'nv', '<C-h>', '<C-w>h'},
   {'nv', '<C-j>', '<C-w>j'},
@@ -18,6 +35,7 @@ local keymaps = {
   {'i', '<C-l>', '<Esc><C-w>l'},
 
   -- tab navigation
+  -- TODO
 
   -- arrow-key scrolling
   {'nv', '<Down>', '4<C-e>'},
@@ -48,7 +66,7 @@ local keymaps = {
   {'nE', 'k', 'v:count ? "k" : "gk"'},
 
   -- keep current reg when pasting over selected text
-  {'v', 'p', 'P'}, 
+  {'v', 'p', 'P'},
   {'v', 'P', 'p'},
 
   -- repeatable multiline indentation
@@ -63,16 +81,6 @@ local keymaps = {
 
   -- replace all occurences of word under cursor
   {'n', '<leader>s', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]]},
-
-  {'nv', 'gg', 'gg0'}, -- gg goes to very start
-  {'nv', 'G', 'G$'}, -- G goes to very end
-  {'nv', '<leader>d', '"_d'}, -- <leader>d for delete without copy
-  {'nv', '<leader>y', '"*y'}, -- <leader>y for global yank
-  {'n', 'Y', 'y$'}, -- capital Y yanks to end of line instead of whole line
-  {'n', 'J', 'mzJ`z'}, -- dont move cursor when joining lines
-  {'n', '<leader>pv', vim.cmd.Ex}, -- open netrw
-  {'n', '<leader>L', '<cmd>Lazy<cr>'}, -- package manager
-  {'n!', '<C-w>w', ':set wrap!<CR>'}, -- toggle line wrap
 }
 helpers.keymap_set_multi(keymaps)
 

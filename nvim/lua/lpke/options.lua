@@ -8,7 +8,6 @@ local custom_options = {
   whitespace_hl = 'NvimInternalError', -- the `:highlight` style to use when toggling whitespace chars
 }
 
-
 --------------------------
 -- VIM OPTIONS
 --------------------------
@@ -29,7 +28,7 @@ local options = {
   splitright = true, -- open new vertical splits to the right of current buffer
   number = true, -- set line numbers, this setting shows the line number you're currently on
   relativenumber = true, -- make the line numbers relative to active line
-  numberwidth = 4, -- the width of the number column, setting it to 4 keeps it from pushing the editor over as numbers get larger
+  numberwidth = 4, -- the width of the number column, setting it to 4 keeps it from pushing the editor over as numbers get larger..the width of the number column, setting it to 4 keeps it from pushing the editor over as numbers get largerthe width of the number column, setting it to 4 keeps it from pushing the editor over as numbers get larger
   --signcolumn = 'yes', -- show signs in signcolumn
   wrap = false, -- line wrap
   breakindent = true, -- wrapped text is indented to that line's indent level
@@ -51,7 +50,7 @@ local options = {
   smartcase = true, -- dont ignore case if search contains capitals (see also \C)
   shada = "!,'500,<500,s100,h", -- things to save to "shared data" file
   shortmess = 'filnxtToOFI', -- default up until 'I' (disabling welcome message)
-  listchars = [[tab:» ,trail:·,nbsp:·]],
+  listchars = [[tab:» ,trail:·,nbsp:·,extends:>,precedes:<]], -- whitespace chars to show when `list` option is toggled on
 }
 helpers.set_options(options)
 

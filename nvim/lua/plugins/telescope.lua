@@ -1,16 +1,34 @@
-local keymaps = {
-  {'nC', '<BS>/', 'Telescope find_files'},
-  {'nC', '<BS>s', 'Telescope live_grep'},
-  {'nC', '<BS>f', 'Telescope git_files'},
-}
-
-local opts = {
-  -- config options
-}
-
 local function config()
-  require('telescope').setup(opts)
+  local actions = require('telescope.actions')
+  local builtin = require('telescope.builtin')
+
+  -- mappings to access telescope
+  local keymaps = {
+    {'nC', '<BS>/', 'Telescope find_files'},
+    {'nC', '<BS>s', 'Telescope live_grep'},
+    {'n', '<BS>S', function() builtin.grep_string({ search = vim.fn.input('Grep > ') }) end},
+    {'nC', '<BS>f', 'Telescope git_files'},
+    {'nC', '<leader>/', 'Telescope current_buffer_fuzzy_find'},
+  }
   require('lpke.helpers').keymap_set_multi(keymaps)
+
+  -- options
+  require('telescope').setup({
+    defaults = {
+      mappings = {
+        n = {
+          ['u'] = { '<cmd>undo<cr>', type = 'command' },
+        }
+      }
+    },
+    pickers = {
+      find_files = {
+        mappings = {
+          -- ...
+        }
+      },
+    }
+  })
 end
 
 return {

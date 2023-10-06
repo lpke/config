@@ -89,5 +89,6 @@ return {
   toggle_whitespace_hl = toggle_whitespace_hl,
   get_hl = get_hl,
   set_hl = set_hl,
+  toggle_relative_lines = toggle_relative_lines,
 }
 

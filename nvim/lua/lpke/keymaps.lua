@@ -10,11 +10,12 @@ keymap_set({'n', '<BS>', ''})
 vim.g.mapleader = ' '
 
 local keymaps = {
-  {'n', '<BS><BS>', vim.cmd.Ex}, -- open netrw
+  {'n', '<BS>r', vim.cmd.Ex}, -- open netrw
   {'nviC', '<C-s>', 'w'}, -- save file
+  {'nC', '<BS>L', 'Lazy'}, -- package manager
   {'nC!', '<A-w>', 'set wrap!'}, -- toggle line wrap
   {'n!', '<A-c>', function() helpers.toggle_whitespace_hl(custom_options.whitespace_hl) end}, -- toggle show whitespace
-  {'nC', '<BS>L', 'Lazy'}, -- package manager
+  {'nC', '<A-r>', 'set relativenumber!'}, -- toggle relative numbers
 
   {'nv', '<leader>y', '"*y'}, -- global yank
   {'nv', '<leader>d', '"_d'}, -- delete without copy

@@ -51,6 +51,7 @@ local options = {
   shada = "!,'500,<500,s100,h", -- things to save to "shared data" file
   shortmess = 'filnxtToOFI', -- default up until 'I' (disabling welcome message)
   listchars = [[tab:» ,trail:·,nbsp:·,extends:>,precedes:<]], -- whitespace chars to show when `list` option is toggled on
+  statusline = ' %f %m %= %l:%c ' -- TODO: add percent, other useful stuff
 }
 helpers.set_options(options)
 

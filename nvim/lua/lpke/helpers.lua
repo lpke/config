@@ -80,6 +80,30 @@ local function toggle_whitespace_hl(hl_name)
   end
 end
 
+-- prints a message 'over' the previous message
+local function print_over(msg, history, height)
+  history = history or false
+  local orig_height = vim.o.cmdheight
+  vim.o.cmdheight = height or 2
+  if history then
+    print(msg)
+  else
+    vim.cmd('echo "' .. msg .. '"')
+  end
+  vim.o.cmdheight = orig_height
+end
+
+-- clear the latest message if it contains `target`
+local function clear_last_message(target)
+  local messages = vim.fn.execute('messages')
+  local lines = vim.split(messages, '\n')
+  local last_line = lines[#lines]
+
+  if string.find(last_line, target, 1, true) then
+    print_over(' ')
+  end
+end
+
 return {
   is_wsl = is_wsl,
   set_options = set_options,
@@ -90,5 +114,7 @@ return {
   get_hl = get_hl,
   set_hl = set_hl,
   toggle_relative_lines = toggle_relative_lines,
+  print_over = print_over,
+  clear_last_message = clear_last_message,
 }
 

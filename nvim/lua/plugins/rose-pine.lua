@@ -39,7 +39,8 @@ local function config()
     -- vim highlight groups (inspect under cursor with `:Inspect`)
     highlight_groups = {
       ColorColumn = { bg = 'rose' },
-      StatusLine = { fg = 'subtle', bg = 'surface' },
+      StatusLine = { fg = 'subtle', bg = 'overlay' },
+      StatusLineNC = { fg = 'subtle', bg = 'surface' },
       EndOfBuffer = { fg = 'base' }, -- remove the `~`
     }
   })

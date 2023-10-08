@@ -1,24 +1,18 @@
+local helpers = require('lpke.helpers')
+
 function config()
+  -- update/install parsers
   pcall(require('nvim-treesitter.install').update({ with_sync = true }))
-  require('nvim-treesitter.install').compilers = { "clang" }
-  require('nvim-treesitter.configs').setup {
-    ensure_installed = {
-      "help",
-      "bash",
-      "lua",
-      "javascript",
-      "typescript",
-      "python",
-      "tsx",
-      "html",
-      "css",
-      "json",
-    },
+  require('nvim-treesitter.install').compilers = { 'clang' }
+  helpers.clear_last_message('All parsers are up-to-date!') -- clear annoying message on startup
+
+  require('nvim-treesitter.configs').setup({
+    ensure_installed = 'all',
     sync_install = false, -- install parsers synchronously
     auto_install = true, -- automatically install missing parsers when entering buffer
     highlight = {
       enable = true,
-      --disable = { "..." },
+      disable = {},
 
       -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
       -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
@@ -31,9 +25,12 @@ function config()
     },
     indent = {
       enable = true,
-      --disable = { "..." },
+      disable = {},
     },
-  }
+  })
+
+  -- TODO
+  -- vim.api.nvim_set_hl(0, 'TSField', { italic = false })
 end
 
 return {

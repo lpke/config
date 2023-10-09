@@ -1,6 +1,10 @@
 -- palette colors:  https://rosepinetheme.com/palette/ingredients/
 -- recipes:         https://github.com/rose-pine/neovim/wiki/Recipes
 
+local extra_colors = {
+  slight = '#c0bcd2',
+}
+
 local function config()
   require('rose-pine').setup({
     variant = 'main', -- main, moon, dawn
@@ -42,12 +46,14 @@ local function config()
       StatusLine = { fg = 'subtle', bg = 'overlay' },
       StatusLineNC = { fg = 'subtle', bg = 'surface' },
       EndOfBuffer = { fg = 'base' }, -- remove the `~`
+      CursorLine = { bg = 'none' },
+      CursorLineNr = { fg = extra_colors.slight },
     }
   })
 
   -- save theme colors to a global variable
   theme_colors = require('rose-pine.palette')
-  theme_colors.slight = '#c0bcd2'
+  theme_colors.slight = extra_colors.slight
 
   -- set color scheme
   vim.cmd('colorscheme rose-pine')

@@ -48,6 +48,7 @@ local options = {
   --equalalways = false, -- all windows are made the same size after opening or closing
   ignorecase = true, -- ignore case of letters when searching (see also \c)
   smartcase = true, -- dont ignore case if search contains capitals (see also \C)
+  cursorline = false, -- render cursor line background/line number highlights (slower)
   shada = "!,'500,<500,s100,h", -- things to save to "shared data" file
   shortmess = 'filnxtToOFI', -- default up until 'I' (disabling welcome message)
   listchars = [[tab:» ,trail:·,nbsp:·,extends:>,precedes:<]], -- whitespace chars to show when `list` option is toggled on

@@ -13,6 +13,7 @@ local keymaps = {
   {'n', '<BS>r', vim.cmd.Ex}, -- open netrw
   {'nviC', '<C-s>', 'w'}, -- save file
   {'nC', '<BS>L', 'Lazy'}, -- package manager
+  {'nC', '<BS>I', 'Inspect'}, -- inspect under cursor
   {'nC!', '<A-w>', 'set wrap!'}, -- toggle line wrap
   {'n!', '<A-c>', function() helpers.toggle_whitespace_hl(custom_options.whitespace_hl) end}, -- toggle show whitespace
   {'nC', '<A-r>', 'set relativenumber!'}, -- toggle relative numbers
@@ -25,15 +26,19 @@ local keymaps = {
   {'n', 'J', 'mzJ`z'}, -- dont move cursor when joining lines
   {'n', 'Q', ''}, -- remove Q keybind (re-run last macro) - use `@@` instead
 
+  -- buffer navigation
+  -- { 'n', '', '' },
+  -- { 'n', '', '' },
+
   -- window (pane) navigation
   {'nv', '<C-h>', '<C-w>h'},
   {'nv', '<C-j>', '<C-w>j'},
   {'nv', '<C-k>', '<C-w>k'},
   {'nv', '<C-l>', '<C-w>l'},
-  {'i', '<C-h>', '<Esc><C-w>h'},
-  {'i', '<C-j>', '<Esc><C-w>j'},
-  {'i', '<C-k>', '<Esc><C-w>k'},
-  {'i', '<C-l>', '<Esc><C-w>l'},
+  {'i', '<C-h>', '<Esc>l<C-w>h'},
+  {'i', '<C-j>', '<Esc>l<C-w>j'},
+  {'i', '<C-k>', '<Esc>l<C-w>k'},
+  {'i', '<C-l>', '<Esc>l<C-w>l'},
 
   -- tab navigation
   -- TODO
@@ -85,6 +90,10 @@ local keymaps = {
 }
 helpers.keymap_set_multi(keymaps)
 
+-- yank still: prevent cursor movement after yanking
+helpers.keymap_set_yank_still_upwards(100)
+helpers.keymap_set_yank_still_marks()
+
 -- convert windows line endings to unix when pasting from global registers
 if helpers.is_wsl then
   keymap_set({'nv!', '"*p', function() helpers.paste_unix('*') end})
@@ -95,3 +104,4 @@ end
 vim.cmd('cabbrev r echo "shorthand for :read disabled"')
 vim.cmd('cabbrev re echo "shorthand for :read disabled"')
 vim.cmd('cabbrev rea echo "shorthand for :read disabled"')
+

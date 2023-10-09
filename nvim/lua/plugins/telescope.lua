@@ -29,6 +29,9 @@ local function config()
       },
     }
   })
+
+  -- extensions
+  require('telescope').load_extension 'session-lens'
 end
 
 return {

@@ -1,6 +1,8 @@
-local is_wsl = vim.fn.exists('$WSL_DISTRO_NAME')
+local h = {}
 
-local function combine_tables(defaultTable, newTable)
+h.is_wsl = vim.fn.exists('$WSL_DISTRO_NAME')
+
+function h.combine_tables(defaultTable, newTable)
   for k, v in pairs(newTable) do
     defaultTable[k] = v
   end
@@ -8,16 +10,16 @@ local function combine_tables(defaultTable, newTable)
 end
 
 -- convert my options table into vim.opt.<key> = <value>
-local function set_options(options)
+function h.set_options(options)
   for k, v in pairs(options) do
     vim.opt[k] = v
   end
 end
 
 -- parses a table containing custom keymap args and sets the keymap
-local function keymap_set(keymap)
+function h.keymap_set(keymap)
   local mode, lhs, rhs, opts = unpack(keymap)
-  opts = combine_tables({ noremap = true }, opts or {})
+  opts = h.combine_tables({ noremap = true }, opts or {})
   local modes = {}
 
   for char in mode:gmatch('.') do
@@ -38,14 +40,14 @@ local function keymap_set(keymap)
 end
 
 -- same as above but accepts multiple keymap tables in a table
-local function keymap_set_multi(keymaps)
+function h.keymap_set_multi(keymaps)
   for _i, keymap in ipairs(keymaps) do
-    keymap_set(keymap)
+    h.keymap_set(keymap)
   end
 end
 
 -- pastes from register with unix line endings
-local function paste_unix(register)
+function h.paste_unix(register)
   local content = vim.fn.getreg(register)
   local fixed_content = vim.fn.substitute(content, '\r\n', '\n', 'g')
   vim.fn.setreg(register, fixed_content)
@@ -53,19 +55,19 @@ local function paste_unix(register)
 end
 
 -- getter and setters for highlight colors
-local function get_hl(name)
+function h.get_hl(name)
   return vim.api.nvim_get_hl(0, { name = name })
 end
-local function set_hl(name, hl)
+function h.set_hl(name, hl)
   vim.api.nvim_set_hl(0, name, hl)
 end
 
 -- toggle 'list' option (show whitespace chars) and highlight
 local non_text_hl = {}
 local has_toggled_whitespace = false
-local function toggle_whitespace_hl(hl_name)
+function h.toggle_whitespace_hl(hl_name)
   if not has_toggled_whitespace then
-    non_text_hl = get_hl('NonText')
+    non_text_hl = h.get_hl('NonText')
     has_toggled_whitespace = true
   end
 
@@ -73,15 +75,15 @@ local function toggle_whitespace_hl(hl_name)
   vim.wo.list = not is_list
 
   if not is_list then -- if not *previously*
-    local target_hl = get_hl(hl_name)
-    set_hl('NonText', { fg = target_hl.fg, bg = target_hl.bg })
+    local target_hl = h.get_hl(hl_name)
+    h.set_hl('NonText', { fg = target_hl.fg, bg = target_hl.bg })
   else
-    set_hl('NonText', non_text_hl)
+    h.set_hl('NonText', non_text_hl)
   end
 end
 
 -- prints a message 'over' the previous message
-local function print_over(msg, history, height)
+function h.print_over(msg, history, height)
   history = history or false
   local orig_height = vim.o.cmdheight
   vim.o.cmdheight = height or 2
@@ -94,27 +96,30 @@ local function print_over(msg, history, height)
 end
 
 -- clear the latest message if it contains `target`
-local function clear_last_message(target)
+function h.clear_last_message(target)
   local messages = vim.fn.execute('messages')
   local lines = vim.split(messages, '\n')
   local last_line = lines[#lines]
 
   if string.find(last_line, target, 1, true) then
-    print_over(' ')
+    h.print_over(' ')
   end
 end
 
-return {
-  is_wsl = is_wsl,
-  set_options = set_options,
-  keymap_set = keymap_set,
-  keymap_set_multi = keymap_set_multi,
-  paste_unix = paste_unix,
-  toggle_whitespace_hl = toggle_whitespace_hl,
-  get_hl = get_hl,
-  set_hl = set_hl,
-  toggle_relative_lines = toggle_relative_lines,
-  print_over = print_over,
-  clear_last_message = clear_last_message,
-}
+-- yank still: upwards (up to `max`)
+function h.keymap_set_yank_still_upwards(max)
+  for i = 1, max do
+    h.keymap_set({'nC', ('y' .. i .. 'k'), ('-' .. i .. ',.y')})
+  end
+end
+
+-- yank still: marks (a-z)
+function h.keymap_set_yank_still_marks()
+  for i = string.byte('a'), string.byte('z') do
+    local letter = string.char(i)
+    h.keymap_set({'nC!', ("y'" .. letter), ("'" .. letter .. ',.y')})
+  end
+end
+
+return h;
 

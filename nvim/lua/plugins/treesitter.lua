@@ -29,8 +29,17 @@ function config()
     },
   })
 
-  -- TODO
-  -- vim.api.nvim_set_hl(0, 'TSField', { italic = false })
+  -- highlight customisations
+  helpers.set_hl('@none', { fg = theme_colors.slight })
+  helpers.set_hl('@variable', { italic = false, fg = theme_colors.text })
+  helpers.set_hl('@property', { italic = false, fg = theme_colors.foam })
+  helpers.set_hl('@parameter', { italic = false, fg = theme_colors.iris })
+  helpers.set_hl('@tag.attribute', { italic = true, fg = theme_colors.iris })
+  helpers.set_hl('@type', { italic = true, fg = theme_colors.foam })
+  helpers.set_hl('@keyword', { italic = true, fg = theme_colors.pine })
+  helpers.set_hl('@include', { italic = true, fg = theme_colors.pine })
+  helpers.set_hl('@number', { fg = theme_colors.iris })
+  helpers.set_hl('@constructor.tsx', { bold = true, fg = theme_colors.foam })
 end
 
 return {

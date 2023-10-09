@@ -44,6 +44,12 @@ local function config()
       EndOfBuffer = { fg = 'base' }, -- remove the `~`
     }
   })
+
+  -- save theme colors to a global variable
+  theme_colors = require('rose-pine.palette')
+  theme_colors.slight = '#c0bcd2'
+
+  -- set color scheme
   vim.cmd('colorscheme rose-pine')
 end
 

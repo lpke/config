@@ -32,7 +32,7 @@ local options = {
   --signcolumn = 'yes', -- show signs in signcolumn
   wrap = false, -- line wrap
   breakindent = true, -- wrapped text is indented to that line's indent level
-  --laststatus = 3, -- global statusline, thanks Neovim team :-)
+  laststatus = 3, -- last window has status line - 0:never, 1:only if 2+ wins, 2: always, 3: always and only last win (global)
   tabstop = 2, -- maximum width of an actual tab character
   softtabstop = 2, -- number of spaces a tab counts for during editing operations
   shiftwidth = 2, -- the size of code indents
@@ -51,7 +51,8 @@ local options = {
   shada = "!,'500,<500,s100,h", -- things to save to "shared data" file
   shortmess = 'filnxtToOFI', -- default up until 'I' (disabling welcome message)
   listchars = [[tab:» ,trail:·,nbsp:·,extends:>,precedes:<]], -- whitespace chars to show when `list` option is toggled on
-  statusline = ' %f %m %= %l:%c ' -- TODO: add percent, other useful stuff
+  statusline = ' %f %m %= %l:%c ', -- TODO: add percent, other useful stuff
+  sessionoptions = 'blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions',
 }
 helpers.set_options(options)
 

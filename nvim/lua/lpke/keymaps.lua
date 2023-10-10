@@ -1,5 +1,5 @@
 local helpers = require('lpke.helpers')
-local custom_options = require('lpke.options')
+local options = require('lpke.options')
 local keymap_set = helpers.keymap_set
 -- SYNTAX: {'<modes><R=rec,E=expr,C=:,!=sil>', <lhs>, <rhs>, {opts}}
 -- TIP: to show how vim sees a key: `:<ctrl+k>` then type a key
@@ -10,13 +10,15 @@ keymap_set({'n', '<BS>', ''})
 vim.g.mapleader = ' '
 
 local keymaps = {
-  {'n', '<BS>r', vim.cmd.Ex}, -- open netrw
+  {'n', '<BS>e', vim.cmd.Ex}, -- open netrw
+  -- {'n', '<BS>r', ''}, -- TODO open ranger/tele-fb?
   {'nviC', '<C-s>', 'w'}, -- save file
   {'nC', '<BS>L', 'Lazy'}, -- package manager
   {'nC', '<BS>I', 'Inspect'}, -- inspect under cursor
   {'nC!', '<A-w>', 'set wrap!'}, -- toggle line wrap
-  {'n!', '<A-c>', function() helpers.toggle_whitespace_hl(custom_options.whitespace_hl) end}, -- toggle show whitespace
+  {'n!', '<A-c>', function() helpers.toggle_whitespace_hl(options.custom_opts.whitespace_hl) end}, -- toggle show whitespace
   {'nC', '<A-r>', 'set relativenumber!'}, -- toggle relative numbers
+  {'n', '<A-s>', function() helpers.toggle_global_status() end}, -- toggle global status line
 
   {'nv', '<leader>y', '"*y'}, -- global yank
   {'nv', '<leader>d', '"_d'}, -- delete without copy
@@ -25,15 +27,6 @@ local keymaps = {
   {'n', 'Y', 'y$'}, -- capital Y yanks to end of line instead of whole line
   {'n', 'J', 'mzJ`z'}, -- dont move cursor when joining lines
   {'n', 'Q', ''}, -- remove Q keybind (re-run last macro) - use `@@` instead
-
-  -- find and replace
-  {'nv', 'S', ''}, -- clear default S functionality
-  {'n', 'SS', ":s/"}, -- replace in current line
-  {'n', 'SF', ":%s/"}, -- replace in current file
-  {'n', 'SV', [[:'<,'>s/\%V]]}, -- replace in prev selection
-  {'v', 'SV', [[:s/\%V]]}, -- replace in current selection
-  {'n', 's*', [[:%s/\<<c-r><c-w>\>/<c-r><c-w>/gi<left><left><left>]]}, -- replace under cursor (whole file)
-  {'n', 'SW', [[:'<,'>s/\%V\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]]}, -- replace under cursor (prev selection)
 
   -- buffer navigation
   -- { 'n', '', '' },
@@ -88,11 +81,42 @@ local keymaps = {
   {'v', '<', '<gv'},
   {'v', '>', '>gv'},
 
-  -- include char under cursor when deleting/changing backwards
+  -- include char under cursor when d/c/y backwards
   {'n', 'db', 'vbd'},
   {'n', 'cb', 'vbc'},
+  {'n', 'yb', 'vby'},
+  {'n', 'dB', 'vBd'},
+  {'n', 'cB', 'vBc'},
+  {'n', 'yB', 'vBy'},
   {'n', 'd^', 'v^d'},
   {'n', 'c^', 'v^c'},
+  {'n', 'y^', 'v^y'},
+  {'n', 'd0', 'v0d'},
+  {'n', 'c0', 'v0c'},
+  {'n', 'y0', 'v0y'},
+
+  -- dont include surrounding whitespace in a'|a"|a` motions
+  {'v', [[a']], [[2i']]},
+  {'v', [[a"]], [[2i"]]},
+  {'v', [[a`]], [[2i`]]},
+  {'n', [[da']], [[d2i']]},
+  {'n', [[da"]], [[d2i"]]},
+  {'n', [[da`]], [[d2i`]]},
+  {'n', [[ca']], [[c2i']]},
+  {'n', [[ca"]], [[c2i"]]},
+  {'n', [[ca`]], [[c2i`]]},
+  {'n', [[ya']], [[y2i']]},
+  {'n', [[ya"]], [[y2i"]]},
+  {'n', [[ya`]], [[y2i`]]},
+
+  -- find and replace
+  {'nv', 'S', ''}, -- clear default S functionality
+  {'n', 'SS', ":s/"}, -- replace in current line
+  {'n', 'SF', ":%s/"}, -- replace in current file
+  {'n', 'SV', [[:'<,'>s/\%V]]}, -- replace in prev selection
+  {'v', 'SV', [[:s/\%V]]}, -- replace in current selection
+  {'n', 'S*', [[:%s/\<<c-r><c-w>\>/<c-r><c-w>/gi<left><left><left>]]}, -- replace under cursor (whole file)
+  {'n', 'SW', [[:'<,'>s/\%V\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]]}, -- replace under cursor (prev selection)
 }
 helpers.keymap_set_multi(keymaps)
 

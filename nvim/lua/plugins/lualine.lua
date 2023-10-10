@@ -1,42 +1,44 @@
--- local c = theme_colors
--- local custom_theme = {
---   normal = {
---     a = {bg = c.overlay, fg = c.base, gui = 'bold'},
---     b = {bg = c.overlay, fg = c.white},
---     c = {bg = c.overlay, fg = c.overlay}
---   },
---   insert = {
---     a = {bg = c.blue, fg = c.base, gui = 'bold'},
---     b = {bg = c.overlay, fg = c.white},
---     c = {bg = c.overlay, fg = c.white}
---   },
---   visual = {
---     a = {bg = c.yellow, fg = c.base, gui = 'bold'},
---     b = {bg = c.overlay, fg = c.white},
---     c = {bg = c.inactiveoverlay, fg = c.base}
---   },
---   replace = {
---     a = {bg = c.red, fg = c.base, gui = 'bold'},
---     b = {bg = c.overlay, fg = c.white},
---     c = {bg = c.base, fg = c.white}
---   },
---   command = {
---     a = {bg = c.green, fg = c.base, gui = 'bold'},
---     b = {bg = c.overlay, fg = c.white},
---     c = {bg = c.inactiveoverlay, fg = c.base}
---   },
---   inactive = {
---     a = {bg = c.overlay, fg = c.overlay, gui = 'bold'},
---     b = {bg = c.overlay, fg = c.overlay},
---     c = {bg = c.overlay, fg = c.overlay}
---   }
--- }
+local options = require('lpke.options')
 
 local function config()
+  local tc = theme_colors
+  local custom_theme = {
+    normal = {
+      a = {bg = tc.overlay, fg = tc.text},
+      b = {bg = tc.overlay, fg = tc.text},
+      c = {bg = tc.overlay, fg = tc.text}
+    },
+    insert = {
+      a = {bg = tc.overlay, fg = tc.text},
+      b = {bg = tc.overlay, fg = tc.text},
+      c = {bg = tc.overlay, fg = tc.text}
+    },
+    visual = {
+      a = {bg = tc.overlay, fg = tc.text},
+      b = {bg = tc.overlay, fg = tc.text},
+      c = {bg = tc.overlay, fg = tc.base}
+    },
+    replace = {
+      a = {bg = tc.overlay, fg = tc.text},
+      b = {bg = tc.overlay, fg = tc.text},
+      c = {bg = tc.overlay, fg = tc.text}
+    },
+    command = {
+      a = {bg = tc.overlay, fg = tc.text},
+      b = {bg = tc.overlay, fg = tc.text},
+      c = {bg = tc.overlay, fg = tc.text}
+    },
+    inactive = {
+      a = {bg = tc.surface, fg = tc.muted},
+      b = {bg = tc.surface, fg = tc.muted},
+      c = {bg = tc.surface, fg = tc.muted}
+    }
+  }
+
   require('lualine').setup {
     options = {
-      icons_enabled = true,
-      theme = 'auto',
+      icons_enabled = false,
+      theme = custom_theme,
       component_separators = { left = '', right = ''},
       section_separators = { left = '', right = ''},
       disabled_filetypes = {
@@ -45,7 +47,7 @@ local function config()
       },
       ignore_focus = {},
       always_divide_middle = true,
-      globalstatus = true,
+      globalstatus = false,
       refresh = {
         statusline = 1000,
         tabline = 1000,
@@ -73,9 +75,13 @@ local function config()
     inactive_winbar = {},
     extensions = {}
   }
+
+  -- override plugin control of this option
+  vim.o.laststatus = options.vim_opts.laststatus
 end
 
 return {
   'nvim-lualine/lualine.nvim',
+  lazy = false,
   config = config,
 }

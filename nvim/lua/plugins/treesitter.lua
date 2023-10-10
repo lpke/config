@@ -35,11 +35,11 @@ function config()
   helpers.set_hl('@property', { italic = false, fg = theme_colors.foam })
   helpers.set_hl('@parameter', { italic = false, fg = theme_colors.iris })
   helpers.set_hl('@tag.attribute', { italic = true, fg = theme_colors.iris })
-  helpers.set_hl('@type', { italic = true, fg = theme_colors.foam })
   helpers.set_hl('@keyword', { italic = true, fg = theme_colors.pine })
   helpers.set_hl('@include', { italic = true, fg = theme_colors.pine })
   helpers.set_hl('@number', { fg = theme_colors.iris })
-  helpers.set_hl('@constructor.tsx', { bold = true, fg = theme_colors.foam })
+  helpers.set_hl('@constructor', { fg = theme_colors.growth })
+  helpers.set_hl('@type', { fg = theme_colors.growth })
 end
 
 return {

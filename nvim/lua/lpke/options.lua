@@ -1,10 +1,11 @@
+local E = {}
 local helpers = require('lpke.helpers')
 
 --------------------------
 -- CUSTOM OPTIONS
 --------------------------
 
-local custom_options = {
+E.custom_opts = {
   whitespace_hl = 'NvimInternalError', -- the `:highlight` style to use when toggling whitespace chars
 }
 
@@ -12,7 +13,7 @@ local custom_options = {
 -- VIM OPTIONS
 --------------------------
 
-local options = {
+E.vim_opts = {
   --backup = false, -- no backups
   --swapfile = false, -- don't create a swapfile
   clipboard = '', -- setting this to anything else will make pasting very slow on WSL
@@ -55,7 +56,7 @@ local options = {
   statusline = ' %f %m %= %l:%c ', -- TODO: add percent, other useful stuff
   sessionoptions = 'blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions',
 }
-helpers.set_options(options)
+helpers.set_options(E.vim_opts)
 
 
 --------------------------
@@ -90,4 +91,4 @@ vim.g.netrw_banner = 0
 vim.cmd('autocmd FileType * set formatoptions-=ro')
 
 
-return custom_options
+return E

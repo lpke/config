@@ -3,6 +3,7 @@
 
 local extra_colors = {
   slight = '#c0bcd2',
+  growth = '#64a6a5',
 }
 
 local function config()
@@ -54,6 +55,7 @@ local function config()
   -- save theme colors to a global variable
   theme_colors = require('rose-pine.palette')
   theme_colors.slight = extra_colors.slight
+  theme_colors.growth = extra_colors.growth
 
   -- set color scheme
   vim.cmd('colorscheme rose-pine')

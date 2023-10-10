@@ -4,29 +4,29 @@ local function config()
   local tc = theme_colors
   local custom_theme = {
     normal = {
-      a = {bg = tc.overlay, fg = tc.text},
-      b = {bg = tc.overlay, fg = tc.text},
-      c = {bg = tc.overlay, fg = tc.text}
+      a = {bg = tc.overlay, fg = tc.subtle},
+      b = {bg = tc.overlay, fg = tc.subtle},
+      c = {bg = tc.overlay, fg = tc.subtle}
     },
     insert = {
-      a = {bg = tc.overlay, fg = tc.text},
-      b = {bg = tc.overlay, fg = tc.text},
-      c = {bg = tc.overlay, fg = tc.text}
+      a = {bg = tc.overlay, fg = tc.subtle},
+      b = {bg = tc.overlay, fg = tc.subtle},
+      c = {bg = tc.overlay, fg = tc.subtle}
     },
     visual = {
-      a = {bg = tc.overlay, fg = tc.text},
-      b = {bg = tc.overlay, fg = tc.text},
-      c = {bg = tc.overlay, fg = tc.base}
+      a = {bg = tc.overlay, fg = tc.subtle},
+      b = {bg = tc.overlay, fg = tc.subtle},
+      c = {bg = tc.overlay, fg = tc.subtle}
     },
     replace = {
-      a = {bg = tc.overlay, fg = tc.text},
-      b = {bg = tc.overlay, fg = tc.text},
-      c = {bg = tc.overlay, fg = tc.text}
+      a = {bg = tc.overlay, fg = tc.subtle},
+      b = {bg = tc.overlay, fg = tc.subtle},
+      c = {bg = tc.overlay, fg = tc.subtle}
     },
     command = {
-      a = {bg = tc.overlay, fg = tc.text},
-      b = {bg = tc.overlay, fg = tc.text},
-      c = {bg = tc.overlay, fg = tc.text}
+      a = {bg = tc.overlay, fg = tc.subtle},
+      b = {bg = tc.overlay, fg = tc.subtle},
+      c = {bg = tc.overlay, fg = tc.subtle}
     },
     inactive = {
       a = {bg = tc.surface, fg = tc.muted},
@@ -75,6 +75,9 @@ local function config()
     inactive_winbar = {},
     extensions = {}
   }
+
+  -- options to set only when this plugin is in use
+  vim.cmd('set noshowmode')
 
   -- override plugin control of this option
   vim.o.laststatus = options.vim_opts.laststatus

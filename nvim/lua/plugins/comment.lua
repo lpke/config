@@ -4,7 +4,7 @@ local opts = {
 
 return {
   'numToStr/Comment.nvim',
-  opts = opts,
   lazy = false,
+  opts = opts,
 }
 

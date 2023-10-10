@@ -26,6 +26,15 @@ local keymaps = {
   {'n', 'J', 'mzJ`z'}, -- dont move cursor when joining lines
   {'n', 'Q', ''}, -- remove Q keybind (re-run last macro) - use `@@` instead
 
+  -- find and replace
+  {'nv', 'S', ''}, -- clear default S functionality
+  {'n', 'SS', ":s/"}, -- replace in current line
+  {'n', 'SF', ":%s/"}, -- replace in current file
+  {'n', 'SV', [[:'<,'>s/\%V]]}, -- replace in prev selection
+  {'v', 'SV', [[:s/\%V]]}, -- replace in current selection
+  {'n', 's*', [[:%s/\<<c-r><c-w>\>/<c-r><c-w>/gi<left><left><left>]]}, -- replace under cursor (whole file)
+  {'n', 'SW', [[:'<,'>s/\%V\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]]}, -- replace under cursor (prev selection)
+
   -- buffer navigation
   -- { 'n', '', '' },
   -- { 'n', '', '' },
@@ -84,9 +93,6 @@ local keymaps = {
   {'n', 'cb', 'vbc'},
   {'n', 'd^', 'v^d'},
   {'n', 'c^', 'v^c'},
-
-  -- replace all occurences of word under cursor
-  {'n', '<leader>s', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]]},
 }
 helpers.keymap_set_multi(keymaps)
 

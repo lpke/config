@@ -39,7 +39,7 @@ local function config()
         h4 = 'gold',
         h5 = 'pine',
         h6 = 'foam',
-      }
+      },
     },
 
     -- vim highlight groups (inspect under cursor with `:Inspect`)
@@ -50,7 +50,7 @@ local function config()
       EndOfBuffer = { fg = 'base' }, -- remove the `~`
       CursorLine = { bg = 'none' },
       CursorLineNr = { fg = extra_colors.slight },
-    }
+    },
   })
 
   -- save theme to global var, add extras

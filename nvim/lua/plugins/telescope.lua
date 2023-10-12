@@ -18,16 +18,16 @@ local function config()
       mappings = {
         n = {
           ['u'] = { '<cmd>undo<cr>', type = 'command' },
-        }
-      }
+        },
+      },
     },
     pickers = {
       find_files = {
         mappings = {
           -- ...
-        }
+        },
       },
-    }
+    },
   })
 
   -- extensions

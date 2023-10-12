@@ -35,9 +35,9 @@ local lazy_options = {
         '↳',
         '-',
         '↳',
-      }
-    }
-  }
+      },
+    },
+  },
 }
 
 return lazy_options

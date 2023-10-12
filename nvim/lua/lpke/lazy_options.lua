@@ -1,4 +1,7 @@
 local lazy_options = {
+  change_detection = {
+    notify = false,
+  },
   ui = {
     icons = {
       cmd = '⌘ ',

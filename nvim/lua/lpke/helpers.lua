@@ -130,5 +130,22 @@ function E.keymap_set_yank_still_marks()
   end
 end
 
+-- if `str` matches an item in `mappings`, return second value for it
+-- eg: 'hello', {{'hello', 'hi'}, ...} -> 'hi'
+function E.map_string(str, mappings, fallback)
+  for _, map in ipairs(mappings) do
+    if str == map[1] then
+      return map[2]
+    end
+  end
+  return fallback or str
+end
+
+-- get cwd folder name
+function E.get_cwd_folder()
+  local cwd = vim.fn.getcwd()
+  return cwd:match('([^/]+)$')
+end
+
 return E;
 

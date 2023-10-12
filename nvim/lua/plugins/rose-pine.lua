@@ -1,9 +1,12 @@
 -- palette colors:  https://rosepinetheme.com/palette/ingredients/
 -- recipes:         https://github.com/rose-pine/neovim/wiki/Recipes
 
+-- Shades: base | surface | overlay | overlayplus | muted | subtle | subtleplus | textminus | text
 local extra_colors = {
-  slight = '#c0bcd2',
-  smoke = '#3c3852',
+  textminus = '#c0bcd2',
+  subtleplus = '#a7a3bd',
+  mutedplus = '#7e799a',
+  overlayplus = '#3c3852',
   growth = '#64a6a5',
 }
 
@@ -49,7 +52,7 @@ local function config()
       StatusLineNC = { fg = 'subtle', bg = 'surface' },
       EndOfBuffer = { fg = 'base' }, -- remove the `~`
       CursorLine = { bg = 'none' },
-      CursorLineNr = { fg = extra_colors.slight },
+      CursorLineNr = { fg = extra_colors.textminus },
     },
   })
 

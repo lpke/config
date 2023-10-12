@@ -1,7 +1,7 @@
 local options = require('lpke.options')
 local helpers = require('lpke.helpers')
 
--- mode name mappings for how they should be displayed
+-- mappings for display
 local modes = {
   { 'NORMAL', 'NOR' },
   { 'INSERT', 'INS' },
@@ -12,7 +12,6 @@ local modes = {
   { 'COMMAND', 'CMD' },
   { 'TERMINAL', 'TER' },
 }
-
 local filetypes = {
   { 'javascript', 'js' },
   { 'typescript', 'ts' },
@@ -24,39 +23,39 @@ local function config()
   local tc = lpke_theme_colors
   local custom_theme = {
     normal = {
-      a = {bg = tc.smoke, fg = tc.subtle},
-      b = {bg = tc.overlay, fg = tc.subtle},
-      c = {bg = tc.overlay, fg = tc.subtle},
+      a = {bg = tc.overlayplus, fg = tc.subtleplus},
+      b = {bg = tc.overlay, fg = tc.subtleplus},
+      c = {bg = tc.overlay, fg = tc.subtleplus},
     },
     insert = {
-      a = {bg = tc.smoke, fg = tc.slight},
-      b = {bg = tc.overlay, fg = tc.subtle},
-      c = {bg = tc.overlay, fg = tc.subtle},
+      a = {bg = tc.overlayplus, fg = tc.text},
+      b = {bg = tc.overlay, fg = tc.subtleplus},
+      c = {bg = tc.overlay, fg = tc.subtleplus},
     },
     visual = {
       a = {bg = tc.growth, fg = tc.base},
-      b = {bg = tc.overlay, fg = tc.subtle},
-      c = {bg = tc.overlay, fg = tc.subtle},
+      b = {bg = tc.overlay, fg = tc.subtleplus},
+      c = {bg = tc.overlay, fg = tc.subtleplus},
     },
     replace = {
       a = {bg = tc.love, fg = tc.base},
-      b = {bg = tc.overlay, fg = tc.subtle},
-      c = {bg = tc.overlay, fg = tc.subtle},
+      b = {bg = tc.overlay, fg = tc.subtleplus},
+      c = {bg = tc.overlay, fg = tc.subtleplus},
     },
     command = {
-      a = {bg = tc.smoke, fg = tc.iris},
-      b = {bg = tc.overlay, fg = tc.subtle},
-      c = {bg = tc.overlay, fg = tc.subtle},
+      a = {bg = tc.overlayplus, fg = tc.iris},
+      b = {bg = tc.overlay, fg = tc.subtleplus},
+      c = {bg = tc.overlay, fg = tc.subtleplus},
     },
     terminal = {
       a = {bg = tc.iris, fg = tc.base},
-      b = {bg = tc.overlay, fg = tc.subtle},
-      c = {bg = tc.overlay, fg = tc.subtle},
+      b = {bg = tc.overlay, fg = tc.subtleplus},
+      c = {bg = tc.overlay, fg = tc.subtleplus},
     },
     inactive = {
-      a = {bg = tc.surface, fg = tc.muted},
-      b = {bg = tc.surface, fg = tc.muted},
-      c = {bg = tc.surface, fg = tc.muted},
+      a = {bg = tc.surface, fg = tc.mutedplus},
+      b = {bg = tc.surface, fg = tc.mutedplus},
+      c = {bg = tc.surface, fg = tc.mutedplus},
     },
   }
 
@@ -116,7 +115,7 @@ local function config()
           cond = function() return lpke_show_cwd end,
           on_click = function() lpke_show_cwd = not lpke_show_cwd end,
           color = { gui = 'bold' },
-          padding = { left = 1, right = 0 },
+          -- padding = { left = 1, right = 0 },
         },
         filename,
         {
@@ -129,13 +128,13 @@ local function config()
         {
           'encoding',
           cond = function() return lpke_show_encoding end,
-          color = { fg = tc.muted },
+          color = { fg = tc.subtle },
         },
         {
           'fileformat',
           cond = function() return lpke_show_encoding end,
           icons_enabled = true,
-          color = { fg = tc.muted },
+          color = { fg = tc.subtle },
           symbols = {
             unix = 'LF', -- LF
             dos = 'CRLF', -- CRLF

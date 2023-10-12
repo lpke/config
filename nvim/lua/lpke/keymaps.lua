@@ -115,8 +115,9 @@ local keymaps = {
   {'n', 'SF', ":%s/"}, -- replace in current file
   {'n', 'SV', [[:'<,'>s/\%V]]}, -- replace in prev selection
   {'v', 'SV', [[:s/\%V]]}, -- replace in current selection
-  {'n', 'S*', [[:%s/\<<c-r><c-w>\>/<c-r><c-w>/gi<left><left><left>]]}, -- replace under cursor (whole file)
-  {'n', 'SW', [[:'<,'>s/\%V\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]]}, -- replace under cursor (prev selection)
+  {'n', 'S**', [[:%s/\<<c-r><c-w>\>/<c-r><c-w>/gi<left><left><left>]]}, -- replace under cursor (whole file)
+  {'n', 'S*v', [[:'<,'>s/\%V\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]]}, -- replace under cursor (prev selection)
+  {'n', 'S*V', [[:'<,'>s/\%V\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]]}, -- replace under cursor (prev selection)
 }
 helpers.keymap_set_multi(keymaps)
 

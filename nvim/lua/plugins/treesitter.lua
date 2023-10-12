@@ -32,7 +32,7 @@ function config()
   })
 
   -- highlight customisations
-  helpers.set_hl('@none', { fg = tc.slight })
+  helpers.set_hl('@none', { fg = tc.textminus })
   helpers.set_hl('@variable', { italic = false, fg = tc.text })
   helpers.set_hl('@property', { italic = false, fg = tc.foam })
   helpers.set_hl('@parameter', { italic = false, fg = tc.iris })

@@ -65,7 +65,7 @@ local function config()
   lpke_full_path = true
   lpke_show_encoding = false
 
-  -- re-usable components
+  -- re-usable/custom components
   local filename = {
     'filename',
     path = 1,
@@ -84,6 +84,8 @@ local function config()
       newfile = '[New]',
     },
   }
+  local session_name = function() return helpers.formatted_session_name('◉ ') end
+  local cwd_folder = helpers.get_cwd_folder
 
   require('lualine').setup({
     options = {
@@ -114,22 +116,18 @@ local function config()
       },
       lualine_b = {
         {
-          helpers.get_cwd_folder,
+          cwd_folder,
           cond = function() return lpke_show_cwd end,
           on_click = function() lpke_show_cwd = not lpke_show_cwd; refresh() end,
           color = function()
-            -- changes based on current session
             local cwd = helpers.get_cwd_folder()
-            local session = helpers.safe_call(require('auto-session.lib').current_session_name, true, '')
+            local session = helpers.get_session_name()
             if cwd == session then
-              -- current session matches
-              return { gui = 'bold', fg = tc.foam }
-            elseif (session and session ~= '') then
-              -- session exists but not a match
-              return { gui = 'bold', fg = tc.rose }
-            else
-              -- not in a section
+              return { gui = 'bold', fg = tc.textminus }
+            elseif session then
               return { gui = 'bold' }
+            else
+              return { gui = '' }
             end
             return ((cwd == session) and { fg = tc.foam, gui = 'bold' } or ({ gui = 'bold' }))
           end,
@@ -163,6 +161,15 @@ local function config()
           fmt = function(str) return helpers.map_string(str, filetypes) end,
           on_click = function() lpke_show_encoding = not lpke_show_encoding; refresh() end,
           color = function() if lpke_show_encoding then return { gui = 'bold' } end end
+        },
+        {
+          session_name,
+          cond = function()
+            local cwd = helpers.get_cwd_folder()
+            local session = helpers.get_session_name()
+            return session and (not (cwd == session))
+          end,
+          color = { gui = 'bold', fg = tc.textminus },
         },
       },
       lualine_y = {'progress', 'location'},

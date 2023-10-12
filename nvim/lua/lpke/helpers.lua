@@ -165,5 +165,24 @@ function E.safe_call(func, silent, fallback)
   end
 end
 
+-- get current session name
+function E.get_session_name(fallback)
+  return E.safe_call(
+    require('auto-session.lib').current_session_name,
+    true,
+    fallback
+  )
+end
+
+-- format current session name for status line
+function E.formatted_session_name(symbol)
+  local session = E.get_session_name()
+  if (session and symbol) then
+    return symbol .. session
+  else
+    return session
+  end
+end
+
 return E;
 

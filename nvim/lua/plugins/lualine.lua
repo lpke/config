@@ -14,7 +14,7 @@ local modes = {
 }
 
 local function config()
-  local tc = theme_colors
+  local tc = lpke_theme_colors
   local custom_theme = {
     normal = {
       a = {bg = tc.smoke, fg = tc.subtle},
@@ -53,19 +53,18 @@ local function config()
     }
   }
 
-  -- custom variables
-  local show_encoding = false
-  local full_path = true
-  local show_cwd = true
+  lpke_show_cwd = true
+  lpke_full_path = true
+  lpke_show_encoding = false
 
   -- re-usable components
   local filename = {
     'filename',
     path = 1,
     fmt = function(str)
-      return full_path and str or helpers.get_path_tail(str)
+      return lpke_full_path and str or helpers.get_path_tail(str)
     end,
-    on_click = function() full_path = not full_path end,
+    on_click = function() lpke_full_path = not lpke_full_path end,
     shorting_target = 40,
     icons_enabled = true,
     symbols = {
@@ -100,14 +99,14 @@ local function config()
         {
           'mode',
           fmt = function(str) return helpers.map_string(str, modes) end,
-          on_click = function() show_cwd = not show_cwd end
+          on_click = function() lpke_show_cwd = not lpke_show_cwd end
         },
       },
       lualine_b = {
         {
           helpers.get_cwd_folder,
-          cond = function() return show_cwd end,
-          on_click = function() show_cwd = not show_cwd end,
+          cond = function() return lpke_show_cwd end,
+          on_click = function() lpke_show_cwd = not lpke_show_cwd end,
           color = { gui = 'bold' },
           padding = { left = 1, right = 0 }
         },
@@ -121,12 +120,12 @@ local function config()
       lualine_x = {
         {
           'encoding',
-          cond = function() return show_encoding end,
+          cond = function() return lpke_show_encoding end,
           color = { fg = tc.muted }
         },
         {
           'fileformat',
-          cond = function() return show_encoding end,
+          cond = function() return lpke_show_encoding end,
           icons_enabled = true,
           color = { fg = tc.muted },
           symbols = {
@@ -137,8 +136,8 @@ local function config()
         },
         {
           'filetype',
-          on_click = function() show_encoding = not show_encoding end,
-          color = function() if show_encoding then return { gui = 'bold' } end end
+          on_click = function() lpke_show_encoding = not lpke_show_encoding end,
+          color = function() if lpke_show_encoding then return { gui = 'bold' } end end
         }
       },
       lualine_y = {'progress', 'location'},
@@ -158,11 +157,18 @@ local function config()
     extensions = {}
   })
 
-  -- options to set only when this plugin is in use
+  -- options when using lualine
   vim.cmd('set noshowmode')
+  vim.o.laststatus = options.vim_opts.laststatus -- override plugin control of this
 
-  -- override plugin control of this option
-  vim.o.laststatus = options.vim_opts.laststatus
+  -- keymaps when using lualine
+  local keymaps = {
+    {'n', '<A-d>', function() lpke_show_cwd = not lpke_show_cwd end}, -- toggle cwd
+    {'n', '<A-f>', function() lpke_full_path = not lpke_full_path end}, -- toggle file path
+    {'n', '<A-e>', function() lpke_show_encoding = not lpke_show_encoding end}, -- toggle encoding info
+  }
+  helpers.keymap_set_multi(keymaps)
+  
 end
 
 return {

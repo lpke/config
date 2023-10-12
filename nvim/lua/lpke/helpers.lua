@@ -146,9 +146,23 @@ function E.get_path_tail(str)
   return str:match('([^/]+)$')
 end
 
+-- get cwd folder name
 function E.get_cwd_folder()
   local cwd = vim.fn.getcwd()
   return E.get_path_tail(cwd)
+end
+
+-- calls a function safely (non-breaking if error)
+function E.safe_call(func, silent, fallback)
+  local ok, result = pcall(func)
+  if ok then
+    return result
+  else
+    if not silent then
+      print('safe_call error: ' .. result)
+    end
+    return fallback
+  end
 end
 
 return E;

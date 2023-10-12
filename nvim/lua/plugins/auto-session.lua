@@ -18,6 +18,9 @@ function config()
     log_level = 'error',
     cwd_change_handling = {
       restore_upcoming_session = false, -- enabling this causes me errors when swapping with telescope
+      post_cwd_changed_hook = function()
+        require('lualine').refresh()
+      end,
     },
     session_lens = {
       load_on_setup = true,

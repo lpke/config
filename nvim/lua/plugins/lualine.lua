@@ -21,6 +21,8 @@ local filetypes = {
 
 local function config()
   local tc = lpke_theme_colors
+  local refresh = require('lualine').refresh
+
   local custom_theme = {
     normal = {
       a = {bg = tc.overlayplus, fg = tc.subtleplus},
@@ -68,10 +70,11 @@ local function config()
     'filename',
     path = 1,
     fmt = function(str)
-      -- only show filename when: toggled off OR not a normal buffer (eg help)
-      return (lpke_full_path and vim.bo.buftype == '') and str or helpers.get_path_tail(str)
+      -- only show filename when: toggled off OR not a normal buffer (eg help, netrw)
+      local normal_buffer = vim.bo.buftype == '' and vim.bo.filetype ~= 'netrw'
+      return (lpke_full_path and normal_buffer) and str or helpers.get_path_tail(str)
     end,
-    on_click = function() lpke_full_path = not lpke_full_path end,
+    on_click = function() lpke_full_path = not lpke_full_path; refresh() end,
     shorting_target = 40,
     icons_enabled = true,
     symbols = {
@@ -106,16 +109,30 @@ local function config()
         {
           'mode',
           fmt = function(str) return helpers.map_string(str, modes) end,
-          on_click = function() lpke_show_cwd = not lpke_show_cwd end
+          on_click = function() lpke_show_cwd = not lpke_show_cwd; refresh() end
         },
       },
       lualine_b = {
         {
           helpers.get_cwd_folder,
           cond = function() return lpke_show_cwd end,
-          on_click = function() lpke_show_cwd = not lpke_show_cwd end,
-          color = { gui = 'bold' },
-          -- padding = { left = 1, right = 0 },
+          on_click = function() lpke_show_cwd = not lpke_show_cwd; refresh() end,
+          color = function()
+            -- changes based on current session
+            local cwd = helpers.get_cwd_folder()
+            local session = helpers.safe_call(require('auto-session.lib').current_session_name, true, '')
+            if cwd == session then
+              -- current session matches
+              return { gui = 'bold', fg = tc.foam }
+            elseif (session and session ~= '') then
+              -- session exists but not a match
+              return { gui = 'bold', fg = tc.rose }
+            else
+              -- not in a section
+              return { gui = 'bold' }
+            end
+            return ((cwd == session) and { fg = tc.foam, gui = 'bold' } or ({ gui = 'bold' }))
+          end,
         },
         filename,
         {
@@ -144,7 +161,7 @@ local function config()
         {
           'filetype',
           fmt = function(str) return helpers.map_string(str, filetypes) end,
-          on_click = function() lpke_show_encoding = not lpke_show_encoding end,
+          on_click = function() lpke_show_encoding = not lpke_show_encoding; refresh() end,
           color = function() if lpke_show_encoding then return { gui = 'bold' } end end
         },
       },
@@ -171,16 +188,17 @@ local function config()
 
   -- keymaps when using lualine
   local keymaps = {
-    {'n', '<A-d>', function() lpke_show_cwd = not lpke_show_cwd end}, -- toggle cwd
-    {'n', '<A-f>', function() lpke_full_path = not lpke_full_path end}, -- toggle file path
-    {'n', '<A-e>', function() lpke_show_encoding = not lpke_show_encoding end}, -- toggle encoding info
+    {'n', '<A-d>', function() lpke_show_cwd = not lpke_show_cwd; refresh() end}, -- toggle cwd
+    {'n', '<A-f>', function() lpke_full_path = not lpke_full_path; refresh() end}, -- toggle file path
+    {'n', '<A-e>', function() lpke_show_encoding = not lpke_show_encoding; refresh() end}, -- toggle encoding info
   }
   helpers.keymap_set_multi(keymaps)
-  
+
 end
 
 return {
   'nvim-lualine/lualine.nvim',
   lazy = false,
+  priority = 800,
   config = config,
 }

@@ -53,9 +53,28 @@ local function config()
     }
   }
 
-  -- custom components
-  local cwd = helpers.get_cwd_folder
+  -- custom variables
   local show_encoding = false
+  local full_path = true
+  local show_cwd = true
+
+  -- re-usable components
+  local filename = {
+    'filename',
+    path = 1,
+    fmt = function(str)
+      return full_path and str or helpers.get_path_tail(str)
+    end,
+    on_click = function() full_path = not full_path end,
+    shorting_target = 40,
+    icons_enabled = true,
+    symbols = {
+      modified = '●',
+      readonly = '',
+      unnamed = '[No Name]',
+      newfile = '[New]',
+    }
+  }
 
   require('lualine').setup({
     options = {
@@ -80,26 +99,19 @@ local function config()
       lualine_a = {
         {
           'mode',
-          fmt = function(str) return helpers.map_string(str, modes) end
+          fmt = function(str) return helpers.map_string(str, modes) end,
+          on_click = function() show_cwd = not show_cwd end
         },
       },
       lualine_b = {
         {
-          cwd,
+          helpers.get_cwd_folder,
+          cond = function() return show_cwd end,
+          on_click = function() show_cwd = not show_cwd end,
           color = { gui = 'bold' },
-          padding = 1
+          padding = { left = 1, right = 0 }
         },
-        {
-          'filename',
-          path = 1,
-          icons_enabled = true,
-          symbols = {
-            modified = '●',
-            readonly = '',
-            unnamed = '[No Name]',
-            newfile = '[New]',
-          }
-        },
+        filename,
         {
           'branch',
           color = { gui = 'italic' }
@@ -135,7 +147,7 @@ local function config()
     inactive_sections = {
       lualine_a = {},
       lualine_b = {},
-      lualine_c = {'filename'},
+      lualine_c = { filename },
       lualine_x = {'location'},
       lualine_y = {},
       lualine_z = {}

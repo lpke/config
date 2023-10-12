@@ -141,10 +141,14 @@ function E.map_string(str, mappings, fallback)
   return fallback or str
 end
 
--- get cwd folder name
+-- get last segment of a path
+function E.get_path_tail(str)
+  return str:match('([^/]+)$')
+end
+
 function E.get_cwd_folder()
   local cwd = vim.fn.getcwd()
-  return cwd:match('([^/]+)$')
+  return E.get_path_tail(cwd)
 end
 
 return E;

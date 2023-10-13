@@ -38,13 +38,17 @@ local keymaps = {
   -- creation / deletion
   {'nvC', '<C-w>|', 'vsplit'},
   {'nvC', '<C-w>_', 'split'},
-  -- TODO: Make more useful/flexible
-  -- {'nvC', '<C-w>!|', 'topleft vsplit'},
-  -- {'nvC', '<C-w>!_', 'topleft split'},
+  {'nvC', '<A-.>', 'vsplit'},
+  {'nvC', '<A-,>', 'split'},
   {'n', '<C-w>x', '<C-w>c'},
+  {'n', '<A-/>', '<C-w>c'},
   {'nC', 'QQ', 'q'},
   {'nC', '<C-w>QQ', 'qa'},
   {'nC', '<C-w>ZZ', 'wqa'},
+  -- copy/pasting/rotating buffers
+  {'nC', '<A-y>', 'lua lpke_copy_buffer_id()'},
+  {'nC', '<A-p>', 'lua lpke_paste_buffer_id()'},
+  {'n', '<A-o>', '<C-w>r'},
   -- navigation
   {'nv', '<A-h>', '<C-w>h'},
   {'nv', '<A-j>', '<C-w>j'},
@@ -54,6 +58,14 @@ local keymaps = {
   {'i', '<A-j>', '<Esc>l<C-w>j'},
   {'i', '<A-k>', '<Esc>l<C-w>k'},
   {'i', '<A-l>', '<Esc>l<C-w>l'},
+  {'nv', '<C-h>', '<C-w>h'},
+  {'nv', '<C-j>', '<C-w>j'},
+  {'nv', '<C-k>', '<C-w>k'},
+  {'nv', '<C-l>', '<C-w>l'},
+  {'i', '<C-h>', '<Esc>l<C-w>h'},
+  {'i', '<C-j>', '<Esc>l<C-w>j'},
+  {'i', '<C-k>', '<Esc>l<C-w>k'},
+  {'i', '<C-l>', '<Esc>l<C-w>l'},
   -- resizing
   {'nv', '<C-Up>', '<C-w>+<C-w>+<C-w>+'},
   {'nv', '<C-Down>', '<C-w>-<C-w>-<C-w>-'},
@@ -66,6 +78,7 @@ local keymaps = {
   -- tab control
   -- creation / deletion
   {'nC', '<C-w>c', 'tabnew'},
+  {'nC', '<A-n>', 'tabnew'},
   {'nC', '<C-w>&', 'tabclose'},
   -- navigating
   {'nv', '<C-w><Right>', 'gt'},

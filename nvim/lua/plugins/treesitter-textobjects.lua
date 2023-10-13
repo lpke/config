@@ -4,7 +4,7 @@ local function config()
     -- config
   })
 end
-
+    
 return {
   'nvim-treesitter/nvim-treesitter-textobjects',
   dependencies = {

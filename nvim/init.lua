@@ -1,5 +1,6 @@
 require('lpke.keymaps')
 require('lpke.options')
+require('lpke.globals')
 local lazy_options = require('lpke.lazy_options')
 
 -- lazy setup (package manager)

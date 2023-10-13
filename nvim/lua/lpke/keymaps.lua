@@ -29,10 +29,17 @@ local keymaps = {
   {'n', 'Q', ''}, -- remove Q keybind (re-run last macro) - use `@@` instead
 
   -- buffer navigation
-  -- { 'n', '', '' },
-  -- { 'n', '', '' },
+  { 'nvC', '<A-j>', 'bnext' },
+  { 'nvC', '<A-k>', 'bprev' },
+  { 'nvC', '<A-BS>', 'bdelete' },
 
-  -- window (pane) navigation
+  -- window control
+  -- creation / deletion
+  { 'nvC', '<C-w>|', 'vsp' },
+  { 'nvC', '<C-w>_', 'sp' },
+  { 'nC', 'QQ', 'q' },
+  { 'nC', '<C-w>QQ', 'qa '},
+  -- navigation
   {'nv', '<C-h>', '<C-w>h'},
   {'nv', '<C-j>', '<C-w>j'},
   {'nv', '<C-k>', '<C-w>k'},
@@ -41,17 +48,27 @@ local keymaps = {
   {'i', '<C-j>', '<Esc>l<C-w>j'},
   {'i', '<C-k>', '<Esc>l<C-w>k'},
   {'i', '<C-l>', '<Esc>l<C-w>l'},
+  -- resizing
+  {'nv', '<C-Up>', '<C-w>+<C-w>+<C-w>+'},
+  {'nv', '<C-Down>', '<C-w>-<C-w>-<C-w>-'},
+  {'nv', '<C-Left>', '<C-w><<C-w><<C-w><'},
+  {'nv', '<C-Right>', '<C-w>><C-w>><C-w>>'},
 
-  -- tab navigation
-  -- TODO
+  -- tab control
+  -- creation / deletion
+  { 'nC', '<C-w>c', 'tabnew' },
+  { 'nC', '<C-w>&', 'tabclose' },
+  -- navigating
+  { 'nv', '<C-w><Right>', 'gt' },
+  { 'nv', '<C-w><Left>', 'gT' },
+  { 'nv', '<A-l>', 'gt' },
+  { 'nv', '<A-h>', 'gT' },
 
   -- arrow-key scrolling
   {'nv', '<Down>', '4<C-e>'},
   {'nv', '<Up>', '4<C-y>'},
-  {'nv', '<S-Down>', '<C-e>'},
-  {'nv', '<S-Up>', '<C-y>'},
-  {'nv', '<Left>', '6zh'},
-  {'nv', '<Right>', '6zl'},
+  {'nv', '<A-Left>', '6zh'},
+  {'nv', '<A-Right>', '6zl'},
 
   -- center cursor when down/up page
   {'n', '<C-d>', '<C-d>zz'},

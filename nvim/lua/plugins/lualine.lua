@@ -11,6 +11,7 @@ local modes = {
   { 'REPLACE', 'REP' },
   { 'COMMAND', 'CMD' },
   { 'TERMINAL', 'TER' },
+  { 'O-PENDING', 'O-P' },
 }
 local filetypes = {
   { 'javascript', 'js' },

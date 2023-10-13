@@ -3,6 +3,12 @@ local function config()
     -- subword (camelCase, snake_case, kebab-case)
     {'oxC', 'i<leader>w', [[lua require('various-textobjs').subword('inner')]]},
     {'oxC', 'a<leader>w', [[lua require('various-textobjs').subword('outer')]]},
+    -- entire buffer
+    {'oxC', 'gG', [[lua require('various-textobjs').entireBuffer()]]},
+    -- indentation
+    {'oxC', 'ii', [[lua require('various-textobjs').indentation('inner', 'inner')]]},
+    {'oxC', 'ai', [[lua require('various-textobjs').indentation('outer', 'inner')]]},
+    {'oxC', 'aI', [[lua require('various-textobjs').indentation('outer', 'outer')]]},
   }
   require('lpke.helpers').keymap_set_multi(keymaps)
 

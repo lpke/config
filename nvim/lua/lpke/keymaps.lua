@@ -30,27 +30,30 @@ local keymaps = {
   {'n', '=*', 'mzgg=G`zzz'}, -- indent whole file
 
   -- buffer navigation
-  {'nvC', '<A-j>', 'bnext'},
-  {'nvC', '<A-k>', 'bprev'},
+  {'nvC', '<A-Down>', 'bnext'},
+  {'nvC', '<A-Up>', 'bprev'},
   {'nvC', '<A-BS>', 'bdelete'},
 
   -- window control
   -- creation / deletion
-  {'nvC', '<C-w>|', 'vsp'},
-  {'nvC', '<C-w>_', 'sp'},
+  {'nvC', '<C-w>|', 'vsplit'},
+  {'nvC', '<C-w>_', 'split'},
+  -- TODO: Make more useful/flexible
+  -- {'nvC', '<C-w>!|', 'topleft vsplit'},
+  -- {'nvC', '<C-w>!_', 'topleft split'},
   {'n', '<C-w>x', '<C-w>c'},
   {'nC', 'QQ', 'q'},
   {'nC', '<C-w>QQ', 'qa'},
   {'nC', '<C-w>ZZ', 'wqa'},
   -- navigation
-  {'nv', '<C-h>', '<C-w>h'},
-  {'nv', '<C-j>', '<C-w>j'},
-  {'nv', '<C-k>', '<C-w>k'},
-  {'nv', '<C-l>', '<C-w>l'},
-  {'i', '<C-h>', '<Esc>l<C-w>h'},
-  {'i', '<C-j>', '<Esc>l<C-w>j'},
-  {'i', '<C-k>', '<Esc>l<C-w>k'},
-  {'i', '<C-l>', '<Esc>l<C-w>l'},
+  {'nv', '<A-h>', '<C-w>h'},
+  {'nv', '<A-j>', '<C-w>j'},
+  {'nv', '<A-k>', '<C-w>k'},
+  {'nv', '<A-l>', '<C-w>l'},
+  {'i', '<A-h>', '<Esc>l<C-w>h'},
+  {'i', '<A-j>', '<Esc>l<C-w>j'},
+  {'i', '<A-k>', '<Esc>l<C-w>k'},
+  {'i', '<A-l>', '<Esc>l<C-w>l'},
   -- resizing
   {'nv', '<C-Up>', '<C-w>+<C-w>+<C-w>+'},
   {'nv', '<C-Down>', '<C-w>-<C-w>-<C-w>-'},
@@ -67,14 +70,14 @@ local keymaps = {
   -- navigating
   {'nv', '<C-w><Right>', 'gt'},
   {'nv', '<C-w><Left>', 'gT'},
-  {'nv', '<A-l>', 'gt'},
-  {'nv', '<A-h>', 'gT'},
+  {'nv', '<A-Right>', 'gt'},
+  {'nv', '<A-Left>', 'gT'},
 
   -- arrow-key scrolling
   {'nv', '<Down>', '4<C-e>'},
   {'nv', '<Up>', '4<C-y>'},
-  {'nv', '<A-Left>', '6zh'},
-  {'nv', '<A-Right>', '6zl'},
+  {'nv', '<S-Down>', '6zl'},
+  {'nv', '<S-Up>', '6zh'},
 
   -- center cursor when down/up page
   {'n', '<C-d>', '<C-d>zz'},

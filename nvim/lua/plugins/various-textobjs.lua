@@ -9,6 +9,7 @@ local function config()
     {'oxC', 'ii', [[lua require('various-textobjs').indentation('inner', 'inner')]]},
     {'oxC', 'ai', [[lua require('various-textobjs').indentation('outer', 'inner')]]},
     {'oxC', 'aI', [[lua require('various-textobjs').indentation('outer', 'outer')]]},
+    {'oxC', 'iI', [[lua require('various-textobjs').restOfIndentation()]]},
   }
   require('lpke.helpers').keymap_set_multi(keymaps)
 

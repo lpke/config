@@ -2,6 +2,19 @@ local E = {}
 
 E.is_wsl = vim.fn.exists('$WSL_DISTRO_NAME')
 
+-- calls a function safely (non-breaking if error)
+function E.safe_call(func, silent, fallback)
+  local ok, result = pcall(func)
+  if ok then
+    return result
+  else
+    if not silent then
+      print('safe_call error: ' .. result)
+    end
+    return fallback
+  end
+end
+
 function E.combine_tables(defaultTable, newTable)
   for k, v in pairs(newTable) do
     defaultTable[k] = v
@@ -16,11 +29,12 @@ function E.set_options(options)
   end
 end
 
--- parses a table containing custom keymap args and sets the keymap
+-- parses a table containing custom keymap args and sets or deletes the keymap
 function E.keymap_set(keymap)
   local mode, lhs, rhs, opts = unpack(keymap)
   opts = E.combine_tables({ noremap = true }, opts or {})
   local modes = {}
+  local delete_only = false
 
   for char in mode:gmatch('.') do
     if char == 'R' then
@@ -31,12 +45,18 @@ function E.keymap_set(keymap)
       rhs = '<cmd>' .. rhs .. '<cr>'
     elseif char == '!' then
       opts.silent = true
+    elseif char == 'D' then
+      delete_only = true
     else
       table.insert(modes, char)
     end
   end
 
-  vim.keymap.set(modes, lhs, rhs, opts)
+  if delete_only then
+    vim.keymap.del(modes, lhs, opts)
+  else
+    vim.keymap.set(modes, lhs, rhs, opts)
+  end
 end
 
 -- same as above but accepts multiple keymap tables in a table
@@ -150,19 +170,6 @@ end
 function E.get_cwd_folder()
   local cwd = vim.fn.getcwd()
   return E.get_path_tail(cwd)
-end
-
--- calls a function safely (non-breaking if error)
-function E.safe_call(func, silent, fallback)
-  local ok, result = pcall(func)
-  if ok then
-    return result
-  else
-    if not silent then
-      print('safe_call error: ' .. result)
-    end
-    return fallback
-  end
 end
 
 -- get current session name

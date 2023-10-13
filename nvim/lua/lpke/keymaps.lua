@@ -1,7 +1,7 @@
 local helpers = require('lpke.helpers')
 local options = require('lpke.options')
 local keymap_set = helpers.keymap_set
--- SYNTAX: {'<modes><R=rec,E=expr,C=:,!=sil>', <lhs>, <rhs>, {opts}}
+-- SYNTAX: {'<modes><R=rec,E=expr,C=:,!=sil,D=delete>', <lhs>, <rhs>, {opts}}
 -- TIP: to show how vim sees a key: `:<ctrl+k>` then type a key
 
 -- use space as leader and <BS> as a secondary 'leader'
@@ -27,18 +27,21 @@ local keymaps = {
   {'n', 'Y', 'y$'}, -- capital Y yanks to end of line instead of whole line
   {'n', 'J', 'mzJ`z'}, -- dont move cursor when joining lines
   {'n', 'Q', ''}, -- remove Q keybind (re-run last macro) - use `@@` instead
+  {'n', '=*', 'mzgg=G`zzz'}, -- indent whole file
 
   -- buffer navigation
-  { 'nvC', '<A-j>', 'bnext' },
-  { 'nvC', '<A-k>', 'bprev' },
-  { 'nvC', '<A-BS>', 'bdelete' },
+  {'nvC', '<A-j>', 'bnext'},
+  {'nvC', '<A-k>', 'bprev'},
+  {'nvC', '<A-BS>', 'bdelete'},
 
   -- window control
   -- creation / deletion
-  { 'nvC', '<C-w>|', 'vsp' },
-  { 'nvC', '<C-w>_', 'sp' },
-  { 'nC', 'QQ', 'q' },
-  { 'nC', '<C-w>QQ', 'qa '},
+  {'nvC', '<C-w>|', 'vsp'},
+  {'nvC', '<C-w>_', 'sp'},
+  {'n', '<C-w>x', '<C-w>c'},
+  {'nC', 'QQ', 'q'},
+  {'nC', '<C-w>QQ', 'qa'},
+  {'nC', '<C-w>ZZ', 'wqa'},
   -- navigation
   {'nv', '<C-h>', '<C-w>h'},
   {'nv', '<C-j>', '<C-w>j'},
@@ -53,16 +56,19 @@ local keymaps = {
   {'nv', '<C-Down>', '<C-w>-<C-w>-<C-w>-'},
   {'nv', '<C-Left>', '<C-w><<C-w><<C-w><'},
   {'nv', '<C-Right>', '<C-w>><C-w>><C-w>>'},
+  -- zooming
+  {'nC', '<C-w>C', 'tab split'},
+  {'n', '<C-w>z', '<C-w>|<C-w>_'},
 
   -- tab control
   -- creation / deletion
-  { 'nC', '<C-w>c', 'tabnew' },
-  { 'nC', '<C-w>&', 'tabclose' },
+  {'nC', '<C-w>c', 'tabnew'},
+  {'nC', '<C-w>&', 'tabclose'},
   -- navigating
-  { 'nv', '<C-w><Right>', 'gt' },
-  { 'nv', '<C-w><Left>', 'gT' },
-  { 'nv', '<A-l>', 'gt' },
-  { 'nv', '<A-h>', 'gT' },
+  {'nv', '<C-w><Right>', 'gt'},
+  {'nv', '<C-w><Left>', 'gT'},
+  {'nv', '<A-l>', 'gt'},
+  {'nv', '<A-h>', 'gT'},
 
   -- arrow-key scrolling
   {'nv', '<Down>', '4<C-e>'},

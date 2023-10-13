@@ -1,14 +1,12 @@
-local opts = {
-  -- config options
-}
-
 local function config()
-  require('nvim-surround').setup(opts)
+  require('nvim-surround').setup({
+    -- config
+  })
 end
 
 return {
   'kylechui/nvim-surround',
-  version = '*', -- Use for stability; omit to use `main` branch for the latest features
+  version = '*', -- stable
   event = 'VeryLazy',
-  config = config
+  config = config,
 }

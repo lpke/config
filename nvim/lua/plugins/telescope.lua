@@ -2,6 +2,7 @@ local function config()
   local telescope = require('telescope')
   local actions = require('telescope.actions')
   local builtin = require('telescope.builtin')
+  local helpers = require('lpke.helpers')
 
   -- mappings to access telescope
   local keymaps = {
@@ -11,7 +12,7 @@ local function config()
     {'nC', '<BS>f', 'Telescope git_files'},
     {'nC', '<leader>/', 'Telescope current_buffer_fuzzy_find'},
   }
-  require('lpke.helpers').keymap_set_multi(keymaps)
+  helpers.keymap_set_multi(keymaps)
 
   -- options
   telescope.setup({
@@ -25,8 +26,8 @@ local function config()
         },
         n = {
           ['u'] = { '<cmd>undo<cr>', type = 'command' },
-          ['K'] = actions.move_selection_previous, -- TODO: fast scrolling
-          ['J'] = actions.move_selection_next,
+          ['<Up>'] = function(bufnr) helpers.repeat_function(actions.move_selection_previous, bufnr, 4) end,
+          ['<Down>'] = function(bufnr) helpers.repeat_function(actions.move_selection_next, bufnr, 4) end,
         },
       },
     },
@@ -41,6 +42,7 @@ local function config()
 
   -- extensions
   telescope.load_extension('session-lens')
+  telescope.load_extension('fzf')
 end
 
 return {

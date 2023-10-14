@@ -191,5 +191,16 @@ function E.formatted_session_name(symbol)
   end
 end
 
+-- call a function `count` times - for multiple args, use a table
+function E.repeat_function(func, args, count)
+  if type(args) == 'table' then
+    args = function() return table.unpack(args) end
+  end
+
+  for i = 1, count do
+    func(args)
+  end
+end
+
 return E;
 

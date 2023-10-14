@@ -4,18 +4,19 @@ local function config()
   local builtin = require('telescope.builtin')
   local helpers = require('lpke.helpers')
 
+  local function find_git_files() if helpers.cwd_has_git() then builtin.git_files() else builtin.find_files() end end
+  local function grep_yanked() builtin.grep_string({ search = vim.fn.getreg('"') }) end
+  local function grep_custom() builtin.grep_string({ search = vim.fn.input('Grep > ') }) end
+
   -- mappings to access telescope
   local keymaps = {
     {'nC', '<BS><BS>', 'Telescope find_files', { desc = 'Fuzzy find files in cwd' }},
     {'nC', '<BS>/', 'Telescope live_grep', { desc = 'Find string in cwd' }},
     {'nC', '<leader>/', 'Telescope current_buffer_fuzzy_find', { desc = 'Fuzzy find in current file' }},
-    {'n', '<BS>ff', function() if helpers.cwd_has_git() then builtin.git_files() else builtin.find_files() end end,
-      { desc = 'Fuzzy find git files in cwd (or cwd if not git)' }},
     {'nC', '<BS>fw', 'Telescope grep_string', { desc = 'Find string under cursor in cwd' }},
-    {'n', '<BS>fp', function() builtin.grep_string({ search = vim.fn.input('Grep > '), vim.fn.getreg('"') }) end,
-      { desc = 'Find yanked text in cwd' }},
-    {'n', '<BS>fi', function() builtin.grep_string({ search = vim.fn.input('Grep > ') }) end,
-      { desc = 'Find custom grep in cwd' }},
+    {'n', '<BS>ff', find_git_files, { desc = 'Fuzzy find git files in cwd (or cwd if not git)' }},
+    {'n', '<BS>fp', grep_yanked, { desc = 'Find yanked text in cwd' }},
+    {'n', '<BS>fi', grep_custom, { desc = 'Find custom grep in cwd' }},
   }
   helpers.keymap_set_multi(keymaps)
 

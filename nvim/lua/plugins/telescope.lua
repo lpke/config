@@ -11,12 +11,24 @@ local function config()
   -- mappings to access telescope
   local keymaps = {
     {'nC', '<BS><BS>', 'Telescope find_files', { desc = 'Fuzzy find files in cwd' }},
+    {'n', '<BS>ff', find_git_files, { desc = 'Fuzzy find git files in cwd (or cwd if not git)' }},
     {'nC', '<BS>/', 'Telescope live_grep', { desc = 'Find string in cwd' }},
     {'nC', '<leader>/', 'Telescope current_buffer_fuzzy_find', { desc = 'Fuzzy find in current file' }},
+    {'n', '<BS>fp', grep_yanked, { desc = 'Find pasted string in cwd' }},
+    {'n', '<BS>fi', grep_custom, { desc = 'Find input string in cwd' }},
     {'nC', '<BS>fw', 'Telescope grep_string', { desc = 'Find string under cursor in cwd' }},
-    {'n', '<BS>ff', find_git_files, { desc = 'Fuzzy find git files in cwd (or cwd if not git)' }},
-    {'n', '<BS>fp', grep_yanked, { desc = 'Find yanked text in cwd' }},
-    {'n', '<BS>fi', grep_custom, { desc = 'Find custom grep in cwd' }},
+    {'nC', '<BS>fr', 'Telescope oldfiles', { desc = 'Fuzzy find recent files' }},
+    {'nC', "<BS>fj", 'Telescope jumplist', { desc = 'Fuzzy find jumplist' }},
+    {'nC', "<BS>fb", 'Telescope buffers', { desc = 'Fuzzy find buffers' }},
+    {'nC', "<BS>f'", 'Telescope registers', { desc = 'Fuzzy find registers' }},
+    {'nC', "<BS>fm", 'Telescope marks', { desc = 'Fuzzy find marks' }},
+    {'nC', "<BS>fh", 'Telescope help_tags', { desc = 'Fuzzy find help tags' }},
+    {'nC', "<BS>ft", 'Telescope treesitter', { desc = 'Fuzzy find treesitter symbols' }},
+    {'nC', "<BS>fgc", 'Telescope git_commits', { desc = 'Fuzzy find git commits' }},
+    {'nC', "<BS>fgf", 'Telescope git_bcommits', { desc = 'Fuzzy find buffer git commits' }},
+    {'nC', "<BS>fgb", 'Telescope git_branches', { desc = 'Fuzzy find git branches' }},
+    {'nC', "<BS>fgs", 'Telescope git_status', { desc = 'Fuzzy find git status' }},
+    {'nC', "<BS>fgz", 'Telescope git_stash', { desc = 'Fuzzy find git stash' }},
   }
   helpers.keymap_set_multi(keymaps)
 

@@ -17,6 +17,7 @@ local function config()
     {'n', '<BS>fp', grep_yanked, { desc = 'Find pasted string in cwd' }},
     {'n', '<BS>fi', grep_custom, { desc = 'Find input string in cwd' }},
     {'nC', '<BS>fw', 'Telescope grep_string', { desc = 'Find string under cursor in cwd' }},
+    {'nC', '<BS><leader>', 'Telescope resume', { desc = 'Resume previous Telescope search' }},
     {'nC', '<BS>fr', 'Telescope oldfiles', { desc = 'Fuzzy find recent files' }},
     {'nC', "<BS>fj", 'Telescope jumplist', { desc = 'Fuzzy find jumplist' }},
     {'nC', "<BS>fb", 'Telescope buffers', { desc = 'Fuzzy find buffers' }},

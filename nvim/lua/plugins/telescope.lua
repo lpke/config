@@ -41,11 +41,19 @@ local function config()
       mappings = {
         i = {
           ['<C-q>'] = actions.send_selected_to_qflist + actions.open_qflist,
+          ['<C-j>'] = actions.preview_scrolling_down,
+          ['<C-k>'] = actions.preview_scrolling_up,
+          -- ['<C-h>'] = actions.preview_scrolling_left,
+          -- ['<C-l>'] = actions.preview_scrolling_right,
         },
         n = {
           ['u'] = { '<cmd>undo<cr>', type = 'command' },
           ['<Up>'] = function(bufnr) helpers.repeat_function(actions.move_selection_previous, bufnr, 4) end,
           ['<Down>'] = function(bufnr) helpers.repeat_function(actions.move_selection_next, bufnr, 4) end,
+          ['<C-j>'] = actions.preview_scrolling_down,
+          ['<C-k>'] = actions.preview_scrolling_up,
+          -- ['<C-h>'] = actions.preview_scrolling_left,
+          -- ['<C-l>'] = actions.preview_scrolling_right,
         },
       },
     },

@@ -202,5 +202,10 @@ function E.repeat_function(func, args, count)
   end
 end
 
-return E;
+-- check if cwd has .git folder
+function E.cwd_has_git()
+  return vim.fn.glob('.git/') ~= ''
+end
+
+return E
 

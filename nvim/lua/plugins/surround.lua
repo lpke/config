@@ -1,6 +1,6 @@
 local function config()
   require('nvim-surround').setup({
-    -- config
+    move_cursor = false,
   })
 end
 

@@ -11,5 +11,4 @@ return {
     'nvim-treesitter/nvim-treesitter-textobjects',
   },
   config = config,
-  enabled = false,
 }

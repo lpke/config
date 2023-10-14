@@ -58,22 +58,16 @@ local keymaps = {
   {'i', '<A-j>', '<Esc>l<C-w>j'},
   {'i', '<A-k>', '<Esc>l<C-w>k'},
   {'i', '<A-l>', '<Esc>l<C-w>l'},
-  {'nv', '<C-h>', '<C-w>h'},
-  {'nv', '<C-j>', '<C-w>j'},
-  {'nv', '<C-k>', '<C-w>k'},
-  {'nv', '<C-l>', '<C-w>l'},
-  {'i', '<C-h>', '<Esc>l<C-w>h'},
-  {'i', '<C-j>', '<Esc>l<C-w>j'},
-  {'i', '<C-k>', '<Esc>l<C-w>k'},
-  {'i', '<C-l>', '<Esc>l<C-w>l'},
   -- resizing
-  {'nv', '<C-Up>', '<C-w>+<C-w>+<C-w>+'},
-  {'nv', '<C-Down>', '<C-w>-<C-w>-<C-w>-'},
-  {'nv', '<C-Left>', '<C-w><<C-w><<C-w><'},
-  {'nv', '<C-Right>', '<C-w>><C-w>><C-w>>'},
+  {'nv', '<A-K>', '<C-w>+<C-w>+<C-w>+'},
+  {'nv', '<A-J>', '<C-w>-<C-w>-<C-w>-'},
+  {'nv', '<A-H>', '<C-w><<C-w><<C-w><'},
+  {'nv', '<A-L>', '<C-w>><C-w>><C-w>>'},
   -- zooming
   {'nC', '<C-w>C', 'tab split'},
   {'n', '<C-w>z', '<C-w>|<C-w>_'},
+  {'n', '<A-z>', '<C-w>|<C-w>_'},
+  {'n', '<A-;>', '<C-w>='},
 
   -- tab control
   -- creation / deletion

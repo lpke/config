@@ -71,8 +71,8 @@ local function config()
     'filename',
     path = 1,
     fmt = function(str)
-      -- only show filename when: toggled off OR not a normal buffer (eg help, netrw)
-      local normal_buffer = vim.bo.buftype == '' and vim.bo.filetype ~= 'netrw'
+      -- only show filename when: toggled off OR not a normal buffer
+      local normal_buffer = vim.bo.buftype == ''
       return (lpke_full_path and normal_buffer) and str or helpers.get_path_tail(str)
     end,
     on_click = function() lpke_full_path = not lpke_full_path; refresh() end,

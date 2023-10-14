@@ -3,6 +3,8 @@ local lazy_options = {
     notify = false,
   },
   ui = {
+    border = 'none',
+    pills = true,
     icons = {
       cmd = '⌘ ',
       config = '☼',
@@ -16,6 +18,7 @@ local lazy_options = {
       not_loaded = '○',
       plugin = '⏻',
       runtime = '◌',
+      require = '☛',
       source = '☑',
       start = '▶',
       task = '✔ ',

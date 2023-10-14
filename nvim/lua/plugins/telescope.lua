@@ -1,4 +1,5 @@
 local function config()
+  local telescope = require('telescope')
   local actions = require('telescope.actions')
   local builtin = require('telescope.builtin')
 
@@ -13,11 +14,19 @@ local function config()
   require('lpke.helpers').keymap_set_multi(keymaps)
 
   -- options
-  require('telescope').setup({
+  telescope.setup({
     defaults = {
+      path_display = {
+        truncate = true,
+      },
       mappings = {
+        i = {
+          ['<C-q>'] = actions.send_selected_to_qflist + actions.open_qflist,
+        },
         n = {
           ['u'] = { '<cmd>undo<cr>', type = 'command' },
+          ['K'] = actions.move_selection_previous, -- TODO: fast scrolling
+          ['J'] = actions.move_selection_next,
         },
       },
     },
@@ -31,12 +40,16 @@ local function config()
   })
 
   -- extensions
-  require('telescope').load_extension 'session-lens'
+  telescope.load_extension('session-lens')
 end
 
 return {
   'nvim-telescope/telescope.nvim',
-  tag = '0.1.3',
-  dependencies = { 'nvim-lua/plenary.nvim' },
+  tag = '0.1.4',
+  dependencies = {
+    'nvim-lua/plenary.nvim',
+    -- improves sorting performance (as per docs):
+    { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
+  },
   config = config
 }

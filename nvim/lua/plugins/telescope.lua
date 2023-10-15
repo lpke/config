@@ -3,7 +3,22 @@ local function config()
   local actions = require('telescope.actions')
   local builtin = require('telescope.builtin')
   local helpers = require('lpke.helpers')
+  local tc = lpke_theme_colors
 
+  -- theme
+  helpers.set_hl('TelescopeBorder', { fg = tc.surface, bg = tc.surface })
+  helpers.set_hl('TelescopePromptBorder', { fg = tc.overlaybump, bg = tc.overlaybump })
+  helpers.set_hl('TelescopePromptNormal', { fg = tc.text, bg = tc.overlaybump })
+  helpers.set_hl('TelescopePromptPrefix', { fg = tc.textminus, bg = tc.overlaybump })
+  helpers.set_hl('TelescopeSelectionCaret', { fg = tc.textminus, bg = tc.surface })
+  helpers.set_hl('TelescopeSelection', { fg = tc.text, bg = tc.overlaybump })
+  helpers.set_hl('TelescopeResultsTitle', { fg = tc.base, bg = tc.pine })
+  helpers.set_hl('TelescopePreviewTitle', { fg = tc.base, bg = tc.growth })
+  helpers.set_hl('TelescopePromptTitle', { fg = tc.base, bg = tc.iris })
+  helpers.set_hl('TelescopePromptCounter', { fg = tc.mutedplus, bg = tc.overlaybump })
+  helpers.set_hl('TelescopeMatching', { fg = tc.iris, bold = true })
+
+  -- custom pickers
   local function find_git_files() if helpers.cwd_has_git() then builtin.git_files() else builtin.find_files() end end
   local function grep_yanked() builtin.grep_string({ search = vim.fn.getreg('"') }) end
   local function grep_custom() builtin.grep_string({ search = vim.fn.input('Grep > ') }) end
@@ -23,6 +38,7 @@ local function config()
     {'nC', "<BS>fb", 'Telescope buffers', { desc = 'Fuzzy find buffers' }},
     {'nC', "<BS>f'", 'Telescope registers', { desc = 'Fuzzy find registers' }},
     {'nC', "<BS>fm", 'Telescope marks', { desc = 'Fuzzy find marks' }},
+    {'nC', "<BS>fl", 'Telescope highlights', { desc = 'Fuzzy find highlights' }},
     {'nC', "<BS>fh", 'Telescope help_tags', { desc = 'Fuzzy find help tags' }},
     {'nC', "<BS>ft", 'Telescope treesitter', { desc = 'Fuzzy find treesitter symbols' }},
     {'nC', "<BS>fgc", 'Telescope git_commits', { desc = 'Fuzzy find git commits' }},
@@ -36,6 +52,12 @@ local function config()
   -- options
   telescope.setup({
     defaults = {
+      -- display
+      prompt_prefix = ' ',
+      entry_prefix = ' ',
+      selection_caret = ' ',
+      results_title = false,
+      dynamic_preview_title = true,
       path_display = {
         truncate = true,
       },

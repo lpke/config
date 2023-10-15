@@ -1,11 +1,13 @@
 -- palette colors:  https://rosepinetheme.com/palette/ingredients/
 -- recipes:         https://github.com/rose-pine/neovim/wiki/Recipes
 
+-- Extra colors
 -- Shades: base | surface | overlay | overlayplus | muted | subtle | subtleplus | textminus | text
-local extra_colors = {
+local ec = {
   textminus = '#c0bcd2',
   subtleplus = '#a7a3bd',
   mutedplus = '#7e799a',
+  overlaybump = '#2f2b45',
   overlayplus = '#3c3852',
   growth = '#64a6a5',
 }
@@ -52,13 +54,13 @@ local function config()
       StatusLineNC = { fg = 'subtle', bg = 'surface' },
       EndOfBuffer = { fg = 'base' }, -- remove the `~`
       CursorLine = { bg = 'none' },
-      CursorLineNr = { fg = extra_colors.textminus },
+      CursorLineNr = { fg = ec.textminus },
     },
   })
 
   -- save theme to global var, add extras
   lpke_theme_colors = require('rose-pine.palette')
-  for k, v in pairs(extra_colors) do
+  for k, v in pairs(ec) do
     lpke_theme_colors[k] = v
   end
 

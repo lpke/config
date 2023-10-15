@@ -56,10 +56,10 @@ local keymaps = {
   {'nv', '<A-j>', '<C-w>j', { desc = 'Focus window down' }},
   {'nv', '<A-k>', '<C-w>k', { desc = 'Focus window up' }},
   {'nv', '<A-l>', '<C-w>l', { desc = 'Focus window right' }},
-  {'i', '<A-h>', '<Esc>l<C-w>h', { desc = 'Focus window left' }},
-  {'i', '<A-j>', '<Esc>l<C-w>j', { desc = 'Focus window down' }},
-  {'i', '<A-k>', '<Esc>l<C-w>k', { desc = 'Focus window up' }},
-  {'i', '<A-l>', '<Esc>l<C-w>l', { desc = 'Focus window right' }},
+  {'i', '<A-h>', '<Esc><C-w>h', { desc = 'Focus window left' }},
+  {'i', '<A-j>', '<Esc><C-w>j', { desc = 'Focus window down' }},
+  {'i', '<A-k>', '<Esc><C-w>k', { desc = 'Focus window up' }},
+  {'i', '<A-l>', '<Esc><C-w>l', { desc = 'Focus window right' }},
   -- resizing
   {'nv', '<A-K>', '<C-w>+<C-w>+<C-w>+', { desc = 'Increase window height' }},
   {'nv', '<A-J>', '<C-w>-<C-w>-<C-w>-', { desc = 'Decrease window height' }},
@@ -101,8 +101,8 @@ local keymaps = {
   -- horizontal mouse scrolling
   {'nv', '<A-ScrollWheelDown>', '6zl', { desc = 'Scroll right' }},
   {'nv', '<A-ScrollWheelUp>', '6zh', { desc = 'Scroll left' }},
-  {'i', '<A-ScrollWheelDown>', '<Esc>l6zl', { desc = 'Scroll right' }},
-  {'i', '<A-ScrollWheelUp>', '<Esc>l6zh', { desc = 'Scroll left' }},
+  {'i', '<A-ScrollWheelDown>', '<Esc>6zl', { desc = 'Scroll right' }},
+  {'i', '<A-ScrollWheelUp>', '<Esc>6zh', { desc = 'Scroll left' }},
 
   -- move selected code up/down
   {'v', 'J', [[:m '>+1<CR>gv=gv]], { desc = 'Move selected lines down' }},

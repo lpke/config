@@ -11,13 +11,17 @@ local function config()
         luasnip.lsp_expand(args.body)
       end
     },
+    window = {
+      -- completion = cmp.config.window.bordered(),
+      -- documentation = cmp.config.window.bordered(),
+    },
     mapping = cmp.mapping.preset.insert({
       ['<Up>'] = cmp.mapping.select_prev_item(),
       ['<Down>'] = cmp.mapping.select_next_item(),
       ['<C-k>'] = cmp.mapping.scroll_docs(-4),
       ['<C-j>'] = cmp.mapping.scroll_docs(4),
       ['<C-Space>'] = cmp.mapping.complete(),
-      ['<Esc>'] = cmp.mapping.abort(),
+      ['<C-c>'] = cmp.mapping.abort(),
       ['<CR>'] = cmp.mapping.confirm({ select = false }),
     }),
     -- autocompletion suggestion sources (in order of priority)

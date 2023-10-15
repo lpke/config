@@ -64,7 +64,7 @@ local function config()
 
   lpke_show_cwd = true
   lpke_full_path = true
-  lpke_show_encoding = false
+  lpke_show_encoding = true
 
   -- re-usable/custom components
   local filename = {

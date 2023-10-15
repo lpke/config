@@ -56,10 +56,19 @@ local function config()
       prompt_prefix = ' ',
       entry_prefix = ' ',
       selection_caret = ' ',
+      border = true,
       results_title = false,
       dynamic_preview_title = true,
       path_display = {
         truncate = true,
+      },
+      layout_strategy = 'horizontal',
+      layout_config = {
+        horizontal = {
+          height = 0.92,
+          width = 0.85,
+          preview_width = 0.55,
+        },
       },
       mappings = {
         i = {

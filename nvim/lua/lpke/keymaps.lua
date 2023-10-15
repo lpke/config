@@ -18,10 +18,10 @@ local keymaps = {
   {'n', 'Q', ''}, -- remove Q keybind (re-run last macro) - use `@@` instead
   
   -- Toggle UI/features
-  {'nC!', '<A-w>', 'set wrap!', { desc = 'Toggle line wrap' }},
-  {'nC', '<A-r>', 'set relativenumber!', { desc = 'Toggle relative numbers' }},
-  {'n', '<A-s>', function() helpers.toggle_global_status() end, { desc = 'Toggle global status line' }},
-  {'n!', '<A-c>', function() helpers.toggle_whitespace_hl(options.custom_opts.whitespace_hl) end, { desc = 'Toggle show whitespace' }},
+  {'nC!', '<F2>w', 'set wrap!', { desc = 'Toggle line wrap' }},
+  {'nC', '<F2>r', 'set relativenumber!', { desc = 'Toggle relative numbers' }},
+  {'n', '<F2>s', function() helpers.toggle_global_status() end, { desc = 'Toggle global status line' }},
+  {'n!', '<F2>c', function() helpers.toggle_whitespace_hl(options.custom_opts.whitespace_hl) end, { desc = 'Toggle show whitespace' }},
 
   {'nv', '<leader>y', '"*y', { desc = 'Global yank' }},
   {'nv', '<leader>d', '"_d', { desc = 'Delete without copy' }},
@@ -32,61 +32,61 @@ local keymaps = {
   {'n', '=*', 'mzgg=G`zzz', { desc = 'Indent entire file' }},
 
   -- buffer navigation
-  {'nvC', '<A-Down>', 'bnext', { desc = 'Next buffer' }},
-  {'nvC', '<A-Up>', 'bprev', { desc = 'Previous buffer' }},
-  {'nvC', '<A-BS>', 'bdelete', { desc = 'Delete buffer' }},
+  {'nvC', '<F2><Down>', 'bnext', { desc = 'Next buffer' }},
+  {'nvC', '<F2><Up>', 'bprev', { desc = 'Previous buffer' }},
+  {'nvC', '<F2><BS>', 'bdelete', { desc = 'Delete buffer' }},
 
   -- window control
   -- creation / deletion
   {'nvC', '<C-w>|', 'vsplit', { desc = 'Split window horizontally' }},
   {'nvC', '<C-w>_', 'split', { desc = 'Split window vertically' }},
-  {'nvC', '<A-.>', 'vsplit', { desc = 'Split window horizontally' }},
-  {'nvC', '<A-,>', 'split', { desc = 'Split window vertically' }},
+  {'nvC', '<F2>.', 'vsplit', { desc = 'Split window horizontally' }},
+  {'nvC', '<F2>,', 'split', { desc = 'Split window vertically' }},
   {'n', '<C-w>x', '<C-w>c', { desc = 'Close window' }},
-  {'n', '<A-/>', '<C-w>c', { desc = 'Close window' }},
+  {'n', '<F2>/', '<C-w>c', { desc = 'Close window' }},
   {'nC', 'QQ', 'q', { desc = 'Quit (:q)' }},
   {'nC', '<C-w>QQ', 'qa', { desc = 'Quit all (:qa)' }},
   {'nC', '<C-w>ZZ', 'wqa', { desc = 'Write and quit all (:wqa)' }},
   -- copy/pasting/rotating buffers
-  {'nC', '<A-y>', 'lua lpke_copy_buffer_id()', { desc = 'Yank current buffer details' }},
-  {'nC', '<A-p>', 'lua lpke_paste_buffer_id()', { desc = 'Paste yanked buffer details' }},
-  {'n', '<A-o>', '<C-w>r', { desc = 'Rotate windows in current split' }},
+  {'nC', '<F2>y', 'lua lpke_copy_buffer_id()', { desc = 'Yank current buffer details' }},
+  {'nC', '<F2>p', 'lua lpke_paste_buffer_id()', { desc = 'Paste yanked buffer details' }},
+  {'n', '<F2>o', '<C-w>r', { desc = 'Rotate windows in current split' }},
   -- navigation
-  {'nv', '<A-h>', '<C-w>h', { desc = 'Focus window left' }},
-  {'nv', '<A-j>', '<C-w>j', { desc = 'Focus window down' }},
-  {'nv', '<A-k>', '<C-w>k', { desc = 'Focus window up' }},
-  {'nv', '<A-l>', '<C-w>l', { desc = 'Focus window right' }},
-  {'i', '<A-h>', '<Esc><C-w>h', { desc = 'Focus window left' }},
-  {'i', '<A-j>', '<Esc><C-w>j', { desc = 'Focus window down' }},
-  {'i', '<A-k>', '<Esc><C-w>k', { desc = 'Focus window up' }},
-  {'i', '<A-l>', '<Esc><C-w>l', { desc = 'Focus window right' }},
+  {'nv', '<F2>h', '<C-w>h', { desc = 'Focus window left' }},
+  {'nv', '<F2>j', '<C-w>j', { desc = 'Focus window down' }},
+  {'nv', '<F2>k', '<C-w>k', { desc = 'Focus window up' }},
+  {'nv', '<F2>l', '<C-w>l', { desc = 'Focus window right' }},
+  {'i', '<F2>h', '<Esc><C-w>h', { desc = 'Focus window left' }},
+  {'i', '<F2>j', '<Esc><C-w>j', { desc = 'Focus window down' }},
+  {'i', '<F2>k', '<Esc><C-w>k', { desc = 'Focus window up' }},
+  {'i', '<F2>l', '<Esc><C-w>l', { desc = 'Focus window right' }},
   -- resizing
-  {'nv', '<A-K>', '<C-w>+<C-w>+<C-w>+', { desc = 'Increase window height' }},
-  {'nv', '<A-J>', '<C-w>-<C-w>-<C-w>-', { desc = 'Decrease window height' }},
-  {'nv', '<A-H>', '<C-w><<C-w><<C-w><', { desc = 'Decrease window width' }},
-  {'nv', '<A-L>', '<C-w>><C-w>><C-w>>', { desc = 'Increase window width' }},
+  {'nv', '<F2>K', '<C-w>+<C-w>+<C-w>+', { desc = 'Increase window height' }},
+  {'nv', '<F2>J', '<C-w>-<C-w>-<C-w>-', { desc = 'Decrease window height' }},
+  {'nv', '<F2>H', '<C-w><<C-w><<C-w><', { desc = 'Decrease window width' }},
+  {'nv', '<F2>L', '<C-w>><C-w>><C-w>>', { desc = 'Increase window width' }},
   -- zooming
   {'n', '<C-w>z', '<C-w>|<C-w>_', { desc = '"Zoom" current window horizontally and vertically' }},
-  {'n', '<A-z>', '<C-w>|<C-w>_', { desc = '"Zoom" current window horizontally and vertically' }},
-  {'n', '<A-;>', '<C-w>=', { desc = 'Equalise split windows' }},
+  {'n', '<F2>z', '<C-w>|<C-w>_', { desc = '"Zoom" current window horizontally and vertically' }},
+  {'n', '<F2>;', '<C-w>=', { desc = 'Equalise split windows' }},
 
   -- tab control
   -- creation / deletion
   {'nC', '<C-w>c', 'tabnew', { desc = 'Create a new tab (blank file)' }},
   {'nC', '<C-w>C', 'tab split', { desc = 'Create a new tab (clone current buffer)' }},
   {'nC', '<C-w>&', 'tabclose', { desc = 'Close current tab' }},
-  {'nC', '<A-n>', 'tabnew', { desc = 'Create a new tab (blank file)' }},
+  {'nC', '<F2>n', 'tabnew', { desc = 'Create a new tab (blank file)' }},
   -- navigating
   {'nv', '<C-w><Right>', 'gt', { desc = 'Next Tab (right)' }},
   {'nv', '<C-w><Left>', 'gT', { desc = 'Previous Tab (left)' }},
-  {'nv', '<A-Right>', 'gt', { desc = 'Next Tab (right)' }},
-  {'nv', '<A-Left>', 'gT', { desc = 'Previous Tab (left)' }},
+  {'nv', '<F2><Right>', 'gt', { desc = 'Next Tab (right)' }},
+  {'nv', '<F2><Left>', 'gT', { desc = 'Previous Tab (left)' }},
 
   -- arrow-key scrolling
   {'nv', '<Down>', '4<C-e>', { desc = 'Scroll down (4 lines)' }},
   {'nv', '<Up>', '4<C-y>', { desc = 'Scroll up (4 lines)' }},
-  {'nv', '<S-Down>', '6zl', { desc = 'Scroll right (6 columns)' }},
-  {'nv', '<S-Up>', '6zh', { desc = 'Scroll left (6 columns)' }},
+  {'nv', '<S-Right>', '6zl', { desc = 'Scroll right (6 columns)' }},
+  {'nv', '<S-Left>', '6zh', { desc = 'Scroll left (6 columns)' }},
 
   -- center cursor when down/up page
   {'nv', '<C-d>', '<C-d>zz', { desc = 'Scroll down half a screen (center cursor)' }},
@@ -99,10 +99,10 @@ local keymaps = {
   {'n', 'N', 'Nzzzv', { desc = 'Previous search result (center cursor)' }},
 
   -- horizontal mouse scrolling
-  {'nv', '<A-ScrollWheelDown>', '6zl', { desc = 'Scroll right' }},
-  {'nv', '<A-ScrollWheelUp>', '6zh', { desc = 'Scroll left' }},
-  {'i', '<A-ScrollWheelDown>', '<Esc>6zl', { desc = 'Scroll right' }},
-  {'i', '<A-ScrollWheelUp>', '<Esc>6zh', { desc = 'Scroll left' }},
+  {'nv', '<S-ScrollWheelDown>', '6zl', { desc = 'Scroll right' }},
+  {'nv', '<S-ScrollWheelUp>', '6zh', { desc = 'Scroll left' }},
+  {'i', '<S-ScrollWheelDown>', '<Esc>6zl', { desc = 'Scroll right' }},
+  {'i', '<S-ScrollWheelUp>', '<Esc>6zh', { desc = 'Scroll left' }},
 
   -- move selected code up/down
   {'v', 'J', [[:m '>+1<CR>gv=gv]], { desc = 'Move selected lines down' }},

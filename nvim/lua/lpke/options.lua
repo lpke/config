@@ -55,6 +55,7 @@ E.vim_opts = {
   listchars = [[tab:» ,trail:·,nbsp:·,extends:>,precedes:<]], -- whitespace chars to show when `list` option is toggled on
   statusline = ' %f %m %= %l:%c ', -- TODO: add percent, other useful stuff
   sessionoptions = 'blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions',
+  timeoutlen = 4000, -- timeout when waiting for next key in a keymap
 }
 helpers.set_options(E.vim_opts)
 

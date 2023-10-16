@@ -4,9 +4,36 @@ local function config()
   local helpers = require('lpke.helpers')
   local tc = lpke_theme_colors
 
-  -- theme
-  helpers.set_hl('CmpItemKind', { fg = tc.muted })
+  local function cmp_mapping(conds, action, custom_fallback)
+    local cond_v = function() return true end
+    local cond_a = function() return true end
+    local cond_d = function() return true end
+    for char in conds:gmatch('.') do
+      if char == 'v' then
+        cond_v = cmp.visible
+      elseif char == 'a' then
+        cond_a = cmp.get_active_entry
+      elseif char == 'd' then
+        cond_d = cmp.visible_docs
+      end
+    end
+    return function(fallback)
+      if (cond_v() and cond_a() and cond_d()) then
+        action()
+      else
+        if custom_fallback then
+          custom_fallback()
+        else
+          fallback()
+        end
+      end
+    end
+  end
 
+  -- theme
+  helpers.set_hl('CmpItemKind', { fg = tc.muted, italic = true })
+
+  -- CMP SETUP: GENERAL/INSERT
   cmp.setup({
     -- options
     completion = {
@@ -18,7 +45,6 @@ local function config()
         max_height = 200,
       },
     },
-
     -- keymaps: only active when menu is open
     mapping = {
       -- completion menu
@@ -35,39 +61,26 @@ local function config()
         select = true,
       }),
       ['<C-c>'] = cmp.mapping.abort(),
-      ['<Esc>'] = function(fallback)
-        if cmp.visible() then
-          local active_entry = cmp.get_active_entry()
-          if active_entry then
-            cmp.abort()
-          else
-            fallback()
-          end
-        else
-          fallback()
-        end
-      end,
+      ['<Esc>'] = { i = cmp_mapping('va', cmp.abort) },
     },
-
     -- autocompletion suggestion sources (in order of priority)
     sources = cmp.config.sources({
+      -- { name = "nvim_lsp" }, -- LSP
       { name = 'luasnip' }, -- snippets
-      { name = 'buffer' }, -- text within current buffer
       { name = 'path' }, -- file system paths
+      { name = 'buffer', keyword_length = 5 }, -- text within current buffer
     }),
-
     -- handle snippets
     snippet = {
       expand = function(args)
         luasnip.lsp_expand(args.body)
       end
     },
-
     -- kind string maps
     formatting = {
       format = function(entry, vim_item)
         -- names
-        vim_item.kind = helpers.map_string(vim_item.kind, {
+        vim_item.kind = ' ' .. helpers.map_string(vim_item.kind, {
           {'Function', 'Func'},
           {'Constructor', 'Constr'},
           {'Variable', 'Var'},
@@ -89,6 +102,37 @@ local function config()
         return vim_item
       end
     },
+  })
+
+  -- CMP SETUP: COMMAND-LINE
+  local cmdline_mapping = {
+    -- completion menu
+    ['<C-n>'] = { c = cmp_mapping('v', cmp.select_next_item) },
+    ['<C-p>'] = { c = cmp_mapping('v', cmp.select_prev_item) },
+    ['<C-Space>'] = { c = cmp_mapping('v', cmp.mapping.complete) },
+    -- preview/'docs' window
+    ['<C-k>'] = { c = cmp_mapping('vd', function() cmp.scroll_docs(-4) end) },
+    ['<C-j>'] = { c = cmp_mapping('vd', function() cmp.scroll_docs(4) end) },
+    -- confirm/abort
+    ['<Tab>'] = { c = cmp_mapping('', function() cmp.confirm({ select = true }) end) },
+    ['<C-c>'] = { c = cmp_mapping('v', cmp.abort) },
+    ['<Esc>'] = { c = cmp_mapping('va', cmp.abort, function()
+      vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-c>", true, true, true), "n", {})
+    end)
+    },
+  }
+  cmp.setup.cmdline({ '/', '?' }, {
+    mapping = cmdline_mapping,
+    sources = {
+      { name = "buffer", keyword_length = 5 },
+    },
+  })
+  cmp.setup.cmdline(":", {
+    mapping = cmdline_mapping,
+    sources = cmp.config.sources({
+      { name = "path" },
+      { name = "cmdline" },
+    }),
   })
 end
 

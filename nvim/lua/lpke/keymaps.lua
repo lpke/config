@@ -15,6 +15,7 @@ local keymaps = {
   {'nviC', '<C-s>', 'w', { desc = 'Save buffer' }},
   {'nC', '<BS>L', 'Lazy', { desc = 'Open lazy.nvim GUI' }},
   {'nC', '<BS>I', 'Inspect', { desc = 'Inspect highlight group under cursor' }},
+  {'c', '<Esc>', '<C-c>', { desc = 'Exit with ctrl+c' }},
   {'n', 'Q', ''}, -- remove Q keybind (re-run last macro) - use `@@` instead
   
   -- Toggle UI/features

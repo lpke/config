@@ -196,9 +196,9 @@ local function config()
 
   -- keymaps when using lualine
   local keymaps = {
-    {'n', '<A-d>', function() lpke_show_cwd = not lpke_show_cwd; refresh() end}, -- toggle cwd
-    {'n', '<A-f>', function() lpke_full_path = not lpke_full_path; refresh() end}, -- toggle file path
-    {'n', '<A-e>', function() lpke_show_encoding = not lpke_show_encoding; refresh() end}, -- toggle encoding info
+    {'n', '<F2>d', function() lpke_show_cwd = not lpke_show_cwd; refresh() end}, -- toggle cwd
+    {'n', '<F2>f', function() lpke_full_path = not lpke_full_path; refresh() end}, -- toggle file path
+    {'n', '<F2>e', function() lpke_show_encoding = not lpke_show_encoding; refresh() end}, -- toggle encoding info
   }
   helpers.keymap_set_multi(keymaps)
 

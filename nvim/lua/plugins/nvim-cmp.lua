@@ -5,35 +5,7 @@ local function config()
   local tc = lpke_theme_colors
 
   -- theme
-  -- helpers.set_hl('TelescopeBorder', { fg = tc.surface, bg = tc.surface })
-
-  local kind_icons = {
-    Text = '',
-    Method = '',
-    Function = '',
-    Constructor = '',
-    Field = '',
-    Variable = '',
-    Class = '',
-    Interface = '',
-    Module = '',
-    Property = '',
-    Unit = '',
-    Value = '',
-    Enum = '',
-    Keyword = '',
-    Snippet = '',
-    Color = '',
-    File = '',
-    Reference = '',
-    Folder = '',
-    EnumMember = '',
-    Constant = '',
-    Struct = '',
-    Event = '',
-    Operator = '',
-    TypeParameter = '',
-  }
+  helpers.set_hl('CmpItemKind', { fg = tc.muted })
 
   cmp.setup({
     -- options
@@ -58,15 +30,23 @@ local function config()
       -- preview/'docs' window
       ['<C-k>'] = cmp.mapping.scroll_docs(-4),
       ['<C-j>'] = cmp.mapping.scroll_docs(4),
-      -- confim/reject
-      ['<C-c>'] = cmp.mapping.abort(),
+      -- confim/abort
       ['<CR>'] = cmp.mapping.confirm({
         select = true,
       }),
-      ['<Esc>'] = cmp.mapping(function(fallback)
-        local active_entry = cmp.get_active_entry()
-        print(active_entry)
-      end, { i, c }),
+      ['<C-c>'] = cmp.mapping.abort(),
+      ['<Esc>'] = function(fallback)
+        if cmp.visible() then
+          local active_entry = cmp.get_active_entry()
+          if active_entry then
+            cmp.abort()
+          else
+            fallback()
+          end
+        else
+          fallback()
+        end
+      end,
     },
 
     -- autocompletion suggestion sources (in order of priority)
@@ -83,19 +63,28 @@ local function config()
       end
     },
 
-    -- custom kind icons
+    -- kind string maps
     formatting = {
       format = function(entry, vim_item)
-        -- Kind icons
-        -- concatenates kind icon with kind name
-        vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind)
-        -- Source
+        -- names
+        vim_item.kind = helpers.map_string(vim_item.kind, {
+          {'Function', 'Func'},
+          {'Constructor', 'Constr'},
+          {'Variable', 'Var'},
+          {'Interface', 'Interf'},
+          {'Property', 'Prop'},
+          {'Reference', 'Ref'},
+          {'EnumMember', 'EnumMbr'},
+          {'Constant', 'Const'},
+          {'TypeParameter', 'TypeParam'},
+        })
+        -- source
         vim_item.menu = ({
-          buffer = "[Buf]",
-          nvim_lsp = "[LSP]",
-          luasnip = "[Snip]",
-          nvim_lua = "[Lua]",
-          latex_symbols = "[LaTeX]",
+          buffer = '⌨',
+          nvim_lsp = '◌',
+          luasnip = '☇',
+          nvim_lua = '◉',
+          latex_symbols = '∑',
         })[entry.source.name]
         return vim_item
       end

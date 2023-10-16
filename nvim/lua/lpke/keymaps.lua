@@ -24,13 +24,19 @@ local keymaps = {
   {'n', '<F2>s', function() helpers.toggle_global_status() end, { desc = 'Toggle global status line' }},
   {'n!', '<F2>c', function() helpers.toggle_whitespace_hl(options.custom_opts.whitespace_hl) end, { desc = 'Toggle show whitespace' }},
 
+  -- Fold management
+  {'nv', 'zo', 'za', { desc = 'Toggle fold under cursor' }},
+  {'nv', 'zO', 'zA', { desc = 'Toggle all nested folds under cursor' }},
+
   {'nv', '<leader>y', '"*y', { desc = 'Global yank' }},
   {'nv', '<leader>d', '"_d', { desc = 'Delete without copy' }},
   {'nv', 'gg', 'gg0', { desc = 'Go to very start of buffer' }},
   {'nv', 'G', 'G$', { desc = 'Go to very end of buffer' }},
   {'n', 'Y', 'y$', { desc = 'Yank to end of line' }},
   {'n', 'J', 'mzJ`z', { desc = 'Join lines (without moving cursor)' }},
-  {'n', '=*', 'mzgg=G`zzz', { desc = 'Indent entire file' }},
+  {'n', 'gJ', 'mzgJ`z', { desc = 'Join lines without modification (without moving cursor)' }},
+  {'n', '<leader>J', 'mzgJi<Space><Esc>diW`z', { desc = 'Join lines without any spaces (without moving cursor)' }},
+  {'n', '=*', 'mzgg=G`z', { desc = 'Indent entire file' }},
 
   -- buffer navigation
   {'nvC', '<F2><Down>', 'bnext', { desc = 'Next buffer' }},

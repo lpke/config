@@ -51,6 +51,7 @@ E.vim_opts = {
   smartcase = true, -- dont ignore case if search contains capitals (see also \C)
   cursorline = false, -- render cursor line background/line number highlights (slower)
   shada = "!,'500,<500,s100,h", -- things to save to "shared data" file
+  jumpoptions = 'view', -- try and remember view position when jumping
   shortmess = 'filnxtToOFI', -- default up until 'I' (disabling welcome message)
   listchars = [[tab:» ,trail:·,nbsp:·,extends:>,precedes:<]], -- whitespace chars to show when `list` option is toggled on
   statusline = ' %f %m %= %l:%c ', -- TODO: add percent, other useful stuff
@@ -90,6 +91,18 @@ vim.g.netrw_banner = 0
 
 -- disable next line auto-comment
 vim.cmd('autocmd FileType * set formatoptions-=ro')
+
+-- remember folds
+vim.api.nvim_create_autocmd({"BufWinLeave"}, {
+  pattern = {"*.*"},
+  desc = "Save view (folds) when closing file",
+  command = "mkview",
+})
+vim.api.nvim_create_autocmd({"BufWinEnter"}, {
+  pattern = {"*.*"},
+  desc = "load view (folds) when opening file",
+  command = "silent! loadview"
+})
 
 
 return E

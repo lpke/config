@@ -45,6 +45,7 @@ local function config()
         max_height = 200,
       },
     },
+
     -- keymaps: only active when menu is open
     mapping = {
       -- completion menu
@@ -63,6 +64,7 @@ local function config()
       ['<C-c>'] = cmp.mapping.abort(),
       ['<Esc>'] = { i = cmp_mapping('va', cmp.abort) },
     },
+
     -- autocompletion suggestion sources (in order of priority)
     sources = cmp.config.sources({
       -- { name = "nvim_lsp" }, -- LSP
@@ -70,16 +72,18 @@ local function config()
       { name = 'path' }, -- file system paths
       { name = 'buffer', keyword_length = 5 }, -- text within current buffer
     }),
+
     -- handle snippets
     snippet = {
       expand = function(args)
         luasnip.lsp_expand(args.body)
       end
     },
+
     -- kind string maps
     formatting = {
       format = function(entry, vim_item)
-        -- names
+        -- name
         vim_item.kind = ' ' .. helpers.map_string(vim_item.kind, {
           {'Function', 'Func'},
           {'Constructor', 'Constr'},

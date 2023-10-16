@@ -39,6 +39,7 @@ local function config()
     {'nC', "<BS>f'", 'Telescope registers', { desc = 'Fuzzy find registers' }},
     {'nC', "<BS>fm", 'Telescope marks', { desc = 'Fuzzy find marks' }},
     {'nC', "<BS>fl", 'Telescope highlights', { desc = 'Fuzzy find highlights' }},
+    {'nC', "<BS>fk", 'Telescope keymaps', { desc = 'Fuzzy find keymaps' }},
     {'nC', "<BS>fh", 'Telescope help_tags', { desc = 'Fuzzy find help tags' }},
     {'nC', "<BS>ft", 'Telescope treesitter', { desc = 'Fuzzy find treesitter symbols' }},
     {'nC', "<BS>fgc", 'Telescope git_commits', { desc = 'Fuzzy find git commits' }},
@@ -53,16 +54,18 @@ local function config()
   telescope.setup({
     defaults = {
       -- display
-      prompt_prefix = ' ',
-      entry_prefix = ' ',
-      selection_caret = ' ',
+      winblend = 0,
       border = true,
       results_title = false,
       dynamic_preview_title = true,
+      scroll_strategy = 'limit',
+      layout_strategy = 'horizontal',
+      prompt_prefix = ' ',
+      entry_prefix = ' ',
+      selection_caret = ' ',
       path_display = {
         truncate = true,
       },
-      layout_strategy = 'horizontal',
       layout_config = {
         horizontal = {
           height = 0.92,

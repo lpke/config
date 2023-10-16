@@ -9,7 +9,7 @@ function config()
   require('auto-session').setup({
     auto_session_enabled = true,
     auto_session_suppress_dirs = { '/', '~/', '~/Downloads' },
-    auto_session_root_dir = vim.fn.stdpath('data').."/sessions/",
+    auto_session_root_dir = vim.fn.stdpath('data')..'/sessions/',
     auto_session_enable_last_session = false, -- load last session for cwd if doesnt exist
     auto_save_enabled = true,
     auto_restore_enabled = true,
@@ -24,9 +24,21 @@ function config()
     },
     session_lens = {
       load_on_setup = true,
-      previewer = false,
-      theme_conf = { border = true },
       buftypes_to_ignore = {}, -- list of buffer types that should not be deleted from current session
+
+      -- telescope picker options
+      theme = 'vertical',
+      theme_conf = {
+        winblend = 0,
+        border = true,
+        previewer = false,
+        layout_strategy = 'vertical',
+        sorting_strategy = 'descending',
+        layout_config = {
+          width = 80,
+          height = 20,
+        },
+      },
     },
   })
 

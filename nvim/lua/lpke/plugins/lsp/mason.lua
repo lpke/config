@@ -16,28 +16,27 @@ local function config()
 
   mason_lspconfig.setup({
     ensure_installed = {
-      'tsserver',
       'html',
       'cssls',
       'tailwindcss',
-      'svelte',
-      'lua_ls',
+      'tsserver',
+      'jsonls',
       'graphql',
+      'lua_ls',
       'emmet_ls',
-      'prismals',
-      'pyright',
+      'bashls',
     },
     automatic_installation = true,
   })
 
   mason_tool_installer.setup({
     ensure_installed = {
-      'prettier', -- prettier formatter
+      'prettier',
+      'eslint_d', -- js linter
       'stylua', -- lua formatter
       'isort', -- python formatter
       'black', -- python formatter
       'pylint', -- python linter
-      'eslint_d', -- js linter
     },
   })
 end

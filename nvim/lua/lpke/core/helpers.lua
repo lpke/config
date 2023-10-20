@@ -31,7 +31,7 @@ end
 
 -- parses a table containing custom keymap args and sets or deletes the keymap
 function E.keymap_set(keymap)
-  local mode, lhs, rhs, opts = unpack(keymap)
+  local mode, lhs, rhs, opts = table.unpack(keymap)
   opts = E.combine_tables({ noremap = true }, opts or {})
   local modes = {}
   local delete_only = false

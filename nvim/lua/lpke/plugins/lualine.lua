@@ -62,9 +62,9 @@ local function config()
     },
   }
 
-  lpke_show_cwd = true
-  lpke_full_path = true
-  lpke_show_encoding = true
+  Lpke_show_cwd = true
+  Lpke_full_path = true
+  Lpke_show_encoding = true
 
   -- re-usable/custom components
   local filename = {
@@ -73,9 +73,9 @@ local function config()
     fmt = function(str)
       -- only show filename when: toggled off OR not a normal buffer
       local normal_buffer = vim.bo.buftype == ''
-      return (lpke_full_path and normal_buffer) and str or helpers.get_path_tail(str)
+      return (Lpke_full_path and normal_buffer) and str or helpers.get_path_tail(str)
     end,
-    on_click = function() lpke_full_path = not lpke_full_path; refresh() end,
+    on_click = function() Lpke_full_path = not Lpke_full_path; refresh() end,
     shorting_target = 40,
     icons_enabled = true,
     symbols = {
@@ -112,14 +112,14 @@ local function config()
         {
           'mode',
           fmt = function(str) return helpers.map_string(str, modes) end,
-          on_click = function() lpke_show_cwd = not lpke_show_cwd; refresh() end
+          on_click = function() Lpke_show_cwd = not Lpke_show_cwd; refresh() end
         },
       },
       lualine_b = {
         {
           cwd_folder,
-          cond = function() return lpke_show_cwd end,
-          on_click = function() lpke_show_cwd = not lpke_show_cwd; refresh() end,
+          cond = function() return Lpke_show_cwd end,
+          on_click = function() Lpke_show_cwd = not Lpke_show_cwd; refresh() end,
           color = function()
             local cwd = helpers.get_cwd_folder()
             local session = helpers.get_session_name()
@@ -143,12 +143,12 @@ local function config()
       lualine_x = {
         {
           'encoding',
-          cond = function() return lpke_show_encoding end,
+          cond = function() return Lpke_show_encoding end,
           color = { fg = tc.subtle },
         },
         {
           'fileformat',
-          cond = function() return lpke_show_encoding end,
+          cond = function() return Lpke_show_encoding end,
           icons_enabled = true,
           color = { fg = tc.subtle },
           symbols = {
@@ -160,8 +160,8 @@ local function config()
         {
           'filetype',
           fmt = function(str) return helpers.map_string(str, filetypes) end,
-          on_click = function() lpke_show_encoding = not lpke_show_encoding; refresh() end,
-          color = function() if lpke_show_encoding then return { gui = 'bold' } end end
+          on_click = function() Lpke_show_encoding = not Lpke_show_encoding; refresh() end,
+          color = function() if Lpke_show_encoding then return { gui = 'bold' } end end
         },
         {
           session_name,
@@ -196,9 +196,9 @@ local function config()
 
   -- keymaps when using lualine
   helpers.keymap_set_multi({
-    {'n', '<F2>d', function() lpke_show_cwd = not lpke_show_cwd; refresh() end}, -- toggle cwd
-    {'n', '<F2>f', function() lpke_full_path = not lpke_full_path; refresh() end}, -- toggle file path
-    {'n', '<F2>e', function() lpke_show_encoding = not lpke_show_encoding; refresh() end}, -- toggle encoding info
+    {'n', '<F2>D', function() Lpke_show_cwd = not Lpke_show_cwd; refresh() end}, -- toggle cwd
+    {'n', '<F2>F', function() Lpke_full_path = not Lpke_full_path; refresh() end}, -- toggle file path
+    {'n', '<F2>E', function() Lpke_show_encoding = not Lpke_show_encoding; refresh() end}, -- toggle encoding info
   })
 
 end

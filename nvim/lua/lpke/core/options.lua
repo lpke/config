@@ -29,8 +29,8 @@ E.vim_opts = {
   splitright = true, -- open new vertical splits to the right of current buffer
   number = true, -- set line numbers, this setting shows the line number you're currently on
   relativenumber = true, -- make the line numbers relative to active line
-  numberwidth = 4, -- the width of the number column, setting it to 4 keeps it from pushing the editor over as numbers get larger..the width of the number column, setting it to 4 keeps it from pushing the editor over as numbers get largerthe width of the number column, setting it to 4 keeps it from pushing the editor over as numbers get larger
-  --signcolumn = 'yes', -- show signs in signcolumn
+  numberwidth = 4, -- the width of the number column
+  signcolumn = 'yes', -- show signs in signcolumn
   wrap = false, -- line wrap
   breakindent = true, -- wrapped text is indented to that line's indent level
   laststatus = 3, -- last window has status line - 0:never, 1:only if 2+ wins, 2: always, 3: always and only last win (global)
@@ -93,16 +93,16 @@ vim.g.netrw_banner = 0
 vim.cmd('autocmd FileType * set formatoptions-=ro')
 
 -- remember folds
-vim.api.nvim_create_autocmd({"BufWinLeave"}, {
-  pattern = {"*.*"},
-  desc = "Save view (folds) when closing file",
-  command = "mkview",
-})
-vim.api.nvim_create_autocmd({"BufWinEnter"}, {
-  pattern = {"*.*"},
-  desc = "load view (folds) when opening file",
-  command = "silent! loadview"
-})
+-- vim.api.nvim_create_autocmd({"BufWinLeave"}, {
+--   pattern = {"*.*"},
+--   desc = "Save view (folds) when closing file",
+--   command = "mkview",
+-- })
+-- vim.api.nvim_create_autocmd({"BufWinEnter"}, {
+--   pattern = {"*.*"},
+--   desc = "load view (folds) when opening file",
+--   command = "silent! loadview"
+-- })
 
 
 return E

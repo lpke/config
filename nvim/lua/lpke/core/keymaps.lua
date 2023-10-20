@@ -17,12 +17,12 @@ helpers.keymap_set_multi({
   {'nviC', '<C-s>', 'w', { desc = 'Save buffer' }},
   {'nC', '<BS>I', 'Inspect', { desc = 'Inspect highlight group under cursor' }},
   {'c', '<Esc>', '<C-c>', { desc = 'Exit with ctrl+c' }},
-  
+
   -- Toggle UI/features
   {'nC!', '<F2>w', 'set wrap!', { desc = 'Toggle line wrap' }},
   {'nC', '<F2>r', 'set relativenumber!', { desc = 'Toggle relative numbers' }},
-  {'n', '<F2>s', function() helpers.toggle_global_status() end, { desc = 'Toggle global status line' }},
-  {'n!', '<F2>c', function() helpers.toggle_whitespace_hl(options.custom_opts.whitespace_hl) end, { desc = 'Toggle show whitespace' }},
+  {'n', '<F2>S', function() helpers.toggle_global_status() end, { desc = 'Toggle global status line' }},
+  {'n!', '<F2>C', function() helpers.toggle_whitespace_hl(options.custom_opts.whitespace_hl) end, { desc = 'Toggle show whitespace' }},
 
   -- Fold management
   {'nv', 'zo', 'za', { desc = 'Toggle fold under cursor' }},

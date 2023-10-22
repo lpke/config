@@ -181,6 +181,13 @@ function E.get_session_name(fallback)
   )
 end
 
+-- check if session exists and matches cwd
+function E.session_in_cwd()
+  local cwd = E.get_cwd_folder()
+  local session = E.get_session_name()
+  return session and (not (cwd == session))
+end
+
 -- format current session name for status line
 function E.formatted_session_name(symbol)
   local session = E.get_session_name()

@@ -1,3 +1,13 @@
+-- toggle buffer LSP diagnostics (gutter/inline)
+function Lpke_diagnostic_toggle()
+  vim.b.diagnostics_disabled = not vim.b.diagnostics_disabled
+  local cmd = vim.b.diagnostics_disabled and 'disable' or 'enable'
+  vim.schedule(function()
+    pcall(function() vim.diagnostic[cmd](0) end)
+  end)
+  pcall(function() require('lualine').refresh() end)
+end
+
 local function config()
   local lspconfig = require('lspconfig')
   local cmp_nvim_lsp = require('cmp_nvim_lsp')
@@ -11,10 +21,18 @@ local function config()
   helpers.set_hl('DiagnosticVirtualTextInfo', { fg = tc.foamfaded, italic = true })
   helpers.set_hl('DiagnosticVirtualTextOk', { fg = tc.growth, italic = true })
   helpers.set_hl('DiagnosticUnnecessary', { fg = tc.subtleplus })
+  helpers.set_hl('DiagnosticUnderlineHint', { bg = tc.irisbg })
+  helpers.set_hl('DiagnosticUnderlineInfo', { bg = tc.foambg })
+  helpers.set_hl('DiagnosticUnderlineWarn', { bg = tc.goldbg })
+  helpers.set_hl('DiagnosticUnderlineError', { bg = tc.lovebg })
+  helpers.set_hl('DiagnosticUnderlineOk', { bg = tc.growthbg })
 
   -- when a language server attaches to a buffer...
   local on_attach = function(client, bufnr)
-    local opts = function(desc) return { buffer = bufnr, desc = desc  } end
+    -- ensure initial diagnostic option is respected
+    if vim.b[bufnr].diagnostics_disabled or vim.g.diagnostics_disabled then
+      vim.diagnostic.disable(bufnr)
+    end
 
     -- TODO - ensure covered:
     -- vim.lsp.buf.hover()
@@ -23,30 +41,10 @@ local function config()
     -- vim.lsp.buf.implementation()
     -- vim.lsp.buf.code_action()
 
-    -- toggle diagnostics
-    -- TODO - use api instead of global variable, reuse func
-    Lpke_diagnostics_active = true
-    -- current buffer only
-    helpers.keymap_set{'n', '<F2>d', function()
-      Lpke_diagnostics_active = not Lpke_diagnostics_active
-      if Lpke_diagnostics_active then
-        vim.cmd('silent! lua vim.diagnostic.show(nil, 0)')
-      else
-        vim.diagnostic.hide(nil, 0)
-      end
-    end}
-    -- all buffers
-    helpers.keymap_set{'n', '<F2>D', function()
-      Lpke_diagnostics_active = not Lpke_diagnostics_active
-      if Lpke_diagnostics_active then
-        vim.cmd('silent! lua vim.diagnostic.show()')
-      else
-        vim.diagnostic.hide()
-      end
-    end}
-
     -- set keybinds
+    local opts = function(desc) return { buffer = bufnr, desc = desc  } end
     helpers.keymap_set_multi({
+      {'nv', '<F2>d', Lpke_diagnostic_toggle, opts('Toggle diagnostics (buffer)')},
       {'n', 'gr', vim.lsp.buf.rename, opts('Smart rename')},
 
       -- hover info
@@ -75,7 +73,7 @@ local function config()
 
   -- Change the Diagnostic symbols in the sign column (gutter)
   -- (not in youtube nvim video)
-  local signs = { Error = '■', Warn = '▲', Hint = '◉', Info = '●' }
+  local signs = { Error = '■', Warn = '▲', Hint = '●', Info = '◆' }
   for type, icon in pairs(signs) do
     local hl = 'DiagnosticSign' .. type
     vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = '' })

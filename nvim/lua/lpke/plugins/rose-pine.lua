@@ -10,10 +10,15 @@ local ec = {
   overlaybump = '#2f2b45',
   overlayplus = '#3c3852',
   growth = '#64a6a5',
-  lovefaded = '#B25774',
-  goldfaded = '#BA9360',
-  irisfaded = '#9580B2',
-  foamfaded = '#789DA7',
+  lovefaded = '#b25774',
+  goldfaded = '#ba9360',
+  irisfaded = '#9580b2',
+  foamfaded = '#789da7',
+  lovebg = '#2c1f2e',
+  goldbg = '#2d262c',
+  irisbg = '#292436',
+  foambg = '#252834',
+  growthbg = '#202430',
 }
 
 local function config()

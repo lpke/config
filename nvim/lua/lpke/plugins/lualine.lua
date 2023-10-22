@@ -65,8 +65,17 @@ local function config()
   Lpke_show_cwd = true
   Lpke_full_path = true
   Lpke_show_encoding = true
+  Lpke_show_diagnostics_vis = true
 
-  -- re-usable/custom components
+  -- custom component display
+  local session_name = function() return helpers.formatted_session_name() end
+  local cwd_folder = helpers.get_cwd_folder
+  local diagnostics_vis = function()
+    local enabled = not vim.b.diagnostics_disabled
+    return enabled and '●' or '○'
+  end
+
+  -- custom component tables
   local filename = {
     'filename',
     path = 1,
@@ -85,8 +94,39 @@ local function config()
       newfile = '[New]',
     },
   }
-  local session_name = function() return helpers.formatted_session_name('◉ ') end
-  local cwd_folder = helpers.get_cwd_folder
+  local session_name_components = {
+    {
+      function() return 'S:' end,
+      cond = helpers.session_in_cwd,
+      padding = { left = 1, right = 0 },
+      color = { fg = tc.mutedplus },
+    },
+    {
+      session_name,
+      cond = helpers.session_in_cwd,
+      padding = { left = 0, right = 1 },
+      color = { gui = 'bold' },
+    },
+  }
+  local diagnostics_vis_components = {
+    {
+      function() return 'D:' end,
+      cond = function()
+        local lsp_attached = vim.lsp.get_active_clients({ bufnr = 0 })[1] ~= nil
+        return Lpke_show_diagnostics_vis and lsp_attached
+      end,
+      padding = { left = 1, right = 0 },
+      color = { fg = tc.mutedplus },
+    },
+    {
+      diagnostics_vis,
+      cond = function()
+        local lsp_attached = vim.lsp.get_active_clients({ bufnr = 0 })[1] ~= nil
+        return Lpke_show_diagnostics_vis and lsp_attached
+      end,
+      padding = { left = 0, right = 1 },
+    },
+  }
 
   require('lualine').setup({
     options = {
@@ -130,7 +170,6 @@ local function config()
             else
               return { gui = '' }
             end
-            return ((cwd == session) and { fg = tc.foam, gui = 'bold' } or ({ gui = 'bold' }))
           end,
         },
         filename,
@@ -144,13 +183,11 @@ local function config()
         {
           'encoding',
           cond = function() return Lpke_show_encoding end,
-          color = { fg = tc.subtle },
         },
         {
           'fileformat',
           cond = function() return Lpke_show_encoding end,
           icons_enabled = true,
-          color = { fg = tc.subtle },
           symbols = {
             unix = 'LF', -- LF
             dos = 'CRLF', -- CRLF
@@ -161,17 +198,11 @@ local function config()
           'filetype',
           fmt = function(str) return helpers.map_string(str, filetypes) end,
           on_click = function() Lpke_show_encoding = not Lpke_show_encoding; refresh() end,
-          color = function() if Lpke_show_encoding then return { gui = 'bold' } end end
         },
-        {
-          session_name,
-          cond = function()
-            local cwd = helpers.get_cwd_folder()
-            local session = helpers.get_session_name()
-            return session and (not (cwd == session))
-          end,
-          color = { gui = 'bold', fg = tc.textminus },
-        },
+        diagnostics_vis_components[1],
+        diagnostics_vis_components[2],
+        session_name_components[1],
+        session_name_components[2],
       },
       lualine_y = {'progress', 'location'},
       lualine_z = {},
@@ -199,6 +230,7 @@ local function config()
     {'n', '<F2>D', function() Lpke_show_cwd = not Lpke_show_cwd; refresh() end}, -- toggle cwd
     {'n', '<F2>F', function() Lpke_full_path = not Lpke_full_path; refresh() end}, -- toggle file path
     {'n', '<F2>E', function() Lpke_show_encoding = not Lpke_show_encoding; refresh() end}, -- toggle encoding info
+    {'n', '<F2>X', function() Lpke_show_diagnostics_vis = not Lpke_show_diagnostics_vis; refresh() end}, -- toggle diagnostics visibility
   })
 
 end

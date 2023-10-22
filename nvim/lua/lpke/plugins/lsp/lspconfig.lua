@@ -15,6 +15,9 @@ local function config()
   local tc = lpke_theme_colors
 
   -- theme
+  helpers.set_hl('DiagnosticOk', { fg = tc.growth })
+  helpers.set_hl('DiagnosticSignOk', { fg = tc.growth })
+  helpers.set_hl('DiagnosticFloatingOk', { fg = tc.growth })
   helpers.set_hl('DiagnosticVirtualTextError', { fg = tc.lovefaded, italic = true })
   helpers.set_hl('DiagnosticVirtualTextWarn', { fg = tc.goldfaded, italic = true })
   helpers.set_hl('DiagnosticVirtualTextHint', { fg = tc.irisfaded, italic = true })
@@ -41,38 +44,37 @@ local function config()
     -- vim.lsp.buf.implementation()
     -- vim.lsp.buf.code_action()
 
-    -- set keybinds
+    -- set keybinds (Lazy sync required to remove old bindings)
     local opts = function(desc) return { buffer = bufnr, desc = desc  } end
     helpers.keymap_set_multi({
-      {'nv', '<F2>d', Lpke_diagnostic_toggle, opts('Toggle diagnostics (buffer)')},
+      {'nv', '<F2>d', Lpke_diagnostic_toggle, opts('Toggle diagnostics visibility in current buffer')},
       {'n', 'gr', vim.lsp.buf.rename, opts('Smart rename')},
 
       -- hover info
       {'n', 'gh', vim.lsp.buf.hover, opts('Show documentation for what is under cursor')},
-      {'n', '<leader><leader>', vim.diagnostic.open_float, opts('Show line diagnostics')},
+      {'n', 'gl', vim.diagnostic.open_float, opts('Show line diagnostics')},
 
       -- 'problem' (diagnostic) navigation
-      {'nC', '<leader>p', 'Telescope diagnostics bufnr=0', opts('Show buffer diagnostics')},
-      {'n', '[p', vim.diagnostic.goto_prev, opts('Go to previous diagnostic')},
-      {'n', ']p', vim.diagnostic.goto_next, opts('Go to next diagnostic')},
+      {'nC', '<leader>l', 'Telescope diagnostics bufnr=0', opts('Show buffer diagnostics')},
+      {'n', '[l', vim.diagnostic.goto_prev, opts('Go to previous diagnostic')},
+      {'n', ']l', vim.diagnostic.goto_next, opts('Go to next diagnostic')},
 
       -- definitions/references
       {'nC', 'gd', 'Telescope lsp_definitions', opts('Show LSP definitions')},
-      {'nC', '<leader>r', 'Telescope lsp_references', opts('Show LSP references')},
+      {'n', 'gD', vim.lsp.buf.declaration, opts('Go to declaration')},
+      {'nC', '<leader>;', 'Telescope lsp_references', opts('Show LSP references')},
 
-      -- {'n', 'gD', vim.lsp.buf.declaration, opts('Go to declaration')},
-      -- {'nC', 'gi', 'Telescope lsp_implementations', opts('Show LSP implementations')},
-      -- {'nC', 'gt', 'Telescope lsp_type_definitions', opts('Show LSP type definitions')},
-      -- {'nv', '<leader>ca', vim.lsp.buf.code_action, opts('See available code actions')},
-      -- {'nC', '<leader>rs', 'LspRestart', opts('Restart LSP')},
+      {'nC', 'gi', 'Telescope lsp_implementations', opts('Show LSP implementations')},
+      {'nC', 'gt', 'Telescope lsp_type_definitions', opts('Show LSP type definitions')},
+      {'nv', '<leader>a', vim.lsp.buf.code_action, opts('See available code actions')},
+      {'nC', '<leader>R', 'LspRestart', opts('Restart LSP')},
     })
   end
 
   -- used to enable autocompletion (assign to every lsp server config)
   local capabilities = cmp_nvim_lsp.default_capabilities()
 
-  -- Change the Diagnostic symbols in the sign column (gutter)
-  -- (not in youtube nvim video)
+  -- symbols
   local signs = {
     Error = '■',
     Warn = '▲',
@@ -85,69 +87,48 @@ local function config()
   end
 
   -- configure LSP servers
-  lspconfig['html'].setup({
-    capabilities = capabilities,
-    on_attach = on_attach,
-  })
-
-  lspconfig['tsserver'].setup({
-    capabilities = capabilities,
-    on_attach = on_attach,
-  })
-
-  lspconfig['cssls'].setup({
-    capabilities = capabilities,
-    on_attach = on_attach,
-  })
-
-  lspconfig['tailwindcss'].setup({
-    capabilities = capabilities,
-    on_attach = on_attach,
-  })
-
-  lspconfig['jsonls'].setup({
-    capabilities = capabilities,
-    on_attach = on_attach,
-    filetypes = { 'json', 'jsonc' },
-  })
-
-  lspconfig['graphql'].setup({
-    capabilities = capabilities,
-    on_attach = on_attach,
-    filetypes = { 'graphql', 'gql', 'svelte', 'typescriptreact', 'javascriptreact' },
-  })
-
-  lspconfig['emmet_ls'].setup({
-    capabilities = capabilities,
-    on_attach = on_attach,
-    filetypes = { 'html', 'typescriptreact', 'javascriptreact', 'css', 'sass', 'scss', 'less', 'svelte' },
-  })
-
-  lspconfig['lua_ls'].setup({
-    capabilities = capabilities,
-    on_attach = on_attach,
-    settings = { -- custom settings for lua
-      Lua = {
-        -- make the language server recognize 'vim' global
-        diagnostics = {
-          globals = { 'vim' },
-        },
-        workspace = {
-          -- make language server aware of runtime files
-          library = {
-            [vim.fn.expand('$VIMRUNTIME/lua')] = true,
-            [vim.fn.stdpath('config') .. '/lua'] = true,
+  -- server = { ...setup table }
+  local servers = {
+    html = {},
+    tsserver = {},
+    cssls = {},
+    tailwindcss = {},
+    jsonls = {
+      filetypes = { 'json', 'jsonc' },
+    },
+    graphql = {
+      filetypes = { 'graphql', 'gql', 'svelte', 'typescriptreact', 'javascriptreact' },
+    },
+    emmet_ls = {
+      filetypes = { 'html', 'typescriptreact', 'javascriptreact', 'css', 'sass', 'scss', 'less', 'svelte' },
+    },
+    lua_ls = {
+      settings = { -- custom settings for lua
+        Lua = {
+          -- make the language server recognize 'vim' global
+          diagnostics = {
+            globals = { 'vim' },
+          },
+          workspace = {
+            -- make language server aware of runtime files
+            library = {
+              [vim.fn.expand('$VIMRUNTIME/lua')] = true,
+              [vim.fn.stdpath('config') .. '/lua'] = true,
+            },
           },
         },
       },
     },
-  })
+    bashls = {
+      filetypes = { 'sh' },
+    },
+  }
 
-  lspconfig['bashls'].setup({
-    capabilities = capabilities,
-    on_attach = on_attach,
-    filetypes = { 'sh' },
-  })
+  for lsp, conf in pairs(servers) do
+    conf.capabilities = conf.capabilities or capabilities
+    conf.on_attach = conf.on_attach or on_attach
+    lspconfig[lsp].setup(conf)
+  end
 end
 
 return {

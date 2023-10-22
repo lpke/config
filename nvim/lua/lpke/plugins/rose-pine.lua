@@ -14,11 +14,11 @@ local ec = {
   goldfaded = '#ba9360',
   irisfaded = '#9580b2',
   foamfaded = '#789da7',
-  lovebg = '#2c1f2e',
-  goldbg = '#2d262c',
-  irisbg = '#292436',
-  foambg = '#252834',
-  growthbg = '#202430',
+  lovebg = '#362333',
+  goldbg = '#372e30',
+  irisbg = '#312b3f',
+  foambg = '#2b303d',
+  growthbg = '#242b36',
 }
 
 local function config()

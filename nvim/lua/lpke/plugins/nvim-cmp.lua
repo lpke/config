@@ -43,6 +43,8 @@ local function config()
       documentation = {
         max_width = 200,
         max_height = 200,
+        border = 'rounded',
+        winhighlight = "FloatBorder:FloatBorder",
       },
     },
 

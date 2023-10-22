@@ -21,8 +21,10 @@ helpers.keymap_set_multi({
   -- Toggle UI/features
   {'nvC!', '<F2>w', 'set wrap!', { desc = 'Toggle line wrap' }},
   {'nvC', '<F2>r', 'set relativenumber!', { desc = 'Toggle relative numbers' }},
-  {'n', '<F2>S', function() helpers.toggle_global_status() end, { desc = 'Toggle global status line' }},
-  {'n!', '<F2>C', function() helpers.toggle_whitespace_hl(options.custom_opts.whitespace_hl) end, { desc = 'Toggle show whitespace' }},
+  {'n', '<F2>S', function() helpers.toggle_global_status() end,
+    { desc = 'Toggle global status line' }},
+  {'n!', '<F2>C', function() helpers.toggle_whitespace_hl(options.custom_opts.whitespace_hl) end,
+    { desc = 'Toggle show whitespace' }},
 
   -- Fold management
   {'nv', 'zo', 'za', { desc = 'Toggle fold under cursor' }},
@@ -37,6 +39,8 @@ helpers.keymap_set_multi({
   {'n', 'gJ', 'mzgJ`z', { desc = 'Join lines without modification (without moving cursor)' }},
   {'n', '<leader>J', 'mzgJi<Space><Esc>diW`z', { desc = 'Join lines without any spaces (without moving cursor)' }},
   {'n', '=*', 'mzgg=G`z', { desc = 'Indent entire file' }},
+  {'v', '<leader>ev', [[mx"zy<cmd>execute 's/\V' . getreg('z') . '/' . eval(@z) . '/'<CR>`x]],
+    { desc = 'Replace selected text with the eval() version of itself' }},
 
   -- buffer navigation
   {'nvC', '<F2><Down>', 'bnext', { desc = 'Next buffer' }},

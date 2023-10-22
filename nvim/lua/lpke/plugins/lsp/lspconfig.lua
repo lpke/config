@@ -37,37 +37,33 @@ local function config()
       vim.diagnostic.disable(bufnr)
     end
 
-    -- TODO - ensure covered:
-    -- vim.lsp.buf.hover()
-    -- vim.lsp.buf.format()
-    -- vim.lsp.buf.references()
-    -- vim.lsp.buf.implementation()
-    -- vim.lsp.buf.code_action()
 
     -- set keybinds (Lazy sync required to remove old bindings)
     local opts = function(desc) return { buffer = bufnr, desc = desc  } end
     helpers.keymap_set_multi({
+      -- toggle/reload
       {'nv', '<F2>d', Lpke_diagnostic_toggle, opts('Toggle diagnostics visibility in current buffer')},
+      {'nC', '<leader>R', 'LspRestart', opts('Restart LSP')},
+
+      -- smart actions
       {'n', 'gr', vim.lsp.buf.rename, opts('Smart rename')},
+      {'nv', '<leader>a', vim.lsp.buf.code_action, opts('See available code actions')},
 
       -- hover info
       {'n', 'gh', vim.lsp.buf.hover, opts('Show documentation for what is under cursor')},
       {'n', 'gl', vim.diagnostic.open_float, opts('Show line diagnostics')},
 
-      -- 'problem' (diagnostic) navigation
+      -- 'l'sp navigation
       {'nC', '<leader>l', 'Telescope diagnostics bufnr=0', opts('Show buffer diagnostics')},
       {'n', '[l', vim.diagnostic.goto_prev, opts('Go to previous diagnostic')},
       {'n', ']l', vim.diagnostic.goto_next, opts('Go to next diagnostic')},
 
-      -- definitions/references
-      {'nC', 'gd', 'Telescope lsp_definitions', opts('Show LSP definitions')},
-      {'n', 'gD', vim.lsp.buf.declaration, opts('Go to declaration')},
+      -- jump/list related code
       {'nC', '<leader>;', 'Telescope lsp_references', opts('Show LSP references')},
-
-      {'nC', 'gi', 'Telescope lsp_implementations', opts('Show LSP implementations')},
+      {'nC', 'gd', 'Telescope lsp_definitions', opts('Show LSP definitions')},
       {'nC', 'gt', 'Telescope lsp_type_definitions', opts('Show LSP type definitions')},
-      {'nv', '<leader>a', vim.lsp.buf.code_action, opts('See available code actions')},
-      {'nC', '<leader>R', 'LspRestart', opts('Restart LSP')},
+      {'nC', 'gi', 'Telescope lsp_implementations', opts('Show LSP implementations')},
+      {'n', 'gD', vim.lsp.buf.declaration, opts('Go to declaration')},
     })
   end
 
@@ -85,6 +81,39 @@ local function config()
     local hl = 'DiagnosticSign' .. type
     vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = '' })
   end
+
+  vim.diagnostic.config({
+    virtual_text = {
+      prefix = '■',
+    },
+    float = {
+      border = 'rounded',
+    },
+  })
+
+  -- experimenting...
+  -- local function hover_handler(_, result, ctx, conf)
+  --   conf = conf or { border = "rounded", focusable = true }
+  --   conf.focus_id = ctx.method
+  --   if not (result and result.contents) then
+  --     return
+  --   end
+  --   local markdown_lines = vim.lsp.util.convert_input_to_markdown_lines(result.contents)
+  --   markdown_lines = vim.tbl_filter(function(line)
+  --     return line ~= ""
+  --   end, markdown_lines)
+  --   if vim.tbl_isempty(markdown_lines) then
+  --     return
+  --   end
+  --   return vim.lsp.util.open_floating_preview(markdown_lines, "markdown", conf)
+  -- end
+
+  -- can be overwritten per language
+  local handlers = {
+    ['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'rounded' }),
+    -- ['textDocument/hover'] = hover_handler,
+    ['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'rounded' }),
+  }
 
   -- configure LSP servers
   -- server = { ...setup table }
@@ -123,10 +152,10 @@ local function config()
       filetypes = { 'sh' },
     },
   }
-
   for lsp, conf in pairs(servers) do
     conf.capabilities = conf.capabilities or capabilities
     conf.on_attach = conf.on_attach or on_attach
+    conf.handlers = conf.handlers or handlers
     lspconfig[lsp].setup(conf)
   end
 end

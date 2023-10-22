@@ -133,6 +133,7 @@ local function config()
     bashls = {
       filetypes = { 'sh' },
     },
+    pyright = {},
   }
   for lsp, conf in pairs(servers) do
     conf.capabilities = conf.capabilities or capabilities

@@ -61,7 +61,7 @@ local function config()
     {'nC', '<BS>fgb', 'Telescope git_branches', { desc = 'Fuzzy find git branches' }},
     {'nC', '<BS>fgs', 'Telescope git_status', { desc = 'Fuzzy find git status' }},
     {'nC', '<BS>fgz', 'Telescope git_stash', { desc = 'Fuzzy find git stash' }},
-    {'nC', '<BS>r', 'Telescope file_browser path=%:p:h select_buffer=true', { desc = 'Open Telescope File Browser' }},
+    {'nC', '<BS>;', 'Telescope file_browser path=%:p:h select_buffer=true', { desc = 'Open Telescope File Browser' }},
   })
   -- stylua: ignore end
 
@@ -132,6 +132,14 @@ local function config()
           ['<C-k>'] = actions.preview_scrolling_up,
           -- ['<C-h>'] = actions.preview_scrolling_left,
           -- ['<C-l>'] = actions.preview_scrolling_right,
+          ['<Tab>'] = function(bufnr)
+            actions.toggle_selection(bufnr)
+            actions.move_selection_next(bufnr)
+          end,
+          ['<S-Tab>'] = function(bufnr)
+            actions.toggle_selection(bufnr)
+            actions.move_selection_previous(bufnr)
+          end,
         },
       },
     },
@@ -206,19 +214,20 @@ local function config()
             ['<bs>'] = fb_actions.backspace,
           },
           ['n'] = {
-            ['c'] = fb_actions.create,
-            ['r'] = fb_actions.rename,
+            [','] = fb_actions.create,
+            ['cw'] = fb_actions.rename,
             ['m'] = fb_actions.move,
             ['yy'] = fb_actions.copy,
             ['dd'] = fb_actions.remove,
             ['o'] = fb_actions.open,
-            ['g'] = fb_actions.goto_parent_dir,
-            ['e'] = fb_actions.goto_home_dir,
-            ['w'] = fb_actions.goto_cwd,
-            ['t'] = fb_actions.change_cwd,
+            ['<Left>'] = fb_actions.goto_parent_dir,
+            ['gh'] = fb_actions.goto_home_dir,
+            ['gc'] = fb_actions.goto_cwd,
+            ['cd'] = fb_actions.change_cwd,
             ['f'] = fb_actions.toggle_browser,
-            ['h'] = fb_actions.toggle_hidden,
-            ['s'] = fb_actions.toggle_all,
+            [';'] = fb_actions.toggle_hidden,
+            ['v'] = fb_actions.toggle_all,
+            ['uv'] = actions.drop_all,
           },
         },
       },

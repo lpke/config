@@ -91,27 +91,9 @@ local function config()
     },
   })
 
-  -- experimenting...
-  -- local function hover_handler(_, result, ctx, conf)
-  --   conf = conf or { border = "rounded", focusable = true }
-  --   conf.focus_id = ctx.method
-  --   if not (result and result.contents) then
-  --     return
-  --   end
-  --   local markdown_lines = vim.lsp.util.convert_input_to_markdown_lines(result.contents)
-  --   markdown_lines = vim.tbl_filter(function(line)
-  --     return line ~= ""
-  --   end, markdown_lines)
-  --   if vim.tbl_isempty(markdown_lines) then
-  --     return
-  --   end
-  --   return vim.lsp.util.open_floating_preview(markdown_lines, "markdown", conf)
-  -- end
-
   -- can be overwritten per language
   local handlers = {
     ['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'rounded' }),
-    -- ['textDocument/hover'] = hover_handler,
     ['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'rounded' }),
   }
 

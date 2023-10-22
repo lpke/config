@@ -21,7 +21,7 @@ local filetypes = {
 }
 
 local function config()
-  local tc = lpke_theme_colors
+  local tc = Lpke_theme_colors
   local refresh = require('lualine').refresh
 
   local custom_theme = {

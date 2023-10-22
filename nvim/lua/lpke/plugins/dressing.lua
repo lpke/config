@@ -1,7 +1,7 @@
 local function config()
   local dressing = require('dressing')
   local helpers = require('lpke.core.helpers')
-  local tc = lpke_theme_colors
+  local tc = Lpke_theme_colors
 
   helpers.set_hl('DressingTitle', {
     bg = tc.surface,

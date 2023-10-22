@@ -1,7 +1,7 @@
 local helpers = require('lpke.core.helpers')
 
-function config()
-  local tc = lpke_theme_colors
+local function config()
+  local tc = Lpke_theme_colors
 
   -- update/install parsers
   pcall(require('nvim-treesitter.install').update({ with_sync = true }))

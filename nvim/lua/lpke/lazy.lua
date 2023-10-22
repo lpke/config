@@ -70,7 +70,7 @@ local lazy_options = {
 
 -- keymaps
 require('lpke.core.helpers').keymap_set_multi({
-  {'nC', '<BS>L', 'Lazy', { desc = 'Open lazy.nvim GUI' }},
+  {'nC', '<BS>il', 'Lazy', { desc = 'Open lazy.nvim GUI' }},
 })
 
 -- setup lazy

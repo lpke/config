@@ -15,7 +15,7 @@ helpers.keymap_set_multi({
   -- {'n', '<BS>r', ''}, -- TODO open ranger/tele-fb?
   {'n', '<BS>e', vim.cmd.Ex, { desc = 'Open netrw' }},
   {'nviC', '<C-s>', 'w', { desc = 'Save buffer' }},
-  {'nC', '<BS>I', 'Inspect', { desc = 'Inspect highlight group under cursor' }},
+  {'nC', '<BS>ii', 'Inspect', { desc = 'Inspect highlight group under cursor' }},
   {'c', '<Esc>', '<C-c>', { desc = 'Exit with ctrl+c' }},
 
   -- Toggle UI/features
@@ -59,8 +59,8 @@ helpers.keymap_set_multi({
   {'nC', '<C-w>QQ', 'qa', { desc = 'Quit all (:qa)' }},
   {'nC', '<C-w>ZZ', 'wqa', { desc = 'Write and quit all (:wqa)' }},
   -- copy/pasting/rotating buffers
-  {'nC', '<F2>y', 'lua lpke_copy_buffer_id()', { desc = 'Yank current buffer details' }},
-  {'nC', '<F2>p', 'lua lpke_paste_buffer_id()', { desc = 'Paste yanked buffer details' }},
+  {'nC', '<F2>y', 'lua Lpke_copy_buffer_id()', { desc = 'Yank current buffer details' }},
+  {'nC', '<F2>p', 'lua Lpke_paste_buffer_id()', { desc = 'Paste yanked buffer details' }},
   {'n', '<F2>o', '<C-w>r', { desc = 'Rotate windows in current split' }},
   -- navigation
   {'nv', '<F2>h', '<C-w>h', { desc = 'Focus window left' }},

@@ -68,9 +68,9 @@ local function config()
   })
 
   -- save theme to global var, add extras
-  lpke_theme_colors = require('rose-pine.palette')
+  Lpke_theme_colors = require('rose-pine.palette')
   for k, v in pairs(ec) do
-    lpke_theme_colors[k] = v
+    Lpke_theme_colors[k] = v
   end
 
   -- set color scheme

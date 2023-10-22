@@ -3,7 +3,7 @@ local function config()
   local actions = require('telescope.actions')
   local builtin = require('telescope.builtin')
   local helpers = require('lpke.core.helpers')
-  local tc = lpke_theme_colors
+  local tc = Lpke_theme_colors
 
   -- theme
   helpers.set_hl('TelescopeBorder', { fg = tc.surface, bg = tc.surface })

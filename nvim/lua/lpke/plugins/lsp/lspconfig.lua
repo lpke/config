@@ -12,9 +12,10 @@ local function config()
   local lspconfig = require('lspconfig')
   local cmp_nvim_lsp = require('cmp_nvim_lsp')
   local helpers = require('lpke.core.helpers')
-  local tc = lpke_theme_colors
+  local tc = Lpke_theme_colors
 
   -- theme
+  helpers.set_hl('LspInfoTitle', { fg = tc.growth })
   helpers.set_hl('DiagnosticOk', { fg = tc.growth })
   helpers.set_hl('DiagnosticSignOk', { fg = tc.growth })
   helpers.set_hl('DiagnosticFloatingOk', { fg = tc.growth })
@@ -41,7 +42,8 @@ local function config()
     -- set keybinds (Lazy sync required to remove old bindings)
     local opts = function(desc) return { buffer = bufnr, desc = desc  } end
     helpers.keymap_set_multi({
-      -- toggle/reload
+      -- info/toggle/reload
+      {'nC', '<BS>ip', 'LspInfo', opts('Open LSP info window')},
       {'nv', '<F2>d', Lpke_diagnostic_toggle, opts('Toggle diagnostics visibility in current buffer')},
       {'nC', '<leader>R', 'LspRestart', opts('Restart LSP')},
 

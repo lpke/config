@@ -2,7 +2,7 @@ local function config()
   local cmp = require('cmp')
   local luasnip = require('luasnip')
   local helpers = require('lpke.core.helpers')
-  local tc = lpke_theme_colors
+  local tc = Lpke_theme_colors
 
   local function cmp_mapping(conds, action, custom_fallback)
     local cond_v = function() return true end

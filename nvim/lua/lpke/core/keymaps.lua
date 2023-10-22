@@ -1,10 +1,11 @@
-local helpers = require('lpke.core.helpers')
-local options = require('lpke.core.options')
+local helpers = require("lpke.core.helpers")
+local options = require("lpke.core.options")
 local keymap_set = helpers.keymap_set
 -- SYNTAX: {'<modes><R=rec,E=expr,C=:,!=sil,D=delete>', <lhs>, <rhs>, <desc>, {opts}}
 
-vim.g.mapleader = ' '
+vim.g.mapleader = " "
 
+-- stylua: ignore start
 helpers.keymap_set_multi({
   -- removals
   {'n', ' ', ''},
@@ -38,7 +39,8 @@ helpers.keymap_set_multi({
   {'n', 'J', 'mzJ`z', { desc = 'Join lines (without moving cursor)' }},
   {'n', 'gJ', 'mzgJ`z', { desc = 'Join lines without modification (without moving cursor)' }},
   {'n', '<leader>J', 'mzgJi<Space><Esc>diW`z', { desc = 'Join lines without any spaces (without moving cursor)' }},
-  {'n', '=*', 'mzgg=G`z', { desc = 'Indent entire file' }},
+  {'nv', '=*', 'mzgg=G`z', { desc = 'Indent entire file' }},
+  {'nv', '=_', '==', { desc = 'Indent current line or selection only' }},
   {'v', '<leader>ev', [[mx"zy<cmd>execute 's/\V' . getreg('z') . '/' . eval(@z) . '/'<CR>`x]],
     { desc = 'Replace selected text with the eval() version of itself' }},
 
@@ -184,9 +186,9 @@ if helpers.is_wsl then
   keymap_set({'nv!', '"+p', function() helpers.paste_unix('+') end,
     { desc = 'Paste from + register (converting to unix line endings)' }})
 end
+-- stylua: ignore end
 
 -- disabling shortcuts of :read to prevent accidental activation when typing :reg
 vim.cmd('cabbrev r echo "shorthand for :read disabled"')
 vim.cmd('cabbrev re echo "shorthand for :read disabled"')
 vim.cmd('cabbrev rea echo "shorthand for :read disabled"')
-

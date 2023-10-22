@@ -37,7 +37,7 @@ local function config()
   helpers.set_hl('CmpItemKindSnippet', { fg = tc.gold, italic = true })
   helpers.set_hl('CmpItemKindMethod', { fg = tc.iris, italic = true })
   helpers.set_hl('CmpItemKindClass', { fg = tc.pine, italic = true })
-  helpers.set_hl('CmpItemKindVariable', { fg = tc.subtleplus, italic = true })
+  helpers.set_hl('CmpItemKindVariable', { fg = tc.textminus, italic = true })
   helpers.set_hl('CmpItemKindInterface', { fg = tc.foam, italic = true })
 
   -- CMP SETUP: GENERAL/INSERT
@@ -76,7 +76,7 @@ local function config()
 
     -- autocompletion suggestion sources (in order of priority)
     sources = cmp.config.sources({
-      { name = "nvim_lsp" }, -- LSP
+      { name = 'nvim_lsp', keyword_length = 2 }, -- LSP
       { name = 'luasnip' }, -- snippets
       { name = 'path' }, -- file system paths
       { name = 'buffer', keyword_length = 5 }, -- text within current buffer

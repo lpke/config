@@ -108,25 +108,6 @@ local function config()
       color = { gui = 'bold' },
     },
   }
-  local diagnostics_vis_components = {
-    {
-      function() return 'D:' end,
-      cond = function()
-        local lsp_attached = vim.lsp.get_active_clients({ bufnr = 0 })[1] ~= nil
-        return Lpke_show_diagnostics_vis and lsp_attached
-      end,
-      padding = { left = 1, right = 0 },
-      color = { fg = tc.mutedplus },
-    },
-    {
-      diagnostics_vis,
-      cond = function()
-        local lsp_attached = vim.lsp.get_active_clients({ bufnr = 0 })[1] ~= nil
-        return Lpke_show_diagnostics_vis and lsp_attached
-      end,
-      padding = { left = 0, right = 1 },
-    },
-  }
 
   require('lualine').setup({
     options = {
@@ -178,7 +159,18 @@ local function config()
           color = { gui = 'italic' },
         },
       },
-      lualine_c = {'diff', 'diagnostics'},
+      lualine_c = {
+        'diff',
+        {
+          'diagnostics',
+          symbols = {
+            error = '■:',
+            warn = '▲:',
+            info = '◆:',
+            hint = '●:',
+          },
+        },
+      },
       lualine_x = {
         {
           'encoding',
@@ -198,9 +190,21 @@ local function config()
           'filetype',
           fmt = function(str) return helpers.map_string(str, filetypes) end,
           on_click = function() Lpke_show_encoding = not Lpke_show_encoding; refresh() end,
+          color = function()
+            local lsp_attached = vim.lsp.get_active_clients({ bufnr = 0 })[1] ~= nil
+            if lsp_attached then
+              return { gui = 'bold' }
+            end
+          end,
         },
-        diagnostics_vis_components[1],
-        diagnostics_vis_components[2],
+        {
+          diagnostics_vis,
+          cond = function()
+            local lsp_attached = vim.lsp.get_active_clients({ bufnr = 0 })[1] ~= nil
+            return Lpke_show_diagnostics_vis and lsp_attached
+          end,
+          padding = { left = 0, right = 1 },
+        },
         session_name_components[1],
         session_name_components[2],
       },

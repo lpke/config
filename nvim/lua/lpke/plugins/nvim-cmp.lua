@@ -76,7 +76,7 @@ local function config()
 
     -- autocompletion suggestion sources (in order of priority)
     sources = cmp.config.sources({
-      { name = 'nvim_lsp', keyword_length = 2 }, -- LSP
+      { name = 'nvim_lsp', keyword_length = 3 }, -- LSP
       { name = 'luasnip' }, -- snippets
       { name = 'path' }, -- file system paths
       { name = 'buffer', keyword_length = 5 }, -- text within current buffer

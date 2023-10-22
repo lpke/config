@@ -1,6 +1,7 @@
 local function config()
   local telescope = require('telescope')
   local actions = require('telescope.actions')
+  local fb_actions = require('telescope._extensions.file_browser.actions')
   local builtin = require('telescope.builtin')
   local helpers = require('lpke.core.helpers')
   local tc = Lpke_theme_colors
@@ -38,28 +39,29 @@ local function config()
   -- stylua: ignore start
   -- mappings to access telescope
   helpers.keymap_set_multi({
-    { 'nC', '<BS><BS>', 'Telescope find_files', { desc = 'Fuzzy find files in cwd' }, },
-    { 'n', '<BS>ff', find_git_files, { desc = 'Fuzzy find git files in cwd (or cwd if not git)' }, },
-    { 'nC', '<BS>/', 'Telescope live_grep', { desc = 'Find string in cwd' } },
-    { 'nC', '<leader>/', 'Telescope current_buffer_fuzzy_find', { desc = 'Fuzzy find in current file' }, },
-    { 'n', '<BS>fp', grep_yanked, { desc = 'Find pasted string in cwd' } },
-    { 'n', '<BS>fi', grep_custom, { desc = 'Find input string in cwd' } },
-    { 'nC', '<BS>fw', 'Telescope grep_string', { desc = 'Find string under cursor in cwd' }, },
-    { 'nC', '<BS><leader>', 'Telescope resume', { desc = 'Resume previous Telescope search' }, },
-    { 'nC', '<BS>fr', 'Telescope oldfiles', { desc = 'Fuzzy find recent files' }, },
-    { 'nC', '<BS>fj', 'Telescope jumplist', { desc = 'Fuzzy find jumplist' } },
-    { 'nC', '<BS>fb', 'Telescope buffers', { desc = 'Fuzzy find buffers' } },
-    { 'nC', "<BS>f'", 'Telescope registers', { desc = 'Fuzzy find registers' }, },
-    { 'nC', '<BS>fm', 'Telescope marks', { desc = 'Fuzzy find marks' } },
-    { 'nC', '<BS>fl', 'Telescope highlights', { desc = 'Fuzzy find highlights' }, },
-    { 'nC', '<BS>fk', 'Telescope keymaps', { desc = 'Fuzzy find keymaps' } },
-    { 'nC', '<BS>fh', 'Telescope help_tags', { desc = 'Fuzzy find help tags' }, },
-    { 'nC', '<BS>ft', 'Telescope treesitter', { desc = 'Fuzzy find treesitter symbols' }, },
-    { 'nC', '<BS>fgc', 'Telescope git_commits', { desc = 'Fuzzy find git commits' }, },
-    { 'nC', '<BS>fgf', 'Telescope git_bcommits', { desc = 'Fuzzy find buffer git commits' }, },
-    { 'nC', '<BS>fgb', 'Telescope git_branches', { desc = 'Fuzzy find git branches' }, },
-    { 'nC', '<BS>fgs', 'Telescope git_status', { desc = 'Fuzzy find git status' }, },
-    { 'nC', '<BS>fgz', 'Telescope git_stash', { desc = 'Fuzzy find git stash' }, },
+    {'nC', '<BS><BS>', 'Telescope find_files', { desc = 'Fuzzy find files in cwd' }},
+    {'n', '<BS>ff', find_git_files, { desc = 'Fuzzy find git files in cwd (or cwd if not git)' }},
+    {'nC', '<BS>/', 'Telescope live_grep', { desc = 'Find string in cwd' } },
+    {'nC', '<leader>/', 'Telescope current_buffer_fuzzy_find', { desc = 'Fuzzy find in current file' }},
+    {'n', '<BS>fp', grep_yanked, { desc = 'Find pasted string in cwd' } },
+    {'n', '<BS>fi', grep_custom, { desc = 'Find input string in cwd' } },
+    {'nC', '<BS>fw', 'Telescope grep_string', { desc = 'Find string under cursor in cwd' }},
+    {'nC', '<BS><leader>', 'Telescope resume', { desc = 'Resume previous Telescope search' }},
+    {'nC', '<BS>fr', 'Telescope oldfiles', { desc = 'Fuzzy find recent files' }},
+    {'nC', '<BS>fj', 'Telescope jumplist', { desc = 'Fuzzy find jumplist' } },
+    {'nC', '<BS>fb', 'Telescope buffers', { desc = 'Fuzzy find buffers' } },
+    {'nC', "<BS>f'", 'Telescope registers', { desc = 'Fuzzy find registers' }},
+    {'nC', '<BS>fm', 'Telescope marks', { desc = 'Fuzzy find marks' } },
+    {'nC', '<BS>fl', 'Telescope highlights', { desc = 'Fuzzy find highlights' }},
+    {'nC', '<BS>fk', 'Telescope keymaps', { desc = 'Fuzzy find keymaps' } },
+    {'nC', '<BS>fh', 'Telescope help_tags', { desc = 'Fuzzy find help tags' }},
+    {'nC', '<BS>ft', 'Telescope treesitter', { desc = 'Fuzzy find treesitter symbols' }},
+    {'nC', '<BS>fgc', 'Telescope git_commits', { desc = 'Fuzzy find git commits' }},
+    {'nC', '<BS>fgf', 'Telescope git_bcommits', { desc = 'Fuzzy find buffer git commits' }},
+    {'nC', '<BS>fgb', 'Telescope git_branches', { desc = 'Fuzzy find git branches' }},
+    {'nC', '<BS>fgs', 'Telescope git_status', { desc = 'Fuzzy find git status' }},
+    {'nC', '<BS>fgz', 'Telescope git_stash', { desc = 'Fuzzy find git stash' }},
+    {'nC', '<BS>r', 'Telescope file_browser path=%:p:h select_buffer=true', { desc = 'Open Telescope File Browser' }},
   })
   -- stylua: ignore end
 
@@ -157,11 +159,76 @@ local function config()
         },
       },
     },
+    extensions = {
+      -- :h telescope-file-browser.picker
+      file_browser = {
+        initial_mode = 'normal',
+        path = vim.loop.cwd(),
+        cwd = vim.loop.cwd(),
+        cwd_to_path = false,
+        grouped = true,
+        files = true,
+        add_dirs = true,
+        depth = 1,
+        auto_depth = false,
+        select_buffer = false,
+        hidden = { file_browser = true, folder_browser = true },
+        respect_gitignore = false,
+        follow_symlinks = true,
+        browse_files = require('telescope._extensions.file_browser.finders').browse_files,
+        browse_folders = require('telescope._extensions.file_browser.finders').browse_folders,
+        hide_parent_dir = false,
+        collapse_dirs = false,
+        prompt_path = false,
+        quiet = false,
+        dir_icon = ' ',
+        dir_icon_hl = 'Default',
+        display_stat = { date = true, size = true, mode = true },
+        hijack_netrw = true,
+        use_fd = true,
+        git_status = true,
+        mappings = {
+          ['i'] = {
+            ['<A-c>'] = fb_actions.create,
+            ['<S-CR>'] = fb_actions.create_from_prompt,
+            ['<A-r>'] = fb_actions.rename,
+            ['<A-m>'] = fb_actions.move,
+            ['<A-y>'] = fb_actions.copy,
+            ['<A-d>'] = fb_actions.remove,
+            ['<C-o>'] = fb_actions.open,
+            ['<C-g>'] = fb_actions.goto_parent_dir,
+            ['<C-e>'] = fb_actions.goto_home_dir,
+            ['<C-w>'] = fb_actions.goto_cwd,
+            ['<C-t>'] = fb_actions.change_cwd,
+            ['<C-f>'] = fb_actions.toggle_browser,
+            ['<C-h>'] = fb_actions.toggle_hidden,
+            ['<C-s>'] = fb_actions.toggle_all,
+            ['<bs>'] = fb_actions.backspace,
+          },
+          ['n'] = {
+            ['c'] = fb_actions.create,
+            ['r'] = fb_actions.rename,
+            ['m'] = fb_actions.move,
+            ['yy'] = fb_actions.copy,
+            ['dd'] = fb_actions.remove,
+            ['o'] = fb_actions.open,
+            ['g'] = fb_actions.goto_parent_dir,
+            ['e'] = fb_actions.goto_home_dir,
+            ['w'] = fb_actions.goto_cwd,
+            ['t'] = fb_actions.change_cwd,
+            ['f'] = fb_actions.toggle_browser,
+            ['h'] = fb_actions.toggle_hidden,
+            ['s'] = fb_actions.toggle_all,
+          },
+        },
+      },
+    },
   })
 
   -- extensions
   telescope.load_extension('session-lens')
   telescope.load_extension('fzf')
+  telescope.load_extension('file_browser')
 end
 
 return {

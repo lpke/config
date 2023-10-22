@@ -13,7 +13,6 @@ helpers.keymap_set_multi({
   {'n', 'Q', ''},
 
   -- High-level maps
-  -- {'n', '<BS>r', ''}, -- TODO open ranger/tele-fb?
   {'n', '<BS>e', vim.cmd.Ex, { desc = 'Open netrw' }},
   {'nviC', '<C-s>', 'w', { desc = 'Save buffer' }},
   {'nC', '<BS>ii', 'Inspect', { desc = 'Inspect highlight group under cursor' }},

@@ -1,4 +1,4 @@
--- toggle buffer LSP diagnostics (gutter/inline)
+-- toggle LSP diagnostics globally
 function Lpke_diagnostic_toggle()
   vim.b.diagnostics_disabled = not vim.b.diagnostics_disabled
   local cmd = vim.b.diagnostics_disabled and 'disable' or 'enable'

@@ -46,7 +46,7 @@ local function config()
     {'n', '<BS>fp', grep_yanked, { desc = 'Find pasted string in cwd' } },
     {'n', '<BS>fi', grep_custom, { desc = 'Find input string in cwd' } },
     {'nC', '<BS>fw', 'Telescope grep_string', { desc = 'Find string under cursor in cwd' }},
-    {'nC', '<BS><leader>', 'Telescope resume', { desc = 'Resume previous Telescope search' }},
+    {'nC', '<BS><leader>', 'Telescope resume initial_mode=normal', { desc = 'Resume previous Telescope search' }},
     {'nC', '<BS>fr', 'Telescope oldfiles', { desc = 'Fuzzy find recent files' }},
     {'nC', '<BS>fj', 'Telescope jumplist', { desc = 'Fuzzy find jumplist' } },
     {'nC', '<BS>fb', 'Telescope buffers', { desc = 'Fuzzy find buffers' } },
@@ -61,7 +61,7 @@ local function config()
     {'nC', '<BS>fgb', 'Telescope git_branches', { desc = 'Fuzzy find git branches' }},
     {'nC', '<BS>fgs', 'Telescope git_status', { desc = 'Fuzzy find git status' }},
     {'nC', '<BS>fgz', 'Telescope git_stash', { desc = 'Fuzzy find git stash' }},
-    {'nC', '<BS>;', 'Telescope file_browser path=%:p:h select_buffer=true', { desc = 'Open Telescope File Browser' }},
+    {'nC', '<BS>r', 'Telescope file_browser path=%:p:h select_buffer=true', { desc = 'Open Telescope File Browser' }},
   })
   -- stylua: ignore end
 
@@ -235,7 +235,7 @@ local function config()
             ['w'] = false,
             ['t'] = false,
             ['f'] = false,
-            ['h'] = false,
+            -- ['h'] = false,
             ['s'] = false,
             ['<Esc>'] = false,
 
@@ -259,7 +259,8 @@ local function config()
             [';'] = fb_actions.toggle_hidden,
             ['v'] = fb_actions.toggle_all,
             ['uv'] = actions.drop_all,
-            ['<Left>'] = fb_actions.goto_parent_dir,
+            ['h'] = fb_actions.goto_parent_dir,
+            -- ['l'] = { '<C-R>', type = 'command' },
             ['/'] = { 'i', type = 'command' },
             ['<Esc><Esc>'] = { '<cmd>q!<CR>', type = 'command' },
           },

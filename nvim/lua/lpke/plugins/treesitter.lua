@@ -9,12 +9,14 @@ local function config()
   helpers.clear_last_message('All parsers are up-to-date!') -- clear annoying message on startup
 
   require('nvim-treesitter.configs').setup({
+    -- stylua: ignore start
     ensure_installed = {
       'vimdoc', 'vim', 'luadoc', 'lua', 'javascript', 'jsdoc', 'typescript',
       'html', 'css', 'json', 'jsonc', 'yaml', 'graphql', 'bash', 'gitignore',
       'gitcommit', 'gitattributes', 'git_rebase', 'git_config', 'yaml', 'toml',
       'markdown', 'python', 'rust', 'c', 'c_sharp', 'cpp', 'regex'
     },
+    -- stylua: ignore end
     sync_install = false, -- install parsers synchronously
     auto_install = true, -- automatically install missing parsers when entering buffer
     highlight = {
@@ -33,6 +35,9 @@ local function config()
     indent = {
       enable = true,
       disable = {},
+    },
+    context_commentstring = {
+      enable = true,
     },
   })
 
@@ -53,6 +58,7 @@ return {
   'nvim-treesitter/nvim-treesitter',
   dependencies = {
     'nvim-treesitter/nvim-treesitter-textobjects',
+    'JoosepAlviste/nvim-ts-context-commentstring',
   },
   config = config,
 }

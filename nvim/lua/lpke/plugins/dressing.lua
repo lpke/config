@@ -12,7 +12,7 @@ local function config()
     input = {
       title_pos = 'center',
       insert_only = false, -- allow normal mode inside inputs
-      start_in_insert = false,
+      start_in_insert = true,
       win_options = {
         -- override highlights for dressing windows only
         winhighlight = 'FloatTitle:DressingTitle',

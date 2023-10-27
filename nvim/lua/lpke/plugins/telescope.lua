@@ -61,7 +61,7 @@ local function config()
     {'nC', '<BS>fgb', 'Telescope git_branches', { desc = 'Fuzzy find git branches' }},
     {'nC', '<BS>fgs', 'Telescope git_status', { desc = 'Fuzzy find git status' }},
     {'nC', '<BS>fgz', 'Telescope git_stash', { desc = 'Fuzzy find git stash' }},
-    {'nC', '<BS>r', 'Telescope file_browser path=%:p:h select_buffer=true', { desc = 'Open Telescope File Browser' }},
+    {'nC', '<BS>d', 'Telescope file_browser path=%:p:h select_buffer=true', { desc = 'Open Telescope File Browser' }},
   })
   -- stylua: ignore end
 
@@ -192,7 +192,7 @@ local function config()
         follow_symlinks = true,
         browse_files = require('telescope._extensions.file_browser.finders').browse_files,
         browse_folders = require('telescope._extensions.file_browser.finders').browse_folders,
-        hide_parent_dir = false,
+        hide_parent_dir = true,
         collapse_dirs = false,
         prompt_path = false,
         quiet = false,
@@ -226,13 +226,21 @@ local function config()
             ['<F2>M'] = fb_actions.move,
             ['<C-O>'] = fb_actions.open,
             ['<BS>'] = fb_actions.backspace,
+            ['<CR>'] = function(bufnr)
+              actions.select_default(bufnr)
+              vim.api.nvim_feedkeys(
+                vim.api.nvim_replace_termcodes('<Esc>', true, true, true),
+                'n',
+                false
+              )
+            end,
           },
 
           ['n'] = {
             -- disabling defaults
             ['c'] = false,
             ['r'] = false,
-            ['m'] = false,
+            -- ['m'] = false,
             ['y'] = false,
             ['d'] = false,
             ['o'] = false,
@@ -245,14 +253,14 @@ local function config()
             ['s'] = false,
             ['<Esc>'] = false,
 
-            ['C'] = fb_actions.create,
+            ['%'] = fb_actions.create,
             ['R'] = fb_actions.rename,
-            ['M'] = fb_actions.move,
+            ['m'] = fb_actions.move,
             ['P'] = fb_actions.copy,
-            ['dD'] = function(bufnr)
+            ['D'] = function(bufnr)
               fb_actions.remove(bufnr)
               vim.api.nvim_feedkeys(
-                vim.api.nvim_replace_termcodes('iy', true, false, true),
+                vim.api.nvim_replace_termcodes('y', true, false, true),
                 'n',
                 {}
               )

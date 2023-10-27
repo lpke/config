@@ -128,6 +128,12 @@ local function config()
           ['<Down>'] = function(bufnr)
             helpers.repeat_function(actions.move_selection_next, bufnr, 4)
           end,
+          ['K'] = function(bufnr)
+            helpers.repeat_function(actions.move_selection_previous, bufnr, 20)
+          end,
+          ['J'] = function(bufnr)
+            helpers.repeat_function(actions.move_selection_next, bufnr, 20)
+          end,
           ['<C-j>'] = actions.preview_scrolling_down,
           ['<C-k>'] = actions.preview_scrolling_up,
           -- ['<C-h>'] = actions.preview_scrolling_left,
@@ -253,14 +259,14 @@ local function config()
             end,
             ['O'] = fb_actions.open,
             ['gh'] = fb_actions.goto_home_dir,
-            ['gc'] = fb_actions.goto_cwd,
+            ['gd'] = fb_actions.goto_cwd,
             ['cd'] = fb_actions.change_cwd,
             [','] = fb_actions.toggle_browser,
             [';'] = fb_actions.toggle_hidden,
             ['v'] = fb_actions.toggle_all,
             ['uv'] = actions.drop_all,
             ['h'] = fb_actions.goto_parent_dir,
-            -- ['l'] = { '<C-R>', type = 'command' },
+            ['l'] = actions.select_default,
             ['/'] = { 'i', type = 'command' },
             ['<Esc><Esc>'] = { '<cmd>q!<CR>', type = 'command' },
           },

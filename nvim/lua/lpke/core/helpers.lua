@@ -138,7 +138,7 @@ end
 -- yank still: upwards (up to `max`)
 function E.keymap_set_yank_still_upwards(max)
   for i = 1, max do
-    E.keymap_set({'nC', ('y' .. i .. 'k'), ('-' .. i .. ',.y')})
+    E.keymap_set({ 'nC', ('y' .. i .. 'k'), ('-' .. i .. ',.y') })
   end
 end
 
@@ -146,7 +146,7 @@ end
 function E.keymap_set_yank_still_marks()
   for i = string.byte('a'), string.byte('z') do
     local letter = string.char(i)
-    E.keymap_set({'nC!', ("y'" .. letter), ("'" .. letter .. ',.y')})
+    E.keymap_set({ 'nC!', ("y'" .. letter), ("'" .. letter .. ',.y') })
   end
 end
 
@@ -185,13 +185,13 @@ end
 function E.session_in_cwd()
   local cwd = E.get_cwd_folder()
   local session = E.get_session_name()
-  return session and (not (cwd == session))
+  return session and not (cwd == session)
 end
 
 -- format current session name for status line
 function E.formatted_session_name(symbol)
   local session = E.get_session_name()
-  if (session and symbol) then
+  if session and symbol then
     return symbol .. session
   else
     return session
@@ -201,7 +201,9 @@ end
 -- call a function `count` times - for multiple args, use a table
 function E.repeat_function(func, args, count)
   if type(args) == 'table' then
-    args = function() return table.unpack(args) end
+    args = function()
+      return table.unpack(args)
+    end
   end
 
   for i = 1, count do
@@ -214,5 +216,53 @@ function E.cwd_has_git()
   return vim.fn.glob('.git/') ~= ''
 end
 
-return E
+-- window 'zoom' toggling (with per tab support)
+Lpke_zoom_previous = {} -- stores state of previous window layouts
+Lpke_zoomed = {} -- stores whether tab group/s are in a 'zoomed' state or not
+function E.win_zoom_toggle()
+  local ok = pcall(function()
+    local cur_tab = vim.api.nvim_get_current_tabpage()
+    local cur_win = vim.api.nvim_get_current_win()
 
+    if Lpke_zoomed[cur_tab] then
+      -- restore the previous layout
+      for _, win_info in ipairs(Lpke_zoom_previous[cur_tab]) do
+        local win = win_info.win
+        vim.api.nvim_set_current_win(win)
+        vim.cmd(string.format('resize %d', win_info.height))
+        vim.cmd(string.format('vertical resize %d', win_info.width))
+      end
+      Lpke_zoomed[cur_tab] = false
+    else
+      -- save the current layout
+      local wins = vim.api.nvim_tabpage_list_wins(cur_tab)
+      Lpke_zoom_previous[cur_tab] = {}
+      for _, win in ipairs(wins) do
+        local height = vim.api.nvim_win_get_height(win)
+        local width = vim.api.nvim_win_get_width(win)
+        table.insert(
+          Lpke_zoom_previous[cur_tab],
+          { win = win, height = height, width = width }
+        )
+      end
+
+      -- maximize the current window
+      vim.api.nvim_set_current_win(cur_win)
+      vim.cmd('wincmd |')
+      vim.cmd('wincmd _')
+      Lpke_zoomed[cur_tab] = true
+    end
+
+    -- restore focus to the original window
+    vim.api.nvim_set_current_win(cur_win)
+  end)
+
+  -- error occured
+  if not ok then
+    Lpke_zoomed = {}
+    Lpke_zoom_previous = {}
+    print('Zoom: Encountered an error. State has been cleared.')
+  end
+end
+
+return E

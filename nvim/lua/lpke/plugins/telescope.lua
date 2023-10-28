@@ -221,10 +221,6 @@ local function config()
             ['<bs>'] = false,
 
             ['<S-CR>'] = fb_actions.create_from_prompt,
-            ['<F2>C'] = fb_actions.create,
-            ['<F2>R'] = fb_actions.rename,
-            ['<F2>M'] = fb_actions.move,
-            ['<C-O>'] = fb_actions.open,
             ['<BS>'] = fb_actions.backspace,
             ['<CR>'] = function(bufnr)
               actions.select_default(bufnr)

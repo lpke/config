@@ -1,9 +1,9 @@
-local helpers = require("lpke.core.helpers")
-local options = require("lpke.core.options")
+local helpers = require('lpke.core.helpers')
+local options = require('lpke.core.options')
 local keymap_set = helpers.keymap_set
 -- SYNTAX: {'<modes><R=rec,E=expr,C=:,!=sil,D=delete>', <lhs>, <rhs>, <desc>, {opts}}
 
-vim.g.mapleader = " "
+vim.g.mapleader = ' '
 
 -- stylua: ignore start
 helpers.keymap_set_multi({
@@ -78,8 +78,8 @@ helpers.keymap_set_multi({
   {'nv', '<F2>H', '<C-w><<C-w><<C-w><', { desc = 'Decrease window width' }},
   {'nv', '<F2>L', '<C-w>><C-w>><C-w>>', { desc = 'Increase window width' }},
   -- zooming
-  {'n', '<C-w>z', '<C-w>|<C-w>_', { desc = '"Zoom" current window horizontally and vertically' }},
-  {'n', '<F2>z', '<C-w>|<C-w>_', { desc = '"Zoom" current window horizontally and vertically' }},
+  {'n', '<C-w>s', helpers.win_zoom_toggle, { desc = '"Zoom" current window horizontally and vertically' }},
+  {'n', '<F2>s', helpers.win_zoom_toggle, { desc = 'Toggle current window "zoom" state' }},
   {'n', '<F2>;', '<C-w>=', { desc = 'Equalise split windows' }},
 
   -- tab control

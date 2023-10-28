@@ -8,6 +8,12 @@ local function config()
   require('nvim-treesitter.install').compilers = { 'clang' }
   helpers.clear_last_message('All parsers are up-to-date!') -- clear annoying message on startup
 
+  -- temp
+  if true == 'string true' then
+    print(false .. 'hello')
+    print(123)
+  end
+
   require('nvim-treesitter.configs').setup({
     -- stylua: ignore start
     ensure_installed = {
@@ -52,6 +58,7 @@ local function config()
   helpers.set_hl('@number', { fg = tc.iris })
   helpers.set_hl('@constructor', { fg = tc.growth })
   helpers.set_hl('@type', { fg = tc.growth })
+  helpers.set_hl('@lsp.typemod.function.defaultLibrary.lua', { link = '@function.builtin' })
 end
 
 return {

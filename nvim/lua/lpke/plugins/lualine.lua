@@ -26,39 +26,39 @@ local function config()
 
   local custom_theme = {
     normal = {
-      a = {bg = tc.overlayplus, fg = tc.subtleplus},
-      b = {bg = tc.overlay, fg = tc.subtleplus},
-      c = {bg = tc.overlay, fg = tc.subtleplus},
+      a = { bg = tc.overlayplus, fg = tc.subtleplus },
+      b = { bg = tc.overlay, fg = tc.subtleplus },
+      c = { bg = tc.overlay, fg = tc.subtleplus },
     },
     insert = {
-      a = {bg = tc.overlayplus, fg = tc.text},
-      b = {bg = tc.overlay, fg = tc.subtleplus},
-      c = {bg = tc.overlay, fg = tc.subtleplus},
+      a = { bg = tc.overlayplus, fg = tc.text },
+      b = { bg = tc.overlay, fg = tc.subtleplus },
+      c = { bg = tc.overlay, fg = tc.subtleplus },
     },
     visual = {
-      a = {bg = tc.growth, fg = tc.base},
-      b = {bg = tc.overlay, fg = tc.subtleplus},
-      c = {bg = tc.overlay, fg = tc.subtleplus},
+      a = { bg = tc.growth, fg = tc.base },
+      b = { bg = tc.overlay, fg = tc.subtleplus },
+      c = { bg = tc.overlay, fg = tc.subtleplus },
     },
     replace = {
-      a = {bg = tc.love, fg = tc.base},
-      b = {bg = tc.overlay, fg = tc.subtleplus},
-      c = {bg = tc.overlay, fg = tc.subtleplus},
+      a = { bg = tc.love, fg = tc.base },
+      b = { bg = tc.overlay, fg = tc.subtleplus },
+      c = { bg = tc.overlay, fg = tc.subtleplus },
     },
     command = {
-      a = {bg = tc.overlayplus, fg = tc.iris},
-      b = {bg = tc.overlay, fg = tc.subtleplus},
-      c = {bg = tc.overlay, fg = tc.subtleplus},
+      a = { bg = tc.overlayplus, fg = tc.iris },
+      b = { bg = tc.overlay, fg = tc.subtleplus },
+      c = { bg = tc.overlay, fg = tc.subtleplus },
     },
     terminal = {
-      a = {bg = tc.iris, fg = tc.base},
-      b = {bg = tc.overlay, fg = tc.subtleplus},
-      c = {bg = tc.overlay, fg = tc.subtleplus},
+      a = { bg = tc.iris, fg = tc.base },
+      b = { bg = tc.overlay, fg = tc.subtleplus },
+      c = { bg = tc.overlay, fg = tc.subtleplus },
     },
     inactive = {
-      a = {bg = tc.surface, fg = tc.mutedplus},
-      b = {bg = tc.surface, fg = tc.mutedplus},
-      c = {bg = tc.surface, fg = tc.mutedplus},
+      a = { bg = tc.surface, fg = tc.mutedplus },
+      b = { bg = tc.surface, fg = tc.mutedplus },
+      c = { bg = tc.surface, fg = tc.mutedplus },
     },
   }
 
@@ -68,11 +68,18 @@ local function config()
   Lpke_show_diagnostics_vis = true
 
   -- custom component display
-  local session_name = function() return helpers.formatted_session_name() end
+  local session_name = function()
+    return helpers.formatted_session_name()
+  end
   local cwd_folder = helpers.get_cwd_folder
   local diagnostics_vis = function()
     local enabled = not vim.b.diagnostics_disabled
     return enabled and '●' or '○'
+  end
+  local zoom_status = function()
+    local cur_tab = vim.api.nvim_get_current_tabpage()
+    local tab_zoomed = (Lpke_zoomed[cur_tab] == true)
+    return tab_zoomed and '▣' or ''
   end
 
   -- custom component tables
@@ -82,9 +89,13 @@ local function config()
     fmt = function(str)
       -- only show filename when: toggled off OR not a normal buffer
       local normal_buffer = vim.bo.buftype == ''
-      return (Lpke_full_path and normal_buffer) and str or helpers.get_path_tail(str)
+      return (Lpke_full_path and normal_buffer) and str
+        or helpers.get_path_tail(str)
     end,
-    on_click = function() Lpke_full_path = not Lpke_full_path; refresh() end,
+    on_click = function()
+      Lpke_full_path = not Lpke_full_path
+      refresh()
+    end,
     shorting_target = 40,
     icons_enabled = true,
     symbols = {
@@ -96,7 +107,9 @@ local function config()
   }
   local session_name_components = {
     {
-      function() return 'S:' end,
+      function()
+        return 'S:'
+      end,
       cond = helpers.session_in_cwd,
       padding = { left = 1, right = 0 },
       color = { fg = tc.mutedplus },
@@ -113,8 +126,8 @@ local function config()
     options = {
       icons_enabled = false,
       theme = custom_theme,
-      component_separators = { left = '', right = ''},
-      section_separators = { left = '', right = ''},
+      component_separators = { left = '', right = '' },
+      section_separators = { left = '', right = '' },
       disabled_filetypes = {
         statusline = {},
         winbar = {},
@@ -132,15 +145,30 @@ local function config()
       lualine_a = {
         {
           'mode',
-          fmt = function(str) return helpers.map_string(str, modes) end,
-          on_click = function() Lpke_show_cwd = not Lpke_show_cwd; refresh() end
+          fmt = function(str)
+            return helpers.map_string(str, modes)
+          end,
+          on_click = function()
+            Lpke_show_cwd = not Lpke_show_cwd
+            refresh()
+          end,
         },
       },
       lualine_b = {
         {
+          zoom_status,
+          padding = { left = 1, right = 0 },
+          color = { gui = 'bold', fg = tc.text },
+        },
+        {
           cwd_folder,
-          cond = function() return Lpke_show_cwd end,
-          on_click = function() Lpke_show_cwd = not Lpke_show_cwd; refresh() end,
+          cond = function()
+            return Lpke_show_cwd
+          end,
+          on_click = function()
+            Lpke_show_cwd = not Lpke_show_cwd
+            refresh()
+          end,
           color = function()
             local cwd = helpers.get_cwd_folder()
             local session = helpers.get_session_name()
@@ -174,11 +202,15 @@ local function config()
       lualine_x = {
         {
           'encoding',
-          cond = function() return Lpke_show_encoding end,
+          cond = function()
+            return Lpke_show_encoding
+          end,
         },
         {
           'fileformat',
-          cond = function() return Lpke_show_encoding end,
+          cond = function()
+            return Lpke_show_encoding
+          end,
           icons_enabled = true,
           symbols = {
             unix = 'LF', -- LF
@@ -188,10 +220,16 @@ local function config()
         },
         {
           'filetype',
-          fmt = function(str) return helpers.map_string(str, filetypes) end,
-          on_click = function() Lpke_show_encoding = not Lpke_show_encoding; refresh() end,
+          fmt = function(str)
+            return helpers.map_string(str, filetypes)
+          end,
+          on_click = function()
+            Lpke_show_encoding = not Lpke_show_encoding
+            refresh()
+          end,
           color = function()
-            local lsp_attached = vim.lsp.get_active_clients({ bufnr = 0 })[1] ~= nil
+            local lsp_attached = vim.lsp.get_active_clients({ bufnr = 0 })[1]
+              ~= nil
             if lsp_attached then
               return { gui = 'bold' }
             end
@@ -200,7 +238,8 @@ local function config()
         {
           diagnostics_vis,
           cond = function()
-            local lsp_attached = vim.lsp.get_active_clients({ bufnr = 0 })[1] ~= nil
+            local lsp_attached = vim.lsp.get_active_clients({ bufnr = 0 })[1]
+              ~= nil
             return Lpke_show_diagnostics_vis and lsp_attached
           end,
           padding = { left = 0, right = 1 },
@@ -208,14 +247,14 @@ local function config()
         session_name_components[1],
         session_name_components[2],
       },
-      lualine_y = {'progress', 'location'},
+      lualine_y = { 'progress', 'location' },
       lualine_z = {},
     },
     inactive_sections = {
       lualine_a = {},
       lualine_b = {},
       lualine_c = { filename },
-      lualine_x = {'location'},
+      lualine_x = { 'location' },
       lualine_y = {},
       lualine_z = {},
     },
@@ -231,12 +270,39 @@ local function config()
 
   -- keymaps when using lualine
   helpers.keymap_set_multi({
-    {'n', '<F2>D', function() Lpke_show_cwd = not Lpke_show_cwd; refresh() end}, -- toggle cwd
-    {'n', '<F2>F', function() Lpke_full_path = not Lpke_full_path; refresh() end}, -- toggle file path
-    {'n', '<F2>E', function() Lpke_show_encoding = not Lpke_show_encoding; refresh() end}, -- toggle encoding info
-    {'n', '<F2>X', function() Lpke_show_diagnostics_vis = not Lpke_show_diagnostics_vis; refresh() end}, -- toggle diagnostics visibility
+    {
+      'n',
+      '<F2>D',
+      function()
+        Lpke_show_cwd = not Lpke_show_cwd
+        refresh()
+      end,
+    }, -- toggle cwd
+    {
+      'n',
+      '<F2>F',
+      function()
+        Lpke_full_path = not Lpke_full_path
+        refresh()
+      end,
+    }, -- toggle file path
+    {
+      'n',
+      '<F2>E',
+      function()
+        Lpke_show_encoding = not Lpke_show_encoding
+        refresh()
+      end,
+    }, -- toggle encoding info
+    {
+      'n',
+      '<F2>X',
+      function()
+        Lpke_show_diagnostics_vis = not Lpke_show_diagnostics_vis
+        refresh()
+      end,
+    }, -- toggle diagnostics visibility
   })
-
 end
 
 return {

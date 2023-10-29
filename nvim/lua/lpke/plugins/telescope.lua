@@ -55,7 +55,7 @@ local function config()
     {'nC', '<BS>fl', 'Telescope highlights', { desc = 'Fuzzy find highlights' }},
     {'nC', '<BS>fk', 'Telescope keymaps', { desc = 'Fuzzy find keymaps' } },
     {'nC', '<BS>fh', 'Telescope help_tags', { desc = 'Fuzzy find help tags' }},
-    {'nC', '<BS>ft', 'Telescope treesitter', { desc = 'Fuzzy find treesitter symbols' }},
+    {'nC', '<BS>fs', 'Telescope treesitter', { desc = 'Fuzzy find treesitter symbols' }},
     {'nC', '<BS>fgc', 'Telescope git_commits', { desc = 'Fuzzy find git commits' }},
     {'nC', '<BS>fgf', 'Telescope git_bcommits', { desc = 'Fuzzy find buffer git commits' }},
     {'nC', '<BS>fgb', 'Telescope git_branches', { desc = 'Fuzzy find git branches' }},
@@ -114,6 +114,10 @@ local function config()
       },
       mappings = {
         i = {
+          ['<CR>'] = actions.select_default,
+          ['<F2>.'] = actions.file_vsplit,
+          ['<F2>,'] = actions.file_split,
+          ['<F2>n'] = actions.file_tab,
           ['<C-q>'] = actions.send_selected_to_qflist + actions.open_qflist,
           ['<C-j>'] = actions.preview_scrolling_down,
           ['<C-k>'] = actions.preview_scrolling_up,
@@ -121,7 +125,11 @@ local function config()
           -- ['<C-l>'] = actions.preview_scrolling_right,
         },
         n = {
-          ['u'] = { '<cmd>undo<cr>', type = 'command' },
+          ['u'] = { '<cmd>undo<cr>', type = 'command' }, -- didn't work by default
+          ['<CR>'] = actions.select_default,
+          ['<F2>.'] = actions.file_vsplit,
+          ['<F2>,'] = actions.file_split,
+          ['<F2>n'] = actions.file_tab,
           ['<Up>'] = function(bufnr)
             helpers.repeat_function(actions.move_selection_previous, bufnr, 4)
           end,

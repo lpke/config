@@ -46,6 +46,9 @@ local function config()
     completion = {
       completeopt = 'menu,menuone,noselect,preview',
     },
+    performance = {
+      debounce = 500,
+    },
     window = {
       documentation = {
         max_width = 200,

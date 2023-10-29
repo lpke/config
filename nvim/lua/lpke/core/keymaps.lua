@@ -44,8 +44,8 @@ helpers.keymap_set_multi({
     { desc = 'Replace selected text with the eval() version of itself' }},
 
   -- buffer navigation
-  {'nvC', '<F2><Down>', 'bnext', { desc = 'Next buffer' }},
-  {'nvC', '<F2><Up>', 'bprev', { desc = 'Previous buffer' }},
+  {'nviC', '<F2><Down>', 'bnext', { desc = 'Next buffer' }},
+  {'nviC', '<F2><Up>', 'bprev', { desc = 'Previous buffer' }},
   {'nvC', '<F2><BS>', 'bdelete', { desc = 'Delete buffer' }},
 
   -- window control
@@ -91,8 +91,8 @@ helpers.keymap_set_multi({
   -- navigating
   {'nv', '<C-w><Right>', 'gt', { desc = 'Next Tab (right)' }},
   {'nv', '<C-w><Left>', 'gT', { desc = 'Previous Tab (left)' }},
-  {'nv', '<F2><Right>', 'gt', { desc = 'Next Tab (right)' }},
-  {'nv', '<F2><Left>', 'gT', { desc = 'Previous Tab (left)' }},
+  {'nviC', '<F2><Right>', 'tabnext', { desc = 'Next Tab (right)' }},
+  {'nviC', '<F2><Left>', 'tabprevious', { desc = 'Previous Tab (left)' }},
 
   -- arrow-key scrolling
   {'nv', '<Down>', '4<C-e>', { desc = 'Scroll down (4 lines)' }},

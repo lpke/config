@@ -71,7 +71,6 @@ local function config()
         select = true,
       }),
       ['<C-c>'] = cmp.mapping.abort(),
-      ['<Esc>'] = { i = cmp_mapping('va', cmp.abort) },
     },
 
     -- autocompletion suggestion sources (in order of priority)
@@ -129,10 +128,6 @@ local function config()
     -- confirm/abort
     ['<Tab>'] = { c = cmp_mapping('', function() cmp.confirm({ select = true }) end) },
     ['<C-c>'] = { c = cmp_mapping('v', cmp.abort) },
-    ['<Esc>'] = { c = cmp_mapping('va', cmp.abort, function()
-      vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-c>", true, true, true), "n", {})
-    end)
-    },
   }
   cmp.setup.cmdline({ '/', '?' }, {
     mapping = cmdline_mapping,

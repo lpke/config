@@ -1,20 +1,17 @@
 -- toggle LSP diagnostics globally
--- function Lpke_toggle_diagnostics()
---   vim.b.diagnostics_disabled = not vim.b.diagnostics_disabled
---   local cmd = vim.b.diagnostics_disabled and 'disable' or 'enable'
---   vim.schedule(function()
---     pcall(function() vim.diagnostic[cmd](0) end)
---   end)
---   pcall(function() require('lualine').refresh() end)
--- end
-
+Lpke_diagnostics_enabled = true
 function Lpke_toggle_diagnostics()
-  vim.b.diagnostics_disabled = not vim.b.diagnostics_disabled
-  local cmd = vim.b.diagnostics_disabled and 'disable' or 'enable'
-  vim.schedule(function()
-    pcall(function() vim.diagnostic[cmd](0) end)
+  local enabled = not vim.diagnostic.is_disabled()
+  if enabled then
+    vim.diagnostic.disable()
+    Lpke_diagnostics_enabled = false
+  else
+    vim.diagnostic.enable()
+    Lpke_diagnostics_enabled = true
+  end
+  pcall(function()
+    require('lualine').refresh()
   end)
-  pcall(function() require('lualine').refresh() end)
 end
 
 local function config()
@@ -23,6 +20,7 @@ local function config()
   local helpers = require('lpke.core.helpers')
   local tc = Lpke_theme_colors
 
+  -- stylua: ignore start
   -- theme
   helpers.set_hl('LspInfoTitle', { fg = tc.growth })
   helpers.set_hl('DiagnosticOk', { fg = tc.growth })
@@ -42,12 +40,6 @@ local function config()
 
   -- when a language server attaches to a buffer...
   local on_attach = function(client, bufnr)
-    -- ensure initial diagnostic option is respected
-    if vim.b[bufnr].diagnostics_disabled or vim.g.diagnostics_disabled then
-      vim.diagnostic.disable(bufnr)
-    end
-
-
     -- set keybinds (Lazy sync required to remove old bindings)
     local opts = function(desc) return { buffer = bufnr, desc = desc  } end
     helpers.keymap_set_multi({
@@ -77,6 +69,7 @@ local function config()
       {'n', 'gD', vim.lsp.buf.declaration, opts('Go to declaration')},
     })
   end
+  -- stylua: ignore end
 
   -- used to enable autocompletion (assign to every lsp server config)
   local capabilities = cmp_nvim_lsp.default_capabilities()
@@ -104,8 +97,14 @@ local function config()
 
   -- can be overwritten per language
   local handlers = {
-    ['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'rounded' }),
-    ['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'rounded' }),
+    ['textDocument/hover'] = vim.lsp.with(
+      vim.lsp.handlers.hover,
+      { border = 'rounded' }
+    ),
+    ['textDocument/signatureHelp'] = vim.lsp.with(
+      vim.lsp.handlers.signature_help,
+      { border = 'rounded' }
+    ),
   }
 
   -- configure LSP servers
@@ -119,10 +118,25 @@ local function config()
       filetypes = { 'json', 'jsonc' },
     },
     graphql = {
-      filetypes = { 'graphql', 'gql', 'svelte', 'typescriptreact', 'javascriptreact' },
+      filetypes = {
+        'graphql',
+        'gql',
+        'svelte',
+        'typescriptreact',
+        'javascriptreact',
+      },
     },
     emmet_ls = {
-      filetypes = { 'html', 'typescriptreact', 'javascriptreact', 'css', 'sass', 'scss', 'less', 'svelte' },
+      filetypes = {
+        'html',
+        'typescriptreact',
+        'javascriptreact',
+        'css',
+        'sass',
+        'scss',
+        'less',
+        'svelte',
+      },
     },
     lua_ls = {
       settings = { -- custom settings for lua

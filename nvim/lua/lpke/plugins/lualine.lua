@@ -252,7 +252,7 @@ local function config()
             refresh()
           end,
           color = function()
-            local enabled = not vim.b.diagnostics_disabled
+            local enabled = Lpke_diagnostics_enabled
             return enabled and { bg = tc.overlayplus, fg = tc.text }
               or { bg = tc.overlaybump, fg = tc.subtle }
           end,

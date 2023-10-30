@@ -1,3 +1,5 @@
+Lpke_auto_cmp = true
+
 local function config()
   local cmp = require('cmp')
   local luasnip = require('luasnip')
@@ -5,7 +7,6 @@ local function config()
   local tc = Lpke_theme_colors
 
   -- toggle automatic cmp completion menu (can still be activated manually)
-  Lpke_auto_cmp = true
   function Lpke_toggle_auto_cmp()
     if not Lpke_auto_cmp then
       cmp.setup({
@@ -20,6 +21,9 @@ local function config()
           autocomplete = false,
         },
       })
+      if cmp.visible then
+        cmp.abort()
+      end
       Lpke_auto_cmp = false
     end
     pcall(function()
@@ -70,8 +74,9 @@ local function config()
   helpers.set_hl('CmpItemKindInterface', { fg = tc.foam, italic = true })
 
   -- keymaps - general
-  -- helpers.keymap_set_multi({
-  -- })
+  helpers.keymap_set_multi({
+    {'ni', '<F2>m', Lpke_toggle_auto_cmp, { desc = 'Toggle automatic cmp menu display when typing' }},
+  })
 
   -- CMP SETUP: GENERAL/INSERT
   cmp.setup({
@@ -99,6 +104,7 @@ local function config()
       ['<C-p>'] = cmp.mapping.select_prev_item(),
       ['<C-n>'] = cmp.mapping.select_next_item(),
       ['<C-Down>'] = cmp.mapping.complete(),
+
       -- preview/'docs' window
       ['<C-k>'] = cmp.mapping.scroll_docs(-4),
       ['<C-j>'] = cmp.mapping.scroll_docs(4),
@@ -194,7 +200,7 @@ end
 
 return {
   'hrsh7th/nvim-cmp',
-  event = 'InsertEnter',
+  event = 'VeryLazy',
   dependencies = {
     'hrsh7th/cmp-buffer', -- source for text in buffer
     'hrsh7th/cmp-path', -- source for file system paths

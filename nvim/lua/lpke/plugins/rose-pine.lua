@@ -19,6 +19,7 @@ local ec = {
   irisbg = '#312b3f',
   foambg = '#2b303d',
   growthbg = '#242b36',
+  growthbgplus = '#21373b',
 }
 
 local function config()

@@ -119,6 +119,8 @@ local function config()
           ['<F2>,'] = actions.file_split,
           ['<F2>n'] = actions.file_tab,
           ['<C-q>'] = actions.send_selected_to_qflist + actions.open_qflist,
+          ['<C-d>'] = actions.preview_scrolling_down,
+          ['<C-u>'] = actions.preview_scrolling_up,
           ['<C-j>'] = actions.preview_scrolling_down,
           ['<C-k>'] = actions.preview_scrolling_up,
           -- ['<C-h>'] = actions.preview_scrolling_left,

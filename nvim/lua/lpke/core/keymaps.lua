@@ -102,10 +102,12 @@ helpers.keymap_set_multi({
   {'nv', '<S-Left>', '6zh', { desc = 'Scroll left (6 columns)' }},
 
   -- center cursor when down/up page
-  {'nv', '<C-d>', '<C-d>zz', { desc = 'Scroll down half a screen (center cursor)' }},
-  {'nv', '<C-u>', '<C-u>zz', { desc = 'Scroll up half a screen (center cursor)' }},
-  {'nv', '<C-j>', '<C-d>zz', { desc = 'Scroll down half a screen (center cursor)' }},
-  {'nv', '<C-k>', '<C-u>zz', { desc = 'Scroll up half a screen (center cursor)' }},
+  {'nv', '<C-k>', '4kzz', { desc = 'Move up 4 lines (center cursor)' }},
+  {'nv', '<C-j>', '4jzz', { desc = 'Move down 4 lines (center cursor)' }},
+  {'nv', '<C-u>', '<C-u>zz', { desc = 'Move up half a screen (center cursor)' }},
+  {'nv', '<C-d>', '<C-d>zz', { desc = 'Move down half a screen (center cursor)' }},
+  {'nv', '<C-Up>', 'kzz', { desc = 'Move up 1 line (center cursor)' }},
+  {'nv', '<C-Down>', 'jzz', { desc = 'Move down 1 line (center cursor)' }},
 
   -- center cursor when searching
   {'n', 'n', 'nzzzv', { desc = 'Next search result (center cursor)' }},

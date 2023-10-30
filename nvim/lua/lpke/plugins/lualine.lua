@@ -68,19 +68,15 @@ local function config()
   Lpke_show_diagnostics_vis = true
 
   -- custom component display
-  local session_name = function()
-    return helpers.formatted_session_name()
-  end
-  local cwd_folder = helpers.get_cwd_folder
-  local diagnostics_vis = function()
-    local enabled = not vim.b.diagnostics_disabled
-    return enabled and '●' or '○'
-  end
   local zoom_status = function()
     local cur_tab = vim.api.nvim_get_current_tabpage()
     local tab_zoomed = (Lpke_zoomed[cur_tab] == true)
     return tab_zoomed and '▣' or ''
   end
+  local session_name = function()
+    return helpers.formatted_session_name()
+  end
+  local cwd_folder = helpers.get_cwd_folder
 
   -- custom component tables
   local filename = {
@@ -144,6 +140,11 @@ local function config()
     sections = {
       lualine_a = {
         {
+          zoom_status,
+          on_click = helpers.win_zoom_toggle,
+          color = { bg = tc.irisfaded, fg = tc.base },
+        },
+        {
           'mode',
           fmt = function(str)
             return helpers.map_string(str, modes)
@@ -155,11 +156,6 @@ local function config()
         },
       },
       lualine_b = {
-        {
-          zoom_status,
-          padding = { left = 1, right = 0 },
-          color = { gui = 'bold', fg = tc.text },
-        },
         {
           cwd_folder,
           cond = function()
@@ -235,19 +231,39 @@ local function config()
             end
           end,
         },
+        session_name_components[1],
+        session_name_components[2],
+      },
+      lualine_y = {
+        'progress',
+        'location',
         {
-          diagnostics_vis,
+          function()
+            return 'D'
+          end,
           cond = function()
             local lsp_attached = vim.lsp.get_active_clients({ bufnr = 0 })[1]
               ~= nil
             return Lpke_show_diagnostics_vis and lsp_attached
           end,
-          padding = { left = 0, right = 1 },
+          -- padding = { left = 1, right = 0 },
+          color = function()
+            local enabled = not vim.b.diagnostics_disabled
+            return enabled and { bg = tc.overlayplus, fg = tc.subtleplus }
+              or { bg = tc.overlayplus, fg = tc.subtleplus }
+          end,
         },
-        session_name_components[1],
-        session_name_components[2],
+        {
+          function()
+            return 'C'
+          end,
+          color = function()
+            local enabled = Lpke_auto_cmp
+            return enabled and { bg = tc.overlayplus, fg = tc.subtleplus }
+              or { bg = tc.overlayplus, fg = tc.subtleplus }
+          end,
+        },
       },
-      lualine_y = { 'progress', 'location' },
       lualine_z = {},
     },
     inactive_sections = {
@@ -268,41 +284,15 @@ local function config()
   vim.cmd('set noshowmode')
   vim.o.laststatus = options.vim_opts.laststatus -- override plugin control of this
 
+  -- stylua: ignore start
   -- keymaps when using lualine
   helpers.keymap_set_multi({
-    {
-      'n',
-      '<F2>D',
-      function()
-        Lpke_show_cwd = not Lpke_show_cwd
-        refresh()
-      end,
-    }, -- toggle cwd
-    {
-      'n',
-      '<F2>F',
-      function()
-        Lpke_full_path = not Lpke_full_path
-        refresh()
-      end,
-    }, -- toggle file path
-    {
-      'n',
-      '<F2>E',
-      function()
-        Lpke_show_encoding = not Lpke_show_encoding
-        refresh()
-      end,
-    }, -- toggle encoding info
-    {
-      'n',
-      '<F2>X',
-      function()
-        Lpke_show_diagnostics_vis = not Lpke_show_diagnostics_vis
-        refresh()
-      end,
-    }, -- toggle diagnostics visibility
+    { 'n', '<F2>D', function() Lpke_show_cwd = not Lpke_show_cwd refresh() end, }, -- toggle cwd
+    { 'n', '<F2>F', function() Lpke_full_path = not Lpke_full_path refresh() end, }, -- toggle file path
+    { 'n', '<F2>E', function() Lpke_show_encoding = not Lpke_show_encoding refresh() end, }, -- toggle encoding info
+    { 'n', '<F2>X', function() Lpke_show_diagnostics_vis = not Lpke_show_diagnostics_vis refresh() end, }, -- toggle diagnostics visibility
   })
+  -- stylua: ignore end
 end
 
 return {

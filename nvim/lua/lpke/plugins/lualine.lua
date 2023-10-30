@@ -249,10 +249,10 @@ local function config()
           end,
           on_click = function()
             Lpke_toggle_diagnostics()
-            refresh()
+            -- refresh()
           end,
           color = function()
-            local enabled = Lpke_diagnostics_enabled
+            local enabled = not vim.diagnostic.is_disabled()
             return enabled and { bg = tc.overlayplus, fg = tc.text }
               or { bg = tc.overlaybump, fg = tc.subtle }
           end,

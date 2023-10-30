@@ -1,13 +1,11 @@
 -- toggle LSP diagnostics globally
-Lpke_diagnostics_enabled = true
+Lpke_diagnostics_enabled_initial = true
 function Lpke_toggle_diagnostics()
   local enabled = not vim.diagnostic.is_disabled()
   if enabled then
     vim.diagnostic.disable()
-    Lpke_diagnostics_enabled = false
   else
     vim.diagnostic.enable()
-    Lpke_diagnostics_enabled = true
   end
   pcall(function()
     require('lualine').refresh()
@@ -40,6 +38,13 @@ local function config()
 
   -- when a language server attaches to a buffer...
   local on_attach = function(client, bufnr)
+    -- respect the initial setting
+    if Lpke_diagnostics_enabled_initial then
+      vim.diagnostic.enable()
+    else
+      vim.diagnostic.disable()
+    end
+
     -- set keybinds (Lazy sync required to remove old bindings)
     local opts = function(desc) return { buffer = bufnr, desc = desc  } end
     helpers.keymap_set_multi({

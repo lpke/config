@@ -1,5 +1,14 @@
 -- toggle LSP diagnostics globally
-function Lpke_diagnostic_toggle()
+-- function Lpke_toggle_diagnostics()
+--   vim.b.diagnostics_disabled = not vim.b.diagnostics_disabled
+--   local cmd = vim.b.diagnostics_disabled and 'disable' or 'enable'
+--   vim.schedule(function()
+--     pcall(function() vim.diagnostic[cmd](0) end)
+--   end)
+--   pcall(function() require('lualine').refresh() end)
+-- end
+
+function Lpke_toggle_diagnostics()
   vim.b.diagnostics_disabled = not vim.b.diagnostics_disabled
   local cmd = vim.b.diagnostics_disabled and 'disable' or 'enable'
   vim.schedule(function()
@@ -44,7 +53,7 @@ local function config()
     helpers.keymap_set_multi({
       -- info/toggle/reload
       {'nC', '<BS>ip', 'LspInfo', opts('Open LSP info window')},
-      {'nv', '<F2>d', Lpke_diagnostic_toggle, opts('Toggle diagnostics visibility in current buffer')},
+      {'nv', '<F2>d', Lpke_toggle_diagnostics, opts('Toggle diagnostics visibility in current buffer')},
       {'nC', '<leader>R', 'LspRestart', opts('Restart LSP')},
 
       -- smart actions

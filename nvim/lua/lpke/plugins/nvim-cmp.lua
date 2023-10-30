@@ -103,7 +103,7 @@ local function config()
       ['<Down>'] = cmp.mapping.select_next_item(),
       ['<C-p>'] = cmp.mapping.select_prev_item(),
       ['<C-n>'] = cmp.mapping.select_next_item(),
-      ['<C-Down>'] = cmp.mapping.complete(),
+      ['<F2>,'] = cmp.mapping.complete(),
 
       -- preview/'docs' window
       ['<C-k>'] = cmp.mapping.scroll_docs(-4),

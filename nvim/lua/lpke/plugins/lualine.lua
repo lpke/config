@@ -237,6 +237,7 @@ local function config()
       lualine_y = {
         'progress',
         'location',
+        -- diagnostic status
         {
           function()
             return 'D'
@@ -246,21 +247,29 @@ local function config()
               ~= nil
             return Lpke_show_diagnostics_vis and lsp_attached
           end,
-          -- padding = { left = 1, right = 0 },
+          on_click = function()
+            Lpke_toggle_diagnostics()
+            refresh()
+          end,
           color = function()
             local enabled = not vim.b.diagnostics_disabled
-            return enabled and { bg = tc.overlayplus, fg = tc.subtleplus }
-              or { bg = tc.overlayplus, fg = tc.subtleplus }
+            return enabled and { bg = tc.overlayplus, fg = tc.text }
+              or { bg = tc.overlaybump, fg = tc.subtle }
           end,
         },
+        -- auto cmp status
         {
           function()
-            return 'C'
+            return 'M'
+          end,
+          on_click = function()
+            Lpke_toggle_auto_cmp()
+            refresh()
           end,
           color = function()
             local enabled = Lpke_auto_cmp
-            return enabled and { bg = tc.overlayplus, fg = tc.subtleplus }
-              or { bg = tc.overlayplus, fg = tc.subtleplus }
+            return enabled and { bg = tc.overlayplus, fg = tc.text }
+              or { bg = tc.overlaybump, fg = tc.subtle }
           end,
         },
       },

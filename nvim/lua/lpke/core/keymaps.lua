@@ -8,9 +8,10 @@ vim.g.mapleader = ' '
 -- stylua: ignore start
 helpers.keymap_set_multi({
   -- removals
-  {'n', ' ', ''},
-  {'n', '<BS>', ''},
-  {'n', 'Q', ''},
+  {'n', ' ', ''}, -- no space after <leader>
+  {'n', '<BS>', ''}, -- no BS after <BS>
+  {'n', 'Q', ''}, -- use @@ instead
+  {'ic', '<F2><CR>', ''}, -- used for cmp completion
 
   -- High-level maps
   {'n', '<BS>e', vim.cmd.Ex, { desc = 'Open netrw' }},

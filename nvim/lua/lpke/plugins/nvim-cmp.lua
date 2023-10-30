@@ -4,10 +4,39 @@ local function config()
   local helpers = require('lpke.core.helpers')
   local tc = Lpke_theme_colors
 
+  -- toggle automatic cmp completion menu (can still be activated manually)
+  Lpke_auto_cmp = true
+  function Lpke_toggle_auto_cmp()
+    if not Lpke_auto_cmp then
+      cmp.setup({
+        completion = {
+          autocomplete = { require('cmp.types').cmp.TriggerEvent.TextChanged },
+        },
+      })
+      Lpke_auto_cmp = true
+    else
+      cmp.setup({
+        completion = {
+          autocomplete = false,
+        },
+      })
+      Lpke_auto_cmp = false
+    end
+    pcall(function()
+      require('lualine').refresh()
+    end)
+  end
+
   local function cmp_mapping(conds, action, custom_fallback)
-    local cond_v = function() return true end
-    local cond_a = function() return true end
-    local cond_d = function() return true end
+    local cond_v = function()
+      return true
+    end
+    local cond_a = function()
+      return true
+    end
+    local cond_d = function()
+      return true
+    end
     for char in conds:gmatch('.') do
       if char == 'v' then
         cond_v = cmp.visible
@@ -18,7 +47,7 @@ local function config()
       end
     end
     return function(fallback)
-      if (cond_v() and cond_a() and cond_d()) then
+      if cond_v() and cond_a() and cond_d() then
         action()
       else
         if custom_fallback then
@@ -40,6 +69,10 @@ local function config()
   helpers.set_hl('CmpItemKindVariable', { fg = tc.textminus, italic = true })
   helpers.set_hl('CmpItemKindInterface', { fg = tc.foam, italic = true })
 
+  -- keymaps - general
+  -- helpers.keymap_set_multi({
+  -- })
+
   -- CMP SETUP: GENERAL/INSERT
   cmp.setup({
     -- options
@@ -54,23 +87,23 @@ local function config()
         max_width = 200,
         max_height = 200,
         border = 'rounded',
-        winhighlight = "FloatBorder:FloatBorder",
+        winhighlight = 'FloatBorder:FloatBorder',
       },
     },
 
-    -- keymaps: only active when menu is open
+    -- keymaps - editor
     mapping = {
       -- completion menu
       ['<Up>'] = cmp.mapping.select_prev_item(),
       ['<Down>'] = cmp.mapping.select_next_item(),
       ['<C-p>'] = cmp.mapping.select_prev_item(),
       ['<C-n>'] = cmp.mapping.select_next_item(),
-      ['<C-Space>'] = cmp.mapping.complete(),
+      ['<C-Down>'] = cmp.mapping.complete(),
       -- preview/'docs' window
       ['<C-k>'] = cmp.mapping.scroll_docs(-4),
       ['<C-j>'] = cmp.mapping.scroll_docs(4),
       -- confim/abort
-      ['<CR>'] = cmp.mapping.confirm({
+      ['<F2><CR>'] = cmp.mapping.confirm({
         select = true,
       }),
       ['<C-c>'] = cmp.mapping.abort(),
@@ -88,24 +121,25 @@ local function config()
     snippet = {
       expand = function(args)
         luasnip.lsp_expand(args.body)
-      end
+      end,
     },
 
     -- kind string maps
     formatting = {
       format = function(entry, vim_item)
         -- name
-        vim_item.kind = ' ' .. helpers.map_string(vim_item.kind, {
-          {'Function', 'Func'},
-          {'Constructor', 'Constr'},
-          {'Variable', 'Var'},
-          {'Interface', 'Interf'},
-          {'Property', 'Prop'},
-          {'Reference', 'Ref'},
-          {'EnumMember', 'EnumMbr'},
-          {'Constant', 'Const'},
-          {'TypeParameter', 'TypeParam'},
-        })
+        vim_item.kind = ' '
+          .. helpers.map_string(vim_item.kind, {
+            { 'Function', 'Func' },
+            { 'Constructor', 'Constr' },
+            { 'Variable', 'Var' },
+            { 'Interface', 'Interf' },
+            { 'Property', 'Prop' },
+            { 'Reference', 'Ref' },
+            { 'EnumMember', 'EnumMbr' },
+            { 'Constant', 'Const' },
+            { 'TypeParameter', 'TypeParam' },
+          })
         -- source
         vim_item.menu = ({
           buffer = '⌨',
@@ -115,7 +149,7 @@ local function config()
           latex_symbols = '∑',
         })[entry.source.name]
         return vim_item
-      end
+      end,
     },
   })
 
@@ -124,25 +158,36 @@ local function config()
     -- completion menu
     ['<C-n>'] = { c = cmp_mapping('v', cmp.select_next_item) },
     ['<C-p>'] = { c = cmp_mapping('v', cmp.select_prev_item) },
-    ['<C-Space>'] = { c = cmp_mapping('v', cmp.mapping.complete) },
     -- preview/'docs' window
-    ['<C-k>'] = { c = cmp_mapping('vd', function() cmp.scroll_docs(-4) end) },
-    ['<C-j>'] = { c = cmp_mapping('vd', function() cmp.scroll_docs(4) end) },
+    ['<C-k>'] = {
+      c = cmp_mapping('vd', function()
+        cmp.scroll_docs(-4)
+      end),
+    },
+    ['<C-j>'] = {
+      c = cmp_mapping('vd', function()
+        cmp.scroll_docs(4)
+      end),
+    },
     -- confirm/abort
-    ['<Tab>'] = { c = cmp_mapping('', function() cmp.confirm({ select = true }) end) },
+    ['<F2><CR>'] = {
+      c = cmp_mapping('', function()
+        cmp.confirm({ select = true })
+      end),
+    },
     ['<C-c>'] = { c = cmp_mapping('v', cmp.abort) },
   }
   cmp.setup.cmdline({ '/', '?' }, {
     mapping = cmdline_mapping,
     sources = {
-      { name = "buffer", keyword_length = 5 },
+      { name = 'buffer', keyword_length = 5 },
     },
   })
-  cmp.setup.cmdline(":", {
+  cmp.setup.cmdline(':', {
     mapping = cmdline_mapping,
     sources = cmp.config.sources({
-      { name = "path" },
-      { name = "cmdline" },
+      { name = 'path' },
+      { name = 'cmdline' },
     }),
   })
 end

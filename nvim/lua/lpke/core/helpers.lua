@@ -245,7 +245,9 @@ function E.win_zoom_toggle()
         end
         Lpke_zoomed_reset_state()
       else
-        print('Un-Zoom: Could not restore previous sizing: Less windows than expected.')
+        print(
+          'Un-Zoom: Could not restore previous sizing: Less windows than expected.'
+        )
         Lpke_zoomed_reset_state(true)
       end
     else

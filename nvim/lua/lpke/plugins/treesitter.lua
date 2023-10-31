@@ -35,9 +35,6 @@ local function config()
       -- Instead of true it can also be a list of languages
       additional_vim_regex_highlighting = false,
     },
-    autopairs = {
-      enable = true,
-    },
     indent = {
       enable = true,
       disable = {},
@@ -45,6 +42,54 @@ local function config()
     context_commentstring = {
       enable = true,
     },
+    autopairs = {
+      enable = true,
+    },
+    -- autotag = {
+    --   enable = true,
+    --   enable_rename = true,
+    --   enable_close = true,
+    --   enable_close_on_slash = true,
+    --   filetypes = {
+    --     'html',
+    --     'javascript',
+    --     'typescript',
+    --     'javascriptreact',
+    --     'typescriptreact',
+    --     'svelte',
+    --     'vue',
+    --     'tsx',
+    --     'jsx',
+    --     'rescript',
+    --     'xml',
+    --     'php',
+    --     'markdown',
+    --     'astro',
+    --     'glimmer',
+    --     'handlebars',
+    --     'hbs',
+    --   },
+    --   skip_tags = {
+    --     'area',
+    --     'base',
+    --     'br',
+    --     'col',
+    --     'command',
+    --     'embed',
+    --     'hr',
+    --     'img',
+    --     'slot',
+    --     'input',
+    --     'keygen',
+    --     'link',
+    --     'meta',
+    --     'param',
+    --     'source',
+    --     'track',
+    --     'wbr',
+    --     'menuitem',
+    --   },
+    -- },
   })
 
   -- highlight customisations
@@ -58,7 +103,10 @@ local function config()
   helpers.set_hl('@number', { fg = tc.iris })
   helpers.set_hl('@constructor', { fg = tc.growth })
   helpers.set_hl('@type', { fg = tc.growth })
-  helpers.set_hl('@lsp.typemod.function.defaultLibrary.lua', { link = '@function.builtin' })
+  helpers.set_hl(
+    '@lsp.typemod.function.defaultLibrary.lua',
+    { link = '@function.builtin' }
+  )
 end
 
 return {

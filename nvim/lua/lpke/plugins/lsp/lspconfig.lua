@@ -134,13 +134,19 @@ local function config()
     emmet_ls = {
       filetypes = {
         'html',
+        'htmx',
+        'pug',
         'typescriptreact',
         'javascriptreact',
+        'vue',
+        'svelte',
         'css',
         'sass',
         'scss',
         'less',
-        'svelte',
+        'eruby',
+      },
+      init_options = {
       },
     },
     lua_ls = {

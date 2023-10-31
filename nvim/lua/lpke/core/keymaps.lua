@@ -57,9 +57,10 @@ helpers.keymap_set_multi({
   {'nvC', '<F2>,', 'split', { desc = 'Split window vertically' }},
   {'n', '<C-w>x', '<C-w>c', { desc = 'Close window' }},
   {'n', '<F2>/', '<C-w>c', { desc = 'Close window' }},
-  {'nC', 'QQ', 'q', { desc = 'Quit (:q)' }},
-  {'nC', '<C-w>QQ', 'qa', { desc = 'Quit all (:qa)' }},
-  {'nC', '<C-w>ZZ', 'wqa', { desc = 'Write and quit all (:wqa)' }},
+  {'nC', 'QQ', 'qa', { desc = 'Quit all (:qa)' }},
+  {'nC', 'QW', 'wqa', { desc = 'Write and quit all (:wqa)' }},
+  {'nC', '<C-w>QQ', 'lua require("auto-session").DisableAutoSave() ; vim.cmd("qa")', { desc = 'Quit all without auto-saving session (:qa)' }},
+  {'nC', '<C-w>QW', 'lua require("auto-session").DisableAutoSave() ; vim.cmd("wqa")', { desc = 'Write and quit all without auto-saving session (:wqa)' }},
   -- copy/pasting/rotating buffers
   {'nC', '<F2>y', 'lua Lpke_copy_buffer_id()', { desc = 'Yank current buffer details' }},
   {'nC', '<F2>p', 'lua Lpke_paste_buffer_id()', { desc = 'Paste yanked buffer details' }},

@@ -13,7 +13,7 @@ function config()
     auto_session_enable_last_session = false, -- load last session for cwd if doesnt exist
     auto_save_enabled = true,
     auto_restore_enabled = true,
-    auto_session_use_git_branch = false, -- differentiate by git branch name
+    auto_session_use_git_branch = true, -- differentiate by git branch name
     bypass_session_save_file_types = {''}, -- dont auto-save when only buffer open is one of these file types
     log_level = 'error',
     cwd_change_handling = {

@@ -6,6 +6,7 @@ Files uploaded here are in `.bin` format and are compiled versions of the layout
 ## Color Scheme
 
 * macOS: #ffffff (white)
+* windows: #0024FF (deep blue)
 * Thumb keys: #ffffff (white)
 * Base: #cccccc (gray)
 * Top/Inner sides: #00d1ff (sky blue)

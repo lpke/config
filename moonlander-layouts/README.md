@@ -13,7 +13,7 @@ Files uploaded here are in `.bin` format and are compiled versions of the layout
 * Modifier keys: #0024FF (deep blue)
 * Macro keys: #FF00E4 (magenta)
 * Layer toggle keys: #00ff40 (lime)
-* Vim: #00FF29 (neon green)
+* Vim: #2bff00 (matrix green)
 * Del key: #FF9B4A (orange)
 * Function: #FFB800 (nacho)
 

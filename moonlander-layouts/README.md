@@ -6,7 +6,6 @@ Files uploaded here are in `.bin` format and are compiled versions of the layout
 ## Color Scheme
 
 * macOS: #ffffff (white)
-
 * Base: #ffffff (white)
 * Top/Inner sides: #00FFFF (aqua)
 * Top row, right side (F keys): #A8A1FF (pale purple)

@@ -23,6 +23,7 @@ Files uploaded here are in `.bin` format and are compiled versions of the layout
 * Media: #bd00ff (electric purple)
 * Reset key: #FF0000 (red)
 * Back to config layer: #FF6363 (dulled red)
+* Config: #ffed00 (yellow)
 
 ## Symbols
 

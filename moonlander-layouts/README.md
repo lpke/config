@@ -8,7 +8,7 @@ Files uploaded here are in `.bin` format and are compiled versions of the layout
 * macOS: #ffffff (white)
 * Base: #ffffff (white)
 * Top/Inner sides: #00FFFF (aqua)
-* Top row, right side (F keys): #A8A1FF (pale purple)
+* Top row, right side (F keys): #8d85ff (mid purple)
 * Ctrl/Cmd keys: #7900FF (violet)
 * Modifier keys: #0024FF (deep blue)
 * Macro keys: #FF00E4 (magenta)

@@ -7,7 +7,7 @@ Files uploaded here are in `.bin` format and are compiled versions of the layout
 
 * macOS: #ffffff (white)
 * Base: #ffffff (white)
-* Top/Inner sides: #00FFFF (aqua)
+* Top/Inner sides: #00d1ff (sky blue)
 * Top row, right side (F keys): #8d85ff (mid purple)
 * Ctrl/Cmd keys: #7900FF (violet)
 * Modifier keys: #0024FF (deep blue)

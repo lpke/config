@@ -6,7 +6,8 @@ Files uploaded here are in `.bin` format and are compiled versions of the layout
 ## Color Scheme
 
 * macOS: #ffffff (white)
-* Base: #ffffff (white)
+* Thumb keys: #ffffff (white)
+* Base: #818181 (gray)
 * Top/Inner sides: #00d1ff (sky blue)
 * Top row, right side (F keys): #8d85ff (mid purple)
 * Ctrl/Cmd keys: #7900FF (violet)
@@ -16,6 +17,7 @@ Files uploaded here are in `.bin` format and are compiled versions of the layout
 * Vim: #2bff00 (matrix green)
 * Del key: #FF9B4A (orange)
 * Function: #FFB800 (nacho)
+* Media: #bd00ff (electric purple)
 
 ## Symbols
 

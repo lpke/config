@@ -7,6 +7,7 @@ Files uploaded here are in `.bin` format and are compiled versions of the layout
 
 * macOS: #ffffff (white)
 * windows: #0024FF (deep blue)
+* linux: #ff2278 (neon)
 * Thumb keys: #ffffff (white)
 * Base: #cccccc (gray)
 * Top/Inner sides: #00d1ff (sky blue)

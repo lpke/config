@@ -9,7 +9,7 @@ Files uploaded here are in `.bin` format and are compiled versions of the layout
 * windows: #0024FF (deep blue)
 * linux: #FF00E4 (magenta)
 * Thumb keys: #ffffff (white)
-* Base: #cccccc (gray)
+* Base: #ffffff (white)
 * Top/Inner sides: #00d1ff (sky blue)
 * Top row, right side (F keys): #8d85ff (mid purple)
 * Ctrl/Cmd keys: #7900FF (violet)

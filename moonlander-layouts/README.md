@@ -18,8 +18,10 @@ Files uploaded here are in `.bin` format and are compiled versions of the layout
 * Layer toggle keys: #00ff40 (lime)
 * Vim: #00c217 (matrix green)
 * Del key: #FF9B4A (orange)
-* Function: #FFB800 (nacho)
+* Function/Symbols: #FFB800 (nacho)
 * Media: #bd00ff (electric purple)
+* Reset key: #FF0000 (red)
+* Back to config layer: #FF6363 (dulled red)
 
 ## Symbols
 

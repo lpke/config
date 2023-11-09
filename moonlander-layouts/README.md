@@ -5,28 +5,33 @@ Files uploaded here are in `.bin` format and are compiled versions of the layout
 
 ## Color Scheme
 
-* macOS: #ffffff (white)
-* windows: #0024FF (deep blue)
-* linux: #FF00E4 (magenta)
-* Thumb keys: #ffffff (white)
 * Base: #ffffff (white)
-* Top/Inner sides: #00d1ff (sky blue)
-* Top row, right side (F keys): #5c50ff (shady purple-blue)
-* Ctrl/Cmd keys: #7900FF (violet)
-* Modifier keys: #0024FF (deep blue)
-* Macro keys: #FF00E4 (magenta)
-* Layer toggle keys: #00ff40 (lime)
-* Vim: #00ff1e (matrix green)
-* Del key: #FF9B4A (orange)
-* Symbols: #FFB800 (nacho)
-* Function layer button: #c28b00 (sand)
-* Function: #ffd318 (light gold)
-* Media: #bd00ff (electric purple)
-* Reset key: #FF0000 (red)
-* Back to config layer: #FF6363 (dulled red)
-* Config: #ffed00 (yellow)
+* Thumbs Base: #ffffff (white)
+
+* base top:     `#00d1ff`   (cyan)
+* base tg:      `#00ff40`   (aqua)
+* del/ins:      `#FF9B4A`   (faded orange)
+* base f row:   `#5c50ff`   (faded purple)
+* base f MO:    `#c28b00`   (faded yellow)
+
+* mods:         `#7900FF`   (purple)
+* multi-mods:   `#0024FF`   (blue)
+* macro:        `#FF00E4`   (pink)
+* symbols:      `#FFB800`   (orange)
+* media:        `#bd00ff`   (purple)
+
+* vim:          `#00ff1e`   (green)
+* function:     `#ffd318`   (light gold)
+* config:       `#ffed00`   (yellow)
+
+* reset/back:   `#FF0000`   (red)
+* back dull:    `#FF6363`   (dulled red)
+
+* macOS:        `#ffffff`   (white)
+* windows:      `#0024FF`   (deep blue)
+* linux:        `#FF00E4`   (magenta)
 
 ## Symbols
 
-* backspace: `⌫`
-* return: `⏎`
+* backspace: `Γî½`
+* return: `ΓÅÄ`

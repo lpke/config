@@ -11,7 +11,7 @@ Files uploaded here are in `.bin` format and are compiled versions of the layout
 ---
 
 * base top:     `#00d1ff`   (cyan) ![](https://lh3.googleusercontent.com/drive-viewer/AK7aPaA24tm1K-hyR_rHr1aewVIJIEKkcQNklrKyJc7FZzrgjpAbF_0jVF3WphTl5YE1INJtJ1letf9Pr-26rM9X70dM1XyT=s2560)
-* base tg:      `#00ff40`   (aqua) ![base tg]()
+* base tg:      `#00ff40`   (aqua) ![base tg](https://drive.google.com/uc?export=download&id=1mJFZLaEY2j1q1spxY5bsPopf4iK9SkI9)
 * del/ins:      `#FF9B4A`   (faded orange) ![del/ins]()
 * base f row:   `#5c50ff`   (faded purple) ![base f row]()
 * base f MO:    `#c28b00`   (faded yellow) ![base f MO]()

@@ -26,20 +26,20 @@ Files uploaded here are in `.bin` format and are compiled versions of the layout
 
 ---
 
-* vim:          `#00ff1e`   (green) ![vim]()
-* function:     `#ffd318`   (light gold) ![function]()
-* config:       `#ffed00`   (yellow) ![config]()
+* vim:          `#00ff1e`   (green) ![vim](https://drive.google.com/uc?export=download&id=1CE77hJo8sMooN4umURtaWlPhInmVvKaK)
+* function:     `#ffd318`   (light gold) ![function](https://drive.google.com/uc?export=download&id=14gpe-E1AqiXvbxdnPEwqAhaRVjYAoEaQ)
+* config:       `#ffed00`   (yellow) ![config](https://drive.google.com/uc?export=download&id=1zzFLzLuYtEcoK0u_VI-i0nL7MlGVbUyF)
 
 ---
 
-* reset/back:   `#FF0000`   (red) ![reset/back]()
-* back dull:    `#FF6363`   (dulled red) ![back dull]()
+* reset/back:   `#FF0000`   (red) ![reset/back](https://drive.google.com/uc?export=download&id=1CLA4y_FO3EZUEyT-vIhsIc2NT8DZz06X)
+* back dull:    `#FF6363`   (dulled red) ![back dull](https://drive.google.com/uc?export=download&id=1eMDwrdmPYPm70E2hHqwl6IFzxaCNvmxx)
 
 ---
 
-* macOS:        `#ffffff`   (white) ![macOS]()
-* windows:      `#0024FF`   (deep blue) ![windows]()
-* linux:        `#FF00E4`   (magenta) ![linux]()
+* macOS:        `#ffffff`   (white) ![macOS](https://drive.google.com/uc?export=download&id=1kiuOkIbzErBT031YGjNMgyuQtxfHmdRa)
+* windows:      `#0024FF`   (deep blue) ![windows](https://drive.google.com/uc?export=download&id=17kP4xETO9g1BjtsFBj_K-yk3DgVGIWyD)
+* linux:        `#FF00E4`   (magenta) ![linux](https://drive.google.com/uc?export=download&id=16cH2lEWaiUBpYcVCBwfHKANxrwazGIsH)
 
 ## Symbols
 

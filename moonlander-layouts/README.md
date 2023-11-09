@@ -8,11 +8,15 @@ Files uploaded here are in `.bin` format and are compiled versions of the layout
 * Base: #ffffff (white)
 * Thumbs Base: #ffffff (white)
 
+---
+
 * base top:     `#00d1ff`   (cyan)
 * base tg:      `#00ff40`   (aqua)
 * del/ins:      `#FF9B4A`   (faded orange)
 * base f row:   `#5c50ff`   (faded purple)
 * base f MO:    `#c28b00`   (faded yellow)
+
+---
 
 * mods:         `#7900FF`   (purple)
 * multi-mods:   `#0024FF`   (blue)
@@ -20,12 +24,18 @@ Files uploaded here are in `.bin` format and are compiled versions of the layout
 * symbols:      `#FFB800`   (orange)
 * media:        `#bd00ff`   (purple)
 
+---
+
 * vim:          `#00ff1e`   (green)
 * function:     `#ffd318`   (light gold)
 * config:       `#ffed00`   (yellow)
 
+---
+
 * reset/back:   `#FF0000`   (red)
 * back dull:    `#FF6363`   (dulled red)
+
+---
 
 * macOS:        `#ffffff`   (white)
 * windows:      `#0024FF`   (deep blue)

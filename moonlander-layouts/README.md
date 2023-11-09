@@ -10,7 +10,7 @@ Files uploaded here are in `.bin` format and are compiled versions of the layout
 
 ---
 
-* base top:     `#00d1ff`   (cyan) ![1_base_top](https://drive.google.com/file/d/1zaRwPkPBcly27tsBbv1B7xr6OBY-HF0R/view?usp=drive_link)
+* base top:     `#00d1ff`   (cyan) ![1_base_top](https://lh3.googleusercontent.com/drive-viewer/AK7aPaA24tm1K-hyR_rHr1aewVIJIEKkcQNklrKyJc7FZzrgjpAbF_0jVF3WphTl5YE1INJtJ1letf9Pr-26rM9X70dM1XyT=s2560)
 * base tg:      `#00ff40`   (aqua)
 * del/ins:      `#FF9B4A`   (faded orange)
 * base f row:   `#5c50ff`   (faded purple)

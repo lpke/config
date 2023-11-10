@@ -10,6 +10,52 @@ Files uploaded here are in `.bin` format and are compiled versions of the layout
 
 ---
 
+#### ![reset/back](https://drive.google.com/uc?export=download&id=1CLA4y_FO3EZUEyT-vIhsIc2NT8DZz06X) reset/back
+```
+#FF0000
+```
+
+#### ![back dull](https://drive.google.com/uc?export=download&id=1eMDwrdmPYPm70E2hHqwl6IFzxaCNvmxx) back dull
+```
+#FF6363
+```
+
+---
+
+#### ![macOS](https://drive.google.com/uc?export=download&id=1kiuOkIbzErBT031YGjNMgyuQtxfHmdRa) macOS
+```
+#ffffff
+```
+
+#### ![windows](https://drive.google.com/uc?export=download&id=17kP4xETO9g1BjtsFBj_K-yk3DgVGIWyD) windows
+```
+#0024FF
+```
+
+#### ![linux](https://drive.google.com/uc?export=download&id=16cH2lEWaiUBpYcVCBwfHKANxrwazGIsH) linux
+```
+#FF00E4
+```
+
+---
+
+#### ![vim](https://drive.google.com/uc?export=download&id=1CE77hJo8sMooN4umURtaWlPhInmVvKaK) vim
+```
+#00ff1e
+```
+
+#### ![function](https://drive.google.com/uc?export=download&id=14gpe-E1AqiXvbxdnPEwqAhaRVjYAoEaQ) function
+```
+#ffd318
+```
+
+#### ![config](https://drive.google.com/uc?export=download&id=1zzFLzLuYtEcoK0u_VI-i0nL7MlGVbUyF) config
+```
+#ffed00
+```
+
+---
+
 #### ![base top](https://drive.google.com/uc?export=download&id=1zaRwPkPBcly27tsBbv1B7xr6OBY-HF0R) base top
 ```
 #00d1ff
@@ -60,51 +106,5 @@ Files uploaded here are in `.bin` format and are compiled versions of the layout
 #### ![media](https://drive.google.com/uc?export=download&id=10PngUpXTfl8C-htWY-d85jlszFEbxd8E) media
 ```
 #bd00ff
-```
-
----
-
-#### ![vim](https://drive.google.com/uc?export=download&id=1CE77hJo8sMooN4umURtaWlPhInmVvKaK) vim
-```
-#00ff1e
-```
-
-#### ![function](https://drive.google.com/uc?export=download&id=14gpe-E1AqiXvbxdnPEwqAhaRVjYAoEaQ) function
-```
-#ffd318
-```
-
-#### ![config](https://drive.google.com/uc?export=download&id=1zzFLzLuYtEcoK0u_VI-i0nL7MlGVbUyF) config
-```
-#ffed00
-```
-
----
-
-#### ![reset/back](https://drive.google.com/uc?export=download&id=1CLA4y_FO3EZUEyT-vIhsIc2NT8DZz06X) reset/back
-```
-#FF0000
-```
-
-#### ![back dull](https://drive.google.com/uc?export=download&id=1eMDwrdmPYPm70E2hHqwl6IFzxaCNvmxx) back dull
-```
-#FF6363
-```
-
----
-
-#### ![macOS](https://drive.google.com/uc?export=download&id=1kiuOkIbzErBT031YGjNMgyuQtxfHmdRa) macOS
-```
-#ffffff
-```
-
-#### ![windows](https://drive.google.com/uc?export=download&id=17kP4xETO9g1BjtsFBj_K-yk3DgVGIWyD) windows
-```
-#0024FF
-```
-
-#### ![linux](https://drive.google.com/uc?export=download&id=16cH2lEWaiUBpYcVCBwfHKANxrwazGIsH) linux
-```
-#FF00E4
 ```
 

@@ -9,12 +9,13 @@
         "session": "cyan",
         "path": "green",
         "git": "blue",
+        "git-worktrees": "#f6c177",
+        "git-stash": "#31748f",
         "git-no-remote": "#ebbcba",
         "git-ahead": "#789da7",
         "git-behind": "#9580b2",
         "git-w-changed": "#6e6a86",
         "git-s-changed": "#908caa",
-        "git-stash": "#31748f",
         "time": "magenta",
         "prompt": "yellow",
         "prompt-error": "red"
@@ -24,12 +25,13 @@
         "session": "cyan",
         "path": "green",
         "git": "blue",
+        "git-worktrees": "#f6c177",
+        "git-stash": "#31748f",
         "git-no-remote": "#ebbcba",
         "git-ahead": "#789da7",
         "git-behind": "#9580b2",
         "git-w-changed": "#6e6a86",
         "git-s-changed": "#908caa",
-        "git-stash": "#31748f",
         "time": "magenta",
         "prompt": "yellow",
         "prompt-error": "red"
@@ -39,12 +41,13 @@
         "session": "cyan",
         "path": "green",
         "git": "blue",
+        "git-worktrees": "#f6c177",
+        "git-stash": "#31748f",
         "git-no-remote": "#ebbcba",
         "git-ahead": "#789da7",
         "git-behind": "#9580b2",
         "git-w-changed": "#6e6a86",
         "git-s-changed": "#908caa",
-        "git-stash": "#31748f",
         "time": "magenta",
         "prompt": "yellow",
         "prompt-error": "red"
@@ -110,7 +113,7 @@
             "fetch_worktree_count": true,
             "fetch_stash_count": true
           },
-          "template": "{{ .HEAD }}{{if .UpstreamGone }} <p:git-no-remote>Γêà</>{{ end }}{{if .Ahead }} <p:git-ahead>Γåæ{{ .Ahead }}</>{{ end }}{{if .Behind }}<p:git-behind>Γåô{{ .Behind }}</>{{ end }}<p:git-s-changed>{{ if .Staging.Changed }} {{ end }}{{ if .Staging.Added }}+{{ .Staging.Added }}{{ end }}{{ if .Staging.Modified }}~{{ .Staging.Modified }}{{ end }}{{ if .Staging.Deleted }}-{{ .Staging.Deleted }}{{ end }}</><p:git-w-changed>{{ if .Working.Changed }} {{ end }}{{ if .Working.Untracked }}?{{ .Working.Untracked }}{{ end }}{{ if .Working.Modified }}~{{ .Working.Modified }}{{ end }}{{ if .Working.Deleted }}-{{ .Working.Deleted }}{{ end }}</>{{ if gt .StashCount 0}} <p:git-stash>ΓÅÅ{{ .StashCount }}</>{{ end }}{{ if gt .WorktreeCount 0}} {{ .WorktreeCount }}{{ end }} "
+          "template": "{{ .HEAD }}{{if .UpstreamGone }} <p:git-no-remote>Γêà</>{{ end }}{{ if gt .WorktreeCount 0}} <p:git-worktrees>ΓÄç{{ .WorktreeCount }}</>{{ end }}{{ if gt .StashCount 0}} <p:git-stash>ΓÅÅ{{ .StashCount }}</>{{ end }}{{if .Ahead }} <p:git-ahead>Γåæ{{ .Ahead }}</>{{ end }}{{if .Behind }}<p:git-behind>Γåô{{ .Behind }}</>{{ end }}<p:git-s-changed>{{ if .Staging.Changed }} {{ end }}{{ if .Staging.Added }}+{{ .Staging.Added }}{{ end }}{{ if .Staging.Modified }}~{{ .Staging.Modified }}{{ end }}{{ if .Staging.Deleted }}-{{ .Staging.Deleted }}{{ end }}</><p:git-w-changed>{{ if .Working.Changed }} {{ end }}{{ if .Working.Untracked }}?{{ .Working.Untracked }}{{ end }}{{ if .Working.Modified }}~{{ .Working.Modified }}{{ end }}{{ if .Working.Deleted }}-{{ .Working.Deleted }}{{ end }}</> "
         },
         {
           "type": "executiontime",

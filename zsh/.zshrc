@@ -70,8 +70,8 @@ preexec() { echo -ne "\e[$INSERT q"; } # Use bar shape cursor for each new promp
 # Environment Variables
 # ==========================================================================
 
-export EDITOR=nvim
 export VISUAL=nvim
+export EDITOR="$VISUAL"
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
@@ -84,11 +84,16 @@ cd ~
 
 # Aliases
 alias cls="clear"
-alias r='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
+alias r='ranger --choosedir=$HOME/.config/ranger/lastdir; LASTDIR=`cat $HOME/.config/ranger/lastdir`; cd "$LASTDIR"'
 alias nn='pnpm'
 alias vi='VIMINIT="source ~/.config/vim/vimrc" vi'
 alias vim='nvim'
+alias v='nvim'
 alias ta='tmux attach'
+
+# vim plugins
+alias g='nvim . -c "call timer_start(50, { tid -> execute( '\''if exists(\":Git\") | exec \"silent! Git | silent! only | silent! nnoremap <buffer><nowait> Q :q<CR> | silent! autocmd VimEnter,BufEnter,BufWinEnter * silent! nnoremap <buffer><nowait> Q :q<CR>\" | call timer_stop(tid) | endif'\'' ) }, { '\''repeat'\'': -1 })"'
+alias o='nvim . -c "silent! nnoremap <buffer><nowait> Q :q<CR> | silent! autocmd VimEnter,BufEnter,BufWinEnter * silent! nnoremap <buffer><nowait> Q :q<CR>"'
 
 # ==========================================================================
 # Load Plugins/Extras
@@ -131,6 +136,15 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 
+# pipx?
+export PATH="$PATH:/home/luke/.local/bin"
+
+# bashcompinit (used by pipx)
+autoload -U bashcompinit
+bashcompinit
+eval "$(register-python-argcomplete pipx)"
+
+
 # ==========================================================================
 # Keybindings
 # ==========================================================================
@@ -151,4 +165,5 @@ bindkey '^p' autosuggest-toggle # toggle autosuggest
 # ==========================================================================
 
 # initialisation
-eval "$(oh-my-posh --init --shell zsh --config ~/.config/oh-my-posh/lpke.omp.json)"
+eval "$(oh-my-posh --init --shell zsh --config ~/.config/oh-my-posh/lpke-min.omp.json)"
+

@@ -90,6 +90,7 @@ alias vi='VIMINIT="source ~/.config/vim/vimrc" vi'
 alias vim='nvim'
 alias v='nvim'
 alias ta='tmux attach'
+alias gs='git status'
 
 # vim plugins
 alias g='nvim . -c "call timer_start(50, { tid -> execute( '\''if exists(\":Git\") | exec \"silent! Git | silent! only | silent! nnoremap <buffer><nowait> Q :q<CR> | silent! autocmd VimEnter,BufEnter,BufWinEnter * silent! nnoremap <buffer><nowait> Q :q<CR>\" | call timer_stop(tid) | endif'\'' ) }, { '\''repeat'\'': -1 })"'

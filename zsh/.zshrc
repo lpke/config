@@ -79,9 +79,6 @@ export LANG=en_US.UTF-8
 # Misc Customisation
 # ==========================================================================
 
-# Starting directory
-cd ~
-
 # Aliases
 alias cls="clear"
 alias r='ranger --choosedir=$HOME/.config/ranger/lastdir; LASTDIR=`cat $HOME/.config/ranger/lastdir`; cd "$LASTDIR"'
@@ -119,10 +116,10 @@ ZSH_AUTOSUGGEST_HISTORY_IGNORE="?(#c50,)" # do not suggest history items longer 
 # Pyenv
 eval "$(pyenv init -)"
 
-# NVM
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
+# Volta (node version management - replaces nvm)
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
+export VOLTA_FEATURE_PNPM="1"
 
 # Yarn
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
@@ -160,6 +157,7 @@ bindkey '^[[1;2C' forward-word # rebinding `forward-word` to Shift+Right
 # Shift+Right - accept next part of the suggestion (uses `forward-word`)
 # Right - accept suggestion (default keybind)
 bindkey '^p' autosuggest-toggle # toggle autosuggest
+
 
 # ==========================================================================
 # oh-my-posh

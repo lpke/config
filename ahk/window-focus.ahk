@@ -9,39 +9,45 @@ calc_padding := 20 ; minimum direction/alignment overlap for target windows
 #,::FocusWin("closest")
 #o::Send("!{Tab}")
 
+; experimental win key disable
+LWin::
+RWin:: {
+  return
+}
+
 ; ==== DEVELOPMENT SHORTCUTS ====
 ; Reload this script
-; #+r:: {
-;   Reload
-; }
+#+r:: {
+  Reload
+}
 ; Get active window position data
-; #+t:: {
-;   aID := WinGetID("A")
-;   wclass := WinGetClass(aID)
-;   wtitle := WinGetTitle(aID)
-;   WinGetFullPos(&aXL, &aXR, &aYT, &aYB, &aW, &aH, aID)
-;   discounted := WinIsDiscounted(aID, &visible, &desktop, &taskbar, &startmenu)
+#+t:: {
+  aID := WinGetID("A")
+  wclass := WinGetClass(aID)
+  wtitle := WinGetTitle(aID)
+  WinGetFullPos(&aXL, &aXR, &aYT, &aYB, &aW, &aH, aID)
+  discounted := WinIsDiscounted(aID, &visible, &desktop, &taskbar, &startmenu)
 
-;   MsgBox(
-;     "XL:  " aXL "`n"
-;     "XR:  " aXR "`n"
-;     "YT:  " aYT "`n"
-;     "YB:  " aYB "`n"
-;     "W:  "  aW  "`n"
-;     "H:  "  aH  "`n"
-;     "`n"
-;     "ID:  " aID "`n"
-;     "class:  " wclass "`n"
-;     "title:  " wtitle "`n"
-;     "`n"
-;     "Visible:  " visible "`n"
-;     "Desktop:  " desktop "`n"
-;     "Taskbar:  " taskbar "`n"
-;     "Startmenu:  " startmenu "`n"
-;     "`n"
-;     "Discounted:  " discounted
-;   )
-; }
+  MsgBox(
+    "XL:  " aXL "`n"
+    "XR:  " aXR "`n"
+    "YT:  " aYT "`n"
+    "YB:  " aYB "`n"
+    "W:  "  aW  "`n"
+    "H:  "  aH  "`n"
+    "`n"
+    "ID:  " aID "`n"
+    "class:  " wclass "`n"
+    "title:  " wtitle "`n"
+    "`n"
+    "Visible:  " visible "`n"
+    "Desktop:  " desktop "`n"
+    "Taskbar:  " taskbar "`n"
+    "Startmenu:  " startmenu "`n"
+    "`n"
+    "Discounted:  " discounted
+  )
+}
 
 WinGetFullPos(&xl, &xr, &yt, &yb, &w, &h, id) {
   WinGetPos(&xl, &yt, &w, &h, id)
